@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		{% block head %}
+			<meta charset="utf-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+			<title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+			<meta name="description" content="{% if header.description %}{{ header.description|e('html') }} | {% endif %}{{ site.description|e('html') }}">
+
+			{% do assets.addCss('theme://css/bluku.css') %}
+			{{ assets.css() }}
+
+		{% endblock %}
+	</head>
+
+	<body>
+		{% include "./partials/header.html.twig" %}
+
+		<main class="site-main">
+			{% block content %}{% endblock %}
+		</main>
+
+		{% do assets.addJs('theme://js/build/bundle.js') %}
+		{{ assets.js() }}
+	</body>
+</html>
