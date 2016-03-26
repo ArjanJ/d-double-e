@@ -115,3 +115,15 @@ pre,
 samp {
 	font-family: monospace;
 }
+
+body {
+	background: color(black);
+	opacity: 0;
+	transform: scale(1.2);
+	@include ease();
+
+	&.show {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
