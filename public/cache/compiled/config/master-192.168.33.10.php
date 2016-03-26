@@ -1,13 +1,13 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledConfig',
-    'timestamp' => 1457739837,
-    'checksum' => 'd9f112197142205b9a9dd5238c134788',
+    'timestamp' => 1458960622,
+    'checksum' => '2a5965e7d195c9238b6b1df9968f61a4',
     'files' => [
         'user/config' => [
             'media' => [
                 'file' => 'user/config/media.yaml',
-                'modified' => 1457676907
+                'modified' => 1458960392
             ],
             'security' => [
                 'file' => 'user/config/security.yaml',
@@ -469,6 +469,11 @@ return [
                 'type' => 'file',
                 'thumb' => 'media/thumb-json.png',
                 'mime' => 'application/json'
+            ],
+            'webm' => [
+                'type' => 'video',
+                'thumb' => 'media/thumb-webm.png',
+                'mime' => 'video/webm'
             ]
         ],
         'site' => [

@@ -18,7 +18,7 @@ const paths = {
 	templates: './templates/**/*.twig',
 	blueprints: './blueprints/*.yaml',
 	scss: {
-		src: './scss/*.scss',
+		src: './scss/**/*.scss',
 		build: './css'
 	},
 	js: {
@@ -49,7 +49,9 @@ function watch() {
 function serve() {
 	browserSync.init({
 		proxy: '192.168.33.10',
-		port: 3000
+		port: 3000,
+		open: false,
+		notify: false
 	});
 }
 
