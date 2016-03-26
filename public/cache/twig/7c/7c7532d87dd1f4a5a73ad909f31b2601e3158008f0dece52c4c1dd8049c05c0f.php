@@ -29,6 +29,8 @@ class __TwigTemplate_31a4b98d0b2c6c7e0ebe8d60390485a3989921621539e3bc558c00af34a
 
 \t<body>
 \t\t";
+        // line 21
+        $this->loadTemplate("./partials/header.html.twig", "./layouts/default.html.twig", 21)->display($context);
         // line 22
         echo "
 \t\t<main class=\"site-main\">
@@ -104,7 +106,7 @@ class __TwigTemplate_31a4b98d0b2c6c7e0ebe8d60390485a3989921621539e3bc558c00af34a
 
     public function getDebugInfo()
     {
-        return array (  91 => 24,  83 => 15,  81 => 14,  70 => 10,  62 => 9,  56 => 5,  53 => 4,  45 => 28,  43 => 27,  39 => 25,  37 => 24,  33 => 22,  28 => 18,  26 => 4,  21 => 1,);
+        return array (  93 => 24,  85 => 15,  83 => 14,  72 => 10,  64 => 9,  58 => 5,  55 => 4,  47 => 28,  45 => 27,  41 => 25,  39 => 24,  35 => 22,  33 => 21,  28 => 18,  26 => 4,  21 => 1,);
     }
 }
 /* <!DOCTYPE html>*/
@@ -127,7 +129,7 @@ class __TwigTemplate_31a4b98d0b2c6c7e0ebe8d60390485a3989921621539e3bc558c00af34a
 /* 	</head>*/
 /* */
 /* 	<body>*/
-/* 		{# {% include "./partials/header.html.twig" %} #}*/
+/* 		{% include "./partials/header.html.twig" %}*/
 /* */
 /* 		<main class="site-main">*/
 /* 			{% block content %}{% endblock %}*/

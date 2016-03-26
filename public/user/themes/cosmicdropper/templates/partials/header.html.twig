@@ -1,8 +1,29 @@
 <header class="site-header">
-	<p>Header</p>
-	<nav>
-		{% for page in pages.children.visible %}
-			<a href="{{ page.url }}">{{ page.menu }}</a>
-		{% endfor %}
-	</nav>
+	{# <div class="site-header__logo">
+		{% include "./partials/logo.html.twig" %}
+	</div> #}
+	<div class="site-header__nav">
+		<nav class="site-nav">
+			<ul class="site-nav__list">
+			{# 	<li class="site-nav__item">
+					<a href="" class="site-nav__link">Home</a>
+				</li> #}
+				<li class="site-nav__item">
+					<a href="" class="site-nav__link">News</a>
+				</li>
+				<li class="site-nav__item">
+					<a href="" class="site-nav__link">Shows</a>
+				</li>
+				<li class="site-nav__item">
+					<a href="" class="site-nav__link">Media</a>
+				</li>
+				<li class="site-nav__item">
+					<a href="" class="site-nav__link">Bio</a>
+				</li>
+				<li class="site-nav__item">
+					<a href="" class="site-nav__link">Shop</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
 </header>

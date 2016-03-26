@@ -1,0 +1,34 @@
+.site-header {
+	@include clearfix;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: absolute;
+	z-index: 100;
+	bottom: ($base-space * 2);
+	left: 0;
+	width: 100%;
+	padding: (0) ($base-space);
+
+	// &__logo {
+	// 	$size: 190px;
+	// 	flex: 1;
+	// 	width: $size;
+	// 	height: ($size / 2);
+	// 	position: relative;
+	// 	top: ($base-space * 1);
+
+	// 	svg {
+	// 		width: 100%;
+	// 		height: 100%;
+
+	// 		path {
+	// 			fill: color(black);
+	// 		}
+	// 	}
+	// }
+
+	&__nav {
+		// flex: 3;
+	}
+}

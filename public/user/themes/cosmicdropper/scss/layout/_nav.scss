@@ -1,0 +1,31 @@
+.site-nav {
+
+	&__list {
+		@include clearfix;
+		list-style-type: none;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		text-align: center;
+	}
+
+	&__item {
+		padding: ($base-space / 2.5) ($base-space / 1.5);
+	}
+
+	&__link {
+		display: block;
+		padding: (0);
+		font-size: map-get($heading-sizes, 6);
+		color: color(white);
+		text-transform: uppercase;
+		cursor: pointer;
+	}
+
+	@include bp(medium) {
+
+		&__item {
+			padding: ($base-space / 1.5);
+		}
+	}
+}
