@@ -1,34 +1,21 @@
 .site-header {
-	@include clearfix;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	position: absolute;
-	z-index: 100;
-	bottom: ($base-space * 2);
+
+	position: fixed;
+	top: 0;
 	left: 0;
 	width: 100%;
-	padding: (0) ($base-space);
 
-	// &__logo {
-	// 	$size: 190px;
-	// 	flex: 1;
-	// 	width: $size;
-	// 	height: ($size / 2);
-	// 	position: relative;
-	// 	top: ($base-space * 1);
+	padding: (0) ($base-space * 2);
 
-	// 	svg {
-	// 		width: 100%;
-	// 		height: 100%;
+	backface-visibility: hidden;
 
-	// 		path {
-	// 			fill: color(black);
-	// 		}
-	// 	}
-	// }
+	&__logo {
+		display: block;
+	}
 
 	&__nav {
-		// flex: 3;
+		flex: 1;
 	}
 }

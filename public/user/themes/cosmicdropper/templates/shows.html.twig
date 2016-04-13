@@ -1,0 +1,15 @@
+{% extends "./layouts/default.html.twig" %}
+
+{% block content %}
+	<section class="blog">
+		<h1>Shows</h1>
+		
+		{% for child in page.collection() %}
+			<div>
+				<h2>{{ child.header.event_name }}</h2>
+				<h3>{{ child.header.event_location }}</h2>
+			</div>
+		{% endfor %}
+
+	</section>
+{% endblock %}

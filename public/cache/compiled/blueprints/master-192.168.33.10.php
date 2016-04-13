@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledBlueprints',
-    'timestamp' => 1457676661,
-    'checksum' => '3e0a756ee8fae17b705219f5e9e92980',
+    'timestamp' => 1460589950,
+    'checksum' => '40224b936b69abd4abb62fb014aa1d45',
     'files' => [
         'system/blueprints/config' => [
             'media' => [
@@ -26,6 +26,10 @@ return [
             'plugins/admin' => [
                 'file' => 'user/plugins/admin/blueprints.yaml',
                 'modified' => 1457676614
+            ],
+            'plugins/datetools' => [
+                'file' => 'user/plugins/datetools/blueprints.yaml',
+                'modified' => 1460589913
             ],
             'plugins/email' => [
                 'file' => 'user/plugins/email/blueprints.yaml',
@@ -262,6 +266,38 @@ return [
                 'label' => 'Visitors history',
                 'default' => 20,
                 'name' => 'plugins.admin.popularity.history.visitors'
+            ],
+            'plugins.datetools' => [
+                'type' => '_parent',
+                'name' => 'plugins.datetools'
+            ],
+            'plugins.datetools.dateFormat' => [
+                'type' => '_parent',
+                'name' => 'plugins.datetools.dateFormat'
+            ],
+            'plugins.datetools.dateFormat.default' => [
+                'type' => 'text',
+                'label' => 'Default',
+                'default' => 'm/d/y g:ia',
+                'name' => 'plugins.datetools.dateFormat.default'
+            ],
+            'plugins.datetools.dateFormat.long' => [
+                'type' => 'text',
+                'label' => 'Long',
+                'default' => 'l, F j, g:ia',
+                'name' => 'plugins.datetools.dateFormat.long'
+            ],
+            'plugins.datetools.dateFormat.medium' => [
+                'type' => 'text',
+                'label' => 'Medium',
+                'default' => 'F j, g:ia',
+                'name' => 'plugins.datetools.dateFormat.medium'
+            ],
+            'plugins.datetools.dateFormat.short' => [
+                'type' => 'text',
+                'label' => 'Short',
+                'default' => 'm/d/y',
+                'name' => 'plugins.datetools.dateFormat.short'
             ],
             'plugins.email' => [
                 'type' => '_parent',
@@ -2224,6 +2260,14 @@ return [
                     ],
                     'dashboard' => [
                         'days_of_stats' => 'plugins.admin.dashboard.days_of_stats'
+                    ]
+                ],
+                'datetools' => [
+                    'dateFormat' => [
+                        'default' => 'plugins.datetools.dateFormat.default',
+                        'long' => 'plugins.datetools.dateFormat.long',
+                        'medium' => 'plugins.datetools.dateFormat.medium',
+                        'short' => 'plugins.datetools.dateFormat.short'
                     ]
                 ],
                 'email' => [

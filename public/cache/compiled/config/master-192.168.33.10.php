@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledConfig',
-    'timestamp' => 1458960622,
-    'checksum' => '2a5965e7d195c9238b6b1df9968f61a4',
+    'timestamp' => 1460589950,
+    'checksum' => '735cd59419cea14d5760d07ac000d5e0',
     'files' => [
         'user/config' => [
             'media' => [
@@ -15,7 +15,7 @@ return [
             ],
             'site' => [
                 'file' => 'user/config/site.yaml',
-                'modified' => 1457739836
+                'modified' => 1460580217
             ],
             'streams' => [
                 'file' => 'user/config/streams.yaml',
@@ -23,7 +23,7 @@ return [
             ],
             'system' => [
                 'file' => 'user/config/system.yaml',
-                'modified' => 1457736652
+                'modified' => 1460589914
             ],
             'themes/antimatter' => [
                 'file' => 'user/config/themes/antimatter.yaml',
@@ -52,6 +52,10 @@ return [
             'plugins/admin' => [
                 'file' => 'user/plugins/admin/admin.yaml',
                 'modified' => 1457676614
+            ],
+            'plugins/datetools' => [
+                'file' => 'user/plugins/datetools/datetools.yaml',
+                'modified' => 1460589913
             ],
             'plugins/email' => [
                 'file' => 'user/plugins/email/email.yaml',
@@ -106,6 +110,15 @@ return [
                         'visitors' => 20
                     ]
                 ]
+            ],
+            'datetools' => [
+                'dateFormat' => [
+                    'default' => 'm/d/Y g:ia',
+                    'long' => 'l, F j, g:ia',
+                    'medium' => 'F j, g:ia',
+                    'short' => 'm/d/y'
+                ],
+                'enabled' => true
             ],
             'email' => [
                 'enabled' => true,
@@ -477,7 +490,7 @@ return [
             ]
         ],
         'site' => [
-            'title' => 'Cosmicdropper',
+            'title' => 'D Double E',
             'author' => [
                 'name' => 'Joe Bloggs',
                 'email' => 'joe@test.com'
@@ -645,7 +658,7 @@ return [
                 'log' => true
             ],
             'debugger' => [
-                'enabled' => false,
+                'enabled' => true,
                 'shutdown' => [
                     'close_connection' => true
                 ],

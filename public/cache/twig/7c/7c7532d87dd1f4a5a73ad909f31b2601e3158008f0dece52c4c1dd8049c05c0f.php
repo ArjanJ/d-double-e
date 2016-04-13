@@ -76,7 +76,7 @@ class __TwigTemplate_31a4b98d0b2c6c7e0ebe8d60390485a3989921621539e3bc558c00af34a
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "description", array()), "html");
         echo "\">
 \t\t\t
-\t\t\t<link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+\t\t\t<link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,700,300' rel='stylesheet' type='text/css'>
 
 \t\t\t";
         // line 14
@@ -120,7 +120,7 @@ class __TwigTemplate_31a4b98d0b2c6c7e0ebe8d60390485a3989921621539e3bc558c00af34a
 /* 			<title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>*/
 /* 			<meta name="description" content="{% if header.description %}{{ header.description|e('html') }} | {% endif %}{{ site.description|e('html') }}">*/
 /* 			*/
-/* 			<link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>*/
+/* 			<link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,700,300' rel='stylesheet' type='text/css'>*/
 /* */
 /* 			{% do assets.addCss('theme://css/bluku.css') %}*/
 /* 			{{ assets.css() }}*/

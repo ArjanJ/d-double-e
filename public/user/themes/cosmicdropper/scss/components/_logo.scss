@@ -1,0 +1,8 @@
+.c-logo {
+	$width: 150px;
+	$height: ($width / 2);
+	display: block;
+	width: $width;
+	height: $height;
+	margin: ($base-space) (0);
+}

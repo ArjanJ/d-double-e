@@ -35,8 +35,8 @@ $font-weight-headings: 	700;
  * FONT FAMILY
  */
 
-$font-copy: 		'Oswald', 'Arial', sans-serif;
-$font-headings: 'Oswald', 'Arial', sans-serif;
+$font-copy: 		'Roboto Mono', 'Helvetiva Neue', 'Arial', sans-serif;
+$font-headings: 'Roboto Mono', 'Helvetiva Neue', 'Arial', sans-serif;
 
 /**
  * BASE SPACING VALUE
@@ -72,22 +72,25 @@ $colors: 	(
 	mid-grey: 		#BDBDBD,
 	light-grey: 	#F1F1F1,
 	white: 				#FAFAFA,
-	red: 					#dd3d3d,
+	red: 					#ff5757,
 	pink: 				#E91E63,
-	purple: 			#9C27B0,
+	purple: 			#d17cfe,
 	indigo: 			#3F51B5,
 	blue: 				#2196F3,
 	cyan: 				#00BCD4,
 	green: 				#4CAF50,
 	yellow: 			#FFEB3B,
 	orange: 			#FF9800,
-	brown: 				#795548
+	brown: 				#795548,
+	dark-purple: 	#d17cfe
 );
 
 $headings-color: 	map-get($colors, black);
 $text-color: 			map-get($colors, black);
 
 $theme-color-1: 	map-get($colors, red);
+$theme-color-2: 	map-get($colors, purple);
+$theme-color-3: 	map-get($colors, dark-purple);
 
 /**
  * TRANSITIONS

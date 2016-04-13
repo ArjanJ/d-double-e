@@ -1,0 +1,16 @@
+1461194845
+a:2:{s:7:"content";s:442:"<section class="home-events">
+	<h1>Upcoming Shows</h1>
+
+			
+		<div class="home-events__item">
+			<div class="home-events-item__date">
+				<p class="home-events-item__date-txt">May 20</p>
+			</div>
+			<div class="home-events-item__about">
+				<h2 class="home-events-item__about-name">Eskimo Dance</h2>
+				<h3 class="home-events-item__about-location">Glasgow, UK</h3>
+			</div>
+			<div class="home-events-item__buy"></div>
+		</div>
+	</section>";s:12:"content_meta";N;}

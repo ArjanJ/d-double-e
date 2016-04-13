@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/user/config/system.yaml',
-    'modified' => 1457736652,
+    'modified' => 1460589914,
     'data' => [
         'absolute_urls' => false,
         'timezone' => '',
@@ -124,7 +124,7 @@ return [
             'log' => true
         ],
         'debugger' => [
-            'enabled' => false,
+            'enabled' => true,
             'shutdown' => [
                 'close_connection' => true
             ],

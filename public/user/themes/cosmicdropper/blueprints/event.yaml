@@ -1,0 +1,26 @@
+title: Event
+'@extends':
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          fields:
+            header.event_name:
+              type: text
+              label: Name
+            header.event_location:
+              type: text
+              label: Event Location
+            header.event_date:
+              type: Datetime
+              label: Date
+            header.event_tickets:
+              type: text
+              label: Buy Tickets Link

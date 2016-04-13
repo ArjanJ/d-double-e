@@ -18,7 +18,7 @@ const paths = {
 	templates: './templates/**/*.twig',
 	blueprints: './blueprints/*.yaml',
 	scss: {
-		src: './scss/**/*.scss',
+		src: './scss/**/**/*.scss',
 		build: './css'
 	},
 	js: {

@@ -1,0 +1,21 @@
+title: Article
+'@extends':
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          fields:
+            header.cover_image:
+              type: pagemediaselect
+              multiple: false
+              destination: '@self'
+              accept:
+                - image/*
+              label: Cover Image
