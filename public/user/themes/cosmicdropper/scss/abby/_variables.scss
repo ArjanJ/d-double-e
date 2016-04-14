@@ -23,6 +23,7 @@ $heading-sizes: (
 );
 
 $font-size-code: 1.25rem;
+$font-size-small: 1.4rem;
 
 /**
  * FONT WEIGHTS
@@ -82,7 +83,7 @@ $colors: 	(
 	yellow: 			#FFEB3B,
 	orange: 			#FF9800,
 	brown: 				#795548,
-	dark-purple: 	#d17cfe
+	dark-purple: 	#040204
 );
 
 $headings-color: 	map-get($colors, black);

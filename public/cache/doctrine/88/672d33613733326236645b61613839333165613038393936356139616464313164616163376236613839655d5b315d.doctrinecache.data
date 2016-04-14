@@ -1,0 +1,35 @@
+1461213259
+a:2:{s:7:"content";s:1219:"
+<section class="home-news">
+	<div class="u-wrapper">
+		<ul class="home-news__list">
+							
+				<li class="home-news-post" style="background-image: url(/news/canada-tour-2016/bw-mic.jpg)">
+					<a href="/news/canada-tour-2016" class="home-news-post__link">
+						<h2 class="home-news-post__heading">Canada Tour 2016</h2>
+					</a>
+				</li>
+							
+				<li class="home-news-post" style="background-image: url(/news/canada-tour-2017/bunchofmcs.jpg)">
+					<a href="/news/canada-tour-2017" class="home-news-post__link">
+						<h2 class="home-news-post__heading">Now Available: Bluku! Bluku! Apparel</h2>
+					</a>
+				</li>
+							
+				<li class="home-news-post" style="background-image: url(/news/canada-tour-2018/shirt-outside.png)">
+					<a href="/news/canada-tour-2018" class="home-news-post__link">
+						<h2 class="home-news-post__heading">New Single — "Grim Reaper" Out Now</h2>
+					</a>
+				</li>
+			
+			<li class="home-news-post home-news-post--last">
+				<a href="/news" class="home-news-post__link">
+					<h2 class="home-news-post__heading home-news-post__heading--last">
+						More News
+						<svg><use xlink:href="/svg/svg.svg#arrow-right" /></svg>
+					</h2>
+				</a>
+			</li>
+		</ul>
+	</div>
+</section>";s:12:"content_meta";N;}

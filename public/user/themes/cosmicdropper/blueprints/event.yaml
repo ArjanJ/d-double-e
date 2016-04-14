@@ -1,7 +1,4 @@
 title: Event
-'@extends':
-  type: default
-  context: blueprints://pages
 
 form:
   fields:
@@ -10,17 +7,32 @@ form:
       active: 1
 
       fields:
-        content:
+        event:
+          type: tab
+          title: Event
+
           fields:
             header.event_name:
               type: text
               label: Name
-            header.event_location:
+            header.event_city:
               type: text
-              label: Event Location
+              label: Event City
+            header.event_country:
+              type: text
+              label: Event Country
             header.event_date:
               type: Datetime
-              label: Date
+              label: Event Date
             header.event_tickets:
               type: text
-              label: Buy Tickets Link
+              label: Link to Buy Tickets
+
+            route:
+              type: select
+              label: PLUGIN_ADMIN.PARENT
+              classes: fancy
+              '@data-options': '\Grav\Common\Page\Pages::parents'
+              '@data-default': '\Grav\Plugin\admin::route'
+              options:
+                '/': PLUGIN_ADMIN.DEFAULT_OPTION_ROOT

@@ -1,19 +1,40 @@
-<section class="home-events">
-	<h1>{{ page.title }}</h1>
+{% set events = page.collection() %}
 
-	{% for event in page.collection() %}
-		{{ dump(event) }}
-		<div class="home-events__item">
-			<div class="home-events-item__date">
-				<p class="home-events-item__date-txt">{{ event.header.event_date|date("F j") }}</p>
-			</div>
-			<div class="home-events-item__about">
-				<h2 class="home-events-item__about-name">{{ event.header.event_name }}</h2>
-				<h3 class="home-events-item__about-location">{{ event.header.event_location }}</h3>
-			</div>
-			<div class="home-events-item__buy">
-				<a href="{{ event.header.event_tickets }}" class="home-events-item__buy-btn">Tickets</a>
-			</div>
-		</div>
-	{% endfor %}
+<section class="home-events">
+	<div class="u-wrapper">
+
+		{% if events|length < 1 %}
+			<h1 class="home-events__heading home-events__heading--no-margin">No upcoming shows</h1>
+		{% else %}
+			<h1 class="home-events__heading">{{ page.title }}</h1>
+		{% endif %}
+
+		<ul class="home-events__list">
+			{% for event in events %}
+				<li class="home-events-item">
+					<div class="home-events-item__date">
+						<span class="home-events-item__date-txt">{{ event.header.event_date|date("F")|slice(0, 3) }}</span>
+						<span class="home-events-item__date-txt">{{ event.header.event_date|date("j") }}</span>
+					</div>
+					<div class="home-events-item__about">
+						<h2 class="home-events-item__about-name">{{ event.header.event_name }}</h2>
+						<h3 class="home-events-item__about-location {% if loop.last %}home-events-item__about-location--last{% endif %}">
+							<span>{{ event.header.event_city }}<span>
+							<span>{{ event.header.event_country }}<span>
+						</h3>
+
+						{% if loop.last %}
+							<a href="/shows" class="home-events__more-btn">
+								View all shows
+								<svg><use xlink:href="/svg/svg.svg#arrow-right" /></svg>
+							</a>
+						{% endif %}
+					</div>
+					<div class="home-events-item__buy">
+						<a href="{{ event.header.event_tickets }}" class="home-events-item__buy-btn">Tickets</a>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
 </section>

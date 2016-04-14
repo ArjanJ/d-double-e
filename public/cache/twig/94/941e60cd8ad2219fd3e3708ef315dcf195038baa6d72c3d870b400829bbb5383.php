@@ -16,7 +16,7 @@ class __TwigTemplate_a24a3dc7a33f8aa66175a77b74399b48364ddb21556d0be7a5acb6b0f7f
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        echo "<section>
+        echo "<section class=\"home-hero\">
 \t<h1>";
         // line 2
         echo $this->getAttribute((isset($context["page"]) ? $context["page"] : null), "title", array());
@@ -39,6 +39,6 @@ class __TwigTemplate_a24a3dc7a33f8aa66175a77b74399b48364ddb21556d0be7a5acb6b0f7f
         return array (  22 => 2,  19 => 1,);
     }
 }
-/* <section>*/
+/* <section class="home-hero">*/
 /* 	<h1>{{ page.title }}</h1>*/
 /* </section>*/

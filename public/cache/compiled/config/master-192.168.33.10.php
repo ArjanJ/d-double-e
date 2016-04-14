@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledConfig',
-    'timestamp' => 1460589950,
-    'checksum' => '735cd59419cea14d5760d07ac000d5e0',
+    'timestamp' => 1460603515,
+    'checksum' => '3e8508432b80ee97b9be1d5cc7c57741',
     'files' => [
         'user/config' => [
             'media' => [
@@ -23,7 +23,7 @@ return [
             ],
             'system' => [
                 'file' => 'user/config/system.yaml',
-                'modified' => 1460589914
+                'modified' => 1460603514
             ],
             'themes/antimatter' => [
                 'file' => 'user/config/themes/antimatter.yaml',

@@ -21,6 +21,10 @@
 		font-size: $value;
 		line-height: $line-height-headings;
 	}
+
+	%u-ls-#{$key} {
+		letter-spacing: ($base-space / ($key * 1.5));
+	}
 }
 
 .u-heading-1,

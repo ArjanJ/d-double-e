@@ -1,0 +1,28 @@
+1461209196
+a:2:{s:7:"content";s:813:"
+<section class="home-events">
+	<div class="u-wrapper">
+
+					<h1 class="home-events__heading">Upcoming Shows</h1>
+		
+		<ul class="home-events__list">
+							<li class="home-events-item">
+					<div class="home-events-item__date">
+						<span class="home-events-item__date-txt">Apr</span>
+						<span class="home-events-item__date-txt">14</span>
+					</div>
+					<div class="home-events-item__about">
+						<h2 class="home-events-item__about-name">Eskimo Dance</h2>
+						<h3 class="home-events-item__about-location home-events-item__about-location--last">
+							<span>Glasgow<span>
+							<span>UK<span>
+						</h3>
+
+											</div>
+					<div class="home-events-item__buy">
+						<a href="https://www.google.ca/" class="home-events-item__buy-btn">Tickets</a>
+					</div>
+				</li>
+					</ul>
+	</div>
+</section>";s:12:"content_meta";N;}

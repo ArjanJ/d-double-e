@@ -1,3 +1,97 @@
 .home-events {
+	@include clearfix;
+	padding: ($base-space * 5) (0);
+	background: $theme-color-3;
+	color: color(white);
+
+	&__heading {
+		@extend %u-heading-3;
+		@extend %u-ls-2;
+		margin-bottom: ($base-space * 4);
+		text-align: center;
+		color: color(white);
+
+		&--no-margin {
+			margin-bottom: 0;
+		}
+	}
+
+	&__list {
+		list-style-type: none;
+	}
+
+	&__more-btn {
+		@extend %c-button;
+		border: 3px solid color(white);
+		color: color(white);
+		background: none;
 	
+		&:before,
+		&:after {
+			display: none;
+		}
+
+		svg {
+			$size: 24px;
+			width: $size;
+			height: $size;
+			margin-left: ($base-space / 2);
+			fill: color(white);
+		}
+	}
+}
+
+.home-events-item {
+	display: flex;
+	margin: (0) (0) ($base-space * 2);
+
+	&__date {
+		text-align: right;
+
+		&-txt {
+			text-transform: uppercase;
+			font-weight: 700;
+		}
+	}
+
+	&__about {
+		margin: (0) (0) (0) ($base-space);
+
+		&-name,
+		&-location {
+			color: color(white);
+		}
+
+		&-name {
+			@extend %u-heading-4;
+		}
+
+		&-location {
+			@extend %u-heading-6;
+			font-weight: 400;
+
+			&--last {
+				margin-bottom: ($base-space * 3);
+			}
+		}
+	}
+
+	&__buy {
+		flex: 1;
+		padding-top: ($base-space / 2);
+		text-align: right;
+
+		&-btn {
+			@extend %c-button;
+			color: color(white);
+			
+			&:before {
+				background: $theme-color-2;
+			}
+
+			&:after {
+				border-color: $theme-color-1;
+			}
+		}
+	}
 }
