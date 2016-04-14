@@ -1,3 +1,18 @@
 <section class="home-hero">
-	<h1>{{ page.title }}</h1>
+	<div class="u-wrapper">
+		<div class="home-hero__img">
+			<img width="400" height="540" class="home-hero__img-img" src="/images/d-double-e-home.svg" alt="">
+			<div class="home-hero__svgs">
+				{% include "./partials/logo.html.twig" %}
+				{% include "./partials/logo.html.twig" %}
+			</div>
+		</div>
+	</div>
+
+	<svg class="home-hero__curve" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="1920" height="331.1" viewBox="0 0 1920 331.1" enable-background="new 0 0 1920 331.144" xml:space="preserve"><path d="M261.5 199c199.5 0 336 129.1 564 132.1 228 3 355.5-108.2 697.5-109.7 153.9-0.7 290.8 28.2 397 62.3V0H0v267.7C84.9 230.4 180.4 199 261.5 199z"/></svg>
+
+	<img class="home-hero__curve-shadow" src="/images/paint-shadow.png" alt="">
+	
+	{% include './partials/paint-drips.html.twig' %}
+
 </section>

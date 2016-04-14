@@ -1,3 +1,81 @@
 .home-hero {
-	min-height: 50vh;
+	min-height: 75vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: ($base-space * 6) (0) ($base-space * 2);
+	position: relative;
+	background: $theme-color-2;
+
+	&__img {
+		position: relative;
+		z-index: 5;
+		pointer-events: none;
+
+		&-img {
+			width: 360px;
+		}
+	}
+
+	&__svgs {
+		$width: 420px;
+		$height: $width / 2;
+		position: absolute;
+		top: 266px;
+		left: 45%;
+		margin-left: -$height;
+		width: $width;
+		height: $height;
+
+		svg {
+			position: absolute;
+			overflow: visible;
+			width: $width;
+			height: $height;
+
+			// First SVG is there so we can have
+			// an outer stroke.
+			&:nth-child(1) {
+				
+				path {
+					stroke: $theme-color-3;
+					stroke-width: 24px;
+				}
+			}
+
+			&:nth-child(2) {
+				path {
+					fill: $theme-color-1;
+				}
+			}
+		}
+	}
+
+	&__curve {
+		display: block;
+		position: absolute;
+		z-index: 3;
+		bottom: -140px;
+		left: 50%;
+		transform: translateX(-50%);
+		fill: $theme-color-2;
+
+		&-shadow {
+			position: absolute;
+			bottom: -250px;
+			left: 50%;
+			transform: translateX(-50%);
+			z-index: 2;
+		}
+	}
+
+	#paint-drips {
+		position: absolute;
+		z-index: 1;
+		left: 50%;
+    bottom: -485px;
+		transform: translateX(-50%);
+		max-width: 90%;
+		fill: $theme-color-2;
+	}
 }

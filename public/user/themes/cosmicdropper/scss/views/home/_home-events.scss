@@ -1,6 +1,6 @@
 .home-events {
 	@include clearfix;
-	padding: ($base-space * 5) (0);
+	padding: ($base-space * 22) (0) ($base-space * 5);
 	background: $theme-color-3;
 	color: color(white);
 

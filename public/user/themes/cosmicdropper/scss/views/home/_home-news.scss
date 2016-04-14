@@ -9,7 +9,6 @@
 		position: relative;
 
 		&:before {
-			@include cover;
 			content: "";
 			display: block;
 			width: calc(100% + #{$base-space * 1.5});

@@ -1,0 +1,16 @@
+1461217023
+a:2:{s:7:"content";s:564:"<section class="home-hero">
+	<div class="u-wrapper">
+		<div class="home-hero__img">
+						<svg preserveAspectRatio="xMinYMin" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+			viewBox="0 0 580 655">
+			  <defs>
+			    <mask id="canmask">
+			      <image width="580" height="655" xlink:href="/images/d-double-e-home-mask.png"></image>
+			    </mask>
+			  </defs>
+			  <image mask="url(#canmask)" id="canTop" width="580" height="655" xlink:href="/images/d-double-e-home.jpg"></image>
+			</svg>
+		</div>
+	</div>
+</section>";s:12:"content_meta";N;}
