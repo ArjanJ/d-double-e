@@ -82,7 +82,7 @@ class __TwigTemplate_b7453fb951e2e107a2e9e0b2c6fce7cc7dc9e028cc9cf6868f0b74669d1
 \t\t\t\t\t\t\t<span>";
             // line 22
             echo $this->getAttribute($this->getAttribute($context["event"], "header", array()), "event_city", array());
-            echo "<span>
+            echo ",</span>
 \t\t\t\t\t\t\t<span>";
             // line 23
             echo $this->getAttribute($this->getAttribute($context["event"], "header", array()), "event_country", array());
@@ -163,7 +163,7 @@ class __TwigTemplate_b7453fb951e2e107a2e9e0b2c6fce7cc7dc9e028cc9cf6868f0b74669d1
 /* 					<div class="home-events-item__about">*/
 /* 						<h2 class="home-events-item__about-name">{{ event.header.event_name }}</h2>*/
 /* 						<h3 class="home-events-item__about-location {% if loop.last %}home-events-item__about-location--last{% endif %}">*/
-/* 							<span>{{ event.header.event_city }}<span>*/
+/* 							<span>{{ event.header.event_city }},</span>*/
 /* 							<span>{{ event.header.event_country }}<span>*/
 /* 						</h3>*/
 /* */
