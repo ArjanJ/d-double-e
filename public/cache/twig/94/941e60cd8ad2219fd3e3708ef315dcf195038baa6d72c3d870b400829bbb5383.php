@@ -19,16 +19,19 @@ class __TwigTemplate_a24a3dc7a33f8aa66175a77b74399b48364ddb21556d0be7a5acb6b0f7f
         echo "<section class=\"home-hero\">
 \t<div class=\"u-wrapper\">
 \t\t<div class=\"home-hero__img\">
-\t\t\t<img width=\"400\" height=\"540\" class=\"home-hero__img-img\" src=\"/images/d-double-e-home.svg\" alt=\"\">
+\t\t\t<img width=\"485\" height=\"655\" class=\"home-hero__img-img\" src=\"/images/d-double-e-home.svg\" alt=\"\">
 \t\t\t<div class=\"home-hero__svgs\">
 \t\t\t\t";
         // line 6
-        $this->loadTemplate("./partials/logo.html.twig", "modular/hero.html.twig", 6)->display($context);
+        $this->loadTemplate("./partials/logo.html.twig", "modular/hero.html.twig", 6)->display(array_merge($context, array("id" => "homeLogo1")));
         // line 7
         echo "\t\t\t\t";
-        $this->loadTemplate("./partials/logo.html.twig", "modular/hero.html.twig", 7)->display($context);
+        $this->loadTemplate("./partials/logo.html.twig", "modular/hero.html.twig", 7)->display(array_merge($context, array("id" => "homeLogo2")));
         // line 8
         echo "\t\t\t</div>
+\t\t</div>
+\t\t<div class=\"home-hero__spotify\">
+\t\t\t<iframe src=\"https://embed.spotify.com/follow/1/?uri=spotify:artist:6bwkMlweHsBCpI2a0C5nnN&size=basic&theme=light&show-count=0\" width=\"200\" height=\"25\" scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden;\" allowtransparency=\"true\"></iframe>
 \t\t</div>
 \t</div>
 
@@ -52,21 +55,17 @@ class __TwigTemplate_a24a3dc7a33f8aa66175a77b74399b48364ddb21556d0be7a5acb6b0f7f
 
 \t<div class=\"home-hero__bg home-hero__bg--camo\">
 \t\t";
-        // line 31
-        $this->loadTemplate("./partials/camo.html.twig", "modular/hero.html.twig", 31)->display($context);
-        // line 32
+        // line 34
+        $this->loadTemplate("./partials/camo.html.twig", "modular/hero.html.twig", 34)->display($context);
+        // line 35
         echo "\t</div>
 
-\t<div class=\"home-hero__bottom-curve\">
-\t\t<svg preserveAspectRatio=\"xMidYMin\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" x=\"0\" y=\"0\" width=\"1920\" height=\"132.1\" viewBox=\"0 0 1920 132.1\" enable-background=\"new 0 0 1920 132.144\" xml:space=\"preserve\"><path d=\"M825.6 132.1C597.6 129.1 461 0 261.5 0 180.4 0 84.9 31.4 0 68.7V133h1920V84.7c-106.2-34.2-243.1-63-397-62.3C1181.1 23.9 1053.5 135.1 825.6 132.1z\"/></svg>
-\t\t</svg>
-\t</div>
-\t
-\t";
+\t<div class=\"home-hero__paint-drips\">
+\t\t";
+        // line 38
+        $this->loadTemplate("./partials/paint-drips.html.twig", "modular/hero.html.twig", 38)->display($context);
         // line 39
-        $this->loadTemplate("./partials/paint-drips.html.twig", "modular/hero.html.twig", 39)->display($context);
-        // line 40
-        echo "
+        echo "\t</div>
 </section>";
     }
 
@@ -82,17 +81,20 @@ class __TwigTemplate_a24a3dc7a33f8aa66175a77b74399b48364ddb21556d0be7a5acb6b0f7f
 
     public function getDebugInfo()
     {
-        return array (  69 => 40,  67 => 39,  58 => 32,  56 => 31,  31 => 8,  28 => 7,  26 => 6,  19 => 1,);
+        return array (  68 => 39,  66 => 38,  61 => 35,  59 => 34,  31 => 8,  28 => 7,  26 => 6,  19 => 1,);
     }
 }
 /* <section class="home-hero">*/
 /* 	<div class="u-wrapper">*/
 /* 		<div class="home-hero__img">*/
-/* 			<img width="400" height="540" class="home-hero__img-img" src="/images/d-double-e-home.svg" alt="">*/
+/* 			<img width="485" height="655" class="home-hero__img-img" src="/images/d-double-e-home.svg" alt="">*/
 /* 			<div class="home-hero__svgs">*/
-/* 				{% include "./partials/logo.html.twig" %}*/
-/* 				{% include "./partials/logo.html.twig" %}*/
+/* 				{% include "./partials/logo.html.twig" with {'id': 'homeLogo1'} %}*/
+/* 				{% include "./partials/logo.html.twig" with {'id': 'homeLogo2'} %}*/
 /* 			</div>*/
+/* 		</div>*/
+/* 		<div class="home-hero__spotify">*/
+/* 			<iframe src="https://embed.spotify.com/follow/1/?uri=spotify:artist:6bwkMlweHsBCpI2a0C5nnN&size=basic&theme=light&show-count=0" width="200" height="25" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowtransparency="true"></iframe>*/
 /* 		</div>*/
 /* 	</div>*/
 /* */
@@ -118,11 +120,7 @@ class __TwigTemplate_a24a3dc7a33f8aa66175a77b74399b48364ddb21556d0be7a5acb6b0f7f
 /* 		{% include './partials/camo.html.twig' %}*/
 /* 	</div>*/
 /* */
-/* 	<div class="home-hero__bottom-curve">*/
-/* 		<svg preserveAspectRatio="xMidYMin" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="1920" height="132.1" viewBox="0 0 1920 132.1" enable-background="new 0 0 1920 132.144" xml:space="preserve"><path d="M825.6 132.1C597.6 129.1 461 0 261.5 0 180.4 0 84.9 31.4 0 68.7V133h1920V84.7c-106.2-34.2-243.1-63-397-62.3C1181.1 23.9 1053.5 135.1 825.6 132.1z"/></svg>*/
-/* 		</svg>*/
+/* 	<div class="home-hero__paint-drips">*/
+/* 		{% include './partials/paint-drips.html.twig' %}*/
 /* 	</div>*/
-/* 	*/
-/* 	{% include './partials/paint-drips.html.twig' %}*/
-/* */
 /* </section>*/

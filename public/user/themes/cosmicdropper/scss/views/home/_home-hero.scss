@@ -7,43 +7,91 @@
 	position: relative;
 	background: $theme-color-3;
 
-	&__img {
+	&__img,
+	&__spotify {
 		position: relative;
 		z-index: 8;
+	}
+
+	&__img {
 		pointer-events: none;
 
 		&-img {
 			width: 360px;
+			transform: translateY(40%);
+			opacity: 0;
+			@include ease('out-back', 0.6);
+			transition-delay: 0.5s;
+
+			&--active {
+				transform: translateY(0);
+				opacity: 1;
+			}
 		}
+	}
+
+	&__spotify {
+		display: none;
+		position: absolute;
+		left: ($base-space * 1.5);
+		bottom: calc(0 + #{$base-space * 6});
 	}
 
 	&__svgs {
 		$width: 420px;
 		$height: $width / 2;
 		position: absolute;
-		top: 266px;
+		top: 335px;
 		left: 45%;
 		margin-left: -$height;
 		width: $width;
 		height: $height;
+		transform: translateY(-90px);
+		@include ease();
+
+		&--active {
+			transform: translateY(0);
+		}
 
 		svg {
 			position: absolute;
 			overflow: visible;
 			width: $width;
 			height: $height;
+			@include ease();
+
+			&.active {
+				&:nth-child(1) {
+					path {
+						stroke: $theme-color-3;
+						stroke-width: 24px;
+						@include ease('in-out', 0.4);
+						transition-delay: .1s;
+					}
+				}
+
+				&:nth-child(2) {
+					opacity: 1;
+				}
+			}
 
 			// First SVG is there so we can have
 			// an outer stroke.
 			&:nth-child(1) {
 				
 				path {
-					stroke: $theme-color-3;
+					// stroke: $theme-color-3;
+					stroke: $theme-color-1;
 					stroke-width: 24px;
+					stroke-width: 3px;
+					fill: none;
 				}
 			}
 
 			&:nth-child(2) {
+				opacity: 0;
+				transition-delay: .1s;
+
 				path {
 					fill: $theme-color-1;
 				}
@@ -56,7 +104,12 @@
 		z-index: 3;
 		top: 0;
 		left: 50%;
-		transform: translateX(-50%);
+		transform: translateX(-50%) translateY(-100%);
+		@include ease('out', 0.7);
+
+		&--active {
+			transform: translateX(-50%) translateY(0);
+		}
 
 		svg {
 			fill: $theme-color-2;
@@ -81,13 +134,27 @@
 		}
 	}
 
-	#paint-drips {
+	&__paint-drips {
+		display: none;
+
 		position: absolute;
-		z-index: 1;
+		z-index: 2;
 		left: 50%;
-    bottom: -395px;
+    top: 400px;
 		transform: translateX(-50%);
-		max-width: 85%;
-		fill: $theme-color-2;
+		max-width: 90%;
+
+		svg {
+			fill: $theme-color-2;
+		}
+
+		path {
+			transform: translateY(-700px);
+			@include ease();
+
+			&.path-active {
+				transform: none;
+			}
+		}
 	}
 }

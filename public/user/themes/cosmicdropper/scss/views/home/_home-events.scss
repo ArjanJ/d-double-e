@@ -1,13 +1,25 @@
 .home-events {
 	@include clearfix;
-	padding: ($base-space * 22) (0) ($base-space * 5);
+	position: relative;
+	z-index: 1;
+	padding: ($base-space * 19) (0) ($base-space);
 	background: $theme-color-3;
 	color: color(white);
+
+	&:before {
+		content: "";
+		display: block;
+		position: absolute;
+		z-index: -1;
+		@include cover;
+		opacity: 0.5;
+		background: url('/images/home-events-bg.jpg') 50% 85% no-repeat;
+	}
 
 	&__heading {
 		@extend %u-heading-3;
 		@extend %u-ls-2;
-		margin-bottom: ($base-space * 4);
+		margin-bottom: ($base-space * 5);
 		text-align: center;
 		color: color(white);
 

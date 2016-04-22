@@ -20,29 +20,37 @@ class __TwigTemplate_ad3300fc6a7dd8f337f0e152907f6856594cdbd3fc8a3771676dd671999
         // line 2
         echo "
 <section class=\"home-news\">
+
+\t<div class=\"home-news__bg\">
+\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" x=\"0\" y=\"0\" width=\"1920\" height=\"1120\" viewBox=\"0 0 1920 1120\" enable-background=\"new 0 0 1920 1120\" xml:space=\"preserve\"><path d=\"M0 531.9c0 0 236.5-211.5 511-211.5 212 0 166 77.9 686 77.9 480 0 723-371.1 723-398.3 0-29.9 0 1120.3 0 1120.3H0V531.9z\"/></svg>
+\t</div>
+
+\t<div class=\"home-news__camo\">
+\t\t";
+        // line 10
+        $this->loadTemplate("./partials/home-news-camo.html.twig", "modular/news.html.twig", 10)->display($context);
+        // line 11
+        echo "\t</div>
+
 \t<div class=\"u-wrapper\">
 \t\t<ul class=\"home-news__list\">
 \t\t\t";
-        // line 6
+        // line 15
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["news"]) ? $context["news"] : null));
         foreach ($context['_seq'] as $context["_key"] => $context["post"]) {
-            // line 7
-            echo "\t\t\t\t";
-            echo $this->env->getExtension('GravTwigExtension')->dump($this->env, $context, $context["post"]);
-            echo "
-\t\t\t\t<li class=\"home-news-post\" style=\"background-image: url(";
-            // line 8
+            // line 16
+            echo "\t\t\t\t<li class=\"home-news-post\" style=\"background-image: url(";
             echo $this->getAttribute($context["post"], "route", array());
             echo "/";
             echo $this->getAttribute($this->getAttribute($context["post"], "header", array()), "cover_image", array());
             echo ")\">
 \t\t\t\t\t<a href=\"";
-            // line 9
+            // line 17
             echo $this->getAttribute($context["post"], "route", array());
             echo "\" class=\"home-news-post__link\">
 \t\t\t\t\t\t<h2 class=\"home-news-post__heading\">";
-            // line 10
+            // line 18
             echo $this->getAttribute($context["post"], "title", array());
             echo "</h2>
 \t\t\t\t\t</a>
@@ -52,7 +60,7 @@ class __TwigTemplate_ad3300fc6a7dd8f337f0e152907f6856594cdbd3fc8a3771676dd671999
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['post'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 14
+        // line 22
         echo "
 \t\t\t<li class=\"home-news-post home-news-post--last\">
 \t\t\t\t<a href=\"/news\" class=\"home-news-post__link\">
@@ -79,16 +87,24 @@ class __TwigTemplate_ad3300fc6a7dd8f337f0e152907f6856594cdbd3fc8a3771676dd671999
 
     public function getDebugInfo()
     {
-        return array (  56 => 14,  46 => 10,  42 => 9,  36 => 8,  31 => 7,  27 => 6,  21 => 2,  19 => 1,);
+        return array (  64 => 22,  54 => 18,  50 => 17,  43 => 16,  39 => 15,  33 => 11,  31 => 10,  21 => 2,  19 => 1,);
     }
 }
 /* {% set news = page.collection() %}*/
 /* */
 /* <section class="home-news">*/
+/* */
+/* 	<div class="home-news__bg">*/
+/* 		<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="1920" height="1120" viewBox="0 0 1920 1120" enable-background="new 0 0 1920 1120" xml:space="preserve"><path d="M0 531.9c0 0 236.5-211.5 511-211.5 212 0 166 77.9 686 77.9 480 0 723-371.1 723-398.3 0-29.9 0 1120.3 0 1120.3H0V531.9z"/></svg>*/
+/* 	</div>*/
+/* */
+/* 	<div class="home-news__camo">*/
+/* 		{% include './partials/home-news-camo.html.twig' %}*/
+/* 	</div>*/
+/* */
 /* 	<div class="u-wrapper">*/
 /* 		<ul class="home-news__list">*/
 /* 			{% for post in news %}*/
-/* 				{{ dump(post) }}*/
 /* 				<li class="home-news-post" style="background-image: url({{ post.route }}/{{ post.header.cover_image }})">*/
 /* 					<a href="{{ post.route }}" class="home-news-post__link">*/
 /* 						<h2 class="home-news-post__heading">{{ post.title }}</h2>*/

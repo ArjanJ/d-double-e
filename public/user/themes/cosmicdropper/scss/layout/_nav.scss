@@ -1,4 +1,12 @@
 .site-nav {
+	$p: &;
+
+	&--scrolled {
+
+		#{$p}__link {
+			color: color(white);
+		}
+	}
 
 	&__list {
 		list-style-type: none;

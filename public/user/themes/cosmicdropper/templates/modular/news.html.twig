@@ -1,10 +1,18 @@
 {% set news = page.collection() %}
 
 <section class="home-news">
+
+	<div class="home-news__bg">
+		<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="1920" height="1120" viewBox="0 0 1920 1120" enable-background="new 0 0 1920 1120" xml:space="preserve"><path d="M0 531.9c0 0 236.5-211.5 511-211.5 212 0 166 77.9 686 77.9 480 0 723-371.1 723-398.3 0-29.9 0 1120.3 0 1120.3H0V531.9z"/></svg>
+	</div>
+
+	<div class="home-news__camo">
+		{% include './partials/home-news-camo.html.twig' %}
+	</div>
+
 	<div class="u-wrapper">
 		<ul class="home-news__list">
 			{% for post in news %}
-				{{ dump(post) }}
 				<li class="home-news-post" style="background-image: url({{ post.route }}/{{ post.header.cover_image }})">
 					<a href="{{ post.route }}" class="home-news-post__link">
 						<h2 class="home-news-post__heading">{{ post.title }}</h2>

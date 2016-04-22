@@ -42,8 +42,13 @@ class __TwigTemplate_31a4b98d0b2c6c7e0ebe8d60390485a3989921621539e3bc558c00af34a
 
 \t\t";
         // line 27
-        $this->getAttribute((isset($context["assets"]) ? $context["assets"] : null), "addJs", array(0 => "theme://js/build/bundle.js"), "method");
+        $this->loadTemplate("./partials/footer.html.twig", "./layouts/default.html.twig", 27)->display($context);
         // line 28
+        echo "
+\t\t";
+        // line 29
+        $this->getAttribute((isset($context["assets"]) ? $context["assets"] : null), "addJs", array(0 => "theme://js/build/bundle.js"), "method");
+        // line 30
         echo "\t\t";
         echo $this->getAttribute((isset($context["assets"]) ? $context["assets"] : null), "js", array(), "method");
         echo "
@@ -106,7 +111,7 @@ class __TwigTemplate_31a4b98d0b2c6c7e0ebe8d60390485a3989921621539e3bc558c00af34a
 
     public function getDebugInfo()
     {
-        return array (  93 => 24,  85 => 15,  83 => 14,  72 => 10,  64 => 9,  58 => 5,  55 => 4,  47 => 28,  45 => 27,  41 => 25,  39 => 24,  35 => 22,  33 => 21,  28 => 18,  26 => 4,  21 => 1,);
+        return array (  98 => 24,  90 => 15,  88 => 14,  77 => 10,  69 => 9,  63 => 5,  60 => 4,  52 => 30,  50 => 29,  47 => 28,  45 => 27,  41 => 25,  39 => 24,  35 => 22,  33 => 21,  28 => 18,  26 => 4,  21 => 1,);
     }
 }
 /* <!DOCTYPE html>*/
@@ -134,6 +139,8 @@ class __TwigTemplate_31a4b98d0b2c6c7e0ebe8d60390485a3989921621539e3bc558c00af34a
 /* 		<main class="site-main">*/
 /* 			{% block content %}{% endblock %}*/
 /* 		</main>*/
+/* */
+/* 		{% include "./partials/footer.html.twig" %}*/
 /* */
 /* 		{% do assets.addJs('theme://js/build/bundle.js') %}*/
 /* 		{{ assets.js() }}*/

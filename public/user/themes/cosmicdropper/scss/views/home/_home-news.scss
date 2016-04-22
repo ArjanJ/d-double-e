@@ -1,6 +1,10 @@
 .home-news {
 	@include clearfix;
-	padding: ($base-space * 5) (0);
+	overflow: hidden;
+	padding: ($base-space * 3) (0) ($base-space * 11);
+	position: relative;
+	z-index: 2;
+	background: $theme-color-3;
 
 	&__list {
 		list-style-type: none;
@@ -12,12 +16,33 @@
 			content: "";
 			display: block;
 			width: calc(100% + #{$base-space * 1.5});
-			height: calc(100% - #{$base-space * 2});
+			height: calc(100% - #{$base-space * 3} + #{$base-space * 0.75});
 			position: absolute;
+			z-index: 1;
 			top: ($base-space * 3);
 			left: ((-$base-space * 1.5) / 2);
 			background: $theme-color-2;
 		}
+	}
+
+	&__bg {
+		position: absolute;
+		top: -60px;
+		left: 50%;
+		transform: translateX(-50%);
+
+		svg {
+			fill: $theme-color-1;
+		}
+	}
+
+	&__camo {
+		position: absolute;
+		opacity: 0.07;
+		z-index: 1;
+		top: -75px;
+		left: 50%;
+		transform: translateX(-50%);
 	}
 }
 
@@ -79,7 +104,7 @@
 	&:nth-child(1) {
 
 		&:before {
-			background: linear-gradient(0, $theme-color-1, rgba(black, 0.2));
+			background: linear-gradient(45deg, $theme-color-1, rgba(black, 0.2));
 		}
 
 		#{$p}__heading:before {
@@ -90,7 +115,7 @@
 	&:nth-child(2),
 	&:nth-child(3) {
 		&:before {
-			background: linear-gradient(0, $theme-color-3, rgba(black, 0.2));
+			background: linear-gradient(45deg, $theme-color-3, rgba(black, 0.2));
 		}
 
 		#{$p}__heading:before {
@@ -102,10 +127,10 @@
 		background: $theme-color-2;
 
 		&:before {
-			width: calc(100% - #{$base-space * 1.5});
-			height: calc(100% - #{$base-space * 1.5});
-			top: ($base-space * 1.5) / 2;
-			left: ($base-space * 1.5) / 2;
+			width: calc(100% - #{$base-space * 3});
+			height: calc(100% - #{$base-space * 3});
+			top: ($base-space * 3) / 2;
+			left: ($base-space * 3) / 2;
 			border: 8px solid color(black);
 		}
 
@@ -113,7 +138,6 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			
 		}
 	}
 }

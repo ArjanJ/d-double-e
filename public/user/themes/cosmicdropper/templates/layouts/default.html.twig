@@ -24,6 +24,8 @@
 			{% block content %}{% endblock %}
 		</main>
 
+		{% include "./partials/footer.html.twig" %}
+
 		{% do assets.addJs('theme://js/build/bundle.js') %}
 		{{ assets.js() }}
 	</body>
