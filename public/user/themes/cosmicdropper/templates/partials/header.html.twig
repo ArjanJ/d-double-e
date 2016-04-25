@@ -1,8 +1,12 @@
 <header class="site-header">
 	<a href="/" class="site-header__logo">
-		<svg class="c-logo"><use xlink:href="/svg/svg.svg#logo" /></svg>
+		{% include "./partials/logo.html.twig" with {'id': 'header-logo'} %}
 	</a>
 	<div class="site-header__nav">
 		{% include "./partials/nav.html.twig" %}
+	</div>
+	<div class="site-header__overlay"></div>
+	<div class="site-header__loader">
+	 
 	</div>
 </header>

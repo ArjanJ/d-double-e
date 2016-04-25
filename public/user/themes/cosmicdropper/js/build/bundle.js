@@ -67,20 +67,30 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var introAnimations = function () {
 	var components = {
-		graphic: (0, _utils.$)('.home-hero__img-img'),
-		graphicSrc: '/images/d-double-e-home.svg',
-		backgroundSVG: (0, _utils.$)('.home-hero__bg'),
-		backgroundCamo: (0, _utils.$)('.home-hero__bg--camo'),
-		logoSVG: (0, _utils.$)('#homeLogo1'),
-		logoSVG2: (0, _utils.$)('#homeLogo2'),
-		logoSVGContainer: (0, _utils.$)('.home-hero__svgs')
+		// graphic: $('.home-hero__img-img'),
+		graphicSrc: '/images/home-bg-1.jpg',
+		// backgroundSVG: $('.home-hero__bg'),
+		// backgroundCamo: $('.home-hero__bg--camo'),
+		logoSVG: (0, _utils.$)('#header-logo'),
+		musicCover: (0, _utils.$)('.home-hero__music-img'),
+		// logoSVG2: $('#homeLogo2'),
+		// logoSVGContainer: $('.home-hero__svgs'),
+		header: (0, _utils.$)('header.site-header'),
+		spotifyBtn: (0, _utils.$)('.home-hero__spotify'),
+		overlay: (0, _utils.$)('.site-header__overlay')
+		// paintDrips: $('.home-hero__paint-drips')
 	};
 
 	var cssClasses = {
 		graphicActive: 'home-hero__img-img--active',
 		backgroundSVGActive: 'home-hero__bg--active',
 		logoSVGActive: 'active',
-		logoSVGContainerActive: 'home-hero__svgs--active'
+		logoSVGContainerActive: 'home-hero__svgs--active',
+		headerActive: 'site-header--active',
+		spotifyBtnActive: 'home-hero__spotify--active',
+		paintDripsActive: 'home-hero__paint-drips--show',
+		overlayHide: 'site-header__overlay--hide',
+		musicCoverLoaded: 'home-hero__music-img--loaded'
 	};
 
 	var graphicLoaded = false;
@@ -98,28 +108,45 @@ var introAnimations = function () {
 	};
 
 	var logoSVGAnimationComplete = function logoSVGAnimationComplete() {
-		var graphic = components.graphic;
-		var backgroundSVG = components.backgroundSVG;
-		var backgroundCamo = components.backgroundCamo;
-		var logoSVG = components.logoSVG;
-		var logoSVG2 = components.logoSVG2;
-		var logoSVGContainer = components.logoSVGContainer;
-		var graphicActive = cssClasses.graphicActive;
-		var backgroundSVGActive = cssClasses.backgroundSVGActive;
-		var logoSVGActive = cssClasses.logoSVGActive;
-		var logoSVGContainerActive = cssClasses.logoSVGContainerActive;
+		// const {
+		// 	graphic,
+		// 	backgroundSVG,
+		// 	backgroundCamo,
+		// 	logoSVG,
+		// 	logoSVG2,
+		// 	logoSVGContainer,
+		// 	header,
+		// 	spotifyBtn,
+		// 	paintDrips
+		// } = components;
 
+		// const {
+		// 	graphicActive,
+		// 	backgroundSVGActive,
+		// 	logoSVGActive,
+		// 	logoSVGContainerActive,
+		// 	headerActive,
+		// 	spotifyBtnActive,
+		// 	paintDripsActive
+		// } = cssClasses;
 
 		if (graphicLoaded) {
-			graphic.classList.add(graphicActive);
-			backgroundSVG.classList.add(backgroundSVGActive);
-			backgroundCamo.classList.add(backgroundSVGActive);
-			logoSVGContainer.classList.add(logoSVGContainerActive);
-			logoSVG.classList.add(logoSVGActive);
-			logoSVG2.classList.add(logoSVGActive);
+			components.logoSVG.classList.add('loaded');
+			components.logoSVG.removeAttribute('style');
+			components.overlay.classList.add(cssClasses.overlayHide);
+			components.musicCover.classList.add(cssClasses.musicCoverLoaded);
+			// graphic.classList.add(graphicActive);
+			// backgroundSVG.classList.add(backgroundSVGActive);
+			// backgroundCamo.classList.add(backgroundSVGActive);
+			// logoSVGContainer.classList.add(logoSVGContainerActive);
+			// logoSVG.classList.add(logoSVGActive);
+			// logoSVG2.classList.add(logoSVGActive);
+			// header.classList.add(headerActive);
+			// spotifyBtn.classList.add(spotifyBtnActive);
+			// paintDrips.classList.add(paintDripsActive);
 		} else {
-			setTimeout(logoSVGAnimationComplete, 500);
-		}
+				setTimeout(logoSVGAnimationComplete, 500);
+			}
 	};
 
 	var logoSVGAnimation = function logoSVGAnimation() {
@@ -132,9 +159,24 @@ var introAnimations = function () {
 		});
 	};
 
+	var positionLogo = function positionLogo() {
+		var ww = window.innerWidth;
+		var wh = window.innerHeight;
+		var logoSVG = components.logoSVG;
+
+		var logoSVGOffset = logoSVG.getBoundingClientRect();
+
+		var translateX = Math.round(Math.abs(logoSVGOffset.left + logoSVGOffset.width / 2 - ww / 2));
+		var translateY = Math.round(Math.abs(logoSVGOffset.top + logoSVGOffset.height / 2 - wh / 2));
+
+		logoSVG.style.opacity = '1';
+		logoSVG.style.transform = 'translate(' + translateX + 'px, ' + translateY + 'px)';
+	};
+
 	var init = function init() {
 		logoSVGAnimation();
 		loadGraphic();
+		positionLogo();
 	};
 
 	return {
@@ -155,15 +197,19 @@ var animatePaintDrips = function () {
 		var paths = components.paths;
 		var pathActive = cssClasses.pathActive;
 
-		paths.forEach(function (path) {
-			if ((0, _utils.isVisible)(path, -800)) {
+		var scrolled = window.pageYOffset;
+
+		if (scrolled > 150 && !paths[0].classList.contains(pathActive)) {
+			paths.forEach(function (path) {
 				path.classList.add(pathActive);
-			}
-		});
+			});
+
+			window.removeEventListener('scroll', (0, _utils.debounce)(animatePaths, 10));
+		}
 	};
 
 	var init = function init() {
-		animatePaths();
+		window.addEventListener('scroll', (0, _utils.debounce)(animatePaths, 10));
 	};
 
 	return {
@@ -173,7 +219,7 @@ var animatePaintDrips = function () {
 
 var home = function () {
 	var init = function init() {
-		animatePaintDrips.init();
+		// animatePaintDrips.init();
 		introAnimations.init();
 	};
 
@@ -212,6 +258,7 @@ exports.$ = $;
 exports.$$ = $$;
 exports.isVisible = isVisible;
 exports.imageLoaded = imageLoaded;
+exports.debounce = debounce;
 function $(query) {
 	return document.querySelector(query);
 }
@@ -235,7 +282,7 @@ function isVisible(element) {
 	}
 }
 
-function imageLoaded(src, success, error) {
+function imageLoaded(src, success, failed) {
 	var image = new Image();
 	image.src = src;
 
@@ -244,7 +291,23 @@ function imageLoaded(src, success, error) {
 	};
 
 	image.onerror = function (error) {
-		return error(error);
+		return failed(error);
+	};
+}
+
+function debounce(func, wait, immediate) {
+	var timeout;
+	return function () {
+		var context = this,
+		    args = arguments;
+		var later = function later() {
+			timeout = null;
+			if (!immediate) func.apply(context, args);
+		};
+		var callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+		if (callNow) func.apply(context, args);
 	};
 }
 

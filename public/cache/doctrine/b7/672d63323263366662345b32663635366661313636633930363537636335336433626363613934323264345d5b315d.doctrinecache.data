@@ -1,0 +1,14 @@
+1462136131
+a:2:{s:7:"content";s:772:"<section class="home-hero">
+	<div class="u-wrapper">
+				<div class="home-hero__spotify">
+			<iframe src="https://embed.spotify.com/follow/1/?uri=spotify:artist:6bwkMlweHsBCpI2a0C5nnN&size=basic&theme=light&show-count=0" width="200" height="25" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowtransparency="true"></iframe>
+		</div>
+	</div>
+	<div class="home-hero__bottom-mask">
+		<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="2372" height="190.1" viewBox="0 0 2372 190.1" enable-background="new 0 0 2372 190.087" xml:space="preserve"><path d="M0 190.1C0 190.1 287.1 0 486.5 0c199.5 0 336 129.1 564 132.1 228 3 355.5-108.2 697.5-109.7S2348 165.1 2372 190.1C2307.5 190.1 0 190.1 0 190.1z"/></svg>
+	</div>
+
+	
+	
+	</section>";s:12:"content_meta";N;}
