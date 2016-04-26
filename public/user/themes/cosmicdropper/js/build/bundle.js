@@ -72,19 +72,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var introAnimations = function () {
 	var components = {
 		homeHero: (0, _utils.$)('.home-hero'),
-		// graphic: $('.home-hero__img-img'),
 		graphicSrc: '/images/home-music-cover.jpg',
-		// backgroundSVG: $('.home-hero__bg'),
-		// backgroundCamo: $('.home-hero__bg--camo'),
 		logoSVG: (0, _utils.$)('#header-logo'),
 		musicCover: (0, _utils.$)('.home-hero__music-img'),
 		musicTitle: (0, _utils.$)('.home-hero__music-title'),
-		// logoSVG2: $('#homeLogo2'),
-		// logoSVGContainer: $('.home-hero__svgs'),
-		header: (0, _utils.$)('header.site-header'),
-		spotifyBtn: (0, _utils.$)('.home-hero__spotify'),
 		overlay: (0, _utils.$)('.site-header__overlay')
-		// paintDrips: $('.home-hero__paint-drips')
 	};
 
 	var cssClasses = {
@@ -101,14 +93,6 @@ var introAnimations = function () {
 
 	var graphicLoaded = false;
 
-	// const onGraphicLoadSuccess = () => {
-	// 	graphicLoaded = true;
-	// };
-
-	// const onGraphicLoadFail = () => {
-	// 	console.error('Graphic failed to load.');
-	// };
-
 	var loadGraphic = function loadGraphic() {
 		var imgLoad = (0, _imagesloaded2.default)(components.homeHero);
 		imgLoad.on('always', function (instance) {
@@ -116,7 +100,7 @@ var introAnimations = function () {
 		});
 	};
 
-	var logoSVGAnimationComplete = function logoSVGAnimationComplete() {
+	var revealElements = function revealElements() {
 		var title = document.querySelectorAll('.home-hero__music-title span');
 		if (graphicLoaded) {
 			setTimeout(function () {
@@ -128,19 +112,9 @@ var introAnimations = function () {
 			components.overlay.classList.add(cssClasses.overlayHide);
 			components.musicCover.classList.add(cssClasses.musicCoverLoaded);
 		} else {
-			setTimeout(logoSVGAnimationComplete, 500);
+			setTimeout(revealElements, 500);
 		}
 	};
-
-	// const logoSVGAnimation = () => {
-	// 	new Vivus(components.logoSVG.id, {
-	// 		duration: 250,
-	// 		type: 'async',
-	// 		animTimingFunction: Vivus.EASE_OUT
-	// 	}, () => {
-	// 		logoSVGAnimationComplete();
-	// 	});
-	// };
 
 	var positionLogo = function positionLogo() {
 		var ww = window.innerWidth;
@@ -157,44 +131,10 @@ var introAnimations = function () {
 	};
 
 	var init = function init() {
-		// logoSVGAnimation();
 		(0, _utils.wrapTextInElement)(components.musicTitle, 'span');
 		loadGraphic();
 		positionLogo();
-		logoSVGAnimationComplete();
-	};
-
-	return {
-		init: init
-	};
-}();
-
-var animatePaintDrips = function () {
-	var components = {
-		paths: (0, _utils.$$)('#paint-drips path')
-	};
-
-	var cssClasses = {
-		pathActive: 'path-active'
-	};
-
-	var animatePaths = function animatePaths() {
-		var paths = components.paths;
-		var pathActive = cssClasses.pathActive;
-
-		var scrolled = window.pageYOffset;
-
-		if (scrolled > 150 && !paths[0].classList.contains(pathActive)) {
-			paths.forEach(function (path) {
-				path.classList.add(pathActive);
-			});
-
-			window.removeEventListener('scroll', (0, _utils.debounce)(animatePaths, 10));
-		}
-	};
-
-	var init = function init() {
-		window.addEventListener('scroll', (0, _utils.debounce)(animatePaths, 10));
+		revealElements();
 	};
 
 	return {
@@ -204,7 +144,6 @@ var animatePaintDrips = function () {
 
 var home = function () {
 	var init = function init() {
-		// animatePaintDrips.init();
 		introAnimations.init();
 	};
 
