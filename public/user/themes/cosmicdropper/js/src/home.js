@@ -1,14 +1,17 @@
-import { $, $$, isVisible, imageLoaded, debounce } from './utils';
+import { $, $$, isVisible, wrapTextInElement, debounce, addClassStaggered } from './utils';
 import Vivus from 'vivus';
+import imagesLoaded from 'imagesloaded';
 
 const introAnimations = (() => {
 	const components = {
+		homeHero: $('.home-hero'),
 		// graphic: $('.home-hero__img-img'),
-		graphicSrc: '/images/home-bg-1.jpg',
+		graphicSrc: '/images/home-music-cover.jpg',
 		// backgroundSVG: $('.home-hero__bg'),
 		// backgroundCamo: $('.home-hero__bg--camo'),
 		logoSVG: $('#header-logo'),
 		musicCover: $('.home-hero__music-img'),
+		musicTitle: $('.home-hero__music-title'),
 		// logoSVG2: $('#homeLogo2'),
 		// logoSVGContainer: $('.home-hero__svgs'),
 		header: $('header.site-header'),
@@ -31,69 +34,44 @@ const introAnimations = (() => {
 
 	let graphicLoaded = false;
 
-	const onGraphicLoadSuccess = () => {
-		graphicLoaded = true;
-	};
+	// const onGraphicLoadSuccess = () => {
+	// 	graphicLoaded = true;
+	// };
 
-	const onGraphicLoadFail = () => {
-		console.error('Graphic failed to load.');
-	};
+	// const onGraphicLoadFail = () => {
+	// 	console.error('Graphic failed to load.');
+	// };
 
 	const loadGraphic = () => {
-		imageLoaded(components.graphicSrc, onGraphicLoadSuccess, onGraphicLoadFail);
+		const imgLoad = imagesLoaded(components.homeHero);
+		imgLoad.on('always', (instance) => {
+			graphicLoaded = true;
+		});
 	};
 
 	const logoSVGAnimationComplete = () => {
-		// const {
-		// 	graphic,
-		// 	backgroundSVG,
-		// 	backgroundCamo,
-		// 	logoSVG,
-		// 	logoSVG2,
-		// 	logoSVGContainer,
-		// 	header,
-		// 	spotifyBtn,
-		// 	paintDrips
-		// } = components;
-
-		// const {
-		// 	graphicActive,
-		// 	backgroundSVGActive,
-		// 	logoSVGActive,
-		// 	logoSVGContainerActive,
-		// 	headerActive,
-		// 	spotifyBtnActive,
-		// 	paintDripsActive
-		// } = cssClasses;
-
+		const title = document.querySelectorAll('.home-hero__music-title span');
 		if (graphicLoaded) {
+			setTimeout(() => addClassStaggered(title, 'active', 25), 250);
+			
 			components.logoSVG.classList.add('loaded');
 			components.logoSVG.removeAttribute('style');
 			components.overlay.classList.add(cssClasses.overlayHide);
 			components.musicCover.classList.add(cssClasses.musicCoverLoaded);
-			// graphic.classList.add(graphicActive);
-			// backgroundSVG.classList.add(backgroundSVGActive);
-			// backgroundCamo.classList.add(backgroundSVGActive);
-			// logoSVGContainer.classList.add(logoSVGContainerActive);
-			// logoSVG.classList.add(logoSVGActive);
-			// logoSVG2.classList.add(logoSVGActive);
-			// header.classList.add(headerActive);
-			// spotifyBtn.classList.add(spotifyBtnActive);
-			// paintDrips.classList.add(paintDripsActive);
 		} else {
 			setTimeout(logoSVGAnimationComplete, 500);
 		}
 	};
 
-	const logoSVGAnimation = () => {
-		new Vivus(components.logoSVG.id, {
-			duration: 250,
-			type: 'async',
-			animTimingFunction: Vivus.EASE_OUT
-		}, () => {
-			logoSVGAnimationComplete();
-		});
-	};
+	// const logoSVGAnimation = () => {
+	// 	new Vivus(components.logoSVG.id, {
+	// 		duration: 250,
+	// 		type: 'async',
+	// 		animTimingFunction: Vivus.EASE_OUT
+	// 	}, () => {
+	// 		logoSVGAnimationComplete();
+	// 	});
+	// };
 
 	const positionLogo = () => {
 		const ww = window.innerWidth;
@@ -109,9 +87,11 @@ const introAnimations = (() => {
 	}
 
 	const init = () => {
-		logoSVGAnimation();
+		// logoSVGAnimation();
+		wrapTextInElement(components.musicTitle, 'span');
 		loadGraphic();
 		positionLogo();
+		logoSVGAnimationComplete();
 	};
 
 	return {

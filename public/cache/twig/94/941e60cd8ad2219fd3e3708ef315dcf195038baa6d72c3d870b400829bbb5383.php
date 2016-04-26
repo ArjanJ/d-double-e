@@ -28,18 +28,21 @@ class __TwigTemplate_a24a3dc7a33f8aa66175a77b74399b48364ddb21556d0be7a5acb6b0f7f
 \t<div class=\"home-hero__spotify\">
 \t\t<iframe src=\"https://embed.spotify.com/follow/1/?uri=spotify:artist:6bwkMlweHsBCpI2a0C5nnN&size=basic&theme=light&show-count=0\" width=\"200\" height=\"25\" scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden;\" allowtransparency=\"true\"></iframe>
 \t</div>
+\t<div class=\"home-hero__bg\">
+\t\t<img width=\"1920\" height=\"1080\" src=\"/images/home-bg-1.jpg\" alt=\"\">
+\t</div>
 \t<div class=\"home-hero__bottom-mask\">
 \t\t<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" x=\"0\" y=\"0\" width=\"1920\" height=\"133\" viewBox=\"0 0 1920 133\" enable-background=\"new 0 0 1920 133\" xml:space=\"preserve\"><path d=\"M825.6 132.1C597.6 129.1 461 0 261.5 0 180.4 0 84.9 31.4 0 68.7V133h1920V84.7c-106.2-34.2-243.1-63-397-62.4C1181.1 23.9 1053.5 135.1 825.6 132.1z\"/></svg>
 \t</div>
 
 \t";
-        // line 39
+        // line 42
         echo "
 \t";
-        // line 43
+        // line 46
         echo "
 \t";
-        // line 47
+        // line 50
         echo "</section>";
     }
 
@@ -50,7 +53,7 @@ class __TwigTemplate_a24a3dc7a33f8aa66175a77b74399b48364ddb21556d0be7a5acb6b0f7f
 
     public function getDebugInfo()
     {
-        return array (  43 => 47,  40 => 43,  37 => 39,  23 => 10,  19 => 1,);
+        return array (  46 => 50,  43 => 46,  40 => 42,  23 => 10,  19 => 1,);
     }
 }
 /* <section class="home-hero">*/
@@ -69,6 +72,9 @@ class __TwigTemplate_a24a3dc7a33f8aa66175a77b74399b48364ddb21556d0be7a5acb6b0f7f
 /* 	</div>*/
 /* 	<div class="home-hero__spotify">*/
 /* 		<iframe src="https://embed.spotify.com/follow/1/?uri=spotify:artist:6bwkMlweHsBCpI2a0C5nnN&size=basic&theme=light&show-count=0" width="200" height="25" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowtransparency="true"></iframe>*/
+/* 	</div>*/
+/* 	<div class="home-hero__bg">*/
+/* 		<img width="1920" height="1080" src="/images/home-bg-1.jpg" alt="">*/
 /* 	</div>*/
 /* 	<div class="home-hero__bottom-mask">*/
 /* 		<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="1920" height="133" viewBox="0 0 1920 133" enable-background="new 0 0 1920 133" xml:space="preserve"><path d="M825.6 132.1C597.6 129.1 461 0 261.5 0 180.4 0 84.9 31.4 0 68.7V133h1920V84.7c-106.2-34.2-243.1-63-397-62.4C1181.1 23.9 1053.5 135.1 825.6 132.1z"/></svg>*/

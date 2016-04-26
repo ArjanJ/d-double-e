@@ -32,6 +32,7 @@
     "vivus": "^0.3.0"
   },
   "dependencies": {
+    "imagesloaded": "^4.1.0",
     "vivus": "^0.3.0"
   }
 }

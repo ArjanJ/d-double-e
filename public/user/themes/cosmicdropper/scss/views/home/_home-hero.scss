@@ -5,7 +5,8 @@
 	justify-content: center;
 	padding: ($base-space * 3) (0) ($base-space * 3);
 	position: relative;
-	background: $theme-color-3 url('/images/home-bg-1.jpg') center/cover;
+	z-index: 1;
+	background: $theme-color-3 url('/images/home-bg-1.jpg') center/cover;;
 
 	&__bottom-mask {
 		position: absolute;
@@ -16,8 +17,12 @@
 		transform: translateX(-50%);
 	}
 
+	&__bg {
+		display: none;
+	}
+
 	&__music {
-		perspective: 400;
+		perspective: 1000;
 
 		&-img {
 			$size: 400px;
@@ -25,15 +30,15 @@
 			margin: 0 auto;
 			max-width: $size;
 			max-height: $size;
-			transform: scale(0.75) translateY(0) rotateX(-60deg);
-			// opacity: 0;
+			opacity: 0;
+			transform: scale(0.6) translateY(-40%) rotateX(-145deg);
 			@include card(5);
-			@include ease('out-back');
-			transition-delay: .1s;
+			@include ease('out-back', 0.5);
+			transition-delay: .35s;
 
 			&--loaded {
-				transform: scale(1) translateY(0%) rotateX(0);
 				opacity: 1;
+				transform: scale(1) translateY(0%) rotateX(0);
 			}
 		}
 
@@ -43,6 +48,18 @@
 			margin-top: (-$base-space / 1.5);
 			color: color(white);
 			transform: translate3d(0, 0, 0);
+
+			span {
+				display: inline-block;
+				transform: scale(4) translateY(-100%);
+				opacity: 0;
+				@include ease('out-back');
+
+				&.active {
+					transform: scale(1);
+					opacity: 1;
+				}
+			}
 		}
 	}
 
@@ -52,30 +69,10 @@
 		z-index: 8;
 	}
 
-	// &__img {
-	// 	pointer-events: none;
-	// 	margin-left: 35px;
-
-	// 	&-img {
-	// 		width: 360px;
-	// 		transform: translateY(0%) scale(0.5);
-	// 		opacity: 0;
-	// 		@include ease('out-back', 0.5);
-	// 		transition-delay: 0.4s;
-
-	// 		&--active {
-	// 			transform: translateY(0) scale(1);
-	// 			opacity: 1;
-	// 		}
-	// 	}
-	// }
-
 	&__spotify {
 		position: absolute;
 		left: ($base-space * 1.5);
 		bottom: calc(0 + #{$base-space * 7});
-		// transform: translateX(-100%);
-		// opacity: 0;
 		@include ease('out-back');
 		transition-delay: .5s;
 

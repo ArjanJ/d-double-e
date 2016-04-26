@@ -42,3 +42,67 @@ export function debounce(func, wait, immediate) {
 		if (callNow) func.apply(context, args);
 	};
 }
+
+export function wrapTextInElement(element, wrapper) {
+	// element = document.querySelector(element);
+	const elementString = element.innerHTML;
+	const lettersArray = [];
+	const wordsArray = [];
+	
+	init();
+	
+	function init() {
+		createLettersArray(elementString);
+		createWordArrays(lettersArray);
+		element.innerHTML = wrapLetters(wrapper);
+	}
+	
+	function createLettersArray(str) {
+		for (let i = 0; i < str.length; i++) {
+			lettersArray.push(str[i]);
+		}   
+	}
+	
+	function createWordArrays(arr) {
+		let word = [];
+		
+		arr.forEach(function(letter, index) {
+			 if (letter !== ' ') {
+				 word.push(letter);
+			 } else {
+				 wordsArray.push(word);
+				 word = [];
+			 }
+			
+			if (index === arr.length - 1 && word.length > 0) {
+				wordsArray.push(word);
+				word = [];
+			}
+		}); 
+	}
+		
+	function wrapLetters(el) {
+		return wordsArray.map(function(word) {
+			return word.map(function(letter) {
+				return '<' + el + '>' + letter + '</' + el + '>';
+			}).join('');
+		}).join(' ');
+	}
+}
+
+export function addClassStaggered(elements, className, delay) {
+	if (!elements || elements.length <= 1) return; 
+	  
+  animate(0);
+  
+  function animate(i) {
+    return setTimeout(function() {
+      if (elements[i]) {
+        elements[i].classList.add(className);
+        if (elements[i+1]) animate(i+1);
+      } else {
+        clearTimeout(animate(0));
+      }
+   }, delay);
+  }
+}

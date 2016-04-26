@@ -63,16 +63,22 @@ var _vivus = require('vivus');
 
 var _vivus2 = _interopRequireDefault(_vivus);
 
+var _imagesloaded = require('imagesloaded');
+
+var _imagesloaded2 = _interopRequireDefault(_imagesloaded);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var introAnimations = function () {
 	var components = {
+		homeHero: (0, _utils.$)('.home-hero'),
 		// graphic: $('.home-hero__img-img'),
-		graphicSrc: '/images/home-bg-1.jpg',
+		graphicSrc: '/images/home-music-cover.jpg',
 		// backgroundSVG: $('.home-hero__bg'),
 		// backgroundCamo: $('.home-hero__bg--camo'),
 		logoSVG: (0, _utils.$)('#header-logo'),
 		musicCover: (0, _utils.$)('.home-hero__music-img'),
+		musicTitle: (0, _utils.$)('.home-hero__music-title'),
 		// logoSVG2: $('#homeLogo2'),
 		// logoSVGContainer: $('.home-hero__svgs'),
 		header: (0, _utils.$)('header.site-header'),
@@ -95,69 +101,46 @@ var introAnimations = function () {
 
 	var graphicLoaded = false;
 
-	var onGraphicLoadSuccess = function onGraphicLoadSuccess() {
-		graphicLoaded = true;
-	};
+	// const onGraphicLoadSuccess = () => {
+	// 	graphicLoaded = true;
+	// };
 
-	var onGraphicLoadFail = function onGraphicLoadFail() {
-		console.error('Graphic failed to load.');
-	};
+	// const onGraphicLoadFail = () => {
+	// 	console.error('Graphic failed to load.');
+	// };
 
 	var loadGraphic = function loadGraphic() {
-		(0, _utils.imageLoaded)(components.graphicSrc, onGraphicLoadSuccess, onGraphicLoadFail);
+		var imgLoad = (0, _imagesloaded2.default)(components.homeHero);
+		imgLoad.on('always', function (instance) {
+			graphicLoaded = true;
+		});
 	};
 
 	var logoSVGAnimationComplete = function logoSVGAnimationComplete() {
-		// const {
-		// 	graphic,
-		// 	backgroundSVG,
-		// 	backgroundCamo,
-		// 	logoSVG,
-		// 	logoSVG2,
-		// 	logoSVGContainer,
-		// 	header,
-		// 	spotifyBtn,
-		// 	paintDrips
-		// } = components;
-
-		// const {
-		// 	graphicActive,
-		// 	backgroundSVGActive,
-		// 	logoSVGActive,
-		// 	logoSVGContainerActive,
-		// 	headerActive,
-		// 	spotifyBtnActive,
-		// 	paintDripsActive
-		// } = cssClasses;
-
+		var title = document.querySelectorAll('.home-hero__music-title span');
 		if (graphicLoaded) {
+			setTimeout(function () {
+				return (0, _utils.addClassStaggered)(title, 'active', 25);
+			}, 250);
+
 			components.logoSVG.classList.add('loaded');
 			components.logoSVG.removeAttribute('style');
 			components.overlay.classList.add(cssClasses.overlayHide);
 			components.musicCover.classList.add(cssClasses.musicCoverLoaded);
-			// graphic.classList.add(graphicActive);
-			// backgroundSVG.classList.add(backgroundSVGActive);
-			// backgroundCamo.classList.add(backgroundSVGActive);
-			// logoSVGContainer.classList.add(logoSVGContainerActive);
-			// logoSVG.classList.add(logoSVGActive);
-			// logoSVG2.classList.add(logoSVGActive);
-			// header.classList.add(headerActive);
-			// spotifyBtn.classList.add(spotifyBtnActive);
-			// paintDrips.classList.add(paintDripsActive);
 		} else {
-				setTimeout(logoSVGAnimationComplete, 500);
-			}
+			setTimeout(logoSVGAnimationComplete, 500);
+		}
 	};
 
-	var logoSVGAnimation = function logoSVGAnimation() {
-		new _vivus2.default(components.logoSVG.id, {
-			duration: 250,
-			type: 'async',
-			animTimingFunction: _vivus2.default.EASE_OUT
-		}, function () {
-			logoSVGAnimationComplete();
-		});
-	};
+	// const logoSVGAnimation = () => {
+	// 	new Vivus(components.logoSVG.id, {
+	// 		duration: 250,
+	// 		type: 'async',
+	// 		animTimingFunction: Vivus.EASE_OUT
+	// 	}, () => {
+	// 		logoSVGAnimationComplete();
+	// 	});
+	// };
 
 	var positionLogo = function positionLogo() {
 		var ww = window.innerWidth;
@@ -174,9 +157,11 @@ var introAnimations = function () {
 	};
 
 	var init = function init() {
-		logoSVGAnimation();
+		// logoSVGAnimation();
+		(0, _utils.wrapTextInElement)(components.musicTitle, 'span');
 		loadGraphic();
 		positionLogo();
+		logoSVGAnimationComplete();
 	};
 
 	return {
@@ -230,7 +215,7 @@ var home = function () {
 
 exports.default = home;
 
-},{"./utils":4,"vivus":5}],3:[function(require,module,exports){
+},{"./utils":4,"imagesloaded":6,"vivus":7}],3:[function(require,module,exports){
 'use strict';
 
 var _header = require('./header');
@@ -249,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 },{"./header":1,"./home":2}],4:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
@@ -259,6 +244,8 @@ exports.$$ = $$;
 exports.isVisible = isVisible;
 exports.imageLoaded = imageLoaded;
 exports.debounce = debounce;
+exports.wrapTextInElement = wrapTextInElement;
+exports.addClassStaggered = addClassStaggered;
 function $(query) {
 	return document.querySelector(query);
 }
@@ -311,7 +298,554 @@ function debounce(func, wait, immediate) {
 	};
 }
 
+function wrapTextInElement(element, wrapper) {
+	// element = document.querySelector(element);
+	var elementString = element.innerHTML;
+	var lettersArray = [];
+	var wordsArray = [];
+
+	init();
+
+	function init() {
+		createLettersArray(elementString);
+		createWordArrays(lettersArray);
+		element.innerHTML = wrapLetters(wrapper);
+	}
+
+	function createLettersArray(str) {
+		for (var i = 0; i < str.length; i++) {
+			lettersArray.push(str[i]);
+		}
+	}
+
+	function createWordArrays(arr) {
+		var word = [];
+
+		arr.forEach(function (letter, index) {
+			if (letter !== ' ') {
+				word.push(letter);
+			} else {
+				wordsArray.push(word);
+				word = [];
+			}
+
+			if (index === arr.length - 1 && word.length > 0) {
+				wordsArray.push(word);
+				word = [];
+			}
+		});
+	}
+
+	function wrapLetters(el) {
+		return wordsArray.map(function (word) {
+			return word.map(function (letter) {
+				return '<' + el + '>' + letter + '</' + el + '>';
+			}).join('');
+		}).join(' ');
+	}
+}
+
+function addClassStaggered(elements, className, delay) {
+	if (!elements || elements.length <= 1) return;
+
+	animate(0);
+
+	function animate(i) {
+		return setTimeout(function () {
+			if (elements[i]) {
+				elements[i].classList.add(className);
+				if (elements[i + 1]) animate(i + 1);
+			} else {
+				clearTimeout(animate(0));
+			}
+		}, delay);
+	}
+}
+
 },{}],5:[function(require,module,exports){
+/**
+ * EvEmitter v1.0.2
+ * Lil' event emitter
+ * MIT License
+ */
+
+/* jshint unused: true, undef: true, strict: true */
+
+( function( global, factory ) {
+  // universal module definition
+  /* jshint strict: false */ /* globals define, module */
+  if ( typeof define == 'function' && define.amd ) {
+    // AMD - RequireJS
+    define( factory );
+  } else if ( typeof module == 'object' && module.exports ) {
+    // CommonJS - Browserify, Webpack
+    module.exports = factory();
+  } else {
+    // Browser globals
+    global.EvEmitter = factory();
+  }
+
+}( this, function() {
+
+"use strict";
+
+function EvEmitter() {}
+
+var proto = EvEmitter.prototype;
+
+proto.on = function( eventName, listener ) {
+  if ( !eventName || !listener ) {
+    return;
+  }
+  // set events hash
+  var events = this._events = this._events || {};
+  // set listeners array
+  var listeners = events[ eventName ] = events[ eventName ] || [];
+  // only add once
+  if ( listeners.indexOf( listener ) == -1 ) {
+    listeners.push( listener );
+  }
+
+  return this;
+};
+
+proto.once = function( eventName, listener ) {
+  if ( !eventName || !listener ) {
+    return;
+  }
+  // add event
+  this.on( eventName, listener );
+  // set once flag
+  // set onceEvents hash
+  var onceEvents = this._onceEvents = this._onceEvents || {};
+  // set onceListeners object
+  var onceListeners = onceEvents[ eventName ] = onceEvents[ eventName ] || {};
+  // set flag
+  onceListeners[ listener ] = true;
+
+  return this;
+};
+
+proto.off = function( eventName, listener ) {
+  var listeners = this._events && this._events[ eventName ];
+  if ( !listeners || !listeners.length ) {
+    return;
+  }
+  var index = listeners.indexOf( listener );
+  if ( index != -1 ) {
+    listeners.splice( index, 1 );
+  }
+
+  return this;
+};
+
+proto.emitEvent = function( eventName, args ) {
+  var listeners = this._events && this._events[ eventName ];
+  if ( !listeners || !listeners.length ) {
+    return;
+  }
+  var i = 0;
+  var listener = listeners[i];
+  args = args || [];
+  // once stuff
+  var onceListeners = this._onceEvents && this._onceEvents[ eventName ];
+
+  while ( listener ) {
+    var isOnce = onceListeners && onceListeners[ listener ];
+    if ( isOnce ) {
+      // remove listener
+      // remove before trigger to prevent recursion
+      this.off( eventName, listener );
+      // unset once flag
+      delete onceListeners[ listener ];
+    }
+    // trigger listener
+    listener.apply( this, args );
+    // get next listener
+    i += isOnce ? 0 : 1;
+    listener = listeners[i];
+  }
+
+  return this;
+};
+
+return EvEmitter;
+
+}));
+
+},{}],6:[function(require,module,exports){
+/*!
+ * imagesLoaded v4.1.0
+ * JavaScript is all like "You images are done yet or what?"
+ * MIT License
+ */
+
+( function( window, factory ) { 'use strict';
+  // universal module definition
+
+  /*global define: false, module: false, require: false */
+
+  if ( typeof define == 'function' && define.amd ) {
+    // AMD
+    define( [
+      'ev-emitter/ev-emitter'
+    ], function( EvEmitter ) {
+      return factory( window, EvEmitter );
+    });
+  } else if ( typeof module == 'object' && module.exports ) {
+    // CommonJS
+    module.exports = factory(
+      window,
+      require('ev-emitter')
+    );
+  } else {
+    // browser global
+    window.imagesLoaded = factory(
+      window,
+      window.EvEmitter
+    );
+  }
+
+})( window,
+
+// --------------------------  factory -------------------------- //
+
+function factory( window, EvEmitter ) {
+
+'use strict';
+
+var $ = window.jQuery;
+var console = window.console;
+
+// -------------------------- helpers -------------------------- //
+
+// extend objects
+function extend( a, b ) {
+  for ( var prop in b ) {
+    a[ prop ] = b[ prop ];
+  }
+  return a;
+}
+
+// turn element or nodeList into an array
+function makeArray( obj ) {
+  var ary = [];
+  if ( Array.isArray( obj ) ) {
+    // use object if already an array
+    ary = obj;
+  } else if ( typeof obj.length == 'number' ) {
+    // convert nodeList to array
+    for ( var i=0; i < obj.length; i++ ) {
+      ary.push( obj[i] );
+    }
+  } else {
+    // array of single index
+    ary.push( obj );
+  }
+  return ary;
+}
+
+// -------------------------- imagesLoaded -------------------------- //
+
+/**
+ * @param {Array, Element, NodeList, String} elem
+ * @param {Object or Function} options - if function, use as callback
+ * @param {Function} onAlways - callback function
+ */
+function ImagesLoaded( elem, options, onAlways ) {
+  // coerce ImagesLoaded() without new, to be new ImagesLoaded()
+  if ( !( this instanceof ImagesLoaded ) ) {
+    return new ImagesLoaded( elem, options, onAlways );
+  }
+  // use elem as selector string
+  if ( typeof elem == 'string' ) {
+    elem = document.querySelectorAll( elem );
+  }
+
+  this.elements = makeArray( elem );
+  this.options = extend( {}, this.options );
+
+  if ( typeof options == 'function' ) {
+    onAlways = options;
+  } else {
+    extend( this.options, options );
+  }
+
+  if ( onAlways ) {
+    this.on( 'always', onAlways );
+  }
+
+  this.getImages();
+
+  if ( $ ) {
+    // add jQuery Deferred object
+    this.jqDeferred = new $.Deferred();
+  }
+
+  // HACK check async to allow time to bind listeners
+  setTimeout( function() {
+    this.check();
+  }.bind( this ));
+}
+
+ImagesLoaded.prototype = Object.create( EvEmitter.prototype );
+
+ImagesLoaded.prototype.options = {};
+
+ImagesLoaded.prototype.getImages = function() {
+  this.images = [];
+
+  // filter & find items if we have an item selector
+  this.elements.forEach( this.addElementImages, this );
+};
+
+/**
+ * @param {Node} element
+ */
+ImagesLoaded.prototype.addElementImages = function( elem ) {
+  // filter siblings
+  if ( elem.nodeName == 'IMG' ) {
+    this.addImage( elem );
+  }
+  // get background image on element
+  if ( this.options.background === true ) {
+    this.addElementBackgroundImages( elem );
+  }
+
+  // find children
+  // no non-element nodes, #143
+  var nodeType = elem.nodeType;
+  if ( !nodeType || !elementNodeTypes[ nodeType ] ) {
+    return;
+  }
+  var childImgs = elem.querySelectorAll('img');
+  // concat childElems to filterFound array
+  for ( var i=0; i < childImgs.length; i++ ) {
+    var img = childImgs[i];
+    this.addImage( img );
+  }
+
+  // get child background images
+  if ( typeof this.options.background == 'string' ) {
+    var children = elem.querySelectorAll( this.options.background );
+    for ( i=0; i < children.length; i++ ) {
+      var child = children[i];
+      this.addElementBackgroundImages( child );
+    }
+  }
+};
+
+var elementNodeTypes = {
+  1: true,
+  9: true,
+  11: true
+};
+
+ImagesLoaded.prototype.addElementBackgroundImages = function( elem ) {
+  var style = getComputedStyle( elem );
+  if ( !style ) {
+    // Firefox returns null if in a hidden iframe https://bugzil.la/548397
+    return;
+  }
+  // get url inside url("...")
+  var reURL = /url\((['"])?(.*?)\1\)/gi;
+  var matches = reURL.exec( style.backgroundImage );
+  while ( matches !== null ) {
+    var url = matches && matches[2];
+    if ( url ) {
+      this.addBackground( url, elem );
+    }
+    matches = reURL.exec( style.backgroundImage );
+  }
+};
+
+/**
+ * @param {Image} img
+ */
+ImagesLoaded.prototype.addImage = function( img ) {
+  var loadingImage = new LoadingImage( img );
+  this.images.push( loadingImage );
+};
+
+ImagesLoaded.prototype.addBackground = function( url, elem ) {
+  var background = new Background( url, elem );
+  this.images.push( background );
+};
+
+ImagesLoaded.prototype.check = function() {
+  var _this = this;
+  this.progressedCount = 0;
+  this.hasAnyBroken = false;
+  // complete if no images
+  if ( !this.images.length ) {
+    this.complete();
+    return;
+  }
+
+  function onProgress( image, elem, message ) {
+    // HACK - Chrome triggers event before object properties have changed. #83
+    setTimeout( function() {
+      _this.progress( image, elem, message );
+    });
+  }
+
+  this.images.forEach( function( loadingImage ) {
+    loadingImage.once( 'progress', onProgress );
+    loadingImage.check();
+  });
+};
+
+ImagesLoaded.prototype.progress = function( image, elem, message ) {
+  this.progressedCount++;
+  this.hasAnyBroken = this.hasAnyBroken || !image.isLoaded;
+  // progress event
+  this.emitEvent( 'progress', [ this, image, elem ] );
+  if ( this.jqDeferred && this.jqDeferred.notify ) {
+    this.jqDeferred.notify( this, image );
+  }
+  // check if completed
+  if ( this.progressedCount == this.images.length ) {
+    this.complete();
+  }
+
+  if ( this.options.debug && console ) {
+    console.log( 'progress: ' + message, image, elem );
+  }
+};
+
+ImagesLoaded.prototype.complete = function() {
+  var eventName = this.hasAnyBroken ? 'fail' : 'done';
+  this.isComplete = true;
+  this.emitEvent( eventName, [ this ] );
+  this.emitEvent( 'always', [ this ] );
+  if ( this.jqDeferred ) {
+    var jqMethod = this.hasAnyBroken ? 'reject' : 'resolve';
+    this.jqDeferred[ jqMethod ]( this );
+  }
+};
+
+// --------------------------  -------------------------- //
+
+function LoadingImage( img ) {
+  this.img = img;
+}
+
+LoadingImage.prototype = Object.create( EvEmitter.prototype );
+
+LoadingImage.prototype.check = function() {
+  // If complete is true and browser supports natural sizes,
+  // try to check for image status manually.
+  var isComplete = this.getIsImageComplete();
+  if ( isComplete ) {
+    // report based on naturalWidth
+    this.confirm( this.img.naturalWidth !== 0, 'naturalWidth' );
+    return;
+  }
+
+  // If none of the checks above matched, simulate loading on detached element.
+  this.proxyImage = new Image();
+  this.proxyImage.addEventListener( 'load', this );
+  this.proxyImage.addEventListener( 'error', this );
+  // bind to image as well for Firefox. #191
+  this.img.addEventListener( 'load', this );
+  this.img.addEventListener( 'error', this );
+  this.proxyImage.src = this.img.src;
+};
+
+LoadingImage.prototype.getIsImageComplete = function() {
+  return this.img.complete && this.img.naturalWidth !== undefined;
+};
+
+LoadingImage.prototype.confirm = function( isLoaded, message ) {
+  this.isLoaded = isLoaded;
+  this.emitEvent( 'progress', [ this, this.img, message ] );
+};
+
+// ----- events ----- //
+
+// trigger specified handler for event type
+LoadingImage.prototype.handleEvent = function( event ) {
+  var method = 'on' + event.type;
+  if ( this[ method ] ) {
+    this[ method ]( event );
+  }
+};
+
+LoadingImage.prototype.onload = function() {
+  this.confirm( true, 'onload' );
+  this.unbindEvents();
+};
+
+LoadingImage.prototype.onerror = function() {
+  this.confirm( false, 'onerror' );
+  this.unbindEvents();
+};
+
+LoadingImage.prototype.unbindEvents = function() {
+  this.proxyImage.removeEventListener( 'load', this );
+  this.proxyImage.removeEventListener( 'error', this );
+  this.img.removeEventListener( 'load', this );
+  this.img.removeEventListener( 'error', this );
+};
+
+// -------------------------- Background -------------------------- //
+
+function Background( url, element ) {
+  this.url = url;
+  this.element = element;
+  this.img = new Image();
+}
+
+// inherit LoadingImage prototype
+Background.prototype = Object.create( LoadingImage.prototype );
+
+Background.prototype.check = function() {
+  this.img.addEventListener( 'load', this );
+  this.img.addEventListener( 'error', this );
+  this.img.src = this.url;
+  // check if image is already complete
+  var isComplete = this.getIsImageComplete();
+  if ( isComplete ) {
+    this.confirm( this.img.naturalWidth !== 0, 'naturalWidth' );
+    this.unbindEvents();
+  }
+};
+
+Background.prototype.unbindEvents = function() {
+  this.img.removeEventListener( 'load', this );
+  this.img.removeEventListener( 'error', this );
+};
+
+Background.prototype.confirm = function( isLoaded, message ) {
+  this.isLoaded = isLoaded;
+  this.emitEvent( 'progress', [ this, this.element, message ] );
+};
+
+// -------------------------- jQuery -------------------------- //
+
+ImagesLoaded.makeJQueryPlugin = function( jQuery ) {
+  jQuery = jQuery || window.jQuery;
+  if ( !jQuery ) {
+    return;
+  }
+  // set local variable
+  $ = jQuery;
+  // $().imagesLoaded()
+  $.fn.imagesLoaded = function( options, callback ) {
+    var instance = new ImagesLoaded( this, options, callback );
+    return instance.jqDeferred.promise( $(this) );
+  };
+};
+// try making plugin
+ImagesLoaded.makeJQueryPlugin();
+
+// --------------------------  -------------------------- //
+
+return ImagesLoaded;
+
+});
+
+},{"ev-emitter":5}],7:[function(require,module,exports){
 /**
  * vivus - JavaScript library to make drawing animation on SVG
  * @version v0.3.0
