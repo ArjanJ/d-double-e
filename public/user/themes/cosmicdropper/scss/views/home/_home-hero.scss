@@ -1,5 +1,5 @@
 .home-hero {
-	min-height: 900px;
+	min-height: 95vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -15,6 +15,10 @@
 		left: 50%;
 		width: 100%;
 		transform: translateX(-50%);
+
+		svg {
+			fill: $theme-color-1;
+		}
 	}
 
 	&__bg {
@@ -23,6 +27,7 @@
 
 	&__music {
 		perspective: 1000;
+		text-align: center;
 
 		&-img {
 			$size: 400px;
@@ -34,7 +39,7 @@
 			transform: scale(0.6) translateY(-40%) rotateX(-145deg);
 			@include card(5);
 			@include ease('out-back', 0.5);
-			transition-delay: .35s;
+			transition-delay: .4s;
 
 			&--loaded {
 				opacity: 1;
@@ -46,6 +51,7 @@
 			@extend %u-heading-4;
 			@extend %u-ls-3;
 			margin-top: (-$base-space / 1.5);
+			margin-bottom: ($base-space);
 			color: color(white);
 			transform: translate3d(0, 0, 0);
 
@@ -59,6 +65,65 @@
 					transform: scale(1);
 					opacity: 1;
 				}
+			}
+		}
+
+		&-link {
+			min-width: ($base-space * 6);
+			@include card(3);
+			opacity: 0;
+			transform: scale(0.5);
+			@include ease();
+			transition-delay: .35s;
+
+			&:hover {
+				
+				svg {
+					transform: rotate(360deg);
+				}
+			}
+
+			&--loaded {
+				opacity: 1;
+				transform: scale(1);
+			}
+
+			&--itunes {
+				color: color(white);
+
+				svg {
+					fill: color(white);
+				}
+
+				&:before {
+					background: $theme-color-3;
+				}
+
+				&:after {
+					display: none;
+					border-color: color(white);
+				}
+			}
+
+			&--spotify {
+				color: color(spotify);
+
+				svg {
+					fill: color(spotify);
+				}
+
+				&:before {
+					background: $theme-color-3;
+				}
+
+				&:after {
+					display: none;
+					border-color: color(spotify);
+				}
+			}
+
+			svg {
+				@include ease('in-out');
 			}
 		}
 	}

@@ -21,6 +21,14 @@
 		display: flex;
 		flex-wrap: no-wrap;
 
+		&--middle {
+			align-items: center;
+		}
+
+		&--center {
+			justify-content: center;
+		}
+
 		&__col {
 			margin-left: $grid-gutter;
 

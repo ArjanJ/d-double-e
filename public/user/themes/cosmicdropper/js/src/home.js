@@ -9,6 +9,7 @@ const introAnimations = (() => {
 		logoSVG: $('#header-logo'),
 		musicCover: $('.home-hero__music-img'),
 		musicTitle: $('.home-hero__music-title'),
+		musicLinks: $$('.home-hero__music-link'),
 		overlay: $('.site-header__overlay')
 	};
 
@@ -36,12 +37,18 @@ const introAnimations = (() => {
 	const revealElements = () => {
 		const title = document.querySelectorAll('.home-hero__music-title span');
 		if (graphicLoaded) {
-			setTimeout(() => addClassStaggered(title, 'active', 25), 250);
+			setTimeout(() => {
+				setTimeout(() => {
+					addClassStaggered(title, 'active', 25);
+					addClassStaggered(components.musicLinks, 'home-hero__music-link--loaded', 25);
+				}, 300);
+				
+				components.logoSVG.classList.add('loaded');
+				components.logoSVG.removeAttribute('style');
+				components.overlay.classList.add(cssClasses.overlayHide);
+				components.musicCover.classList.add(cssClasses.musicCoverLoaded);
+			}, 1200);
 			
-			components.logoSVG.classList.add('loaded');
-			components.logoSVG.removeAttribute('style');
-			components.overlay.classList.add(cssClasses.overlayHide);
-			components.musicCover.classList.add(cssClasses.musicCoverLoaded);
 		} else {
 			setTimeout(revealElements, 500);
 		}

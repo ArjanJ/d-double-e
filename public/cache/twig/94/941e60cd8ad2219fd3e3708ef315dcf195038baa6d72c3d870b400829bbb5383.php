@@ -18,11 +18,35 @@ class __TwigTemplate_a24a3dc7a33f8aa66175a77b74399b48364ddb21556d0be7a5acb6b0f7f
         // line 1
         echo "<section class=\"home-hero\">
 \t<div class=\"u-wrapper\">
-\t\t";
-        // line 10
-        echo "\t\t<div class=\"home-hero__music\">
+\t\t<div class=\"home-hero__music\">
 \t\t\t<img width=\"600\" height=\"600\" src=\"/images/home-music-cover.jpg\" alt=\"\" class=\"home-hero__music-img\">
 \t\t\t<h1 class=\"home-hero__music-title\">Grim Reaper — single out now</h1>
+\t\t\t<a href=\"https://geo.itunes.apple.com/ca/album/grim-reaper-single/id1096650129?mt=1&app=music\" class=\"c-button home-hero__music-link home-hero__music-link--itunes\">
+\t\t\t\t<div class=\"c-grid c-grid--middle\">
+\t\t\t\t\t<div class=\"c-grid__col\">
+\t\t\t\t\t\t<span class=\"c-button-icon\">
+\t\t\t\t\t\t\t<svg width=\"24\" height=\"24\"><use xlink:href=\"/svg/svg.svg#apple\" /></svg>
+\t\t\t\t\t\t</span>
+\t\t\t\t\t</div>
+\t\t\t\t\t<div class=\"c-grid__col c-grid__col--2\">
+\t\t\t\t\t\t<span class=\"c-button__sm-txt\">Listen on</span>
+\t\t\t\t\t\t<span class=\"c-button__lg-txt\">Music</span>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</a>
+\t\t\t<a href=\"https://open.spotify.com/album/1ZgbgALQjUZXIZEQ96oexY\" class=\"c-button home-hero__music-link home-hero__music-link--spotify\">
+\t\t\t\t<div class=\"c-grid c-grid--middle\">
+\t\t\t\t\t<div class=\"c-grid__col\">
+\t\t\t\t\t\t<span class=\"c-button-icon\">
+\t\t\t\t\t\t\t<svg width=\"24\" height=\"24\"><use xlink:href=\"/svg/svg.svg#spotify\" /></svg>
+\t\t\t\t\t\t</span>
+\t\t\t\t\t</div>
+\t\t\t\t\t<div class=\"c-grid__col c-grid__col--2\">
+\t\t\t\t\t\t<span class=\"c-button__sm-txt\">Listen on</span>
+\t\t\t\t\t\t<span class=\"c-button__lg-txt\">Spotify</span>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</a>
 \t\t</div>
 \t</div>
 \t<div class=\"home-hero__spotify\">
@@ -36,13 +60,13 @@ class __TwigTemplate_a24a3dc7a33f8aa66175a77b74399b48364ddb21556d0be7a5acb6b0f7f
 \t</div>
 
 \t";
-        // line 42
+        // line 61
         echo "
 \t";
-        // line 46
+        // line 65
         echo "
 \t";
-        // line 50
+        // line 69
         echo "</section>";
     }
 
@@ -53,21 +77,40 @@ class __TwigTemplate_a24a3dc7a33f8aa66175a77b74399b48364ddb21556d0be7a5acb6b0f7f
 
     public function getDebugInfo()
     {
-        return array (  46 => 50,  43 => 46,  40 => 42,  23 => 10,  19 => 1,);
+        return array (  70 => 69,  67 => 65,  64 => 61,  19 => 1,);
     }
 }
 /* <section class="home-hero">*/
 /* 	<div class="u-wrapper">*/
-/* 		{# <div class="home-hero__img">*/
-/* 			<img width="485" height="655" class="home-hero__img-img" src="/images/d-double-e-home.svg" alt="">*/
-/* 		</div>*/
-/* 		<div class="home-hero__svgs">*/
-/* 			{% include "./partials/logo.html.twig" with {'id': 'homeLogo1'} %}*/
-/* 			{% include "./partials/logo.html.twig" with {'id': 'homeLogo2'} %}*/
-/* 		</div> #}*/
 /* 		<div class="home-hero__music">*/
 /* 			<img width="600" height="600" src="/images/home-music-cover.jpg" alt="" class="home-hero__music-img">*/
 /* 			<h1 class="home-hero__music-title">Grim Reaper — single out now</h1>*/
+/* 			<a href="https://geo.itunes.apple.com/ca/album/grim-reaper-single/id1096650129?mt=1&app=music" class="c-button home-hero__music-link home-hero__music-link--itunes">*/
+/* 				<div class="c-grid c-grid--middle">*/
+/* 					<div class="c-grid__col">*/
+/* 						<span class="c-button-icon">*/
+/* 							<svg width="24" height="24"><use xlink:href="/svg/svg.svg#apple" /></svg>*/
+/* 						</span>*/
+/* 					</div>*/
+/* 					<div class="c-grid__col c-grid__col--2">*/
+/* 						<span class="c-button__sm-txt">Listen on</span>*/
+/* 						<span class="c-button__lg-txt">Music</span>*/
+/* 					</div>*/
+/* 				</div>*/
+/* 			</a>*/
+/* 			<a href="https://open.spotify.com/album/1ZgbgALQjUZXIZEQ96oexY" class="c-button home-hero__music-link home-hero__music-link--spotify">*/
+/* 				<div class="c-grid c-grid--middle">*/
+/* 					<div class="c-grid__col">*/
+/* 						<span class="c-button-icon">*/
+/* 							<svg width="24" height="24"><use xlink:href="/svg/svg.svg#spotify" /></svg>*/
+/* 						</span>*/
+/* 					</div>*/
+/* 					<div class="c-grid__col c-grid__col--2">*/
+/* 						<span class="c-button__sm-txt">Listen on</span>*/
+/* 						<span class="c-button__lg-txt">Spotify</span>*/
+/* 					</div>*/
+/* 				</div>*/
+/* 			</a>*/
 /* 		</div>*/
 /* 	</div>*/
 /* 	<div class="home-hero__spotify">*/

@@ -76,6 +76,7 @@ var introAnimations = function () {
 		logoSVG: (0, _utils.$)('#header-logo'),
 		musicCover: (0, _utils.$)('.home-hero__music-img'),
 		musicTitle: (0, _utils.$)('.home-hero__music-title'),
+		musicLinks: (0, _utils.$$)('.home-hero__music-link'),
 		overlay: (0, _utils.$)('.site-header__overlay')
 	};
 
@@ -104,13 +105,16 @@ var introAnimations = function () {
 		var title = document.querySelectorAll('.home-hero__music-title span');
 		if (graphicLoaded) {
 			setTimeout(function () {
-				return (0, _utils.addClassStaggered)(title, 'active', 25);
-			}, 250);
+				setTimeout(function () {
+					(0, _utils.addClassStaggered)(title, 'active', 25);
+					(0, _utils.addClassStaggered)(components.musicLinks, 'home-hero__music-link--loaded', 25);
+				}, 300);
 
-			components.logoSVG.classList.add('loaded');
-			components.logoSVG.removeAttribute('style');
-			components.overlay.classList.add(cssClasses.overlayHide);
-			components.musicCover.classList.add(cssClasses.musicCoverLoaded);
+				components.logoSVG.classList.add('loaded');
+				components.logoSVG.removeAttribute('style');
+				components.overlay.classList.add(cssClasses.overlayHide);
+				components.musicCover.classList.add(cssClasses.musicCoverLoaded);
+			}, 1200);
 		} else {
 			setTimeout(revealElements, 500);
 		}

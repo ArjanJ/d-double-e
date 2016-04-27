@@ -1,9 +1,9 @@
 .home-news {
 	@include clearfix;
 	overflow: hidden;
-	padding: ($base-space * 3) (0) ($base-space * 11);
+	padding: ($base-space * 6) (0) ($base-space * 11);
 	position: relative;
-	z-index: 2;
+	// z-index: 2;
 	background: $theme-color-3;
 
 	&__list {
