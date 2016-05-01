@@ -1,5 +1,4 @@
 import { $, $$, isVisible, wrapTextInElement, debounce, addClassStaggered } from './utils';
-import Vivus from 'vivus';
 import imagesLoaded from 'imagesloaded';
 
 const introAnimations = (() => {
@@ -28,7 +27,7 @@ const introAnimations = (() => {
 	let graphicLoaded = false;
 
 	const loadGraphic = () => {
-		const imgLoad = imagesLoaded(components.homeHero);
+		const imgLoad = imagesLoaded(components.homeHero, { background: true });
 		imgLoad.on('always', (instance) => {
 			graphicLoaded = true;
 		});

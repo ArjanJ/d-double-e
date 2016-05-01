@@ -1,27 +1,133 @@
 .site-nav {
 	$p: &;
+	$nav-width: 100%;
+	$nav-width-small: 350px;
+
+	display: flex;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	right: 0;
+	min-height: $base-space * 6;
+	width: $nav-width;
+	background: $theme-color-1;
+	transform: translate3d(0, -100%, 0);
+	overflow: hidden;
+	@include ease();
+
+	&--active {
+		transform: translate3d(0, 0, 0);
+		opacity: 1;
+		overflow: visible;
+		@include card(5);
+
+		&:before {
+			opacity: 0.4;
+		}
+	}
+
+	@include bp(medium) {
+		position: static;
+		min-height: 0;
+		width: auto;
+		transform: none;
+		background: none;
+		opacity: 1;
+		overflow: visible;
+
+		&:before,
+		&:after {
+			display: none;
+		}
+	}
 
 	&--scrolled {
 
-		#{$p}__link {
-			color: color(white);
+		@include bp(medium) {
+			#{$p}__link {
+				color: color(white);
+			}
 		}
 	}
 
 	&__list {
 		list-style-type: none;
-		text-align: right;
+		width: 100%;
+		padding: ($base-space * 1.5) ($base-space);
+		text-align: center;
+
+		@include bp(small) {
+			padding: (0) ($base-space * 2);
+		}
+
+		@include bp(medium) {
+			padding: 0;
+			text-align: right;
+		}
 	}
 
 	&__item {
-		display: inline-block;
+		display: block;
+		transform: translateY(-100%);
+		opacity: 0;
+		@include ease();
+
+		@for $i from 1 through 6 {
+			&:nth-child(#{$i}) {
+				transition-delay: $i * 0.05s;
+			}
+		}
+
+		&--active {
+			transform: translateY(0);
+			opacity: 1;
+		}
+
+		@include bp(small) {
+			display: inline-block;
+		}
+
+		@include bp(medium) {
+			display: inline-block;
+			transform: none;
+			opacity: 1;
+		}
 	}
 
 	&__link {
 		display: block;
-		padding: (0) (0) (0) ($base-space);
+		padding: ($base-space / 2) (0);
 		text-transform: uppercase;
 		font-weight: 700;
-		color: color(white);
+		font-size: map-get($heading-sizes, 5);
+		color: $theme-color-3;;
+		@include ease('in-out');
+
+		@include bp(small) {
+			padding: (0) ($base-space / 1.5);
+		}
+
+		@include bp(medium) {
+			padding: (0) (0) (0) ($base-space);
+			font-size: map-get($heading-sizes, 6);
+			color: color(white);
+		}
+	}
+
+	&__curve {
+		display: none;
+		position: absolute;
+		@include cover;
+
+		svg {
+			width: 20%;
+			fill: $theme-color-1;
+			overflow: visible;
+			transform: translateX(-100%);
+		}
+
+		@include bp(medium) {
+			display: none;
+		}
 	}
 }

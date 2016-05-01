@@ -21,17 +21,9 @@ class __TwigTemplate_ad3300fc6a7dd8f337f0e152907f6856594cdbd3fc8a3771676dd671999
         echo "
 <section class=\"home-news\">
 
-\t<div class=\"home-news__bg\">
-\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" x=\"0\" y=\"0\" width=\"1920\" height=\"1120\" viewBox=\"0 0 1920 1120\" enable-background=\"new 0 0 1920 1120\" xml:space=\"preserve\"><path d=\"M0 531.9c0 0 236.5-211.5 511-211.5 212 0 166 77.9 686 77.9 480 0 723-371.1 723-398.3 0-29.9 0 1120.3 0 1120.3H0V531.9z\"/></svg>
-\t</div>
-
-\t<div class=\"home-news__camo\">
-\t\t";
-        // line 10
-        $this->loadTemplate("./partials/home-news-camo.html.twig", "modular/news.html.twig", 10)->display($context);
-        // line 11
-        echo "\t</div>
-
+\t";
+        // line 12
+        echo "
 \t<div class=\"u-wrapper\">
 \t\t<ul class=\"home-news__list\">
 \t\t\t";
@@ -87,20 +79,20 @@ class __TwigTemplate_ad3300fc6a7dd8f337f0e152907f6856594cdbd3fc8a3771676dd671999
 
     public function getDebugInfo()
     {
-        return array (  64 => 22,  54 => 18,  50 => 17,  43 => 16,  39 => 15,  33 => 11,  31 => 10,  21 => 2,  19 => 1,);
+        return array (  56 => 22,  46 => 18,  42 => 17,  35 => 16,  31 => 15,  26 => 12,  21 => 2,  19 => 1,);
     }
 }
 /* {% set news = page.collection() %}*/
 /* */
 /* <section class="home-news">*/
 /* */
-/* 	<div class="home-news__bg">*/
+/* 	{# <div class="home-news__bg">*/
 /* 		<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="1920" height="1120" viewBox="0 0 1920 1120" enable-background="new 0 0 1920 1120" xml:space="preserve"><path d="M0 531.9c0 0 236.5-211.5 511-211.5 212 0 166 77.9 686 77.9 480 0 723-371.1 723-398.3 0-29.9 0 1120.3 0 1120.3H0V531.9z"/></svg>*/
 /* 	</div>*/
 /* */
 /* 	<div class="home-news__camo">*/
 /* 		{% include './partials/home-news-camo.html.twig' %}*/
-/* 	</div>*/
+/* 	</div> #}*/
 /* */
 /* 	<div class="u-wrapper">*/
 /* 		<ul class="home-news__list">*/

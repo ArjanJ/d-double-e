@@ -11,17 +11,9 @@
 	left: 0;
 	
 	width: 100%;
-	padding: (0) ($base-space * 1.5);
+	padding: (0) ($base-space);
 
 	backface-visibility: hidden;
-
-	// transform: translateY(-100%);
-	@include ease();
-	transition-delay: 0.2s;
-
-	&--active {
-		transform: translateY(0);
-	}
 
 	&:before {
 		@include cover;
@@ -35,13 +27,27 @@
 		@include ease();
 	}
 
+	@include bp(medium) {
+		padding: (0) ($base-space * 1.5);
+	}
+
+	&--scrolled {
+
+		&:before {
+			transform: translateY(0);
+		}
+
+		#{$p}__logo svg {
+			margin: ($base-space / 2) (0);
+		}
+	}
+
 	&__logo {
 		display: block;
-		position: relative;
 		z-index: 2;
 
 		svg {
-			$width: 400px;
+			$width: 260px;
 			$height: ($width / 2);
 			display: block;
 			width: $width;
@@ -109,23 +115,36 @@
 					}
 				}
 			}
+
+			@include bp(small) {
+				$width: 300px;
+				$height: ($width / 2);
+				width: $width;
+				height: $height;
+			}
+
+			@include bp(medium) {
+				$width: 400px;
+				$height: ($width / 2);
+				width: $width;
+				height: $height;
+			}
 		}
 	}
 
 	&__nav {
 		flex: 1;
+		position: relative;
+		z-index: 1;
 	}
 
-	&--scrolled {
+	&__hamburger {
+		display: block;
+		position: relative;
+		z-index: 5;
 
-		&:before {
-			transform: translateY(0);
-		}
-
-		#{$p}__logo svg {
-			margin: ($base-space / 3) (0);
-			transform: scale(0.85);
-			fill: $theme-color-1;
+		@include bp(medium) {
+			display: none;
 		}
 	}
 
@@ -166,20 +185,6 @@
 
 			&:after {
 				transform: translateY(100%);
-			}
-		}
-	}
-
-	&__loader {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		z-index: 2;
-
-		svg {
-			path,
-			rect {
-				fill: $theme-color-2;
 			}
 		}
 	}

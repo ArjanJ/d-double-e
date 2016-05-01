@@ -29,10 +29,14 @@ class __TwigTemplate_60da923f0c9c7dc0f1d7578b91750e0c059bd33359f5b6582156226d31f
         $this->loadTemplate("./partials/nav.html.twig", "./partials/header.html.twig", 6)->display($context);
         // line 7
         echo "\t</div>
-\t<div class=\"site-header__overlay\"></div>
-\t<div class=\"site-header__loader\">
-\t 
+\t<div class=\"site-header__hamburger\">
+\t\t<button type=\"button\" class=\"c-hamburger\">
+\t\t\t<div class=\"c-hamburger__patty\"></div>
+\t\t\t<div class=\"c-hamburger__patty\"></div>
+\t\t\t<div class=\"c-hamburger__patty\"></div>
+\t\t</button>
 \t</div>
+\t<div class=\"site-header__overlay\"></div>
 </header>";
     }
 
@@ -58,8 +62,12 @@ class __TwigTemplate_60da923f0c9c7dc0f1d7578b91750e0c059bd33359f5b6582156226d31f
 /* 	<div class="site-header__nav">*/
 /* 		{% include "./partials/nav.html.twig" %}*/
 /* 	</div>*/
-/* 	<div class="site-header__overlay"></div>*/
-/* 	<div class="site-header__loader">*/
-/* 	 */
+/* 	<div class="site-header__hamburger">*/
+/* 		<button type="button" class="c-hamburger">*/
+/* 			<div class="c-hamburger__patty"></div>*/
+/* 			<div class="c-hamburger__patty"></div>*/
+/* 			<div class="c-hamburger__patty"></div>*/
+/* 		</button>*/
 /* 	</div>*/
+/* 	<div class="site-header__overlay"></div>*/
 /* </header>*/

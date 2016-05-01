@@ -1,10 +1,12 @@
 .home-events {
 	@include clearfix;
 	position: relative;
-	z-index: 1;
-	padding: ($base-space * 4) (0) ($base-space);
+	z-index: 2;
+	padding: ($base-space * 4) (0) ($base-space * 6);
 	background: $theme-color-1;
-	color: color(white);
+	background: color(white);
+	background: $theme-color-2;
+	color: color(black);
 
 	&__bottom-mask {
 		position: absolute;
@@ -15,7 +17,7 @@
 		transform: translateX(-50%) translateY(100%);
 
 		svg {
-			fill: $theme-color-1;
+			fill: $theme-color-2;
 		}
 	}
 
@@ -102,7 +104,7 @@
 
 	&__buy {
 		flex: 1;
-		padding-top: ($base-space / 2);
+		padding-top: ($base-space / 3);
 		text-align: right;
 
 		&-btn {
@@ -111,7 +113,7 @@
 			background: none;
 			
 			&:before {
-				background: $theme-color-2;
+				background: $theme-color-1;
 				@include ease('out', .25);
 				transform-origin: center top;
 			}
@@ -121,6 +123,7 @@
 			}
 
 			&:hover {
+				color: $theme-color-3;
 
 				&:before {
 					transform: scaleY(0);

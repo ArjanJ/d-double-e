@@ -3,7 +3,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: ($base-space * 3) (0) ($base-space * 3);
+	padding: ($base-space * 6) (0) ($base-space * 6);
 	position: relative;
 	z-index: 1;
 	background: $theme-color-3 url('/images/home-bg-1.jpg') center/cover;;
@@ -17,12 +17,8 @@
 		transform: translateX(-50%);
 
 		svg {
-			fill: $theme-color-1;
+			fill: $theme-color-2;
 		}
-	}
-
-	&__bg {
-		display: none;
 	}
 
 	&__music {
@@ -30,7 +26,7 @@
 		text-align: center;
 
 		&-img {
-			$size: 400px;
+			$size: 260px;
 			display: block;
 			margin: 0 auto;
 			max-width: $size;
@@ -45,13 +41,25 @@
 				opacity: 1;
 				transform: scale(1) translateY(0%) rotateX(0);
 			}
+
+			@include bp(medium) {
+				$size: 320px;
+				max-width: $size;
+				max-height: $size;
+			}
+
+			@include bp(medium) {
+				$size: 400px;
+				max-width: $size;
+				max-height: $size;
+			}
 		}
 
 		&-title {
-			@extend %u-heading-4;
-			@extend %u-ls-3;
+			font-size: map-get($heading-sizes, 6);
+			letter-spacing: 0.3rem;
 			margin-top: (-$base-space / 1.5);
-			margin-bottom: ($base-space);
+			margin-bottom: ($base-space * 1.5);
 			color: color(white);
 			transform: translate3d(0, 0, 0);
 
@@ -66,10 +74,21 @@
 					opacity: 1;
 				}
 			}
+
+			@include bp(small) {
+				@extend %u-ls-3;
+				font-size: map-get($heading-sizes, 5);
+			}
+
+			@include bp(medium) {
+				font-size: map-get($heading-sizes, 4);
+			}
 		}
 
 		&-link {
-			min-width: ($base-space * 6);
+			display: flex;
+			max-width: ($base-space * 6);
+			margin: 0 auto ($base-space / 2) auto;
 			@include card(3);
 			opacity: 0;
 			transform: scale(0.5);
@@ -81,6 +100,10 @@
 				svg {
 					transform: rotate(360deg);
 				}
+			}
+
+			&:last-child {
+				margin-bottom: 0;
 			}
 
 			&--loaded {
@@ -122,146 +145,37 @@
 				}
 			}
 
+			&-text {
+				margin-left: ($base-space / 3);
+			}
+
 			svg {
 				@include ease('in-out');
+			}
+
+			@include bp(medium) {
+				display: inline-flex;
+				min-width: ($base-space * 6);
+				margin-bottom: 0;
 			}
 		}
 	}
 
-	&__img,
 	&__spotify {
-		position: relative;
-		z-index: 8;
-	}
+		display: none;
 
-	&__spotify {
-		position: absolute;
-		left: ($base-space * 1.5);
-		bottom: calc(0 + #{$base-space * 7});
-		@include ease('out-back');
-		transition-delay: .5s;
+		@include bp(medium) {
+			position: absolute;
+			z-index: 8;
+			left: ($base-space * 1.5);
+			bottom: calc(0 + #{$base-space * 7});
+			@include ease('out-back');
+			transition-delay: .5s;
 
-		&--active {
-			transform: translateX(0);
-			opacity: 1;
+			&--active {
+				transform: translateX(0);
+				opacity: 1;
+			}
 		}
 	}
-
-	// &__svgs {
-	// 	$width: 430px;
-	// 	$height: $width / 2;
-	// 	position: absolute;
-	// 	z-index: 9;
-	// 	top: 50%;
-	// 	left: 50%;
-	// 	width: $width;
-	// 	height: $height;
-	// 	transform: translate(-50%, -35%) scale(1.25);
-	// 	@include ease();
-
-	// 	&--active {
-	// 		transform: translate(-50%, 0) scale(1);
-	// 	}
-
-	// 	svg {
-	// 		position: absolute;
-	// 		overflow: visible;
-	// 		width: $width;
-	// 		height: $height;
-	// 		@include ease();
-
-	// 		&.active {
-	// 			&:nth-child(1) {
-	// 				path {
-	// 					stroke: $theme-color-3;
-	// 					stroke-width: 24px;
-	// 					@include ease('in-out', 0.4);
-	// 					transition-delay: .1s;
-	// 				}
-	// 			}
-
-	// 			&:nth-child(2) {
-	// 				opacity: 1;
-	// 			}
-	// 		}
-
-	// 		// First SVG is there so we can have
-	// 		// an outer stroke.
-	// 		&:nth-child(1) {
-				
-	// 			path {
-	// 				stroke: $theme-color-2;
-	// 				stroke-width: 4px;
-	// 				fill: none;
-	// 			}
-	// 		}
-
-	// 		&:nth-child(2) {
-	// 			opacity: 0;
-	// 			transition-delay: .1s;
-
-	// 			path {
-	// 				fill: $theme-color-1;
-	// 			}
-	// 		}
-	// 	}
-	// }
-
-	// &__bg {
-	// 	position: absolute;
-	// 	z-index: 3;
-	// 	top: 0;
-	// 	left: 50%;
-	// 	transform: translateX(-50%) translateY(0);
-	// 	@include ease('out', 0.7);
-
-	// 	&--active {
-	// 		transform: translateX(-50%) translateY(0);
-	// 	}
-
-	// 	svg {
-	// 		fill: $theme-color-2;
-	// 		overflow: visible;
-	// 	}
-
-	// 	&--camo {
-	// 		opacity: 0.1;
-	// 	}
-	// }
-
-	// &__paint-drips {
-	// 	position: absolute;
-	// 	z-index: 2;
-	// 	left: 50%;
- //    top: 400px;
-	// 	transform: translateX(-50%) translateY(-50%);
-	// 	opacity: 0;
-	// 	@include ease();
-
-	// 	&--show {
-	// 		opacity: 1;
-	// 		transform: translateX(-50%) translateY(0);
-	// 	}
-
-	// 	svg {
-	// 		fill: $theme-color-2;
-	// 	}
-
-	// 	path {
-	// 		@include ease();
-
-	// 		@for $i from  1 through 10 {
-
-	// 			&:nth-child(#{$i}) {
-	// 				transform: translateY(random(1000) / -1 + px);
-	// 				transition-duration: random(15) / 10 + s;
-	// 				// transition-delay: $i * .05s;
-	// 			}
-	// 		}
-
-	// 		&.path-active {
-	// 			transform: none;
-	// 		}
-	// 	}
-	// }
 }
