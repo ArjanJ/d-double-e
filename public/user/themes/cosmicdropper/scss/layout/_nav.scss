@@ -98,7 +98,6 @@
 		display: block;
 		padding: ($base-space / 2) (0);
 		text-transform: uppercase;
-		font-weight: 700;
 		font-size: map-get($heading-sizes, 5);
 		color: $theme-color-3;;
 		@include ease('in-out');
@@ -110,24 +109,6 @@
 		@include bp(medium) {
 			padding: (0) (0) (0) ($base-space);
 			font-size: map-get($heading-sizes, 6);
-			color: color(white);
-		}
-	}
-
-	&__curve {
-		display: none;
-		position: absolute;
-		@include cover;
-
-		svg {
-			width: 20%;
-			fill: $theme-color-1;
-			overflow: visible;
-			transform: translateX(-100%);
-		}
-
-		@include bp(medium) {
-			display: none;
 		}
 	}
 }

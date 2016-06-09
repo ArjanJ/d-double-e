@@ -30,9 +30,9 @@ const paths = {
 
 gulp.task('default', ['serve']);
 
-gulp.task('serve', ['watch'], serve);
+gulp.task('serve', ['styles', 'scripts', 'watch'], serve);
 
-gulp.task('watch', ['styles', 'scripts'], watch);
+gulp.task('watch', watch);
 
 gulp.task('scripts', ['lint'], scripts);
 
@@ -43,7 +43,7 @@ gulp.task('styles', styles);
 function watch() {
 	gulp.watch(paths.js.src, ['scripts']);
 	gulp.watch(paths.scss.src, ['styles']);
-	gulp.watch([paths.templates, paths.blueprints], ['scripts', 'styles'], browserSync.reload);
+	gulp.watch([paths.templates, paths.blueprints], browserSync.reload);
 }
 
 function serve() {

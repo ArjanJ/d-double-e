@@ -1,6 +1,5 @@
 .home-news {
 	@include clearfix;
-	// margin-bottom: -$base-space * 8;
 	padding: ($base-space * 6) (0) ($base-space * 4);
 	position: relative;
 	background: $theme-color-1;
@@ -14,8 +13,21 @@
 		top: auto;
 		bottom: 0;
 		width: 100%;
-		height: 85%;
+		height: 100%;
 		background: url('/svg/camo.svg') center bottom/cover;
+	}
+
+	&__bottom-mask {
+		position: absolute;
+		z-index: 2;
+		top: 0;
+		left: 50%;
+		width: 100%;
+		transform: translateX(-50%);
+
+		svg {
+			fill: $theme-color-3;
+		}
 	}
 
 	&__list {
@@ -24,32 +36,14 @@
 		flex-flow: row wrap;
 		position: relative;
 		z-index: 3;
-		// top: -$base-space * 8;
-		max-width: 900px;
+		max-width: 800px;
 		margin: -$base-space * 8 auto 0 auto;
-
-		&:before {
-			content: "";
-			display: block;
-			width: calc(100% + #{$base-space * 2});
-			width: 100%;
-			height: calc(100% - #{$base-space * 1.75});
-			height: 100%;
-			position: absolute;
-			z-index: 1;
-			top: 0;
-			left: 0;
-			// transform: translateX(-50%);
-			background: rgba(black, 0.5);
-			background: none;
-			@include card(2);
-		}
 	}
 }
 
 .home-news-post {
 	$p: &;
-	width: 50%;
+	width: 100%;
 	position: relative;
 	z-index: 1;
 	background-size: cover;
@@ -61,6 +55,14 @@
 		z-index: 2;
 		transform: scale(1.1);
 		@include card(5);
+
+		#{$p}__heading:before {
+			transform: rotate(-4deg);
+		}
+	}
+
+	@include bp(medium) {
+		width: 50%;
 	}
 
 	&:before {
@@ -69,18 +71,19 @@
 		display: block;
 		position: absolute;
 		z-index: -1;
+		background: linear-gradient(45deg, rgba($theme-color-3, 0.65), rgba(black, 0));
 	}
 
 	&__link {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;
-		height: ($base-space * 13);
+		height: ($base-space * 12);
 		padding: ($base-space * 1.5);
 	}
 
 	&__heading {
-		@extend %u-heading-4;
+		@extend %u-heading-5;
 		position: relative;
 		color: color(white);
 
@@ -105,29 +108,17 @@
 			bottom: (-$base-space / 1.5);
 			left: 0;
 			width: 100%;
-			height: 5px;
-		}
-	}
-
-	&:nth-child(1) {
-
-		&:before {
-			background: linear-gradient(45deg, $theme-color-1, rgba(black, 0.2));
-		}
-
-		#{$p}__heading:before {
+			height: 4px;
 			background: $theme-color-1;
+			@include ease();
 		}
 	}
 
 	&:nth-child(2),
-	&:nth-child(3) {
-		&:before {
-			background: linear-gradient(45deg, $theme-color-3, rgba(black, 0.2));
-		}
+	&:nth-child(4) {
 
-		#{$p}__heading:before {
-			background: $theme-color-2;
+		@include bp(medium) {
+			top: ($base-space * 2);
 		}
 	}
 
@@ -139,13 +130,18 @@
 			height: calc(100% - #{$base-space * 3});
 			top: ($base-space * 3) / 2;
 			left: ($base-space * 3) / 2;
-			border: 8px solid color(black);
+			border: 4px solid $theme-color-1;
+			background: none;
 		}
 
 		#{$p}__link {
 			display: flex;
 			align-items: center;
 			justify-content: center;
+		}
+
+		#{$p}__heading:before {
+			display: none;
 		}
 	}
 }

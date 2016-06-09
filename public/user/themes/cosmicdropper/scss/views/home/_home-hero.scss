@@ -1,12 +1,21 @@
 .home-hero {
-	min-height: 95vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: ($base-space * 6) (0) ($base-space * 6);
+	padding: ($base-space * 7) (0);
 	position: relative;
 	z-index: 1;
-	background: $theme-color-3 url('/images/home-bg-1.jpg') center/cover;;
+	background: $theme-color-1;
+	
+	&:before {
+		content: "";
+		@include cover;
+		display: block;
+		position: absolute;
+		z-index: -1;
+		opacity: 0.1;
+		background: $theme-color-1 url('/svg/camo.svg') center center/cover;
+	}
 
 	&__bottom-mask {
 		position: absolute;
@@ -17,7 +26,7 @@
 		transform: translateX(-50%);
 
 		svg {
-			fill: $theme-color-2;
+			fill: $theme-color-3;
 		}
 	}
 
@@ -49,7 +58,7 @@
 			}
 
 			@include bp(medium) {
-				$size: 400px;
+				$size: 375px;
 				max-width: $size;
 				max-height: $size;
 			}
@@ -119,7 +128,7 @@
 				}
 
 				&:before {
-					background: $theme-color-3;
+					background: color(black);
 				}
 
 				&:after {
@@ -136,7 +145,7 @@
 				}
 
 				&:before {
-					background: $theme-color-3;
+					background: color(black);
 				}
 
 				&:after {

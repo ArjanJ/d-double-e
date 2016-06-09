@@ -4,7 +4,6 @@ import imagesLoaded from 'imagesloaded';
 const introAnimations = (() => {
 	const components = {
 		homeHero: $('.home-hero'),
-		graphicSrc: '/images/home-music-cover.jpg',
 		logoSVG: $('#header-logo'),
 		musicCover: $('.home-hero__music-img'),
 		musicTitle: $('.home-hero__music-title'),
@@ -13,13 +12,6 @@ const introAnimations = (() => {
 	};
 
 	const cssClasses = {
-		graphicActive: 'home-hero__img-img--active',
-		backgroundSVGActive: 'home-hero__bg--active',
-		logoSVGActive: 'active',
-		logoSVGContainerActive: 'home-hero__svgs--active',
-		headerActive: 'site-header--active',
-		spotifyBtnActive: 'home-hero__spotify--active',
-		paintDripsActive: 'home-hero__paint-drips--show',
 		overlayHide: 'site-header__overlay--hide',
 		musicCoverLoaded: 'home-hero__music-img--loaded'
 	};

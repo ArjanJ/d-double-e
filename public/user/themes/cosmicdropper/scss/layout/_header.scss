@@ -28,10 +28,11 @@
 	}
 
 	@include bp(medium) {
-		padding: (0) ($base-space * 1.5);
+		padding: (0) ($base-space * 2.5);
 	}
 
 	&--scrolled {
+		opacity: 0;
 
 		&:before {
 			transform: translateY(0);
@@ -60,13 +61,14 @@
 
 			&.loaded {
 				opacity: 1;
-				$width: 150px;
+				$width: 165px;
 				$height: ($width / 2);
 				width: $width;
 				height: $height;
 				@include ease();
-				fill: $theme-color-1;
+				fill: $theme-color-3;
 				stroke-width: 0;
+		    margin-left: -$base-space / 4;
 
 				path {
 					animation: none 0 !important;

@@ -68,7 +68,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var introAnimations = function () {
 	var components = {
 		homeHero: (0, _utils.$)('.home-hero'),
-		graphicSrc: '/images/home-music-cover.jpg',
 		logoSVG: (0, _utils.$)('#header-logo'),
 		musicCover: (0, _utils.$)('.home-hero__music-img'),
 		musicTitle: (0, _utils.$)('.home-hero__music-title'),
@@ -77,13 +76,6 @@ var introAnimations = function () {
 	};
 
 	var cssClasses = {
-		graphicActive: 'home-hero__img-img--active',
-		backgroundSVGActive: 'home-hero__bg--active',
-		logoSVGActive: 'active',
-		logoSVGContainerActive: 'home-hero__svgs--active',
-		headerActive: 'site-header--active',
-		spotifyBtnActive: 'home-hero__spotify--active',
-		paintDripsActive: 'home-hero__paint-drips--show',
 		overlayHide: 'site-header__overlay--hide',
 		musicCoverLoaded: 'home-hero__music-img--loaded'
 	};

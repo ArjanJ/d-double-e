@@ -2,7 +2,7 @@
 	@include clearfix;
 	position: relative;
 	z-index: 1;
-	padding: ($base-space * 4) (0) ($base-space * 6);
+	padding: ($base-space * 2) (0) ($base-space * 6);
 	background: $theme-color-1;
 
 	&:before {

@@ -19,7 +19,7 @@
 
 	@include bp(medium) {
 		display: flex;
-		flex-wrap: no-wrap;
+		flex-wrap: nowrap;
 
 		&--middle {
 			align-items: center;
