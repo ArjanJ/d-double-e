@@ -17,6 +17,7 @@ class __TwigTemplate_a24a3dc7a33f8aa66175a77b74399b48364ddb21556d0be7a5acb6b0f7f
     {
         // line 1
         echo "<section class=\"home-hero\">
+\t<div class=\"home-hero__fixed-bg\"></div>
 \t<div class=\"u-wrapper\">
 \t\t<div class=\"home-hero__music\">
 \t\t\t<img width=\"600\" height=\"600\" src=\"/images/home-music-cover.jpg\" alt=\"\" class=\"home-hero__music-img\">
@@ -49,13 +50,13 @@ class __TwigTemplate_a24a3dc7a33f8aa66175a77b74399b48364ddb21556d0be7a5acb6b0f7f
 \t</div>
 
 \t";
-        // line 50
+        // line 51
         echo "
 \t";
-        // line 54
+        // line 55
         echo "
 \t";
-        // line 58
+        // line 59
         echo "</section>";
     }
 
@@ -66,10 +67,11 @@ class __TwigTemplate_a24a3dc7a33f8aa66175a77b74399b48364ddb21556d0be7a5acb6b0f7f
 
     public function getDebugInfo()
     {
-        return array (  59 => 58,  56 => 54,  53 => 50,  19 => 1,);
+        return array (  60 => 59,  57 => 55,  54 => 51,  19 => 1,);
     }
 }
 /* <section class="home-hero">*/
+/* 	<div class="home-hero__fixed-bg"></div>*/
 /* 	<div class="u-wrapper">*/
 /* 		<div class="home-hero__music">*/
 /* 			<img width="600" height="600" src="/images/home-music-cover.jpg" alt="" class="home-hero__music-img">*/

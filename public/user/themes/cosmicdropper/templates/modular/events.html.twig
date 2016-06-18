@@ -22,13 +22,6 @@
 							<span>{{ event.header.event_city }},</span>
 							<span>{{ event.header.event_country }}<span>
 						</h3>
-
-						{% if loop.last %}
-							<a href="/shows" class="home-events__more-btn">
-								View all shows
-								<svg><use xlink:href="/svg/svg.svg#arrow-right" /></svg>
-							</a>
-						{% endif %}
 					</div>
 					<div class="home-events-item__buy">
 						<a href="{{ event.header.event_tickets }}" class="home-events-item__buy-btn">Tickets</a>
@@ -36,5 +29,11 @@
 				</li>
 			{% endfor %}
 		</ul>
+		<div class="home-events__more">
+			<a href="/shows" class="home-events__more-btn">
+				View all shows
+				<svg><use xlink:href="/svg/svg.svg#arrow-right" /></svg>
+			</a>
+		</div>
 	</div>
 </section>

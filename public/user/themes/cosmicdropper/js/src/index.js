@@ -3,7 +3,7 @@ import home from './home';
 import nav from './nav';
 
 document.addEventListener('DOMContentLoaded', () => {
-	header.init();
+	// header.init();
 	home.init();
-	nav.init();
+	// nav.init();
 });

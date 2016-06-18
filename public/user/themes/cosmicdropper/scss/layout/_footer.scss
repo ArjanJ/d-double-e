@@ -66,4 +66,17 @@
 			fill: color(black);
 		}
 	}
+
+	&__curve {
+		position: absolute;
+		z-index: 2;
+		top: -130px;
+		left: 50%;
+		width: 100%;
+		transform: translateX(-50%);
+
+		svg {
+			fill: $theme-color-1;
+		}
+	}
 }

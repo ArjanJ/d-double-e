@@ -1,5 +1,6 @@
 import { $, $$, isVisible, wrapTextInElement, debounce, addClassStaggered } from './utils';
 import imagesLoaded from 'imagesloaded';
+import ScrollReveal from 'scrollreveal';
 
 const introAnimations = (() => {
 	const components = {
@@ -26,22 +27,22 @@ const introAnimations = (() => {
 	};
 
 	const revealElements = () => {
-		const title = document.querySelectorAll('.home-hero__music-title span');
+		const title = $$('.home-hero__music-title span');
 		if (graphicLoaded) {
 			setTimeout(() => {
 				setTimeout(() => {
 					addClassStaggered(title, 'active', 25);
 					addClassStaggered(components.musicLinks, 'home-hero__music-link--loaded', 25);
-				}, 300);
+				}, 600);
 				
 				components.logoSVG.classList.add('loaded');
 				components.logoSVG.removeAttribute('style');
 				components.overlay.classList.add(cssClasses.overlayHide);
 				components.musicCover.classList.add(cssClasses.musicCoverLoaded);
-			}, 1200);
+			}, 700);
 			
 		} else {
-			setTimeout(revealElements, 500);
+			setTimeout(revealElements, 250);
 		}
 	};
 
@@ -70,9 +71,62 @@ const introAnimations = (() => {
 	};
 })();
 
+const homeHeroScroll = (() => {
+	const components = {
+		bg: $('.home-hero__fixed-bg'),
+		content: $('.home-hero__music'),
+		news: $('.home-news__list'),
+	};
+
+	const animation = () => {
+		const scrolled = window.pageYOffset;
+		const { content, news, bg } = components;
+		const translateY = scrolled / 2;
+
+		content.style.transform = `translateY(${translateY}px)`;
+		if (isVisible(news)) {
+			bg.style.backgroundColor = '#29CDB5';
+			bg.style.backgroundBlendMode = 'luminosity';
+		} else {
+			bg.style.backgroundColor = '#FF304F';
+			bg.style.backgroundBlendMode = 'initial';
+		}
+		
+	}
+
+	const handleScroll = () => {
+		window.requestAnimationFrame(animation);
+	};
+
+	const init = () => {
+		window.addEventListener('scroll', handleScroll);
+	};
+
+	return {
+		init
+	};
+})();
+
+const homeEvents = (() => {
+	const init = () => {
+		const sr = ScrollReveal();
+
+		sr.reveal('.home-events-item', {
+			distance: '40px',
+			scale: 0.8
+		});
+	};
+
+	return {
+		init,
+	};
+})();
+
 const home = (() => {
 	const init = () => {
 		introAnimations.init();
+		homeHeroScroll.init();
+		homeEvents.init();
 	};
 
 	return {

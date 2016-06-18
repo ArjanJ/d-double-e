@@ -88,22 +88,10 @@ class __TwigTemplate_b7453fb951e2e107a2e9e0b2c6fce7cc7dc9e028cc9cf6868f0b74669d1
             echo $this->getAttribute($this->getAttribute($context["event"], "header", array()), "event_country", array());
             echo "<span>
 \t\t\t\t\t\t</h3>
-
-\t\t\t\t\t\t";
-            // line 26
-            if ($this->getAttribute($context["loop"], "last", array())) {
-                // line 27
-                echo "\t\t\t\t\t\t\t<a href=\"/shows\" class=\"home-events__more-btn\">
-\t\t\t\t\t\t\t\tView all shows
-\t\t\t\t\t\t\t\t<svg><use xlink:href=\"/svg/svg.svg#arrow-right\" /></svg>
-\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t";
-            }
-            // line 32
-            echo "\t\t\t\t\t</div>
+\t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"home-events-item__buy\">
 \t\t\t\t\t\t<a href=\"";
-            // line 34
+            // line 27
             echo $this->getAttribute($this->getAttribute($context["event"], "header", array()), "event_tickets", array());
             echo "\" class=\"home-events-item__buy-btn\">Tickets</a>
 \t\t\t\t\t</div>
@@ -121,8 +109,14 @@ class __TwigTemplate_b7453fb951e2e107a2e9e0b2c6fce7cc7dc9e028cc9cf6868f0b74669d1
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['event'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 38
+        // line 31
         echo "\t\t</ul>
+\t\t<div class=\"home-events__more\">
+\t\t\t<a href=\"/shows\" class=\"home-events__more-btn\">
+\t\t\t\tView all shows
+\t\t\t\t<svg><use xlink:href=\"/svg/svg.svg#arrow-right\" /></svg>
+\t\t\t</a>
+\t\t</div>
 \t</div>
 </section>";
     }
@@ -139,7 +133,7 @@ class __TwigTemplate_b7453fb951e2e107a2e9e0b2c6fce7cc7dc9e028cc9cf6868f0b74669d1
 
     public function getDebugInfo()
     {
-        return array (  125 => 38,  107 => 34,  103 => 32,  96 => 27,  94 => 26,  88 => 23,  84 => 22,  78 => 21,  74 => 20,  68 => 17,  64 => 16,  60 => 14,  43 => 13,  39 => 11,  33 => 9,  29 => 7,  27 => 6,  21 => 2,  19 => 1,);
+        return array (  113 => 31,  95 => 27,  88 => 23,  84 => 22,  78 => 21,  74 => 20,  68 => 17,  64 => 16,  60 => 14,  43 => 13,  39 => 11,  33 => 9,  29 => 7,  27 => 6,  21 => 2,  19 => 1,);
     }
 }
 /* {% set events = page.collection() %}*/
@@ -166,13 +160,6 @@ class __TwigTemplate_b7453fb951e2e107a2e9e0b2c6fce7cc7dc9e028cc9cf6868f0b74669d1
 /* 							<span>{{ event.header.event_city }},</span>*/
 /* 							<span>{{ event.header.event_country }}<span>*/
 /* 						</h3>*/
-/* */
-/* 						{% if loop.last %}*/
-/* 							<a href="/shows" class="home-events__more-btn">*/
-/* 								View all shows*/
-/* 								<svg><use xlink:href="/svg/svg.svg#arrow-right" /></svg>*/
-/* 							</a>*/
-/* 						{% endif %}*/
 /* 					</div>*/
 /* 					<div class="home-events-item__buy">*/
 /* 						<a href="{{ event.header.event_tickets }}" class="home-events-item__buy-btn">Tickets</a>*/
@@ -180,5 +167,11 @@ class __TwigTemplate_b7453fb951e2e107a2e9e0b2c6fce7cc7dc9e028cc9cf6868f0b74669d1
 /* 				</li>*/
 /* 			{% endfor %}*/
 /* 		</ul>*/
+/* 		<div class="home-events__more">*/
+/* 			<a href="/shows" class="home-events__more-btn">*/
+/* 				View all shows*/
+/* 				<svg><use xlink:href="/svg/svg.svg#arrow-right" /></svg>*/
+/* 			</a>*/
+/* 		</div>*/
 /* 	</div>*/
 /* </section>*/

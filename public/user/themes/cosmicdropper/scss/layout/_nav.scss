@@ -98,8 +98,10 @@
 		display: block;
 		padding: ($base-space / 2) (0);
 		text-transform: uppercase;
+		font-weight: 700;
+		letter-spacing: 1px;
 		font-size: map-get($heading-sizes, 5);
-		color: $theme-color-3;;
+		color: $theme-color-2;
 		@include ease('in-out');
 
 		@include bp(small) {

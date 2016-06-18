@@ -49,6 +49,9 @@ class __TwigTemplate_b0059f4872ebfcc45b46d1bb92c7254d176a57f7338fdda9f05ac4b1ef5
 \t\t\t<span>&copy; D Double E 2016 - Present</span>
 \t\t</div>
 \t</div>
+\t<div class=\"site-footer__curve\">
+\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" x=\"0\" y=\"0\" width=\"1920\" height=\"133\" viewBox=\"0 0 1920 133\" enable-background=\"new 0 0 1920 133\" xml:space=\"preserve\"><path d=\"M825.6 132.1C597.6 129.1 461 0 261.5 0 180.4 0 84.9 31.4 0 68.7V133h1920V84.7c-106.2-34.2-243.1-63-397-62.4C1181.1 23.9 1053.5 135.1 825.6 132.1z\"/></svg>
+\t</div>
 </footer>";
     }
 
@@ -94,5 +97,8 @@ class __TwigTemplate_b0059f4872ebfcc45b46d1bb92c7254d176a57f7338fdda9f05ac4b1ef5
 /* 			<span>Designed &amp; Developed by <a href="https://www.arjanjassal.me/">Arjan Jassal</a></span>*/
 /* 			<span>&copy; D Double E 2016 - Present</span>*/
 /* 		</div>*/
+/* 	</div>*/
+/* 	<div class="site-footer__curve">*/
+/* 		<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="1920" height="133" viewBox="0 0 1920 133" enable-background="new 0 0 1920 133" xml:space="preserve"><path d="M825.6 132.1C597.6 129.1 461 0 261.5 0 180.4 0 84.9 31.4 0 68.7V133h1920V84.7c-106.2-34.2-243.1-63-397-62.4C1181.1 23.9 1053.5 135.1 825.6 132.1z"/></svg>*/
 /* 	</div>*/
 /* </footer>*/
