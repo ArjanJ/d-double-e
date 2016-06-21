@@ -84,7 +84,7 @@ const homeHeroScroll = (() => {
 		const { content, news, bg, hero } = components;
 		const translateY = scrolled / 2;
 
-		if (isVisible(hero)) {
+		if (true) {
 			content.style.transform = `translateY(${translateY}px)`;
 		}
 

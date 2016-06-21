@@ -9,6 +9,14 @@
 	@media (min-height: 690px) {
 		padding: ($base-space * 7) (0);
 	}
+
+	// &__video {
+	// 	@include cover;
+	// 	display: block;
+	// 	position: fixed;
+	// 	z-index: -1;
+	// 	backface-visibility: hidden;
+	// }
 	
 	&__fixed-bg {
 		@include cover;

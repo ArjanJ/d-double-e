@@ -155,7 +155,7 @@ var homeHeroScroll = function () {
 
 		var translateY = scrolled / 2;
 
-		if ((0, _utils.isVisible)(hero)) {
+		if (true) {
 			content.style.transform = 'translateY(' + translateY + 'px)';
 		}
 
