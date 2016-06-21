@@ -16,14 +16,21 @@
 		position: fixed;
 		z-index: -1;
 		backface-visibility: hidden;
-		background-blend-mode: darken;
+		background-blend-mode: initial;
 		background-color: $theme-color-1;
 		background-image: url('/images/home-bg.jpg');
 		background-position: center;
 		background-size: cover;
-		background-attachment: fixed;
 		will-change: background-color, background-blend-mode;
-		@include ease();
+
+		&--red {
+			
+		}
+
+		&--green {
+			background-blend-mode: luminosity;
+			background-color: $theme-color-3;
+		}
 	}
 
 	&__bottom-mask {

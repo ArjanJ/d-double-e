@@ -142,7 +142,8 @@ var homeHeroScroll = function () {
 	var components = {
 		bg: (0, _utils.$)('.home-hero__fixed-bg'),
 		content: (0, _utils.$)('.home-hero__music'),
-		news: (0, _utils.$)('.home-news__list')
+		news: (0, _utils.$)('.home-news__list'),
+		hero: (0, _utils.$)('.home-hero')
 	};
 
 	var animation = function animation() {
@@ -150,16 +151,20 @@ var homeHeroScroll = function () {
 		var content = components.content;
 		var news = components.news;
 		var bg = components.bg;
+		var hero = components.hero;
 
 		var translateY = scrolled / 2;
 
-		content.style.transform = 'translateY(' + translateY + 'px)';
-		if ((0, _utils.isVisible)(news)) {
-			bg.style.backgroundColor = '#29CDB5';
-			bg.style.backgroundBlendMode = 'luminosity';
-		} else {
-			bg.style.backgroundColor = '#FF304F';
-			bg.style.backgroundBlendMode = 'initial';
+		if ((0, _utils.isVisible)(hero)) {
+			content.style.transform = 'translateY(' + translateY + 'px)';
+		}
+
+		if ((0, _utils.isVisible)(news, -250) && !news.classList.contains('home-hero__fixed-bg--green')) {
+			bg.classList.add('home-hero__fixed-bg--green');
+		}
+
+		if (!(0, _utils.isVisible)(news, -250) && bg.classList.contains('home-hero__fixed-bg--green')) {
+			bg.classList.remove('home-hero__fixed-bg--green');
 		}
 	};
 

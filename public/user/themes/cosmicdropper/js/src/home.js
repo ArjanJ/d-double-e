@@ -76,22 +76,25 @@ const homeHeroScroll = (() => {
 		bg: $('.home-hero__fixed-bg'),
 		content: $('.home-hero__music'),
 		news: $('.home-news__list'),
+		hero: $('.home-hero')
 	};
 
 	const animation = () => {
 		const scrolled = window.pageYOffset;
-		const { content, news, bg } = components;
+		const { content, news, bg, hero } = components;
 		const translateY = scrolled / 2;
 
-		content.style.transform = `translateY(${translateY}px)`;
-		if (isVisible(news)) {
-			bg.style.backgroundColor = '#29CDB5';
-			bg.style.backgroundBlendMode = 'luminosity';
-		} else {
-			bg.style.backgroundColor = '#FF304F';
-			bg.style.backgroundBlendMode = 'initial';
+		if (isVisible(hero)) {
+			content.style.transform = `translateY(${translateY}px)`;
 		}
-		
+
+		if (isVisible(news, -250) && !news.classList.contains('home-hero__fixed-bg--green')) {
+			bg.classList.add('home-hero__fixed-bg--green');
+		}
+
+		if (!isVisible(news, -250) && bg.classList.contains('home-hero__fixed-bg--green')) {
+			bg.classList.remove('home-hero__fixed-bg--green');
+		}
 	}
 
 	const handleScroll = () => {

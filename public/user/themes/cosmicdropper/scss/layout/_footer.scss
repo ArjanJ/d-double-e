@@ -2,7 +2,7 @@
 	@include clearfix;
 	position: relative;
 	z-index: 1;
-	padding: ($base-space * 2) (0) ($base-space * 6);
+	padding: ($base-space * 3) (0) ($base-space * 3);
 	background: $theme-color-1;
 
 	&:before {
@@ -16,7 +16,7 @@
 	}
 
 	&__info {
-		margin-bottom: ($base-space * 6);
+		margin-bottom: ($base-space * 5);
 		text-align: center;
 
 		&-item {
@@ -40,12 +40,12 @@
 	&__heading {
 		@extend %u-heading-6;
 		@extend %u-ls-4;
-		margin-bottom: ($base-space * 1.5);
+		margin-bottom: ($base-space);
 	}
 
 	&__link {
-		@extend %u-heading-4;
-		@extend %u-ls-3;
+		@extend %u-heading-5;
+		@extend %u-ls-4;
 		display: inline-block;
 		text-transform: uppercase;
 		color: color(black);
@@ -60,7 +60,7 @@
 		margin: (0) ($base-space / 1.5);
 
 		svg {
-			$size: 34px;
+			$size: 30px;
 			width: $size;
 			height: $size;
 			fill: color(black);
@@ -74,6 +74,7 @@
 		left: 50%;
 		width: 100%;
 		transform: translateX(-50%);
+		overflow-x: hidden;
 
 		svg {
 			fill: $theme-color-1;
