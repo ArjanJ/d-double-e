@@ -2,18 +2,6 @@
 	@include clearfix;
 	padding: ($base-space * 10) (0);
 	position: relative;
-	background: $theme-color-1;
-
-	// &:before {
-	// 	content: "";
-	// 	display: block;
-	// 	@include cover;
-	// 	position: absolute;
-	// 	z-index: 2;
-	// 	opacity: 0.5;
-	// 	background: $theme-color-2;
-	// 	// background: url('/svg/camo.svg') center bottom/cover;
-	// }
 
 	&__bottom-mask {
 		position: absolute;
@@ -79,8 +67,17 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		height: ($base-space * 12);
+		height: ($base-space * 8);
+		padding: ($base-space * 1.5);
+
+		@include bp(small) {
+			height: ($base-space * 10);
+		}
+
+		@include bp(large) {
+			height: ($base-space * 12);
 		padding: ($base-space * 2);
+		}
 	}
 
 	&__heading {

@@ -2,8 +2,12 @@
 	@include clearfix;
 	position: relative;
 	z-index: 1;
-	padding: ($base-space * 3) (0) ($base-space * 3);
+	padding: ($base-space) (0) ($base-space * 3);
 	background: $theme-color-1;
+
+	@include bp(large) {
+		padding: ($base-space * 3) (0);
+	}
 
 	&:before {
 		content: "";
@@ -16,21 +20,43 @@
 	}
 
 	&__info {
-		margin-bottom: ($base-space * 5);
+		margin-bottom: ($base-space * 2);
 		text-align: center;
 
+		@include bp(small) {
+			margin-bottom: ($base-space * 5);
+		}
+
 		&-item {
-			margin-bottom: ($base-space * 4);
+			margin-bottom: ($base-space * 2);
+
+			@include bp(medium) {
+				margin-bottom: ($base-space * 4);
+			}
 		}
 	}
 
 	&__bottom-bar {
 		@extend %u-ls-6;
-		display: flex;
-		justify-content: space-between;
+		text-align: center;
 		text-transform: uppercase;
 		font-size: 1.25rem;
 		font-weight: 700;
+
+		> span {
+			display: block;
+			margin-bottom: ($base-space / 1.5);
+
+			@include bp(medium) {
+				margin-bottom: 0;
+			}
+
+		}
+
+		@include bp(large) {
+			display: flex;
+			justify-content: space-between; 
+		}
 
 		a {
 			color: color(black);
@@ -40,16 +66,24 @@
 	&__heading {
 		@extend %u-heading-6;
 		@extend %u-ls-4;
-		margin-bottom: ($base-space);
+		margin-bottom: ($base-space / 1.5);
+
+		@include bp(small) {
+			margin-bottom: ($base-space);
+		}
 	}
 
 	&__link {
-		@extend %u-heading-5;
+		font-size: map-get($heading-sizes, 6);
 		@extend %u-ls-4;
 		display: inline-block;
 		text-transform: uppercase;
 		color: color(black);
 		font-weight: 300;
+
+		@include bp(small) {
+			font-size: map-get($heading-sizes, 5);
+		}
 	}
 
 	&__social-links {
@@ -57,13 +91,20 @@
 	}
 
 	&__social-link {
-		margin: (0) ($base-space / 1.5);
+		display: inline-block;
+		margin: (0) ($base-space / 1.5) ($base-space / 1.5);
 
 		svg {
-			$size: 30px;
+			$size: 24px;
 			width: $size;
 			height: $size;
 			fill: color(black);
+
+			@include bp(small) {
+				$size: 30px;
+				width: $size;
+				height: $size;
+			}
 		}
 	}
 

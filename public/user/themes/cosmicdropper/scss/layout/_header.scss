@@ -15,6 +15,14 @@
 
 	backface-visibility: hidden;
 
+	@include bp(medium) {
+		flex-flow: column wrap;
+	}
+
+	@include bp(large) {
+		flex-flow: row wrap;
+	}
+
 	&:before {
 		@include cover;
 		content: "";
@@ -44,7 +52,7 @@
 
 	&__logo {
 		display: block;
-		z-index: 2;
+		z-index: 10;
 
 		svg {
 			$width: 260px;
@@ -52,21 +60,30 @@
 			display: block;
 			width: $width;
 			height: $height;
-			margin: ($base-space) (0);
+			margin: ($base-space) (0) ($base-space / 2);
 			opacity: 0;
 			will-change: transform, fill, margin;
 			fill: $theme-color-2;
 			overflow: visible;
 
+			@include bp(large) {
+				margin: ($base-space) (0);
+			}
+
 			&.loaded {
-				opacity: 1;
-				$width: 165px;
+				$width: 145px;
 				$height: ($width / 2);
 				width: $width;
 				height: $height;
 				@include ease();
 				stroke-width: 0;
+				opacity: 1;
 		    margin-left: -$base-space / 4;
+
+		    @include bp(small) {
+		    	$width: 165px;
+		    	$height: ($width / 2);
+		    }
 
 				path {
 					animation: none 0 !important;
@@ -141,7 +158,7 @@
 	&__hamburger {
 		display: block;
 		position: relative;
-		z-index: 5;
+		z-index: 2;
 
 		@include bp(medium) {
 			display: none;
@@ -151,7 +168,7 @@
 	&__overlay {
 		@include cover;
 		position: fixed;
-		z-index: 1;
+		z-index: 5;
 
 		&:before,
 		&:after {

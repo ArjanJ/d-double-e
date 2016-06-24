@@ -2,9 +2,13 @@
 	@include clearfix;
 	position: relative;
 	z-index: 2;
-	padding: ($base-space * 4) (0) ($base-space * 6);
+	padding: ($base-space * 3) (0) ($base-space * 5);
 	background: rgba($theme-color-3, 0.9);
 	color: color(white);
+
+	@include bp(small) {
+		padding: ($base-space * 4) (0) ($base-space * 6);
+	}
 
 	&__heading {
 		@extend %u-heading-4;
@@ -103,9 +107,13 @@
 		}
 
 		&-name {
-			font-size: map-get($heading-sizes, 4);
-			margin-bottom: ($base-space / 4);
+			font-size: map-get($heading-sizes, 5);
+			margin-bottom: ($base-space / 2);
 			color: $theme-color-2;
+
+			@include bp(large) {
+				font-size: map-get($heading-sizes, 4);
+			}
 		}
 
 		&-location {
@@ -118,7 +126,11 @@
 			}
 
 			&--last {
-				margin-bottom: ($base-space * 3);
+				margin-bottom: ($base-space * 2);
+
+				@include bp(large) {
+					margin-bottom: ($base-space * 3);
+				}
 			}
 		}
 
@@ -141,7 +153,13 @@
 			@extend %c-button;
 			color: color(white);
 			background: none;
-			font-size: $font-size-small;
+			font-size: 1.25rem;
+			padding: ($base-space / 3) ($base-space / 1.5);
+
+			@include bp(large) {
+				font-size: $font-size-small;
+				padding: ($base-space / 2) ($base-space);
+			}
 			
 			&:before {
 				background: $theme-color-1;
@@ -163,10 +181,6 @@
 				&:after {
 					border-color: $theme-color-2;
 				}
-			}
-
-			@include bp(large) {
-				// font-size: map-get($heading-sizes, 6);
 			}
 		}
 	}

@@ -2,21 +2,17 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: ($base-space * 5) (0);
+	padding: ($base-space * 6) (0) ($base-space * 7);
 	position: relative;
 	z-index: 1;
 
-	@media (min-height: 690px) {
-		padding: ($base-space * 7) (0);
+	@include bp(medium) {
+		padding: ($base-space * 9) (0) ($base-space * 10);
 	}
 
-	// &__video {
-	// 	@include cover;
-	// 	display: block;
-	// 	position: fixed;
-	// 	z-index: -1;
-	// 	backface-visibility: hidden;
-	// }
+	@include bp(large) {
+		padding: ($base-space * 7) (0);
+	}
 	
 	&__fixed-bg {
 		@include cover;
@@ -30,10 +26,6 @@
 		background-position: center;
 		background-size: cover;
 		will-change: background-color, background-blend-mode;
-
-		&--red {
-			
-		}
 
 		&--green {
 			background-blend-mode: luminosity;
@@ -78,7 +70,7 @@
 			}
 
 			@include bp(medium) {
-				$size: 320px;
+				$size: 350px;
 				max-width: $size;
 				max-height: $size;
 			}
@@ -91,7 +83,7 @@
 		}
 
 		&-title {
-			font-size: map-get($heading-sizes, 6);
+			font-size: map-get($heading-sizes, 5);
 			letter-spacing: 0.3rem;
 			margin-top: (-$base-space);
 			margin-bottom: ($base-space * 1.5);
@@ -115,7 +107,7 @@
 				font-size: map-get($heading-sizes, 4);
 			}
 
-			@include bp(medium) {
+			@include bp(large) {
 				font-size: map-get($heading-sizes, 3);
 			}
 		}

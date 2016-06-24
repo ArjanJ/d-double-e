@@ -84,15 +84,13 @@ const homeHeroScroll = (() => {
 		const { content, news, bg, hero } = components;
 		const translateY = scrolled / 2;
 
-		if (true) {
-			content.style.transform = `translateY(${translateY}px)`;
-		}
+		content.style.transform = `translateY(${translateY}px)`;
 
-		if (isVisible(news, -250) && !news.classList.contains('home-hero__fixed-bg--green')) {
+		if (scrolled > hero.offsetHeight + 100 && !news.classList.contains('home-hero__fixed-bg--green')) {
 			bg.classList.add('home-hero__fixed-bg--green');
 		}
 
-		if (!isVisible(news, -250) && bg.classList.contains('home-hero__fixed-bg--green')) {
+		if (scrolled < hero.offsetHeight - 100 && bg.classList.contains('home-hero__fixed-bg--green')) {
 			bg.classList.remove('home-hero__fixed-bg--green');
 		}
 	}

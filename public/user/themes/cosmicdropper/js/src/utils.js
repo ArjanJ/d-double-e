@@ -44,7 +44,6 @@ export function debounce(func, wait, immediate) {
 }
 
 export function wrapTextInElement(element, wrapper) {
-	// element = document.querySelector(element);
 	const elementString = element.innerHTML;
 	const lettersArray = [];
 	const wordsArray = [];

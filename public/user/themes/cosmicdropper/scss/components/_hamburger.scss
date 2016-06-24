@@ -1,8 +1,8 @@
 .c-hamburger {
 	$p: &;
-	$patty-height: 4px;
-	$patty-margin: 5px;
-	$patty-bg: $theme-color-1;
+	$patty-height: 3px;
+	$patty-margin: 6px;
+	$patty-bg: $theme-color-2;
 	$width: $base-space * 1.5;
 
 	appearance: none;
@@ -18,17 +18,22 @@
 
 	&--active {
 
-		#{$p}__patty,
-		#{$p}__patty:nth-child(3) {
-			background: $theme-color-3;
+		#{$p}__patty:nth-child(1) {
+			transform: rotate(45deg) translate(5px, 6px);
+		}
+
+		#{$p}__patty:nth-child(2) {
 			transform: scaleX(0);
+		}
+
+		#{$p}__patty:nth-child(3) {
+			transform: scaleX(1) rotate(-45deg) translate(2px, 6px);
 		}
 	}
 
 	&__patty {
 		height: $patty-height;
 		margin-bottom: $patty-margin;
-		border-radius: 999px;
 		background: $patty-bg;
 		@include ease();
 

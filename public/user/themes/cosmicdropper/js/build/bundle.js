@@ -155,15 +155,13 @@ var homeHeroScroll = function () {
 
 		var translateY = scrolled / 2;
 
-		if (true) {
-			content.style.transform = 'translateY(' + translateY + 'px)';
-		}
+		content.style.transform = 'translateY(' + translateY + 'px)';
 
-		if ((0, _utils.isVisible)(news, -250) && !news.classList.contains('home-hero__fixed-bg--green')) {
+		if (scrolled > hero.offsetHeight + 100 && !news.classList.contains('home-hero__fixed-bg--green')) {
 			bg.classList.add('home-hero__fixed-bg--green');
 		}
 
-		if (!(0, _utils.isVisible)(news, -250) && bg.classList.contains('home-hero__fixed-bg--green')) {
+		if (scrolled < hero.offsetHeight - 100 && bg.classList.contains('home-hero__fixed-bg--green')) {
 			bg.classList.remove('home-hero__fixed-bg--green');
 		}
 	};
@@ -230,7 +228,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 document.addEventListener('DOMContentLoaded', function () {
 	// header.init();
 	_home2.default.init();
-	// nav.init();
+	_nav2.default.init();
 });
 
 },{"./header":1,"./home":2,"./nav":4}],4:[function(require,module,exports){
@@ -386,7 +384,6 @@ function debounce(func, wait, immediate) {
 }
 
 function wrapTextInElement(element, wrapper) {
-	// element = document.querySelector(element);
 	var elementString = element.innerHTML;
 	var lettersArray = [];
 	var wordsArray = [];
