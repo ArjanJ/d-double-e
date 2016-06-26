@@ -45,7 +45,7 @@ class __TwigTemplate_b9415ba574725017c56e02afa2d0f737efaf636faca92eb07c00f7726ec
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 10
         echo "\t\t<li class=\"site-nav__item\">
-\t\t\t<a href=\"\" class=\"site-nav__link\">Shop</a>
+\t\t\t<a href=\"http://www.blukuwear.bigcartel.com/\" target=\"_blank\" class=\"site-nav__link\">Shop</a>
 \t\t</li>
 \t</ul>
 </nav>";
@@ -76,7 +76,7 @@ class __TwigTemplate_b9415ba574725017c56e02afa2d0f737efaf636faca92eb07c00f7726ec
 /* 			{% endif %}*/
 /* 		{% endfor %}*/
 /* 		<li class="site-nav__item">*/
-/* 			<a href="" class="site-nav__link">Shop</a>*/
+/* 			<a href="http://www.blukuwear.bigcartel.com/" target="_blank" class="site-nav__link">Shop</a>*/
 /* 		</li>*/
 /* 	</ul>*/
 /* </nav>*/

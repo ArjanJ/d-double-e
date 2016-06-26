@@ -20,7 +20,7 @@
 	<body>
 		{% include "./partials/header.html.twig" %}
 
-		<main class="site-main">
+		<main class="site-main {{ page.menu }}">
 			{% block content %}{% endblock %}
 		</main>
 

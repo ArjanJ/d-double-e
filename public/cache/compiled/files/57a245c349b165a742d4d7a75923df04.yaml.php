@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/user/plugins/admin/languages/tr.yaml',
-    'modified' => 1457676614,
+    'modified' => 1466892963,
     'data' => [
         'PLUGIN_ADMIN' => [
             'LOGIN_BTN' => 'Giriş Yap',

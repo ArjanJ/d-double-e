@@ -91,13 +91,11 @@ assets:
   js_pipeline: false
   js_minify: true
   enable_asset_timestamp: false
-  collections:
-    jquery: 'system://assets/jquery/jquery-2.x.min.js'
 errors:
   display: true
   log: true
 debugger:
-  enabled: false
+  enabled: true
   shutdown:
     close_connection: true
   twig: true

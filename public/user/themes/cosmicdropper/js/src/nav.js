@@ -5,14 +5,12 @@ const nav = (() => {
 		nav: $('.site-nav'),
 		navItems: $$('.site-nav__item'),
 		hamburger: $('.site-header__hamburger button.c-hamburger'),
-		main: $('.site-main')
 	};
 
 	const cssClasses = {
 		navActive: 'site-nav--active',
 		navItemActive: 'site-nav__item--active',
 		hamburgerActive: 'c-hamburger--active',
-		mainActive: 'site-main--active'
 	};
 
 	const toggleNav = (event) => {
@@ -24,7 +22,6 @@ const nav = (() => {
 
 		nav.classList.toggle(navActive);
 		hamburger.classList.toggle(hamburgerActive);
-		main.classList.toggle(mainActive);
 
 		setTimeout(() => {
 			navItems.forEach(item => item.classList.toggle(navItemActive));
@@ -42,7 +39,6 @@ const nav = (() => {
 
 		nav.classList.remove(navActive);
 		hamburger.classList.remove(hamburgerActive);
-		main.classList.remove(mainActive);
 		navItems.forEach(item => item.classList.remove(navItemActive));
 
 		if (nav.classList.contains(navActive)) {

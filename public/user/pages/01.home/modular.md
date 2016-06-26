@@ -1,5 +1,6 @@
 ---
-title: Home
+title: D Double E - Grime MC
+menu: Home
 
 content:
   items: '@self.modular'

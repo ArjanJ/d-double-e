@@ -14,6 +14,8 @@
       @content;
     }
 	} @else {
-    @warn "No value could be retrieved from `#{$bp}`." + "Please make sure it is defined in `$breakpoints` map.";
+   	@media (min-width: $bp) {
+      @content;
+    }
   }
 }

@@ -196,9 +196,14 @@ var homeEvents = function () {
 
 var home = function () {
 	var init = function init() {
-		introAnimations.init();
-		homeHeroScroll.init();
-		homeEvents.init();
+		if ((0, _utils.$)('main').classList.contains('Home')) {
+			homeHeroScroll.init();
+			homeEvents.init();
+			introAnimations.init();
+		} else {
+			(0, _utils.$)('.site-header__overlay').remove();
+			(0, _utils.$)('#header-logo').classList.add('loaded');
+		}
 	};
 
 	return {
@@ -244,15 +249,13 @@ var nav = function () {
 	var components = {
 		nav: (0, _utils.$)('.site-nav'),
 		navItems: (0, _utils.$$)('.site-nav__item'),
-		hamburger: (0, _utils.$)('.site-header__hamburger button.c-hamburger'),
-		main: (0, _utils.$)('.site-main')
+		hamburger: (0, _utils.$)('.site-header__hamburger button.c-hamburger')
 	};
 
 	var cssClasses = {
 		navActive: 'site-nav--active',
 		navItemActive: 'site-nav__item--active',
-		hamburgerActive: 'c-hamburger--active',
-		mainActive: 'site-main--active'
+		hamburgerActive: 'c-hamburger--active'
 	};
 
 	var toggleNav = function toggleNav(event) {
@@ -271,7 +274,6 @@ var nav = function () {
 
 		nav.classList.toggle(navActive);
 		hamburger.classList.toggle(hamburgerActive);
-		main.classList.toggle(mainActive);
 
 		setTimeout(function () {
 			navItems.forEach(function (item) {
@@ -297,7 +299,6 @@ var nav = function () {
 
 		nav.classList.remove(navActive);
 		hamburger.classList.remove(hamburgerActive);
-		main.classList.remove(mainActive);
 		navItems.forEach(function (item) {
 			return item.classList.remove(navItemActive);
 		});
@@ -327,7 +328,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.$ = $;
 exports.$$ = $$;
 exports.isVisible = isVisible;
-exports.imageLoaded = imageLoaded;
 exports.debounce = debounce;
 exports.wrapTextInElement = wrapTextInElement;
 exports.addClassStaggered = addClassStaggered;
@@ -353,20 +353,6 @@ function isVisible(element) {
 		return false;
 	}
 }
-
-function imageLoaded(src, success, failed) {
-	var image = new Image();
-	image.src = src;
-
-	image.onload = function () {
-		return success(image);
-	};
-
-	image.onerror = function (error) {
-		return failed(error);
-	};
-}
-
 function debounce(func, wait, immediate) {
 	var timeout;
 	return function () {
@@ -384,16 +370,18 @@ function debounce(func, wait, immediate) {
 }
 
 function wrapTextInElement(element, wrapper) {
-	var elementString = element.innerHTML;
+	var elementString = element ? element.innerHTML : null;
 	var lettersArray = [];
 	var wordsArray = [];
 
 	init();
 
 	function init() {
-		createLettersArray(elementString);
-		createWordArrays(lettersArray);
-		element.innerHTML = wrapLetters(wrapper);
+		if (elementString) {
+			createLettersArray(elementString);
+			createWordArrays(lettersArray);
+			element.innerHTML = wrapLetters(wrapper);
+		}
 	}
 
 	function createLettersArray(str) {

@@ -4,8 +4,10 @@ title: Upcoming Shows
 content:
   limit: 5
   order:
-    by: header.event_date
+    by: date
     dir: asc
   items:
     '@page.children': /shows
+  dateRange:
+    start: today
 ---

@@ -1,15 +1,33 @@
 {% extends "./layouts/default.html.twig" %}
 
 {% block content %}
-	<section class="blog">
-		<h1>Shows</h1>
-		
-		{% for child in page.collection() %}
-			<div>
-				<h2>{{ child.header.event_name }}</h2>
-				<h3>{{ child.header.event_location }}</h2>
-			</div>
-		{% endfor %}
-
+	<section class="shows">
+		<div class="u-wrapper">
+			<h1 class="shows__heading">Upcoming Shows</h1>
+			
+			<ul class="shows__list">
+				{% for child in page.collection() %}
+					<li class="home-events-item">
+						<div class="home-events-item__date">
+							<span class="home-events-item__date-txt">{{ child.header.date|date("F")|slice(0, 3) }}</span>
+							<span class="home-events-item__date-txt">{{ child.header.date|date("j") }}</span>
+						</div>
+						<div class="home-events-item__about">
+							<h2 class="home-events-item__about-name">{{ child.header.event_name }}</h2>
+							<h3 class="home-events-item__about-location {% if loop.last %}home-events-item__about-location--last{% endif %}">
+								<span>{{ child.header.event_city }},</span>
+								<span>{{ child.header.event_country }}<span>
+							</h3>
+						</div>
+						<div class="home-events-item__buy">
+							<a href="{{ child.header.event_tickets }}" class="home-events-item__buy-btn">Tickets</a>
+						</div>
+					</li>
+				{% endfor %}
+			</ul>
+			{% if config.plugins.pagination.enabled and page.collection().params.pagination %}
+		    {% include './partials/pagination.html.twig' with {'base_url':page.url, 'pagination':page.collection().params.pagination} %}
+			{% endif %}
+		</div>
 	</section>
 {% endblock %}

@@ -28,32 +28,95 @@ class __TwigTemplate_7cbc36b2a0a8e51446fbb34281b6e3fe5066d1698b200ae2b7a073949f1
     public function block_content($context, array $blocks = array())
     {
         // line 4
-        echo "\t<section class=\"blog\">
-\t\t<h1>Shows</h1>
-\t\t
-\t\t";
-        // line 7
+        echo "\t<section class=\"shows\">
+\t\t<div class=\"u-wrapper\">
+\t\t\t<h1 class=\"shows__heading\">Upcoming Shows</h1>
+\t\t\t
+\t\t\t<ul class=\"shows__list\">
+\t\t\t\t";
+        // line 9
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "collection", array(), "method"));
+        $context['loop'] = array(
+          'parent' => $context['_parent'],
+          'index0' => 0,
+          'index'  => 1,
+          'first'  => true,
+        );
+        if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof Countable)) {
+            $length = count($context['_seq']);
+            $context['loop']['revindex0'] = $length - 1;
+            $context['loop']['revindex'] = $length;
+            $context['loop']['length'] = $length;
+            $context['loop']['last'] = 1 === $length;
+        }
         foreach ($context['_seq'] as $context["_key"] => $context["child"]) {
-            // line 8
-            echo "\t\t\t<div>
-\t\t\t\t<h2>";
-            // line 9
+            // line 10
+            echo "\t\t\t\t\t<li class=\"home-events-item\">
+\t\t\t\t\t\t<div class=\"home-events-item__date\">
+\t\t\t\t\t\t\t<span class=\"home-events-item__date-txt\">";
+            // line 12
+            echo twig_slice($this->env, twig_date_format_filter($this->env, $this->getAttribute($this->getAttribute($context["child"], "header", array()), "date", array()), "F"), 0, 3);
+            echo "</span>
+\t\t\t\t\t\t\t<span class=\"home-events-item__date-txt\">";
+            // line 13
+            echo twig_date_format_filter($this->env, $this->getAttribute($this->getAttribute($context["child"], "header", array()), "date", array()), "j");
+            echo "</span>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"home-events-item__about\">
+\t\t\t\t\t\t\t<h2 class=\"home-events-item__about-name\">";
+            // line 16
             echo $this->getAttribute($this->getAttribute($context["child"], "header", array()), "event_name", array());
             echo "</h2>
-\t\t\t\t<h3>";
-            // line 10
-            echo $this->getAttribute($this->getAttribute($context["child"], "header", array()), "event_location", array());
-            echo "</h2>
-\t\t\t</div>
-\t\t";
+\t\t\t\t\t\t\t<h3 class=\"home-events-item__about-location ";
+            // line 17
+            if ($this->getAttribute($context["loop"], "last", array())) {
+                echo "home-events-item__about-location--last";
+            }
+            echo "\">
+\t\t\t\t\t\t\t\t<span>";
+            // line 18
+            echo $this->getAttribute($this->getAttribute($context["child"], "header", array()), "event_city", array());
+            echo ",</span>
+\t\t\t\t\t\t\t\t<span>";
+            // line 19
+            echo $this->getAttribute($this->getAttribute($context["child"], "header", array()), "event_country", array());
+            echo "<span>
+\t\t\t\t\t\t\t</h3>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"home-events-item__buy\">
+\t\t\t\t\t\t\t<a href=\"";
+            // line 23
+            echo $this->getAttribute($this->getAttribute($context["child"], "header", array()), "event_tickets", array());
+            echo "\" class=\"home-events-item__buy-btn\">Tickets</a>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</li>
+\t\t\t\t";
+            ++$context['loop']['index0'];
+            ++$context['loop']['index'];
+            $context['loop']['first'] = false;
+            if (isset($context['loop']['length'])) {
+                --$context['loop']['revindex0'];
+                --$context['loop']['revindex'];
+                $context['loop']['last'] = 0 === $context['loop']['revindex0'];
+            }
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['child'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 13
-        echo "
+        // line 27
+        echo "\t\t\t</ul>
+\t\t\t";
+        // line 28
+        if (($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "plugins", array()), "pagination", array()), "enabled", array()) && $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "collection", array(), "method"), "params", array()), "pagination", array()))) {
+            // line 29
+            echo "\t\t    ";
+            $this->loadTemplate("./partials/pagination.html.twig", "shows.html.twig", 29)->display(array_merge($context, array("base_url" => $this->getAttribute((isset($context["page"]) ? $context["page"] : null), "url", array()), "pagination" => $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "collection", array(), "method"), "params", array()), "pagination", array()))));
+            // line 30
+            echo "\t\t\t";
+        }
+        // line 31
+        echo "\t\t</div>
 \t</section>
 ";
     }
@@ -70,21 +133,39 @@ class __TwigTemplate_7cbc36b2a0a8e51446fbb34281b6e3fe5066d1698b200ae2b7a073949f1
 
     public function getDebugInfo()
     {
-        return array (  56 => 13,  47 => 10,  43 => 9,  40 => 8,  36 => 7,  31 => 4,  28 => 3,  11 => 1,);
+        return array (  119 => 31,  116 => 30,  113 => 29,  111 => 28,  108 => 27,  90 => 23,  83 => 19,  79 => 18,  73 => 17,  69 => 16,  63 => 13,  59 => 12,  55 => 10,  38 => 9,  31 => 4,  28 => 3,  11 => 1,);
     }
 }
 /* {% extends "./layouts/default.html.twig" %}*/
 /* */
 /* {% block content %}*/
-/* 	<section class="blog">*/
-/* 		<h1>Shows</h1>*/
-/* 		*/
-/* 		{% for child in page.collection() %}*/
-/* 			<div>*/
-/* 				<h2>{{ child.header.event_name }}</h2>*/
-/* 				<h3>{{ child.header.event_location }}</h2>*/
-/* 			</div>*/
-/* 		{% endfor %}*/
-/* */
+/* 	<section class="shows">*/
+/* 		<div class="u-wrapper">*/
+/* 			<h1 class="shows__heading">Upcoming Shows</h1>*/
+/* 			*/
+/* 			<ul class="shows__list">*/
+/* 				{% for child in page.collection() %}*/
+/* 					<li class="home-events-item">*/
+/* 						<div class="home-events-item__date">*/
+/* 							<span class="home-events-item__date-txt">{{ child.header.date|date("F")|slice(0, 3) }}</span>*/
+/* 							<span class="home-events-item__date-txt">{{ child.header.date|date("j") }}</span>*/
+/* 						</div>*/
+/* 						<div class="home-events-item__about">*/
+/* 							<h2 class="home-events-item__about-name">{{ child.header.event_name }}</h2>*/
+/* 							<h3 class="home-events-item__about-location {% if loop.last %}home-events-item__about-location--last{% endif %}">*/
+/* 								<span>{{ child.header.event_city }},</span>*/
+/* 								<span>{{ child.header.event_country }}<span>*/
+/* 							</h3>*/
+/* 						</div>*/
+/* 						<div class="home-events-item__buy">*/
+/* 							<a href="{{ child.header.event_tickets }}" class="home-events-item__buy-btn">Tickets</a>*/
+/* 						</div>*/
+/* 					</li>*/
+/* 				{% endfor %}*/
+/* 			</ul>*/
+/* 			{% if config.plugins.pagination.enabled and page.collection().params.pagination %}*/
+/* 		    {% include './partials/pagination.html.twig' with {'base_url':page.url, 'pagination':page.collection().params.pagination} %}*/
+/* 			{% endif %}*/
+/* 		</div>*/
 /* 	</section>*/
 /* {% endblock %}*/

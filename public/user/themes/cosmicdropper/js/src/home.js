@@ -125,9 +125,14 @@ const homeEvents = (() => {
 
 const home = (() => {
 	const init = () => {
-		introAnimations.init();
-		homeHeroScroll.init();
-		homeEvents.init();
+		if ($('main').classList.contains('Home')) {
+			homeHeroScroll.init();
+			homeEvents.init();
+			introAnimations.init();
+		} else {
+			$('.site-header__overlay').remove();
+			$('#header-logo').classList.add('loaded');
+		}
 	};
 
 	return {

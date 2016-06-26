@@ -1,0 +1,11 @@
+email: hello@arjanjassal.com
+access:
+  admin:
+    login: true
+    super: true
+  site:
+    login: true
+fullname: Manager
+title: Manager
+state: enabled
+hashed_password: $2y$10$7y2rlF55IAtWIjz3bNSrrej1w3K5xkvjMFU469netUfA3TpbVNN82

@@ -83,9 +83,9 @@
 			opacity: 1;
 		}
 
-		@include bp(small) {
-			display: inline-block;
-		}
+		// @include bp(medium) {
+		// 	display: inline-block;
+		// }
 
 		@include bp(medium) {
 			display: inline-block;
@@ -124,14 +124,14 @@
 			@include ease('out', 0.15);
 		}
 
-		@include bp(small) {
-			padding: (0) ($base-space / 1.5);
-			color: $theme-color-2;
-		}
-
 		@include bp(medium) {
 			padding: (0) ($base-space / 1.5);
+			color: $theme-color-2;
 			font-size: map-get($heading-sizes, 6);
+		}
+
+		@include bp(large) {
+			padding: (0) ($base-space / 1.5);
 		}
 	}
 }

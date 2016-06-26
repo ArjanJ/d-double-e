@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/user/plugins/admin/languages/en.yaml',
-    'modified' => 1457676614,
+    'modified' => 1466892963,
     'data' => [
         'PLUGIN_ADMIN' => [
             'ADMIN_BETA_MSG' => 'This is a Beta release! Use this in production at your own risk...',
@@ -483,7 +483,8 @@ return [
             'INVALID_FRONTMATTER_COULD_NOT_SAVE' => 'Invalid frontmatter, could not save',
             'ADD_FOLDER' => 'Add Folder',
             'PROXY_URL' => 'Proxy URL',
-            'PROXY_URL_HELP' => 'Enter the proxy HOST or IP and PORT'
+            'PROXY_URL_HELP' => 'Enter the proxy HOST or IP and PORT',
+            'NEEDS_GRAV_1_1' => '<i class="fa fa-exclamation-triangle"></i> <strong>You are running Grav v%s</strong>. You must update to the latest <strong>Admin plugin v1.1.x</strong> in order to ensure compatibility. This may require switching to <strong>Testing GPM releases</strong> in the System configuration.'
         ]
     ]
 ];

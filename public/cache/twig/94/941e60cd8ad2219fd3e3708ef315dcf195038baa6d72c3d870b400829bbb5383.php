@@ -20,27 +20,52 @@ class __TwigTemplate_a24a3dc7a33f8aa66175a77b74399b48364ddb21556d0be7a5acb6b0f7f
 \t<div class=\"home-hero__fixed-bg\"></div>
 \t<div class=\"u-wrapper\">
 \t\t<div class=\"home-hero__music\">
-\t\t\t<img width=\"600\" height=\"600\" src=\"/images/home-music-cover.jpg\" alt=\"\" class=\"home-hero__music-img\">
-\t\t\t<h1 class=\"home-hero__music-title\">Grim Reaper — single out now</h1>
-\t\t\t<a href=\"https://geo.itunes.apple.com/ca/album/grim-reaper-single/id1096650129?mt=1&app=music\" class=\"c-button home-hero__music-link home-hero__music-link--itunes\">
-\t\t\t\t<div class=\"home-hero__music-link-icon\">
-\t\t\t\t\t<svg width=\"24\" height=\"24\"><use xlink:href=\"/svg/svg.svg#apple\" /></svg>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"home-hero__music-link-text\">
-\t\t\t\t\t<span class=\"c-button__sm-txt\">Listen on</span>
-\t\t\t\t\t<span class=\"c-button__lg-txt\">Music</span>
-\t\t\t\t</div>
-\t\t\t</a>
-\t\t\t<a href=\"https://open.spotify.com/album/1ZgbgALQjUZXIZEQ96oexY\" class=\"c-button home-hero__music-link home-hero__music-link--spotify\">
-\t\t\t\t<div class=\"home-hero__music-link-icon\">
-\t\t\t\t\t<svg width=\"24\" height=\"24\"><use xlink:href=\"/svg/svg.svg#spotify\" /></svg>
-\t\t\t\t</div>
+\t\t\t<img width=\"600\" height=\"600\" src=\"";
+        // line 5
+        echo $this->getAttribute((isset($context["page"]) ? $context["page"] : null), "route", array());
+        echo "/";
+        echo $this->getAttribute($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "header", array()), "album_art", array());
+        echo "\" alt=\"\" class=\"home-hero__music-img\">
+\t\t\t<h1 class=\"home-hero__music-title\">";
+        // line 6
+        echo $this->getAttribute($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "header", array()), "album_text", array());
+        echo "</h1>
+\t\t\t";
+        // line 7
+        if ($this->getAttribute($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "header", array()), "apple_music_link", array())) {
+            // line 8
+            echo "\t\t\t\t<a href=\"";
+            echo $this->getAttribute($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "header", array()), "apple_music_link", array());
+            echo "\" class=\"c-button home-hero__music-link home-hero__music-link--itunes\">
+\t\t\t\t\t<div class=\"home-hero__music-link-icon\">
+\t\t\t\t\t\t<svg width=\"24\" height=\"24\"><use xlink:href=\"/svg/svg.svg#apple\" /></svg>
+\t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"home-hero__music-link-text\">
 \t\t\t\t\t\t<span class=\"c-button__sm-txt\">Listen on</span>
-\t\t\t\t\t\t<span class=\"c-button__lg-txt\">Spotify</span>
+\t\t\t\t\t\t<span class=\"c-button__lg-txt\">Music</span>
 \t\t\t\t\t</div>
-\t\t\t</a>
-\t\t</div>
+\t\t\t\t</a>
+\t\t\t";
+        }
+        // line 18
+        echo "\t\t\t";
+        if ($this->getAttribute($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "header", array()), "spotify_link", array())) {
+            // line 19
+            echo "\t\t\t\t<a href=\"";
+            echo $this->getAttribute($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "header", array()), "spotify_link", array());
+            echo "\">
+\t\t\t\t\t<div class=\"home-hero__music-link-icon\">
+\t\t\t\t\t\t<svg width=\"24\" height=\"24\"><use xlink:href=\"/svg/svg.svg#spotify\" /></svg>
+\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"home-hero__music-link-text\">
+\t\t\t\t\t\t\t<span class=\"c-button__sm-txt\">Listen on</span>
+\t\t\t\t\t\t\t<span class=\"c-button__lg-txt\">Spotify</span>
+\t\t\t\t\t\t</div>
+\t\t\t\t</a>
+\t\t\t";
+        }
+        // line 29
+        echo "\t\t</div>
 \t</div>
 \t<div class=\"home-hero__spotify\">
 \t\t<iframe src=\"https://embed.spotify.com/follow/1/?uri=spotify:artist:6bwkMlweHsBCpI2a0C5nnN&size=basic&theme=light&show-count=0\" width=\"200\" height=\"25\" scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden;\" allowtransparency=\"true\"></iframe>
@@ -56,35 +81,44 @@ class __TwigTemplate_a24a3dc7a33f8aa66175a77b74399b48364ddb21556d0be7a5acb6b0f7f
         return "modular/hero.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  19 => 1,);
+        return array (  68 => 29,  54 => 19,  51 => 18,  37 => 8,  35 => 7,  31 => 6,  25 => 5,  19 => 1,);
     }
 }
 /* <section class="home-hero">*/
 /* 	<div class="home-hero__fixed-bg"></div>*/
 /* 	<div class="u-wrapper">*/
 /* 		<div class="home-hero__music">*/
-/* 			<img width="600" height="600" src="/images/home-music-cover.jpg" alt="" class="home-hero__music-img">*/
-/* 			<h1 class="home-hero__music-title">Grim Reaper — single out now</h1>*/
-/* 			<a href="https://geo.itunes.apple.com/ca/album/grim-reaper-single/id1096650129?mt=1&app=music" class="c-button home-hero__music-link home-hero__music-link--itunes">*/
-/* 				<div class="home-hero__music-link-icon">*/
-/* 					<svg width="24" height="24"><use xlink:href="/svg/svg.svg#apple" /></svg>*/
-/* 				</div>*/
-/* 				<div class="home-hero__music-link-text">*/
-/* 					<span class="c-button__sm-txt">Listen on</span>*/
-/* 					<span class="c-button__lg-txt">Music</span>*/
-/* 				</div>*/
-/* 			</a>*/
-/* 			<a href="https://open.spotify.com/album/1ZgbgALQjUZXIZEQ96oexY" class="c-button home-hero__music-link home-hero__music-link--spotify">*/
-/* 				<div class="home-hero__music-link-icon">*/
-/* 					<svg width="24" height="24"><use xlink:href="/svg/svg.svg#spotify" /></svg>*/
-/* 				</div>*/
+/* 			<img width="600" height="600" src="{{ page.route }}/{{ page.header.album_art }}" alt="" class="home-hero__music-img">*/
+/* 			<h1 class="home-hero__music-title">{{ page.header.album_text }}</h1>*/
+/* 			{% if page.header.apple_music_link %}*/
+/* 				<a href="{{ page.header.apple_music_link }}" class="c-button home-hero__music-link home-hero__music-link--itunes">*/
+/* 					<div class="home-hero__music-link-icon">*/
+/* 						<svg width="24" height="24"><use xlink:href="/svg/svg.svg#apple" /></svg>*/
+/* 					</div>*/
 /* 					<div class="home-hero__music-link-text">*/
 /* 						<span class="c-button__sm-txt">Listen on</span>*/
-/* 						<span class="c-button__lg-txt">Spotify</span>*/
+/* 						<span class="c-button__lg-txt">Music</span>*/
 /* 					</div>*/
-/* 			</a>*/
+/* 				</a>*/
+/* 			{% endif %}*/
+/* 			{% if page.header.spotify_link %}*/
+/* 				<a href="{{ page.header.spotify_link }}">*/
+/* 					<div class="home-hero__music-link-icon">*/
+/* 						<svg width="24" height="24"><use xlink:href="/svg/svg.svg#spotify" /></svg>*/
+/* 					</div>*/
+/* 						<div class="home-hero__music-link-text">*/
+/* 							<span class="c-button__sm-txt">Listen on</span>*/
+/* 							<span class="c-button__lg-txt">Spotify</span>*/
+/* 						</div>*/
+/* 				</a>*/
+/* 			{% endif %}*/
 /* 		</div>*/
 /* 	</div>*/
 /* 	<div class="home-hero__spotify">*/

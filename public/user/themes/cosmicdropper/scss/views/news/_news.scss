@@ -1,0 +1,160 @@
+.news {
+	padding: ($base-space * 5) (0) ($base-space * 8);
+
+	@include bp(small) {
+		padding: ($base-space * 6) (0) ($base-space * 10);
+	}
+
+	@include bp(medium) {
+		padding: ($base-space * 8) (0) ($base-space * 10);
+	}
+
+	@include bp(large) {
+		padding: ($base-space * 6) (0) ($base-space * 10);
+	}
+	
+	&__heading {
+		@extend %u-ls-3;
+		margin-bottom: ($base-space * 1.5);
+		font-size: map-get($heading-sizes, 4);
+		color: white;
+		text-align: center;
+
+		@include bp(medium) {
+			margin-bottom: ($base-space * 2);
+			font-size: map-get($heading-sizes, 3);
+		}
+
+		@include bp(large) {
+			margin-bottom: ($base-space * 3);
+		}
+	}
+
+	&__list {
+		list-style-type: none;
+		max-width: 540px;
+		margin: 0 auto;
+
+		@include bp(large) {
+			max-width: 640px;
+		}
+
+		@include bp(xlarge) {
+			max-width: 740px;
+		}
+	}
+
+	&-item {
+		$p: &;
+		@include clearfix;
+		display: block;
+		position: relative;
+		min-height: ($base-space * 8);
+		overflow: hidden;
+
+		@include bp(medium) {
+			min-height: ($base-space * 10);
+		}
+
+		&__link {
+			@include cover;
+			@include clearfix;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			position: absolute;
+			z-index: 1;
+			background: $theme-color-1;
+			padding: (0) ($base-space);
+
+			@include bp(medium) {
+				justify-content: space-between;
+			}
+
+			&:hover {
+				#{$p}__cover {
+					opacity: 0.75;
+					transform: translateY(-50%);
+				}
+			}
+		}
+
+		&__title {
+			order: 2;
+			text-align: center;
+			margin: auto;
+			@extend %u-ls-5;
+			font-size: map-get($heading-sizes, 5);
+			color: white;
+			text-shadow: 0 2px 6px rgba(black, 0.15);
+
+			@include bp(medium) {
+				margin: 0 auto;
+				font-size: map-get($heading-sizes, 4);
+			}
+		}
+
+		&__date {
+			order: 1;
+			display: inline-table;
+			padding: ($base-space / 1.5);
+			position: relative;
+			top: 0;
+			left: -$base-space;
+			background: $theme-color-2;
+			color: $theme-color-3;
+			font-size: 1.4rem;
+			@include card(2);
+
+			@include bp(small) {
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: inline-block;
+			}
+
+			@include bp(large) {
+				font-size: $font-size-body;
+				padding: ($base-space);
+			}
+		}
+
+		&__read-more {
+			order: 3;
+			text-align: center;
+			position: relative;
+			z-index: -1;
+			margin-bottom: ($base-space);
+			color: $theme-color-3;
+
+			svg {
+				$size: 24px;
+				width: $size;
+				height: $size;
+				fill: $theme-color-3;
+			}
+		}
+
+		&__cover {
+			@include cover;
+			display: block;
+			position: absolute;
+			z-index: -1;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			will-change: transform;
+			@include ease();
+			@include card(3);
+
+			&:before {
+				@include cover;
+				content: "";
+				display: block;
+				position: absolute;
+				z-index: -1;
+				background: linear-gradient(45deg, rgba($theme-color-3, 0.65), rgba(black, 0));
+			}
+		}
+	}
+}

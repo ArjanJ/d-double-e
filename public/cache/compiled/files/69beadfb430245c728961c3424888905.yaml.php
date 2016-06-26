@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/user/config/system.yaml',
-    'modified' => 1461102924,
+    'modified' => 1466915009,
     'data' => [
         'absolute_urls' => false,
         'timezone' => '',
@@ -114,17 +114,14 @@ return [
             'css_rewrite' => true,
             'js_pipeline' => false,
             'js_minify' => true,
-            'enable_asset_timestamp' => false,
-            'collections' => [
-                'jquery' => 'system://assets/jquery/jquery-2.x.min.js'
-            ]
+            'enable_asset_timestamp' => false
         ],
         'errors' => [
             'display' => true,
             'log' => true
         ],
         'debugger' => [
-            'enabled' => false,
+            'enabled' => true,
             'shutdown' => [
                 'close_connection' => true
             ],

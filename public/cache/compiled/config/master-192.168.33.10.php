@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledConfig',
-    'timestamp' => 1461102928,
-    'checksum' => 'f8029ecd3022519912a79c459677a6c3',
+    'timestamp' => 1466914777,
+    'checksum' => '16ce1f18582da2ec7743ee9ddaabb46f',
     'files' => [
         'user/config' => [
             'media' => [
@@ -15,7 +15,7 @@ return [
             ],
             'site' => [
                 'file' => 'user/config/site.yaml',
-                'modified' => 1460580217
+                'modified' => 1466914215
             ],
             'streams' => [
                 'file' => 'user/config/streams.yaml',
@@ -23,7 +23,7 @@ return [
             ],
             'system' => [
                 'file' => 'user/config/system.yaml',
-                'modified' => 1461102924
+                'modified' => 1466915009
             ],
             'themes/antimatter' => [
                 'file' => 'user/config/themes/antimatter.yaml',
@@ -51,7 +51,7 @@ return [
         'user/plugins' => [
             'plugins/admin' => [
                 'file' => 'user/plugins/admin/admin.yaml',
-                'modified' => 1457676614
+                'modified' => 1466895792
             ],
             'plugins/datetools' => [
                 'file' => 'user/plugins/datetools/datetools.yaml',
@@ -59,7 +59,7 @@ return [
             ],
             'plugins/email' => [
                 'file' => 'user/plugins/email/email.yaml',
-                'modified' => 1457676583
+                'modified' => 1466892981
             ],
             'plugins/error' => [
                 'file' => 'user/plugins/error/error.yaml',
@@ -67,15 +67,19 @@ return [
             ],
             'plugins/form' => [
                 'file' => 'user/plugins/form/form.yaml',
-                'modified' => 1457676449
+                'modified' => 1466892922
             ],
             'plugins/login' => [
                 'file' => 'user/plugins/login/login.yaml',
-                'modified' => 1457676604
+                'modified' => 1466892950
+            ],
+            'plugins/pagination' => [
+                'file' => 'user/plugins/pagination/pagination.yaml',
+                'modified' => 1466908578
             ],
             'plugins/problems' => [
                 'file' => 'user/plugins/problems/problems.yaml',
-                'modified' => 1456442350
+                'modified' => 1466893001
             ]
         ]
     ],
@@ -83,7 +87,7 @@ return [
         'plugins' => [
             'admin' => [
                 'enabled' => true,
-                'route' => '/admin',
+                'route' => '/supersecretplace',
                 'theme' => 'grav',
                 'dashboard' => [
                     'days_of_stats' => 7
@@ -139,7 +143,8 @@ return [
                         'bin' => '/usr/sbin/sendmail'
                     ]
                 ],
-                'content_type' => 'text/html'
+                'content_type' => 'text/html',
+                'debug' => false
             ],
             'error' => [
                 'enabled' => true,
@@ -236,6 +241,11 @@ return [
                         ]
                     ]
                 ]
+            ],
+            'pagination' => [
+                'enabled' => true,
+                'built_in_css' => true,
+                'delta' => 0
             ],
             'problems' => [
                 'enabled' => true,
@@ -500,7 +510,7 @@ return [
                 1 => 'tag'
             ],
             'metadata' => [
-                'description' => 'Grav is an easy to use, yet powerful, open source flat-file CMS'
+                'description' => 'D Double E is a living legend in the Grime scene and considered by many to be the greatest MC of all time.'
             ],
             'summary' => [
                 'enabled' => true,
@@ -511,7 +521,7 @@ return [
             'redirects' => NULL,
             'routes' => NULL,
             'blog' => [
-                'route' => '/blog'
+                'route' => '/news'
             ]
         ],
         'streams' => [
@@ -658,7 +668,7 @@ return [
                 'log' => true
             ],
             'debugger' => [
-                'enabled' => false,
+                'enabled' => true,
                 'shutdown' => [
                     'close_connection' => true
                 ],

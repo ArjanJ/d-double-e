@@ -18,16 +18,6 @@ export function isVisible(element, offset = 0) {
 		return false;
 	}
 }
-
-export function imageLoaded(src, success, failed) {
-	const image = new Image();
-	image.src = src;
-
-	image.onload = () => success(image);
-
-	image.onerror = (error) => failed(error);
-}
-
 export function debounce(func, wait, immediate) {
 	var timeout;
 	return function() {
@@ -44,16 +34,18 @@ export function debounce(func, wait, immediate) {
 }
 
 export function wrapTextInElement(element, wrapper) {
-	const elementString = element.innerHTML;
+	const elementString = element ? element.innerHTML : null;
 	const lettersArray = [];
 	const wordsArray = [];
 	
 	init();
 	
 	function init() {
-		createLettersArray(elementString);
-		createWordArrays(lettersArray);
-		element.innerHTML = wrapLetters(wrapper);
+		if (elementString) {
+			createLettersArray(elementString);
+			createWordArrays(lettersArray);
+			element.innerHTML = wrapLetters(wrapper);
+		}
 	}
 	
 	function createLettersArray(str) {

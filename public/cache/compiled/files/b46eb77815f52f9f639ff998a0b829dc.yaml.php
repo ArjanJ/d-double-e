@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/user/config/site.yaml',
-    'modified' => 1460580217,
+    'modified' => 1466914215,
     'data' => [
         'title' => 'D Double E',
         'author' => [
@@ -14,7 +14,7 @@ return [
             1 => 'tag'
         ],
         'metadata' => [
-            'description' => 'Grav is an easy to use, yet powerful, open source flat-file CMS'
+            'description' => 'D Double E is a living legend in the Grime scene and considered by many to be the greatest MC of all time.'
         ],
         'summary' => [
             'enabled' => true,
@@ -23,7 +23,7 @@ return [
             'delimiter' => '==='
         ],
         'blog' => [
-            'route' => '/blog'
+            'route' => '/news'
         ]
     ]
 ];

@@ -2,26 +2,30 @@
 	<div class="home-hero__fixed-bg"></div>
 	<div class="u-wrapper">
 		<div class="home-hero__music">
-			<img width="600" height="600" src="/images/home-music-cover.jpg" alt="" class="home-hero__music-img">
-			<h1 class="home-hero__music-title">Grim Reaper — single out now</h1>
-			<a href="https://geo.itunes.apple.com/ca/album/grim-reaper-single/id1096650129?mt=1&app=music" class="c-button home-hero__music-link home-hero__music-link--itunes">
-				<div class="home-hero__music-link-icon">
-					<svg width="24" height="24"><use xlink:href="/svg/svg.svg#apple" /></svg>
-				</div>
-				<div class="home-hero__music-link-text">
-					<span class="c-button__sm-txt">Listen on</span>
-					<span class="c-button__lg-txt">Music</span>
-				</div>
-			</a>
-			<a href="https://open.spotify.com/album/1ZgbgALQjUZXIZEQ96oexY" class="c-button home-hero__music-link home-hero__music-link--spotify">
-				<div class="home-hero__music-link-icon">
-					<svg width="24" height="24"><use xlink:href="/svg/svg.svg#spotify" /></svg>
-				</div>
+			<img width="600" height="600" src="{{ page.route }}/{{ page.header.album_art }}" alt="" class="home-hero__music-img">
+			<h1 class="home-hero__music-title">{{ page.header.album_text }}</h1>
+			{% if page.header.apple_music_link %}
+				<a href="{{ page.header.apple_music_link }}" class="c-button home-hero__music-link home-hero__music-link--itunes">
+					<div class="home-hero__music-link-icon">
+						<svg width="24" height="24"><use xlink:href="/svg/svg.svg#apple" /></svg>
+					</div>
 					<div class="home-hero__music-link-text">
 						<span class="c-button__sm-txt">Listen on</span>
-						<span class="c-button__lg-txt">Spotify</span>
+						<span class="c-button__lg-txt">Music</span>
 					</div>
-			</a>
+				</a>
+			{% endif %}
+			{% if page.header.spotify_link %}
+				<a href="{{ page.header.spotify_link }}">
+					<div class="home-hero__music-link-icon">
+						<svg width="24" height="24"><use xlink:href="/svg/svg.svg#spotify" /></svg>
+					</div>
+						<div class="home-hero__music-link-text">
+							<span class="c-button__sm-txt">Listen on</span>
+							<span class="c-button__lg-txt">Spotify</span>
+						</div>
+				</a>
+			{% endif %}
 		</div>
 	</div>
 	<div class="home-hero__spotify">

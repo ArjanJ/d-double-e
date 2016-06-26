@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/user/themes/cosmicdropper/blueprints/event.yaml',
-    'modified' => 1460604209,
+    'modified' => 1466897905,
     'data' => [
         'title' => 'Event',
         'form' => [
@@ -17,23 +17,38 @@ return [
                             'fields' => [
                                 'header.event_name' => [
                                     'type' => 'text',
-                                    'label' => 'Name'
+                                    'label' => 'Name',
+                                    'validate' => [
+                                        'required' => true
+                                    ]
                                 ],
                                 'header.event_city' => [
                                     'type' => 'text',
-                                    'label' => 'Event City'
+                                    'label' => 'Event City',
+                                    'validate' => [
+                                        'required' => true
+                                    ]
                                 ],
                                 'header.event_country' => [
                                     'type' => 'text',
-                                    'label' => 'Event Country'
+                                    'label' => 'Event Country',
+                                    'validate' => [
+                                        'required' => true
+                                    ]
                                 ],
-                                'header.event_date' => [
+                                'header.date' => [
                                     'type' => 'Datetime',
-                                    'label' => 'Event Date'
+                                    'label' => 'PLUGIN_ADMIN.DATE',
+                                    'validate' => [
+                                        'required' => true
+                                    ]
                                 ],
                                 'header.event_tickets' => [
                                     'type' => 'text',
-                                    'label' => 'Link to Buy Tickets'
+                                    'label' => 'Link to Buy Tickets',
+                                    'validate' => [
+                                        'required' => true
+                                    ]
                                 ],
                                 'route' => [
                                     'type' => 'select',

@@ -1,10 +1,7 @@
 @import "home/home";
+@import "news/news";
+@import "shows/shows";
 
 .site-main {
 	overflow-x: hidden;
-	@include ease();
-
-	&--active {
-		opacity: 0.5;
-	}
 }

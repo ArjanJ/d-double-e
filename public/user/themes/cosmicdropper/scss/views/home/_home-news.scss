@@ -100,19 +100,6 @@
 				height: $size;
 			}
 		}
-
-		// &:before {
-		// 	content: "";
-		// 	display: block;
-		// 	position: absolute;
-		// 	z-index: 1;
-		// 	bottom: (-$base-space / 1.5);
-		// 	left: 0;
-		// 	width: 100%;
-		// 	height: 4px;
-		// 	background: $theme-color-1;
-		// 	@include ease();
-		// }
 	}
 
 	&:nth-child(2),
@@ -125,15 +112,6 @@
 
 	&--last {
 		background: $theme-color-2;
-
-		// &:before {
-		// 	width: calc(100% - #{$base-space * 3});
-		// 	height: calc(100% - #{$base-space * 3});
-		// 	top: ($base-space * 3) / 2;
-		// 	left: ($base-space * 3) / 2;
-		// 	border: 4px solid $theme-color-1;
-		// 	background: none;
-		// }
 
 		#{$p}__link {
 			display: flex;

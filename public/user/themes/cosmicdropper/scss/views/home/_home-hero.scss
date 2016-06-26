@@ -11,6 +11,10 @@
 	}
 
 	@include bp(large) {
+		padding: ($base-space * 5) (0);
+	}
+
+	@include bp(1300px) {
 		padding: ($base-space * 7) (0);
 	}
 	

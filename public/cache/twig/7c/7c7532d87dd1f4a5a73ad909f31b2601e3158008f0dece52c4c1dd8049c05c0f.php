@@ -33,7 +33,10 @@ class __TwigTemplate_31a4b98d0b2c6c7e0ebe8d60390485a3989921621539e3bc558c00af34a
         $this->loadTemplate("./partials/header.html.twig", "./layouts/default.html.twig", 21)->display($context);
         // line 22
         echo "
-\t\t<main class=\"site-main\">
+\t\t<main class=\"site-main ";
+        // line 23
+        echo $this->getAttribute((isset($context["page"]) ? $context["page"] : null), "menu", array());
+        echo "\">
 \t\t\t";
         // line 24
         $this->displayBlock('content', $context, $blocks);
@@ -111,7 +114,7 @@ class __TwigTemplate_31a4b98d0b2c6c7e0ebe8d60390485a3989921621539e3bc558c00af34a
 
     public function getDebugInfo()
     {
-        return array (  98 => 24,  90 => 15,  88 => 14,  77 => 10,  69 => 9,  63 => 5,  60 => 4,  52 => 30,  50 => 29,  47 => 28,  45 => 27,  41 => 25,  39 => 24,  35 => 22,  33 => 21,  28 => 18,  26 => 4,  21 => 1,);
+        return array (  101 => 24,  93 => 15,  91 => 14,  80 => 10,  72 => 9,  66 => 5,  63 => 4,  55 => 30,  53 => 29,  50 => 28,  48 => 27,  44 => 25,  42 => 24,  38 => 23,  35 => 22,  33 => 21,  28 => 18,  26 => 4,  21 => 1,);
     }
 }
 /* <!DOCTYPE html>*/
@@ -136,7 +139,7 @@ class __TwigTemplate_31a4b98d0b2c6c7e0ebe8d60390485a3989921621539e3bc558c00af34a
 /* 	<body>*/
 /* 		{% include "./partials/header.html.twig" %}*/
 /* */
-/* 		<main class="site-main">*/
+/* 		<main class="site-main {{ page.menu }}">*/
 /* 			{% block content %}{% endblock %}*/
 /* 		</main>*/
 /* */
