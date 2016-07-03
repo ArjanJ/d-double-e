@@ -1,5 +1,6 @@
 ---
-title: Shows
+title: D Double E - Upcoming Shows - Grime Music
+menu: Shows
 
 content:
   order:

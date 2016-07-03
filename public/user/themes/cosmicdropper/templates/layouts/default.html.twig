@@ -6,7 +6,7 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-			<title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+			<title>{% if header.title %}{{ header.title|e('html') }}{% else %}{{ site.title|e('html') }}{% endif %}</title>
 			<meta name="description" content="{% if header.description %}{{ header.description|e('html') }} | {% endif %}{{ site.description|e('html') }}">
 			
 			<link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,700,300' rel='stylesheet' type='text/css'>

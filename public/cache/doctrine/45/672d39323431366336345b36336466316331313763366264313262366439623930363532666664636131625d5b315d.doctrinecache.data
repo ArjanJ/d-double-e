@@ -1,0 +1,65 @@
+1467861504
+a:2:{s:7:"content";s:2177:"
+<section class="home-events">
+	<div class="u-wrapper">
+
+					<h1 class="home-events__heading">Upcoming Shows</h1>
+		
+		<ul class="home-events__list">
+							<li class="home-events-item">
+					<div class="home-events-item__date">
+						<span class="home-events-item__date-txt">Jul</span>
+						<span class="home-events-item__date-txt">15</span>
+					</div>
+					<div class="home-events-item__about">
+						<h2 class="home-events-item__about-name">Fabric</h2>
+						<h3 class="home-events-item__about-location ">
+							<span>London,</span>
+							<span>UK<span>
+						</h3>
+					</div>
+					<div class="home-events-item__buy">
+						<a href="http://www.google.ca" class="home-events-item__buy-btn">Tickets</a>
+					</div>
+				</li>
+							<li class="home-events-item">
+					<div class="home-events-item__date">
+						<span class="home-events-item__date-txt">Jul</span>
+						<span class="home-events-item__date-txt">29</span>
+					</div>
+					<div class="home-events-item__about">
+						<h2 class="home-events-item__about-name">Speedway Stadium Suffolk</h2>
+						<h3 class="home-events-item__about-location ">
+							<span>Mildenhall,</span>
+							<span>UK<span>
+						</h3>
+					</div>
+					<div class="home-events-item__buy">
+						<a href="http://www.google.ca" class="home-events-item__buy-btn">Tickets</a>
+					</div>
+				</li>
+							<li class="home-events-item">
+					<div class="home-events-item__date">
+						<span class="home-events-item__date-txt">Oct</span>
+						<span class="home-events-item__date-txt">8</span>
+					</div>
+					<div class="home-events-item__about">
+						<h2 class="home-events-item__about-name">O2 Academy Glasgow</h2>
+						<h3 class="home-events-item__about-location home-events-item__about-location--last">
+							<span>Glasgow,</span>
+							<span>UK<span>
+						</h3>
+					</div>
+					<div class="home-events-item__buy">
+						<a href="http://www.google.ca" class="home-events-item__buy-btn">Tickets</a>
+					</div>
+				</li>
+					</ul>
+		<div class="home-events__more">
+			<a href="/shows" class="home-events__more-btn">
+				View all shows
+				<svg><use xlink:href="/svg/svg.svg#arrow-right" /></svg>
+			</a>
+		</div>
+	</div>
+</section>";s:12:"content_meta";N;}

@@ -1,5 +1,6 @@
 ---
-title: News
+title: D Double E - Latest News - Grime Music
+menu: News
 
 content:
   order:

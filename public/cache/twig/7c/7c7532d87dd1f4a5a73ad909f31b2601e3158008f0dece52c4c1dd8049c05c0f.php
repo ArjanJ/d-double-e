@@ -71,9 +71,9 @@ class __TwigTemplate_31a4b98d0b2c6c7e0ebe8d60390485a3989921621539e3bc558c00af34a
         // line 9
         if ($this->getAttribute((isset($context["header"]) ? $context["header"] : null), "title", array())) {
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["header"]) ? $context["header"] : null), "title", array()), "html");
-            echo " | ";
+        } else {
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "title", array()), "html");
         }
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "title", array()), "html");
         echo "</title>
 \t\t\t<meta name=\"description\" content=\"";
         // line 10
@@ -125,7 +125,7 @@ class __TwigTemplate_31a4b98d0b2c6c7e0ebe8d60390485a3989921621539e3bc558c00af34a
 /* 			<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">*/
 /* 			<meta http-equiv="X-UA-Compatible" content="IE=edge">*/
 /* */
-/* 			<title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>*/
+/* 			<title>{% if header.title %}{{ header.title|e('html') }}{% else %}{{ site.title|e('html') }}{% endif %}</title>*/
 /* 			<meta name="description" content="{% if header.description %}{{ header.description|e('html') }} | {% endif %}{{ site.description|e('html') }}">*/
 /* 			*/
 /* 			<link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,700,300' rel='stylesheet' type='text/css'>*/

@@ -7,6 +7,51 @@ Object.defineProperty(exports, "__esModule", {
 
 var _utils = require('./utils');
 
+var bio = function () {
+	var components = {
+		left: (0, _utils.$)('.bio__fixed-bg-left'),
+		right: (0, _utils.$)('.bio__fixed-bg-right')
+	};
+
+	var animation = function animation() {
+		var scrolled = window.pageYOffset;
+		var translateY = scrolled / 1.5;
+		var left = components.left;
+		var right = components.right;
+
+
+		left.style.transform = 'translateY(' + -scrolled / 3.5 + 'px)';
+		left.style.opacity = 1 - scrolled / 600;
+		right.style.transform = 'translateY(' + -scrolled / 1.5 + 'px)';
+		right.style.opacity = 1 - scrolled / 750;
+	};
+
+	var handleScroll = function handleScroll() {
+		window.requestAnimationFrame(animation);
+	};
+
+	var init = function init() {
+		if ((0, _utils.$)('main').classList.contains('Bio')) {
+			window.addEventListener('scroll', handleScroll);
+		}
+	};
+
+	return {
+		init: init
+	};
+}();
+
+exports.default = bio;
+
+},{"./utils":6}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _utils = require('./utils');
+
 var header = function (window, document, undefined) {
 	var components = {
 		header: (0, _utils.$)('header.site-header'),
@@ -50,7 +95,7 @@ var header = function (window, document, undefined) {
 
 exports.default = header;
 
-},{"./utils":5}],2:[function(require,module,exports){
+},{"./utils":6}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -213,7 +258,7 @@ var home = function () {
 
 exports.default = home;
 
-},{"./utils":5,"imagesloaded":7,"scrollreveal":8}],3:[function(require,module,exports){
+},{"./utils":6,"imagesloaded":8,"scrollreveal":9}],4:[function(require,module,exports){
 'use strict';
 
 var _header = require('./header');
@@ -228,15 +273,20 @@ var _nav = require('./nav');
 
 var _nav2 = _interopRequireDefault(_nav);
 
+var _bio = require('./bio');
+
+var _bio2 = _interopRequireDefault(_bio);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 document.addEventListener('DOMContentLoaded', function () {
 	// header.init();
 	_home2.default.init();
 	_nav2.default.init();
+	_bio2.default.init();
 });
 
-},{"./header":1,"./home":2,"./nav":4}],4:[function(require,module,exports){
+},{"./bio":1,"./header":2,"./home":3,"./nav":5}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -319,7 +369,7 @@ var nav = function () {
 
 exports.default = nav;
 
-},{"./utils":5}],5:[function(require,module,exports){
+},{"./utils":6}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -434,7 +484,7 @@ function addClassStaggered(elements, className, delay) {
 	}
 }
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 /**
  * EvEmitter v1.0.2
  * Lil' event emitter
@@ -545,7 +595,7 @@ return EvEmitter;
 
 }));
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /*!
  * imagesLoaded v4.1.0
  * JavaScript is all like "You images are done yet or what?"
@@ -917,7 +967,7 @@ return ImagesLoaded;
 
 });
 
-},{"ev-emitter":6}],8:[function(require,module,exports){
+},{"ev-emitter":7}],9:[function(require,module,exports){
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
@@ -1866,7 +1916,7 @@ return this.ScrollReveal;
 
 }));
 
-},{}]},{},[3])
+},{}]},{},[4])
 
 
 //# sourceMappingURL=bundle.js.map

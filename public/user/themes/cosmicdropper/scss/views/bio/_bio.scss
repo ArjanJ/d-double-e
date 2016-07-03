@@ -1,0 +1,64 @@
+.bio {
+	min-height: 100vh;
+	padding: ($base-space * 7) (0);
+	position: relative;
+	z-index: 1;
+	background: $theme-color-3;
+
+	&__fixed-bg {
+		@include cover;
+		display: block;
+		position: fixed;
+		z-index: -1;
+		backface-visibility: hidden;
+		opacity: 0.65;
+
+		&-left,
+		&-right {
+			@include cover;
+			display: block;
+			width: 50%;
+			position: absolute;
+			backface-visibility: hidden;
+			background-color: $theme-color-1;
+			background-position: center;
+			background-size: cover;
+		}
+
+		&-left {
+			left: 0;
+			right: auto;
+			background-image: url('/images/d-double-e-bio-left.jpg');
+		}
+
+		&-right {
+			right: 0;
+			left: auto;
+			background-image: url('/images/d-double-e-bio-right.jpg');
+		}
+	}
+
+	&__heading,
+	&__subheading {
+		color: white;
+		text-align: center;
+	}
+
+	&__heading {
+		@extend %u-ls-2;
+	}
+
+	&__subheading {
+		@extend %u-ls-3;
+		margin-bottom: ($base-space);
+	}
+
+	&__content {
+		max-width: 640px;
+		margin: 0 auto;
+
+		p {
+			color: white;
+		}
+	}
+}

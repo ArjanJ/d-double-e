@@ -1,12 +1,8 @@
 .news {
-	padding: ($base-space * 5) (0) ($base-space * 8);
-
-	@include bp(small) {
-		padding: ($base-space * 6) (0) ($base-space * 10);
-	}
+	padding: ($base-space * 6) (0) ($base-space * 8);
 
 	@include bp(medium) {
-		padding: ($base-space * 8) (0) ($base-space * 10);
+		padding: ($base-space * 9) (0);
 	}
 
 	@include bp(large) {
@@ -14,14 +10,14 @@
 	}
 	
 	&__heading {
-		@extend %u-ls-3;
-		margin-bottom: ($base-space * 1.5);
+		@extend %u-ls-4;
+		margin-bottom: ($base-space * 2);
 		font-size: map-get($heading-sizes, 4);
 		color: white;
 		text-align: center;
 
 		@include bp(medium) {
-			margin-bottom: ($base-space * 2);
+			@extend %u-ls-3;
 			font-size: map-get($heading-sizes, 3);
 		}
 
@@ -73,7 +69,7 @@
 
 			&:hover {
 				#{$p}__cover {
-					opacity: 0.75;
+					opacity: 0.25;
 					transform: translateY(-50%);
 				}
 			}
@@ -153,7 +149,7 @@
 				display: block;
 				position: absolute;
 				z-index: -1;
-				background: linear-gradient(45deg, rgba($theme-color-3, 0.65), rgba(black, 0));
+				background: linear-gradient(45deg, rgba($theme-color-3, 0.85), rgba(black, 0));
 			}
 		}
 	}
