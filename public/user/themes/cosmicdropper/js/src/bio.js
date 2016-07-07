@@ -11,9 +11,9 @@ const bio = (() => {
 		const translateY = scrolled / 1.5;
 		const { left, right } = components;
 
-		left.style.transform = `translateY(${-scrolled / 3.5}px)`;
+		left.style.transform = `translateY(${scrolled / 3.5}px)`;
 		left.style.opacity = 1 - (scrolled / 600);
-		right.style.transform = `translateY(${-scrolled / 1.5}px)`;
+		right.style.transform = `translateY(${scrolled / 1.5}px)`;
 		right.style.opacity = 1 - (scrolled / 750);
 	};
 
@@ -23,7 +23,7 @@ const bio = (() => {
 
 	const init = () => {
 		if ($('main').classList.contains('Bio')) {
-			window.addEventListener('scroll', handleScroll);
+			// window.addEventListener('scroll', handleScroll);
 		}
 	};
 

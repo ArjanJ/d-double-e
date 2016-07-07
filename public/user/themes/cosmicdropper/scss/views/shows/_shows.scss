@@ -26,13 +26,8 @@
 		}
 	}
 
-	&__list {
-		list-style-type: none;
-		max-width: 640px;
-		margin: 0 auto;
-
-		@include bp(medium) {
-			max-width: 740px;
-		}
-	}
+	// &__list {
+	// 	list-style-type: none;
+	// 	margin: 0 auto;
+	// }
 }

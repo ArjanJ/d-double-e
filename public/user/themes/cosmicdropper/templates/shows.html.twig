@@ -5,8 +5,8 @@
 		<div class="u-wrapper">
 			<h1 class="shows__heading">Upcoming Shows</h1>
 			
-			<ul class="shows__list">
-				{% for child in page.collection() %}
+			<ul class="shows__list home-events__list">
+				{# {% for child in page.collection() %}
 					<li class="home-events-item">
 						<div class="home-events-item__date">
 							<span class="home-events-item__date-txt">{{ child.header.date|date("F")|slice(0, 3) }}</span>
@@ -23,7 +23,7 @@
 							<a href="{{ child.header.event_tickets }}" class="home-events-item__buy-btn">Tickets</a>
 						</div>
 					</li>
-				{% endfor %}
+				{% endfor %} #}
 			</ul>
 			{% if config.plugins.pagination.enabled and page.collection().params.pagination %}
 		    {% include './partials/pagination.html.twig' with {'base_url':page.url, 'pagination':page.collection().params.pagination} %}

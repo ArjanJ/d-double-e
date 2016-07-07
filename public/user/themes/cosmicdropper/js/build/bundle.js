@@ -20,9 +20,9 @@ var bio = function () {
 		var right = components.right;
 
 
-		left.style.transform = 'translateY(' + -scrolled / 3.5 + 'px)';
+		left.style.transform = 'translateY(' + scrolled / 3.5 + 'px)';
 		left.style.opacity = 1 - scrolled / 600;
-		right.style.transform = 'translateY(' + -scrolled / 1.5 + 'px)';
+		right.style.transform = 'translateY(' + scrolled / 1.5 + 'px)';
 		right.style.opacity = 1 - scrolled / 750;
 	};
 
@@ -32,7 +32,7 @@ var bio = function () {
 
 	var init = function init() {
 		if ((0, _utils.$)('main').classList.contains('Bio')) {
-			window.addEventListener('scroll', handleScroll);
+			// window.addEventListener('scroll', handleScroll);
 		}
 	};
 
@@ -43,7 +43,99 @@ var bio = function () {
 
 exports.default = bio;
 
-},{"./utils":6}],2:[function(require,module,exports){
+},{"./utils":7}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _utils = require('./utils');
+
+var config = {
+	key: 'Ejvx2W884fRJxrSV',
+	id: '607727',
+	baseUrl: 'http://api.songkick.com/api/3.0'
+};
+
+var shows = function () {
+	var state = {
+		events: [],
+		isFetching: false
+	};
+
+	var setState = function setState(newState) {
+		Object.assign(state, newState);
+		mount();
+	};
+
+	var components = {
+		wrapper: (0, _utils.$)('.home-events__list')
+	};
+
+	function getEventsRequest() {
+		setState({
+			isFetching: true
+		});
+	}
+
+	function getEventsSuccess(events) {
+		setState({
+			isFetching: false,
+			events: events
+		});
+	}
+
+	function getEventsFailure(error) {}
+
+	function getEvents() {
+		getEventsRequest();
+
+		var baseUrl = config.baseUrl;
+		var key = config.key;
+		var id = config.id;
+
+		var url = baseUrl + '/artists/' + id + '/calendar.json?apikey=' + key;
+
+		return fetch(url).then(function (response) {
+			if (response.ok) {
+				return response.json();
+			} else {
+				throw new Error(response.statusText);
+			}
+		}).then(function (json) {
+			var events = json.resultsPage.results.event;
+			getEventsSuccess(events);
+		}).catch(function (error) {
+			return console.err(error);
+		});
+	}
+
+	function render() {
+		return '' + state.events.map(function (event) {
+			return '<li>\n\t\t\t\t<a href="' + event.uri + '" target="_blank" class="home-events-item">\n\t\t\t\t\t<div class="home-events-item__date">\n\t\t\t\t\t\t<span class="home-events-item__date-txt">' + new Date(event.start.datetime).toDateString().replace(/\d{4}$/g, '').trim() + '</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="home-events-item__about">\n\t\t\t\t\t\t<h2 class="home-events-item__about-name">' + event.displayName + '</h2>\n\t\t\t\t\t\t<h3 class="home-events-item__about-venue">\n\t\t\t\t\t\t\t<span>' + event.venue.displayName + '</span>\n\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t<h3 class="home-events-item__about-location">\n\t\t\t\t\t\t\t<span>' + event.location.city + '</span>\n\t\t\t\t\t\t</h3>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="home-events-item__buy">\n\t\t\t\t\t\t<span class="home-events-item__buy-btn">Tickets</span>\n\t\t\t\t\t</div>\n\t\t\t\t</a>\n\t\t\t</li>';
+		}).join('');
+	}
+
+	function mount() {
+		var wrapper = components.wrapper;
+
+		wrapper.innerHTML = render();
+	}
+
+	function init() {
+		mount();
+		getEvents();
+	}
+
+	return {
+		init: init
+	};
+}();
+
+exports.default = shows;
+
+},{"./utils":7}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -95,7 +187,7 @@ var header = function (window, document, undefined) {
 
 exports.default = header;
 
-},{"./utils":6}],3:[function(require,module,exports){
+},{"./utils":7}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -258,7 +350,7 @@ var home = function () {
 
 exports.default = home;
 
-},{"./utils":6,"imagesloaded":8,"scrollreveal":9}],4:[function(require,module,exports){
+},{"./utils":7,"imagesloaded":9,"scrollreveal":10}],5:[function(require,module,exports){
 'use strict';
 
 var _header = require('./header');
@@ -277,6 +369,10 @@ var _bio = require('./bio');
 
 var _bio2 = _interopRequireDefault(_bio);
 
+var _events = require('./events');
+
+var _events2 = _interopRequireDefault(_events);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -284,9 +380,10 @@ document.addEventListener('DOMContentLoaded', function () {
 	_home2.default.init();
 	_nav2.default.init();
 	_bio2.default.init();
+	_events2.default.init();
 });
 
-},{"./bio":1,"./header":2,"./home":3,"./nav":5}],5:[function(require,module,exports){
+},{"./bio":1,"./events":2,"./header":3,"./home":4,"./nav":6}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -369,7 +466,7 @@ var nav = function () {
 
 exports.default = nav;
 
-},{"./utils":6}],6:[function(require,module,exports){
+},{"./utils":7}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -484,7 +581,7 @@ function addClassStaggered(elements, className, delay) {
 	}
 }
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /**
  * EvEmitter v1.0.2
  * Lil' event emitter
@@ -595,7 +692,7 @@ return EvEmitter;
 
 }));
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 /*!
  * imagesLoaded v4.1.0
  * JavaScript is all like "You images are done yet or what?"
@@ -967,7 +1064,7 @@ return ImagesLoaded;
 
 });
 
-},{"ev-emitter":7}],9:[function(require,module,exports){
+},{"ev-emitter":8}],10:[function(require,module,exports){
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
@@ -1916,7 +2013,7 @@ return this.ScrollReveal;
 
 }));
 
-},{}]},{},[4])
+},{}]},{},[5])
 
 
 //# sourceMappingURL=bundle.js.map

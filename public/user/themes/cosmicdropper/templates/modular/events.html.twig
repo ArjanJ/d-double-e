@@ -10,7 +10,7 @@
 		{% endif %}
 
 		<ul class="home-events__list">
-			{% for event in events %}
+			{# {% for event in events %}
 				<li class="home-events-item">
 					<div class="home-events-item__date">
 						<span class="home-events-item__date-txt">{{ event.header.event_date|date("F")|slice(0, 3) }}</span>
@@ -27,13 +27,13 @@
 						<a href="{{ event.header.event_tickets }}" class="home-events-item__buy-btn">Tickets</a>
 					</div>
 				</li>
-			{% endfor %}
+			{% endfor %} #}
 		</ul>
-		<div class="home-events__more">
+		{# <div class="home-events__more">
 			<a href="/shows" class="home-events__more-btn">
 				View all shows
 				<svg><use xlink:href="/svg/svg.svg#arrow-right" /></svg>
 			</a>
-		</div>
+		</div> #}
 	</div>
 </section>

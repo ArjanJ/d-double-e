@@ -2,12 +2,12 @@
 	@include clearfix;
 	position: relative;
 	z-index: 2;
-	padding: ($base-space * 3) (0) ($base-space * 5);
+	padding: ($base-space * 3) (0) ($base-space * 3);
 	background: rgba($theme-color-3, 0.9);
 	color: color(white);
 
 	@include bp(small) {
-		padding: ($base-space * 4) (0) ($base-space * 6);
+		padding: ($base-space * 4) (0) ($base-space * 4);
 	}
 
 	&__heading {
@@ -41,6 +41,7 @@
 		border: 4px solid color(white);
 		color: color(white);
 		background: none;
+		margin-top: ($base-space * 2);
 	
 		&:before,
 		&:after {
@@ -66,6 +67,8 @@
 }
 
 .home-events-item {
+	$p: &;
+	display: block;
 	margin: (0) (0) ($base-space * 2);
 	text-align: center;
 
@@ -73,10 +76,6 @@
 		display: flex;
 		text-align: left;
 		margin: (0) (0) ($base-space * 3);
-
-		&:last-child {
-			margin: (0) (0) ($base-space * 1.5);
-		}
 	}
 
 	&__date {
@@ -87,6 +86,7 @@
 
 		&-txt {
 			display: inline-block;
+			vertical-align: sub;
 			margin-bottom: ($base-space / 2);
 			font-size: map-get($heading-sizes, 6);
 			text-transform: uppercase;
@@ -98,27 +98,35 @@
 	&__about {
 
 		@include bp(medium) {
-			margin: (0) (0) (0) ($base-space);
+			flex: 2;
+			margin: (0) (0) (0) ($base-space * 2);
 		}
 
 		&-name,
+		&-venue,
 		&-location {
 			color: color(white);
 		}
 
 		&-name {
 			font-size: map-get($heading-sizes, 5);
-			margin-bottom: ($base-space / 2);
+			margin-bottom: ($base-space);
 			color: $theme-color-2;
+			@include ease(out);
 
 			@include bp(large) {
 				font-size: map-get($heading-sizes, 4);
 			}
 		}
 
+		&-venue {
+			font-size: map-get($heading-sizes, 4);
+			margin-bottom: ($base-space / 2);
+		}
+
 		&-location {
 			margin-bottom: ($base-space);
-			font-size: map-get($heading-sizes, 6);
+			font-size: map-get($heading-sizes, 5);
 			font-weight: 400;
 			
 			@include bp(medium) {
@@ -133,19 +141,12 @@
 				}
 			}
 		}
-
-		@include bp(large) {
-
-			&-name {
-				font-size: map-get($heading-sizes, 4);
-			}
-		}
 	}
 
 	&__buy {
 
 		@include bp(medium) {
-			flex: 1;
+			margin-left: ($base-space * 2);
 			text-align: right;
 		}
 
@@ -158,7 +159,7 @@
 
 			@include bp(large) {
 				font-size: $font-size-small;
-				padding: ($base-space / 2) ($base-space);
+				padding: ($base-space / 2.5) ($base-space);
 			}
 			
 			&:before {
