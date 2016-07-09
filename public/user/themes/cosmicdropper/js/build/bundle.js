@@ -99,7 +99,10 @@ var shows = function () {
 
 		return fetch(url, {
 			method: 'GET',
-			mode: 'request-no-cors'
+			headers: {
+				'Access-Control-Allow-Origin:': '*'
+			},
+			mode: 'no-cors'
 		}).then(function (response) {
 			if (response.ok) {
 				return response.json();

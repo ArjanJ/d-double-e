@@ -46,7 +46,10 @@ const shows = (() => {
 
 		return fetch(url, {
 			method: 'GET',
-			mode: 'request-no-cors',
+			headers: {
+				'Access-Control-Allow-Origin:': '*',
+			},
+			mode: 'no-cors',
 		})
 			.then(response => {
 				if (response.ok) {
