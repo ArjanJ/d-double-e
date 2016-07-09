@@ -97,7 +97,10 @@ var shows = function () {
 
 		var url = baseUrl + '/artists/' + id + '/calendar.json?apikey=' + key;
 
-		return fetch(url).then(function (response) {
+		return fetch(url, {
+			method: 'GET',
+			mode: 'request-no-cors'
+		}).then(function (response) {
 			if (response.ok) {
 				return response.json();
 			} else {

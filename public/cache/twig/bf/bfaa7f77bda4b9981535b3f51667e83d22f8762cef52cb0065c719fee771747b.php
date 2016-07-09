@@ -26,19 +26,19 @@ class __TwigTemplate_b0059f4872ebfcc45b46d1bb92c7254d176a57f7338fdda9f05ac4b1ef5
 \t\t\t<div class=\"site-footer__info-item\">
 \t\t\t\t<h3 class=\"site-footer__heading\">Connect</h3>
 \t\t\t\t<div class=\"site-footer__social-links\">
-\t\t\t\t\t<a href=\"\" class=\"site-footer__social-link\">
+\t\t\t\t\t<a target=\"_blank\" href=\"https://www.instagram.com/omygoshitsddoublee/\" class=\"site-footer__social-link\">
 \t\t\t\t\t\t<svg><use xlink:href=\"/svg/svg.svg#instagram\" /></svg>
 \t\t\t\t\t</a>
-\t\t\t\t\t<a href=\"\" class=\"site-footer__social-link\">
+\t\t\t\t\t<a target=\"_blank\" href=\"https://www.facebook.com/D-Double-E-59854888495/\" class=\"site-footer__social-link\">
 \t\t\t\t\t\t<svg><use xlink:href=\"/svg/svg.svg#facebook\" /></svg>
 \t\t\t\t\t</a>
-\t\t\t\t\t<a href=\"\" class=\"site-footer__social-link\">
+\t\t\t\t\t<a target=\"_blank\" href=\"https://twitter.com/DDoubleE7\" class=\"site-footer__social-link\">
 \t\t\t\t\t\t<svg><use xlink:href=\"/svg/svg.svg#twitter\" /></svg>
 \t\t\t\t\t</a>
-\t\t\t\t\t<a href=\"\" class=\"site-footer__social-link\">
+\t\t\t\t\t<a target=\"_blank\" href=\"https://soundcloud.com/blukumusic\" class=\"site-footer__social-link\">
 \t\t\t\t\t\t<svg><use xlink:href=\"/svg/svg.svg#soundcloud\" /></svg>
 \t\t\t\t\t</a>
-\t\t\t\t\t<a href=\"\" class=\"site-footer__social-link\">
+\t\t\t\t\t<a target=\"_blank\" href=\"https://play.spotify.com/artist/6bwkMlweHsBCpI2a0C5nnN?play=true&utm_source=open.spotify.com&utm_medium=open\" class=\"site-footer__social-link\">
 \t\t\t\t\t\t<svg><use xlink:href=\"/svg/svg.svg#spotify\" /></svg>
 \t\t\t\t\t</a>
 \t\t\t\t</div>
@@ -75,19 +75,19 @@ class __TwigTemplate_b0059f4872ebfcc45b46d1bb92c7254d176a57f7338fdda9f05ac4b1ef5
 /* 			<div class="site-footer__info-item">*/
 /* 				<h3 class="site-footer__heading">Connect</h3>*/
 /* 				<div class="site-footer__social-links">*/
-/* 					<a href="" class="site-footer__social-link">*/
+/* 					<a target="_blank" href="https://www.instagram.com/omygoshitsddoublee/" class="site-footer__social-link">*/
 /* 						<svg><use xlink:href="/svg/svg.svg#instagram" /></svg>*/
 /* 					</a>*/
-/* 					<a href="" class="site-footer__social-link">*/
+/* 					<a target="_blank" href="https://www.facebook.com/D-Double-E-59854888495/" class="site-footer__social-link">*/
 /* 						<svg><use xlink:href="/svg/svg.svg#facebook" /></svg>*/
 /* 					</a>*/
-/* 					<a href="" class="site-footer__social-link">*/
+/* 					<a target="_blank" href="https://twitter.com/DDoubleE7" class="site-footer__social-link">*/
 /* 						<svg><use xlink:href="/svg/svg.svg#twitter" /></svg>*/
 /* 					</a>*/
-/* 					<a href="" class="site-footer__social-link">*/
+/* 					<a target="_blank" href="https://soundcloud.com/blukumusic" class="site-footer__social-link">*/
 /* 						<svg><use xlink:href="/svg/svg.svg#soundcloud" /></svg>*/
 /* 					</a>*/
-/* 					<a href="" class="site-footer__social-link">*/
+/* 					<a target="_blank" href="https://play.spotify.com/artist/6bwkMlweHsBCpI2a0C5nnN?play=true&utm_source=open.spotify.com&utm_medium=open" class="site-footer__social-link">*/
 /* 						<svg><use xlink:href="/svg/svg.svg#spotify" /></svg>*/
 /* 					</a>*/
 /* 				</div>*/

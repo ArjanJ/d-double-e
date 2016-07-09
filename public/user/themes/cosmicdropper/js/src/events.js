@@ -44,7 +44,10 @@ const shows = (() => {
 		const { baseUrl, key, id } = config;
 		const url = `${baseUrl}/artists/${id}/calendar.json?apikey=${key}`;
 
-		return fetch(url)
+		return fetch(url, {
+			method: 'GET',
+			mode: 'request-no-cors',
+		})
 			.then(response => {
 				if (response.ok) {
 					return response.json();
