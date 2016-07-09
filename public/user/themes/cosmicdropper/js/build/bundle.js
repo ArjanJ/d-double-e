@@ -43,7 +43,7 @@ var bio = function () {
 
 exports.default = bio;
 
-},{"./utils":7}],2:[function(require,module,exports){
+},{"./utils":6}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -51,6 +51,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _utils = require('./utils');
+
+var _fetchJsonp = require('fetch-jsonp');
+
+var _fetchJsonp2 = _interopRequireDefault(_fetchJsonp);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var config = {
 	key: 'Ejvx2W884fRJxrSV',
@@ -88,6 +94,11 @@ var shows = function () {
 
 	function getEventsFailure(error) {}
 
+	window.jsonpcallback = function (json) {
+		var events = json.resultsPage.results.event;
+		getEventsSuccess(events);
+	};
+
 	function getEvents() {
 		getEventsRequest();
 
@@ -95,25 +106,16 @@ var shows = function () {
 		var key = config.key;
 		var id = config.id;
 
-		var url = baseUrl + '/artists/' + id + '/calendar.json?apikey=' + key;
+		var url = baseUrl + '/artists/' + id + '/calendar.json?apikey=' + key + '&jsoncallback=jsonpcallback';
 
-		return fetch(url, {
-			method: 'GET',
-			headers: {
-				'Access-Control-Allow-Origin:': '*'
-			},
-			mode: 'no-cors'
-		}).then(function (response) {
+		return (0, _fetchJsonp2.default)(url).then(function (response) {
 			if (response.ok) {
 				return response.json();
 			} else {
 				throw new Error(response.statusText);
 			}
-		}).then(function (json) {
-			var events = json.resultsPage.results.event;
-			getEventsSuccess(events);
 		}).catch(function (error) {
-			return console.err(error);
+			return console.error(error);
 		});
 	}
 
@@ -141,59 +143,7 @@ var shows = function () {
 
 exports.default = shows;
 
-},{"./utils":7}],3:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _utils = require('./utils');
-
-var header = function (window, document, undefined) {
-	var components = {
-		header: (0, _utils.$)('header.site-header'),
-		nav: (0, _utils.$)('nav.site-nav')
-	};
-
-	var cssClasses = {
-		headerActive: 'site-header--scrolled',
-		navActive: 'site-nav--scrolled'
-	};
-
-	var scrollTarget = window.innerHeight - 300;
-
-	var init = function init() {
-		window.addEventListener('scroll', handleScroll);
-	};
-
-	var handleScroll = function handleScroll() {
-		var scrolled = window.pageYOffset;
-		var header = components.header;
-		var nav = components.nav;
-		var headerActive = cssClasses.headerActive;
-		var navActive = cssClasses.navActive;
-
-
-		if (scrolled >= scrollTarget && !header.classList.contains(headerActive)) {
-			header.classList.add(headerActive);
-			nav.classList.add(navActive);
-		}
-
-		if (scrolled < scrollTarget && header.classList.contains(headerActive)) {
-			header.classList.remove(headerActive);
-			nav.classList.remove(navActive);
-		}
-	};
-
-	return {
-		init: init
-	};
-}(window, document);
-
-exports.default = header;
-
-},{"./utils":7}],4:[function(require,module,exports){
+},{"./utils":6,"fetch-jsonp":8}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -356,12 +306,8 @@ var home = function () {
 
 exports.default = home;
 
-},{"./utils":7,"imagesloaded":9,"scrollreveal":10}],5:[function(require,module,exports){
+},{"./utils":6,"imagesloaded":9,"scrollreveal":10}],4:[function(require,module,exports){
 'use strict';
-
-var _header = require('./header');
-
-var _header2 = _interopRequireDefault(_header);
 
 var _home = require('./home');
 
@@ -382,14 +328,13 @@ var _events2 = _interopRequireDefault(_events);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 document.addEventListener('DOMContentLoaded', function () {
-	// header.init();
 	_home2.default.init();
 	_nav2.default.init();
 	_bio2.default.init();
 	_events2.default.init();
 });
 
-},{"./bio":1,"./events":2,"./header":3,"./home":4,"./nav":6}],6:[function(require,module,exports){
+},{"./bio":1,"./events":2,"./home":3,"./nav":5}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -472,7 +417,7 @@ var nav = function () {
 
 exports.default = nav;
 
-},{"./utils":7}],7:[function(require,module,exports){
+},{"./utils":6}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -587,7 +532,7 @@ function addClassStaggered(elements, className, delay) {
 	}
 }
 
-},{}],8:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 /**
  * EvEmitter v1.0.2
  * Lil' event emitter
@@ -698,6 +643,112 @@ return EvEmitter;
 
 }));
 
+},{}],8:[function(require,module,exports){
+(function (global, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['exports', 'module'], factory);
+  } else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
+    factory(exports, module);
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(mod.exports, mod);
+    global.fetchJsonp = mod.exports;
+  }
+})(this, function (exports, module) {
+  'use strict';
+
+  var defaultOptions = {
+    timeout: 5000,
+    jsonpCallback: 'callback',
+    jsonpCallbackFunction: null
+  };
+
+  function generateCallbackFunction() {
+    return 'jsonp_' + Date.now() + '_' + Math.ceil(Math.random() * 100000);
+  }
+
+  // Known issue: Will throw 'Uncaught ReferenceError: callback_*** is not defined' error if request timeout
+  function clearFunction(functionName) {
+    // IE8 throws an exception when you try to delete a property on window
+    // http://stackoverflow.com/a/1824228/751089
+    try {
+      delete window[functionName];
+    } catch (e) {
+      window[functionName] = undefined;
+    }
+  }
+
+  function removeScript(scriptId) {
+    var script = document.getElementById(scriptId);
+    document.getElementsByTagName('head')[0].removeChild(script);
+  }
+
+  var fetchJsonp = function fetchJsonp(url) {
+    var options = arguments[1] === undefined ? {} : arguments[1];
+
+    var timeout = options.timeout != null ? options.timeout : defaultOptions.timeout;
+    var jsonpCallback = options.jsonpCallback != null ? options.jsonpCallback : defaultOptions.jsonpCallback;
+
+    var timeoutId = undefined;
+
+    return new Promise(function (resolve, reject) {
+      var callbackFunction = options.jsonpCallbackFunction || generateCallbackFunction();
+
+      window[callbackFunction] = function (response) {
+        resolve({
+          ok: true,
+          // keep consistent with fetch API
+          json: function json() {
+            return Promise.resolve(response);
+          }
+        });
+
+        if (timeoutId) clearTimeout(timeoutId);
+
+        removeScript(jsonpCallback + '_' + callbackFunction);
+
+        clearFunction(callbackFunction);
+      };
+
+      // Check if the user set their own params, and if not add a ? to start a list of params
+      url += url.indexOf('?') === -1 ? '?' : '&';
+
+      var jsonpScript = document.createElement('script');
+      jsonpScript.setAttribute('src', url + jsonpCallback + '=' + callbackFunction);
+      jsonpScript.id = jsonpCallback + '_' + callbackFunction;
+      document.getElementsByTagName('head')[0].appendChild(jsonpScript);
+
+      timeoutId = setTimeout(function () {
+        reject(new Error('JSONP request to ' + url + ' timed out'));
+
+        clearFunction(callbackFunction);
+        removeScript(jsonpCallback + '_' + callbackFunction);
+      }, timeout);
+    });
+  };
+
+  // export as global function
+  /*
+  let local;
+  if (typeof global !== 'undefined') {
+    local = global;
+  } else if (typeof self !== 'undefined') {
+    local = self;
+  } else {
+    try {
+      local = Function('return this')();
+    } catch (e) {
+      throw new Error('polyfill failed because global object is unavailable in this environment');
+    }
+  }
+  
+  local.fetchJsonp = fetchJsonp;
+  */
+
+  module.exports = fetchJsonp;
+});
 },{}],9:[function(require,module,exports){
 /*!
  * imagesLoaded v4.1.0
@@ -1070,7 +1121,7 @@ return ImagesLoaded;
 
 });
 
-},{"ev-emitter":8}],10:[function(require,module,exports){
+},{"ev-emitter":7}],10:[function(require,module,exports){
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
@@ -2019,7 +2070,7 @@ return this.ScrollReveal;
 
 }));
 
-},{}]},{},[5])
+},{}]},{},[4])
 
 
 //# sourceMappingURL=bundle.js.map

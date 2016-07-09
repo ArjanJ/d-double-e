@@ -1,4 +1,5 @@
 import { $ } from './utils';
+import fetchJsonp from 'fetch-jsonp';
 
 const config = {
 	key: 'Ejvx2W884fRJxrSV',
@@ -38,19 +39,18 @@ const shows = (() => {
 
 	}
 
+	window.jsonpcallback = (json) => {
+		const events = json.resultsPage.results.event;
+		getEventsSuccess(events);
+	};
+
 	function getEvents() {
 		getEventsRequest();
 
 		const { baseUrl, key, id } = config;
-		const url = `${baseUrl}/artists/${id}/calendar.json?apikey=${key}`;
-
-		return fetch(url, {
-			method: 'GET',
-			headers: {
-				'Access-Control-Allow-Origin:': '*',
-			},
-			mode: 'no-cors',
-		})
+		const url = `${baseUrl}/artists/${id}/calendar.json?apikey=${key}&jsoncallback=jsonpcallback`;
+		
+		return fetchJsonp(url)
 			.then(response => {
 				if (response.ok) {
 					return response.json();
@@ -58,11 +58,7 @@ const shows = (() => {
 					throw new Error(response.statusText);
 				}
 			})
-			.then(json => {
-				const events = json.resultsPage.results.event;
-				getEventsSuccess(events);
-			})
-			.catch(error => console.err(error));
+			.catch(error => console.error(error));
 	}
 
 	function render() {
