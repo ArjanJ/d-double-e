@@ -45,7 +45,13 @@
 	}
 
 	&__heading {
-		@extend %u-ls-2;
+		font-size: map-get($heading-sizes, 3);
+		@extend %u-ls-4;
+
+		@include bp(medium) {
+			font-size: map-get($heading-sizes, 2);
+			@extend %u-ls-3;
+		}
 	}
 
 	&__subheading {

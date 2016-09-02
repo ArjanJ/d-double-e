@@ -28,9 +28,11 @@ class __TwigTemplate_c1e497f68844f79c9d1ede38856c191228a301a1e6edccd9ecc0363c1b4
     public function block_content($context, array $blocks = array())
     {
         // line 4
-        echo "\t<section class=\"blog\">
-\t\t<h1>Music</h1>
-
+        echo "\t<section class=\"music\">
+\t\t<div class=\"music-wrapper\">
+\t\t\t<h1 class=\"news__heading\">Music</h1>
+\t\t\t<ul class=\"music-list\"></ul>
+\t\t</div>
 \t</section>
 ";
     }
@@ -53,8 +55,11 @@ class __TwigTemplate_c1e497f68844f79c9d1ede38856c191228a301a1e6edccd9ecc0363c1b4
 /* {% extends "./layouts/default.html.twig" %}*/
 /* */
 /* {% block content %}*/
-/* 	<section class="blog">*/
-/* 		<h1>Music</h1>*/
-/* */
+/* 	<section class="music">*/
+/* 		<div class="music-wrapper">*/
+/* 			<h1 class="news__heading">Music</h1>*/
+/* 			<ul class="music-list"></ul>*/
+/* 		</div>*/
 /* 	</section>*/
 /* {% endblock %}*/
+/* */

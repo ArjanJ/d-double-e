@@ -43,7 +43,7 @@ var bio = function () {
 
 exports.default = bio;
 
-},{"./utils":6}],2:[function(require,module,exports){
+},{"./utils":7}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -132,8 +132,10 @@ var shows = function () {
 	}
 
 	function init() {
-		mount();
-		getEvents();
+		if ((0, _utils.$)('main').classList.contains('Home') || (0, _utils.$)('main').classList.contains('Shows')) {
+			mount();
+			getEvents();
+		}
 	}
 
 	return {
@@ -143,7 +145,7 @@ var shows = function () {
 
 exports.default = shows;
 
-},{"./utils":6,"fetch-jsonp":8}],3:[function(require,module,exports){
+},{"./utils":7,"fetch-jsonp":9}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -306,7 +308,7 @@ var home = function () {
 
 exports.default = home;
 
-},{"./utils":6,"imagesloaded":9,"scrollreveal":10}],4:[function(require,module,exports){
+},{"./utils":7,"imagesloaded":10,"scrollreveal":11}],4:[function(require,module,exports){
 'use strict';
 
 var _home = require('./home');
@@ -325,6 +327,10 @@ var _events = require('./events');
 
 var _events2 = _interopRequireDefault(_events);
 
+var _music = require('./music');
+
+var _music2 = _interopRequireDefault(_music);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -332,9 +338,111 @@ document.addEventListener('DOMContentLoaded', function () {
 	_nav2.default.init();
 	_bio2.default.init();
 	_events2.default.init();
+	_music2.default.init();
 });
 
-},{"./bio":1,"./events":2,"./home":3,"./nav":5}],5:[function(require,module,exports){
+},{"./bio":1,"./events":2,"./home":3,"./music":5,"./nav":6}],5:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _utils = require('./utils');
+
+var Music = function () {
+  var endpoint = 'https://api.spotify.com/v1/artists/6bwkMlweHsBCpI2a0C5nnN/albums';
+
+  var state = {
+    music: [],
+    isFetching: false
+  };
+
+  var setState = function setState(newState) {
+    Object.assign(state, newState);
+    mount();
+  };
+
+  var components = {
+    wrapper: (0, _utils.$)('.music-list')
+  };
+
+  function getMusicRequest() {
+    setState({
+      isFetching: true
+    });
+  }
+
+  function getMusicSuccess(data) {
+    setState({
+      isFetching: false,
+      music: data.items
+    });
+  }
+
+  function getMusicFailure(err) {
+    console.log(err);
+  }
+
+  function getMusic() {
+    getMusicRequest();
+
+    return fetch(endpoint).then(function (response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('you done fucked up nah');
+      }
+    }).then(function (response) {
+      return getMusicSuccess(response);
+    }).catch(function (err) {
+      return getMusicFailure(err);
+    });
+  }
+
+  function render() {
+    var blacklist = ['Honey', 'Konnichiwa', '360º / The Cloud 9 LP'];
+    var flags = ['Radio Edit', 'Remixes'];
+    var seen = {};
+    var filteredMusic = state.music.filter(function (item) {
+      var hasFlag = flags.map(function (f) {
+        return item.name.indexOf(f) > -1 ? 'yes' : 'no';
+      });
+      var isDuplicate = seen.hasOwnProperty(item.name) ? true : seen[item.name] = false;
+      console.log(isDuplicate);
+      if (blacklist.includes(item.name) || hasFlag.includes('yes') || isDuplicate) {
+        return false;
+      } else {
+        return item;
+      }
+    });
+
+    return '' + filteredMusic.map(function (item) {
+      return '<li class="music-item">\n              <a href=' + item.external_urls.spotify + ' target="_blank">\n                <img src=' + item.images[0].url + ' width=' + item.images[0].width + ' height=' + item.images[0].height + ' />\n                <p>' + item.name + '</p>\n              </a>\n            </li>';
+    }).join('');
+  }
+
+  function mount() {
+    var wrapper = components.wrapper;
+
+    wrapper.innerHTML = render();
+  }
+
+  function init() {
+    if ((0, _utils.$)('main').classList.contains('Music')) {
+      mount();
+      getMusic();
+    }
+  }
+
+  return {
+    init: init
+  };
+}();
+
+exports.default = Music;
+
+},{"./utils":7}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -417,7 +525,7 @@ var nav = function () {
 
 exports.default = nav;
 
-},{"./utils":6}],6:[function(require,module,exports){
+},{"./utils":7}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -532,7 +640,7 @@ function addClassStaggered(elements, className, delay) {
 	}
 }
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /**
  * EvEmitter v1.0.2
  * Lil' event emitter
@@ -643,7 +751,7 @@ return EvEmitter;
 
 }));
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 (function (global, factory) {
   if (typeof define === 'function' && define.amd) {
     define(['exports', 'module'], factory);
@@ -749,7 +857,7 @@ return EvEmitter;
 
   module.exports = fetchJsonp;
 });
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 /*!
  * imagesLoaded v4.1.0
  * JavaScript is all like "You images are done yet or what?"
@@ -1121,7 +1229,7 @@ return ImagesLoaded;
 
 });
 
-},{"ev-emitter":7}],10:[function(require,module,exports){
+},{"ev-emitter":8}],11:[function(require,module,exports){
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {

@@ -39,7 +39,7 @@ const shows = (() => {
 
 	}
 
-	window.jsonpcallback = (json) => {
+	window.jsonpcallback = json => {
 		const events = json.resultsPage.results.event;
 		getEventsSuccess(events);
 	};
@@ -49,7 +49,7 @@ const shows = (() => {
 
 		const { baseUrl, key, id } = config;
 		const url = `${baseUrl}/artists/${id}/calendar.json?apikey=${key}&jsoncallback=jsonpcallback`;
-		
+
 		return fetchJsonp(url)
 			.then(response => {
 				if (response.ok) {
@@ -91,8 +91,10 @@ const shows = (() => {
 	}
 
 	function init () {
-		mount();
-		getEvents();
+		if ($('main').classList.contains('Home') || $('main').classList.contains('Shows')) {
+			mount();
+			getEvents();
+		}
 	}
 
 	return {

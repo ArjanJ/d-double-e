@@ -8,7 +8,7 @@
 	@include bp(large) {
 		padding: ($base-space * 6) (0) ($base-space * 10);
 	}
-	
+
 	&__heading {
 		@extend %u-ls-4;
 		margin-bottom: ($base-space * 2);

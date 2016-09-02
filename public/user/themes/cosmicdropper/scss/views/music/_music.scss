@@ -1,0 +1,80 @@
+.music {
+  padding: ($base-space * 6) (0) ($base-space * 8);
+
+	@include bp(medium) {
+		padding: ($base-space * 9) (0);
+	}
+
+	@include bp(large) {
+		padding: ($base-space * 6) (0) ($base-space * 10);
+	}
+
+  &-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: (0) ($base-space);
+  }
+
+  &-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &-item {
+    flex-basis: 50%;
+    flex: 1;
+    margin: (0) ($base-space / 1.5);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(25%);
+    animation: fadeInUp .5s $ease-out forwards;
+
+    @for $i from 1 through 20 {
+      &:nth-child(#{$i}) {
+        animation-delay: $i * 0.05s;
+      }
+    }
+
+    @include bp(medium) {
+      flex-basis: 33%;
+    }
+
+    @include bp(large) {
+      flex-basis: 25%;
+    }
+
+    a {
+      display: block;
+      @include ease(out);
+
+      &:hover {
+        transform: scale(1.14);
+      }
+    }
+
+    img {
+      display: block;
+      max-width: 275px;
+      height: auto;
+      margin: 0 auto ($base-space / 2);
+      box-shadow: 0 4px 12px rgba(black, 0.2);
+    }
+
+    p {
+      font-size: map-get($heading-sizes, 6);
+      text-align: center;;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: $theme-color-2;
+      @extend %u-ls-6;
+    }
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
