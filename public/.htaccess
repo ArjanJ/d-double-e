@@ -74,7 +74,7 @@ DirectoryIndex index.php index.html index.htm
 SetEnvIf Host staging.itsddoublee.com passreq
 AuthType Basic
 AuthName "Password Required"
-AuthUserFile /.htpasswd
+AuthUserFile /home/wmqludpy/staging.itsddoublee.com/.htpasswd
 Require valid-user
 Order allow,deny
 Allow from all
