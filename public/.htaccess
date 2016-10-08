@@ -63,3 +63,20 @@ RewriteRule ^(LICENSE.txt|composer.lock|composer.json|\.htaccess)$ error [F]
 Options -Indexes
 DirectoryIndex index.php index.html index.htm
 # End - Prevent Browsing and Set Default Resources
+
+# ----------------------------------------------------------------------
+# Password protect staging server
+# Use one .htaccess file across multiple environments
+# (e.g. local, dev, staging, production)
+# but only password protect a specific environment.
+# ----------------------------------------------------------------------
+
+SetEnvIf Host staging.itsddoublee.com passreq
+AuthType Basic
+AuthName "Password Required"
+AuthUserFile /.htpasswd
+Require valid-user
+Order allow,deny
+Allow from all
+Deny from env=passreq
+Satisfy any
