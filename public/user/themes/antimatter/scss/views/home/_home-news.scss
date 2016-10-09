@@ -1,0 +1,131 @@
+.home-news {
+	@include clearfix;
+	padding: ($base-space * 10) (0);
+	position: relative;
+
+	&__bottom-mask {
+		position: absolute;
+		z-index: 2;
+		top: 0;
+		left: 50%;
+		width: 100%;
+		transform: translateX(-50%);
+		opacity: 0.9;
+
+		svg {
+			fill: $theme-color-3;
+		}
+	}
+
+	&__list {
+		list-style-type: none;
+		display: flex;
+		flex-flow: row wrap;
+		position: relative;
+		z-index: 3;
+		max-width: 840px;
+		margin: 0 auto 0 auto;
+		will-change: transform;
+	}
+}
+
+.home-news-post {
+	$p: &;
+	width: 100%;
+	position: relative;
+	z-index: 1;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: $theme-color-1;
+	@include ease('out', .35);
+	@include card(2);
+
+	&:hover {
+		z-index: 2;
+		transform: scale(1.1);
+		@include card(5);
+
+		#{$p}__heading:before {
+			transform: rotate(-4deg);
+		}
+	}
+
+	@include bp(medium) {
+		width: 50%;
+	}
+
+	&:before {
+		@include cover;
+		content: "";
+		display: block;
+		position: absolute;
+		z-index: -1;
+		background: linear-gradient(45deg, rgba($theme-color-3, 0.65), rgba(black, 0));
+	}
+
+	&__link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: ($base-space * 8);
+		padding: ($base-space * 1.5);
+
+		@include bp(small) {
+			height: ($base-space * 10);
+		}
+
+		@include bp(large) {
+			height: ($base-space * 12);
+		padding: ($base-space * 2);
+		}
+	}
+
+	&__heading {
+		@extend %u-heading-5;
+		position: relative;
+		margin-bottom: 0;
+		text-shadow: 0 2px 6px rgba(black, 0.35);
+		text-align: center;
+		color: color(white);
+
+		&--last {
+			@extend %u-ls-3;
+			margin-bottom: 0;
+			color: color(black);
+			text-align: center;
+
+			svg {
+				$size: 36px;
+				width: $size;
+				height: $size;
+			}
+		}
+	}
+
+	&:nth-child(2),
+	&:nth-child(4) {
+
+		@include bp(medium) {
+			top: ($base-space * 2);
+		}
+	}
+
+	&--last {
+		background: $theme-color-2;
+
+		#{$p}__link {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		#{$p}__heading {
+			text-shadow: none;
+		}
+
+		#{$p}__heading:before {
+			display: none;
+		}
+	}
+}

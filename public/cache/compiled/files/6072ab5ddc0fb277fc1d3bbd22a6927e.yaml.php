@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/user/plugins/admin/languages/zh.yaml',
-    'modified' => 1466892963,
+    'modified' => 1475968166,
     'data' => [
         'PLUGIN_ADMIN' => [
             'ADMIN_BETA_MSG' => '這是 Beta 版！如果要用在營運中請自行承擔風險…',
@@ -246,7 +246,6 @@ return [
             'ABSOLUTE_URLS' => '絕對網址',
             'TASK_COMPLETED' => '任務已完成',
             'EVERYTHING_UP_TO_DATE' => '全部都已經是最新的',
-            'UPDATES_ARE_AVAILABLE' => '有可用的更新',
             'IS_AVAILABLE_FOR_UPDATE' => '可進行更新',
             'IS_NOW_AVAILABLE' => '現在有可用的',
             'CURRENT' => '現有的',
@@ -259,7 +258,6 @@ return [
             'METADATA_VALUE' => '值 (例如 \' Blog, Grav\')',
             'FULLY_UPDATED' => '完整地更新',
             'SAVE_LOCATION' => '儲存位置',
-            'PAGE_FILE' => '頁面檔案',
             'DEFAULT_DATE_FORMAT' => '頁面日期格式',
             'IGNORE_FILES' => '忽略的檔案',
             'IGNORE_FOLDERS' => '忽略的資料夾',

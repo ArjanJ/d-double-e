@@ -2,12 +2,12 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/system/blueprints/pages/default.yaml',
-    'modified' => 1456442350,
+    'modified' => 1475968568,
     'data' => [
         'title' => 'PLUGIN_ADMIN.DEFAULT',
         'rules' => [
             'slug' => [
-                'pattern' => '[a-z][a-z0-9_\\-]+',
+                'pattern' => '[a-zа-я][a-zа-я0-9_\\-]+',
                 'min' => 2,
                 'max' => 80
             ]
@@ -31,7 +31,6 @@ return [
                                 ],
                                 'content' => [
                                     'type' => 'markdown',
-                                    'showPreview' => true,
                                     'validate' => [
                                         'type' => 'textarea'
                                     ]
@@ -48,7 +47,7 @@ return [
                             'fields' => [
                                 'publishing' => [
                                     'type' => 'section',
-                                    'title' => 'Publishing',
+                                    'title' => 'PLUGIN_ADMIN.PUBLISHING',
                                     'underline' => true,
                                     'fields' => [
                                         'header.published' => [
@@ -150,8 +149,8 @@ return [
                                                     'type' => 'select',
                                                     'label' => 'PLUGIN_ADMIN.PARENT',
                                                     'classes' => 'fancy',
-                                                    '@data-options' => '\\Grav\\Common\\Page\\Pages::parentsRawRoutes',
-                                                    '@data-default' => '\\Grav\\Plugin\\admin::route',
+                                                    'data-options@' => '\\Grav\\Common\\Page\\Pages::parentsRawRoutes',
+                                                    'data-default@' => '\\Grav\\Plugin\\admin::rawRoute',
                                                     'options' => [
                                                         '/' => 'PLUGIN_ADMIN.DEFAULT_OPTION_ROOT'
                                                     ]
@@ -162,7 +161,7 @@ return [
                                                     'label' => 'PLUGIN_ADMIN.PAGE_FILE',
                                                     'help' => 'PLUGIN_ADMIN.PAGE_FILE_HELP',
                                                     'default' => 'default',
-                                                    '@data-options' => '\\Grav\\Common\\Page\\Pages::pageTypes'
+                                                    'data-options@' => '\\Grav\\Common\\Page\\Pages::pageTypes'
                                                 ],
                                                 'header.body_classes' => [
                                                     'type' => 'text',
@@ -192,6 +191,21 @@ return [
                                     'title' => 'PLUGIN_ADMIN.OVERRIDES',
                                     'underline' => true,
                                     'fields' => [
+                                        'header.dateformat' => [
+                                            'toggleable' => true,
+                                            'type' => 'select',
+                                            'size' => 'medium',
+                                            'selectize' => [
+                                                'create' => true
+                                            ],
+                                            'label' => 'PLUGIN_ADMIN.DEFAULT_DATE_FORMAT',
+                                            'help' => 'PLUGIN_ADMIN.DEFAULT_DATE_FORMAT_HELP',
+                                            'placeholder' => 'PLUGIN_ADMIN.DEFAULT_DATE_FORMAT_PLACEHOLDER',
+                                            'data-options@' => '\\Grav\\Common\\Utils::dateFormats',
+                                            'validate' => [
+                                                'type' => 'string'
+                                            ]
+                                        ],
                                         'header.menu' => [
                                             'type' => 'text',
                                             'label' => 'PLUGIN_ADMIN.MENU',
@@ -218,7 +232,7 @@ return [
                                             'type' => 'checkboxes',
                                             'label' => 'PLUGIN_ADMIN.PROCESS',
                                             'toggleable' => true,
-                                            '@config-default' => 'system.pages.process',
+                                            'config-default@' => 'system.pages.process',
                                             'default' => [
                                                 'markdown' => true,
                                                 'twig' => false
@@ -235,7 +249,7 @@ return [
                                             'label' => 'PLUGIN_ADMIN.DEFAULT_CHILD_TYPE',
                                             'default' => 'default',
                                             'placeholder' => 'PLUGIN_ADMIN.USE_GLOBAL',
-                                            '@data-options' => '\\Grav\\Common\\Page\\Pages::types'
+                                            'data-options@' => '\\Grav\\Common\\Page\\Pages::types'
                                         ],
                                         'header.routable' => [
                                             'type' => 'toggle',
@@ -279,12 +293,9 @@ return [
                                             ]
                                         ],
                                         'header.template' => [
-                                            'type' => 'select',
+                                            'type' => 'text',
                                             'toggleable' => true,
-                                            'classes' => 'fancy',
-                                            'label' => 'PLUGIN_ADMIN.DISPLAY_TEMPLATE',
-                                            'default' => 'default',
-                                            '@data-options' => '\\Grav\\Common\\Page\\Pages::types'
+                                            'label' => 'PLUGIN_ADMIN.DISPLAY_TEMPLATE'
                                         ],
                                         'header.append_url_extension' => [
                                             'type' => 'text',

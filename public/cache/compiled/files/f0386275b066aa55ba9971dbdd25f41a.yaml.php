@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/system/languages/pl.yaml',
-    'modified' => 1456442350,
+    'modified' => 1475968568,
     'data' => [
         'FRONTMATTER_ERROR_PAGE' => '---
 title: %1$s
@@ -34,8 +34,8 @@ Path: `%2$s`
             'SEC' => 'sek',
             'MIN' => 'min',
             'HR' => 'godz',
-            'WK' => 'tydź',
-            'MO' => 'mieś',
+            'WK' => 'tydz',
+            'MO' => 'm-c',
             'YR' => 'rok',
             'DEC' => 'dekada',
             'SECOND_PLURAL' => 'sekund',
@@ -46,17 +46,17 @@ Path: `%2$s`
             'MONTH_PLURAL' => 'miesięcy',
             'YEAR_PLURAL' => 'lat',
             'DECADE_PLURAL' => 'dekad',
-            'SEC_PLURAL' => 'sekund',
-            'MIN_PLURAL' => 'minut',
+            'SEC_PLURAL' => 'sek',
+            'MIN_PLURAL' => 'min',
             'HR_PLURAL' => 'godz',
             'WK_PLURAL' => 'tyg',
-            'MO_PLURAL' => 'mieś',
+            'MO_PLURAL' => 'm-ce',
             'YR_PLURAL' => 'lat',
             'DEC_PLURAL' => 'dekad'
         ],
         'FORM' => [
             'VALIDATION_FAIL' => '<b>Weryfikacja nie powiodła się:</b>',
-            'INVALID_INPUT' => 'Nieprawidłowe dane w',
+            'INVALID_INPUT' => 'Nieprawidłowe dane wejściowe',
             'MISSING_REQUIRED_FIELD' => 'Opuszczono wymagane pole:'
         ],
         'MONTHS_OF_THE_YEAR' => [

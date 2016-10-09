@@ -2,19 +2,14 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/user/config/system.yaml',
-    'modified' => 1467003838,
+    'modified' => 1475969000,
     'data' => [
         'absolute_urls' => false,
-        'timezone' => '',
-        'default_locale' => NULL,
         'param_sep' => ':',
         'wrapped_site' => false,
         'reverse_proxy_setup' => false,
-        'proxy_url' => NULL,
+        'force_ssl' => false,
         'languages' => [
-            'supported' => [
-                
-            ],
             'include_default_lang' => true,
             'translations' => true,
             'translations_fallback' => true,
@@ -27,7 +22,7 @@ return [
             'hide_in_urls' => false
         ],
         'pages' => [
-            'theme' => 'cosmicdropper',
+            'theme' => 'antimatter',
             'order' => [
                 'by' => 'default',
                 'dir' => 'asc'
@@ -36,7 +31,6 @@ return [
                 'count' => 20
             ],
             'dateformat' => [
-                'default' => NULL,
                 'short' => 'jS M Y',
                 'long' => 'F jS \\a\\t g:ia'
             ],
@@ -69,13 +63,12 @@ return [
                 5 => 'rss',
                 6 => 'atom'
             ],
-            'append_url_extension' => '',
             'expires' => 604800,
             'last_modified' => false,
             'etag' => false,
             'vary_accept_encoding' => false,
             'redirect_default_route' => false,
-            'redirect_default_code' => 301,
+            'redirect_default_code' => '301',
             'redirect_trailing_slash' => true,
             'ignore_files' => [
                 0 => '.DS_Store'
@@ -86,6 +79,13 @@ return [
             ],
             'ignore_hidden' => true,
             'url_taxonomy_filters' => true,
+            'frontmatter' => [
+                'process_twig' => false,
+                'ignore_fields' => [
+                    0 => 'form',
+                    1 => 'forms'
+                ]
+            ],
             'markdown_extra' => false
         ],
         'cache' => [
@@ -109,10 +109,14 @@ return [
         ],
         'assets' => [
             'css_pipeline' => false,
+            'css_pipeline_include_externals' => true,
+            'css_pipeline_before_excludes' => true,
             'css_minify' => true,
             'css_minify_windows' => false,
             'css_rewrite' => true,
             'js_pipeline' => false,
+            'js_pipeline_include_externals' => true,
+            'js_pipeline_before_excludes' => true,
             'js_minify' => true,
             'enable_asset_timestamp' => false
         ],
@@ -135,13 +139,7 @@ return [
         ],
         'media' => [
             'enable_media_timestamp' => false,
-            'upload_limit' => 0,
-            'unsupported_inline_types' => [
-                
-            ],
-            'allowed_fallback_types' => [
-                
-            ]
+            'upload_limit' => 0
         ],
         'session' => [
             'enabled' => true,
@@ -149,6 +147,9 @@ return [
             'name' => 'grav-site',
             'secure' => false,
             'httponly' => true
+        ],
+        'gpm' => [
+            'releases' => 'stable'
         ]
     ]
 ];

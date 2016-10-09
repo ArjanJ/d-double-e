@@ -22,14 +22,14 @@ class __TwigTemplate_106e890ffe5161e65aaca92ecfa181e5e737b77c20fe434817129be0f17
         <div class=\"button-bar\">
             <a class=\"button\" href=\"";
             // line 4
-            echo $this->getAttribute((isset($context["uri"]) ? $context["uri"] : null), "route", array(0 => true), "method");
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["uri"]) ? $context["uri"] : null), "route", array(0 => true), "method"), "html", null, true);
             echo "/pages\"><i class=\"fa fa-fw fa-file-text-o\"></i>";
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.MANAGE_PAGES");
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.MANAGE_PAGES"), "html", null, true);
             echo "</a>
         </div>
         <h1>";
             // line 6
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.LATEST_PAGE_UPDATES");
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.LATEST_PAGE_UPDATES"), "html", null, true);
             echo "</h1>
         <table>
         ";
@@ -40,20 +40,21 @@ class __TwigTemplate_106e890ffe5161e65aaca92ecfa181e5e737b77c20fe434817129be0f17
                 if ($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "latestPages", array())) {
                     // line 9
                     echo "            <tr>
-                <td class=\"double page-title\">
+                <td class=\"triple page-title\">
                     <a href=\"";
                     // line 11
-                    echo (isset($context["base_url"]) ? $context["base_url"] : null);
+                    echo twig_escape_filter($this->env, (isset($context["base_url"]) ? $context["base_url"] : null), "html", null, true);
                     echo "/pages/";
-                    echo trim($this->getAttribute($context["latest"], "route", array()), "/");
-                    echo "\"><i class=\"fa fa-fw fa-file-o\"></i> ";
+                    echo twig_escape_filter($this->env, trim($this->getAttribute($context["latest"], "route", array()), "/"), "html", null, true);
+                    echo "\"><i class=\"fa fa-fw fa-file-text-o\"></i> ";
                     echo twig_escape_filter($this->env, $this->getAttribute($context["latest"], "title", array()));
-                    echo "</a></td><td class=\"double page-route\">";
-                    echo $this->getAttribute($context["latest"], "route", array());
-                    echo "</td><td><b class=\"last-modified\">";
-                    echo $this->env->getExtension('GravTwigExtension')->nicetimeFilter($this->getAttribute($context["latest"], "modified", array()));
-                    echo "</b>
-                </td>
+                    echo "</a></td>
+                <td class=\"triple page-route\">";
+                    // line 12
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["latest"], "route", array()), "html", null, true);
+                    echo "</td><td>";
+                    echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->adminNicetimeFilter($this->getAttribute($context["latest"], "modified", array())), "html", null, true);
+                    echo "</td>
             </tr>
         ";
                 }
@@ -84,7 +85,7 @@ class __TwigTemplate_106e890ffe5161e65aaca92ecfa181e5e737b77c20fe434817129be0f17
 
     public function getDebugInfo()
     {
-        return array (  70 => 18,  65 => 15,  46 => 11,  42 => 9,  37 => 8,  32 => 6,  25 => 4,  21 => 2,  19 => 1,);
+        return array (  71 => 18,  66 => 15,  54 => 12,  46 => 11,  42 => 9,  37 => 8,  32 => 6,  25 => 4,  21 => 2,  19 => 1,);
     }
 }
 /* {% if authorize(['admin.pages', 'admin.super']) %}*/
@@ -96,9 +97,9 @@ class __TwigTemplate_106e890ffe5161e65aaca92ecfa181e5e737b77c20fe434817129be0f17
 /*         <table>*/
 /*         {% for latest in admin.latestPages if admin.latestPages %}*/
 /*             <tr>*/
-/*                 <td class="double page-title">*/
-/*                     <a href="{{ base_url }}/pages/{{ latest.route|trim('/') }}"><i class="fa fa-fw fa-file-o"></i> {{ latest.title|e }}</a></td><td class="double page-route">{{ latest.route }}</td><td><b class="last-modified">{{ latest.modified|nicetime }}</b>*/
-/*                 </td>*/
+/*                 <td class="triple page-title">*/
+/*                     <a href="{{ base_url }}/pages/{{ latest.route|trim('/') }}"><i class="fa fa-fw fa-file-text-o"></i> {{ latest.title|e }}</a></td>*/
+/*                 <td class="triple page-route">{{ latest.route }}</td><td>{{ latest.modified|adminNicetime }}</td>*/
 /*             </tr>*/
 /*         {% endfor %}*/
 /*         </table>*/
@@ -106,3 +107,4 @@ class __TwigTemplate_106e890ffe5161e65aaca92ecfa181e5e737b77c20fe434817129be0f17
 /* {% else %}*/
 /*     <div class="padding">You don't have sufficient access to view the dashboard...</div>*/
 /* {% endif %}*/
+/* */

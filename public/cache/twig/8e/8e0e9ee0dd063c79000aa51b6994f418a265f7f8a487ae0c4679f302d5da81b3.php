@@ -24,23 +24,23 @@ class __TwigTemplate_12203d153b73964e90c664f1f4e27b73b1de8f6f9556d16b037fcf4f07b
             echo "    <tr>
         <td>";
             // line 4
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.AUTHOR");
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.AUTHOR"), "html", null, true);
             echo ":</td>
-        <td>
+        <td class=\"double\">
             ";
             // line 6
             if ($this->getAttribute($this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "author", array()), "url", array())) {
                 // line 7
                 echo "                <a href=\"";
-                echo $this->getAttribute($this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "author", array()), "url", array());
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "author", array()), "url", array()), "html", null, true);
                 echo "\" target=\"_blank\">";
-                echo $this->getAttribute($this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "author", array()), "name", array());
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "author", array()), "name", array()), "html", null, true);
                 echo "</a>
             ";
             } else {
                 // line 9
                 echo "                ";
-                echo $this->getAttribute($this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "author", array()), "name", array());
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "author", array()), "name", array()), "html", null, true);
                 echo "
             ";
             }
@@ -49,9 +49,9 @@ class __TwigTemplate_12203d153b73964e90c664f1f4e27b73b1de8f6f9556d16b037fcf4f07b
             if ($this->getAttribute($this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "author", array()), "email", array())) {
                 // line 12
                 echo "                - <a href=\"mailto:";
-                echo $this->getAttribute($this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "author", array()), "email", array());
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "author", array()), "email", array()), "html", null, true);
                 echo "\">";
-                echo $this->getAttribute($this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "author", array()), "email", array());
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "author", array()), "email", array()), "html", null, true);
                 echo "</a>
             ";
             }
@@ -67,13 +67,13 @@ class __TwigTemplate_12203d153b73964e90c664f1f4e27b73b1de8f6f9556d16b037fcf4f07b
             echo "        <tr>
             <td>";
             // line 19
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.HOMEPAGE");
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.HOMEPAGE"), "html", null, true);
             echo ":</td>
-            <td><a href=\"";
+            <td class=\"double\"><a href=\"";
             // line 20
-            echo $this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "homepage", array());
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "homepage", array()), "html", null, true);
             echo "\" target=\"_blank\">";
-            echo $this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "homepage", array());
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "homepage", array()), "html", null, true);
             echo "</a></td>
         </tr>
     ";
@@ -85,13 +85,13 @@ class __TwigTemplate_12203d153b73964e90c664f1f4e27b73b1de8f6f9556d16b037fcf4f07b
             echo "        <tr>
             <td>";
             // line 25
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.DEMO");
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.DEMO"), "html", null, true);
             echo ":</td>
-            <td><a href=\"";
+            <td class=\"double\"><a href=\"";
             // line 26
-            echo $this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "demo", array());
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "demo", array()), "html", null, true);
             echo "\" target=\"_blank\">";
-            echo $this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "demo", array());
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "demo", array()), "html", null, true);
             echo "</a></td>
         </tr>
     ";
@@ -103,13 +103,13 @@ class __TwigTemplate_12203d153b73964e90c664f1f4e27b73b1de8f6f9556d16b037fcf4f07b
             echo "        <tr>
             <td>";
             // line 31
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.BUG_TRACKER");
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.BUG_TRACKER"), "html", null, true);
             echo ":</td>
-            <td><a href=\"";
+            <td class=\"double\"><a href=\"";
             // line 32
-            echo $this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "bugs", array());
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "bugs", array()), "html", null, true);
             echo "\" target=\"_blank\">";
-            echo $this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "bugs", array());
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "bugs", array()), "html", null, true);
             echo "</a></td>
         </tr>
     ";
@@ -121,11 +121,11 @@ class __TwigTemplate_12203d153b73964e90c664f1f4e27b73b1de8f6f9556d16b037fcf4f07b
             echo "        <tr>
             <td>";
             // line 37
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.KEYWORDS");
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.KEYWORDS"), "html", null, true);
             echo ":</td>
-            <td>";
+            <td class=\"double\">";
             // line 38
-            echo twig_join_filter($this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "keywords", array()), ", ");
+            echo twig_escape_filter($this->env, twig_join_filter($this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "keywords", array()), ", "), "html", null, true);
             echo "</td>
         </tr>
     ";
@@ -137,11 +137,11 @@ class __TwigTemplate_12203d153b73964e90c664f1f4e27b73b1de8f6f9556d16b037fcf4f07b
             echo "        <tr>
             <td>";
             // line 43
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.LICENSE");
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.LICENSE"), "html", null, true);
             echo ":</td>
-            <td>";
+            <td class=\"double\">";
             // line 44
-            echo $this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "license", array());
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "license", array()), "html", null, true);
             echo "</td>
         </tr>
     ";
@@ -155,9 +155,9 @@ class __TwigTemplate_12203d153b73964e90c664f1f4e27b73b1de8f6f9556d16b037fcf4f07b
             echo "        <tr>
             <td>";
             // line 50
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.DESCRIPTION");
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.DESCRIPTION"), "html", null, true);
             echo ":</td>
-            <td>";
+            <td class=\"double\">";
             // line 51
             echo $this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "description_html", array());
             echo "</td>
@@ -176,13 +176,13 @@ class __TwigTemplate_12203d153b73964e90c664f1f4e27b73b1de8f6f9556d16b037fcf4f07b
             echo "        <tr>
             <td>";
             // line 58
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.README");
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.README"), "html", null, true);
             echo ":</td>
-            <td><a href=\"";
+            <td class=\"double\"><a href=\"";
             // line 59
-            echo (isset($context["readme_link"]) ? $context["readme_link"] : null);
+            echo twig_escape_filter($this->env, (isset($context["readme_link"]) ? $context["readme_link"] : null), "html", null, true);
             echo "\" target=\"_blank\">";
-            echo (isset($context["readme_link"]) ? $context["readme_link"] : null);
+            echo twig_escape_filter($this->env, (isset($context["readme_link"]) ? $context["readme_link"] : null), "html", null, true);
             echo "</a></td>
         </tr>
     ";
@@ -212,7 +212,7 @@ class __TwigTemplate_12203d153b73964e90c664f1f4e27b73b1de8f6f9556d16b037fcf4f07b
 /*     {% if plugin.author %}*/
 /*     <tr>*/
 /*         <td>{{ "PLUGIN_ADMIN.AUTHOR"|tu }}:</td>*/
-/*         <td>*/
+/*         <td class="double">*/
 /*             {% if plugin.author.url %}*/
 /*                 <a href="{{ plugin.author.url }}" target="_blank">{{ plugin.author.name }}</a>*/
 /*             {% else %}*/
@@ -227,38 +227,38 @@ class __TwigTemplate_12203d153b73964e90c664f1f4e27b73b1de8f6f9556d16b037fcf4f07b
 /*     {% if plugin.homepage %}*/
 /*         <tr>*/
 /*             <td>{{ "PLUGIN_ADMIN.HOMEPAGE"|tu }}:</td>*/
-/*             <td><a href="{{ plugin.homepage }}" target="_blank">{{ plugin.homepage }}</a></td>*/
+/*             <td class="double"><a href="{{ plugin.homepage }}" target="_blank">{{ plugin.homepage }}</a></td>*/
 /*         </tr>*/
 /*     {% endif %}*/
 /*     {% if plugin.demo %}*/
 /*         <tr>*/
 /*             <td>{{ "PLUGIN_ADMIN.DEMO"|tu }}:</td>*/
-/*             <td><a href="{{ plugin.demo }}" target="_blank">{{ plugin.demo }}</a></td>*/
+/*             <td class="double"><a href="{{ plugin.demo }}" target="_blank">{{ plugin.demo }}</a></td>*/
 /*         </tr>*/
 /*     {% endif %}*/
 /*     {% if plugin.bugs %}*/
 /*         <tr>*/
 /*             <td>{{ "PLUGIN_ADMIN.BUG_TRACKER"|tu }}:</td>*/
-/*             <td><a href="{{ plugin.bugs }}" target="_blank">{{ plugin.bugs }}</a></td>*/
+/*             <td class="double"><a href="{{ plugin.bugs }}" target="_blank">{{ plugin.bugs }}</a></td>*/
 /*         </tr>*/
 /*     {% endif %}*/
 /*     {% if plugin.keywords %}*/
 /*         <tr>*/
 /*             <td>{{ "PLUGIN_ADMIN.KEYWORDS"|tu }}:</td>*/
-/*             <td>{{ plugin.keywords|join(', ') }}</td>*/
+/*             <td class="double">{{ plugin.keywords|join(', ') }}</td>*/
 /*         </tr>*/
 /*     {% endif %}*/
 /*     {% if plugin.license %}*/
 /*         <tr>*/
 /*             <td>{{ "PLUGIN_ADMIN.LICENSE"|tu }}:</td>*/
-/*             <td>{{ plugin.license }}</td>*/
+/*             <td class="double">{{ plugin.license }}</td>*/
 /*         </tr>*/
 /*     {% endif %}*/
 /* */
 /*     {% if plugin.description %}*/
 /*         <tr>*/
 /*             <td>{{ "PLUGIN_ADMIN.DESCRIPTION"|tu }}:</td>*/
-/*             <td>{{ plugin.description_html }}</td>*/
+/*             <td class="double">{{ plugin.description_html|raw }}</td>*/
 /*         </tr>*/
 /*     {% endif %}*/
 /* */
@@ -266,7 +266,7 @@ class __TwigTemplate_12203d153b73964e90c664f1f4e27b73b1de8f6f9556d16b037fcf4f07b
 /*         {% set readme_link = plugin.readme ?: plugin.docs|default(plugin.homepage ~ '/blob/master/README.md') %}*/
 /*         <tr>*/
 /*             <td>{{ "PLUGIN_ADMIN.README"|tu }}:</td>*/
-/*             <td><a href="{{ readme_link }}" target="_blank">{{ readme_link }}</a></td>*/
+/*             <td class="double"><a href="{{ readme_link }}" target="_blank">{{ readme_link }}</a></td>*/
 /*         </tr>*/
 /*     {% endif %}*/
 /* */

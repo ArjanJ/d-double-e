@@ -16,7 +16,7 @@ class __TwigTemplate_9d96b674b781b4da32750307e05a9f0755eee4533a02716d8790d0c7960
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        $context["taxonomies"] = (((null === (isset($context["taxonomies"]) ? $context["taxonomies"] : null))) ? ($this->getAttribute($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "data", array(0 => "site"), "method"), "taxonomies", array())) : ((isset($context["taxonomies"]) ? $context["taxonomies"] : null)));
+        $context["taxonomies"] = (((null === (isset($context["taxonomies"]) ? $context["taxonomies"] : null))) ? ($this->getAttribute($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "data", array(0 => "config/site"), "method"), "taxonomies", array())) : ((isset($context["taxonomies"]) ? $context["taxonomies"] : null)));
         // line 2
         $context["parentname"] = $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "name", array());
         // line 3
@@ -49,7 +49,7 @@ class __TwigTemplate_9d96b674b781b4da32750307e05a9f0755eee4533a02716d8790d0c7960
             $context["sub_taxonomies"] = twig_get_array_keys_filter((($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["grav"]) ? $context["grav"] : null), "taxonomy", array(), "any", false, true), "taxonomy", array(), "any", false, true), $context["name"], array(), "any", true, true)) ? (_twig_default_filter($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["grav"]) ? $context["grav"] : null), "taxonomy", array(), "any", false, true), "taxonomy", array(), "any", false, true), $context["name"]), array())) : (array())));
             // line 8
             echo "    ";
-            $context["list"] = twig_array_merge(twig_array_merge(array(), (isset($context["sub_taxonomies"]) ? $context["sub_taxonomies"] : null)), (isset($context["value"]) ? $context["value"] : null));
+            $context["list"] = array_unique(twig_array_merge(twig_array_merge(array(), (isset($context["sub_taxonomies"]) ? $context["sub_taxonomies"] : null)), (isset($context["value"]) ? $context["value"] : null)));
             // line 9
             echo "
     ";
@@ -92,14 +92,14 @@ $context["name"]), "name" => ((            // line 14
         return array (  65 => 22,  62 => 21,  60 => 16,  59 => 14,  58 => 13,  57 => 10,  54 => 9,  51 => 8,  48 => 7,  46 => 6,  43 => 5,  26 => 4,  23 => 3,  21 => 2,  19 => 1,);
     }
 }
-/* {% set taxonomies = (taxonomies is null ? admin.data('site').taxonomies : taxonomies) %}*/
+/* {% set taxonomies = (taxonomies is null ? admin.data('config/site').taxonomies : taxonomies) %}*/
 /* {% set parentname = field.name %}*/
 /* */
 /* {% for name in taxonomies %}*/
 /* */
 /*     {% set value = array(data.value('header.taxonomy.' ~ name)|default([])) %}*/
 /*     {% set sub_taxonomies = attribute(grav.taxonomy.taxonomy, name)|default([])|keys %}*/
-/*     {% set list = []|merge(sub_taxonomies)|merge(value) %}*/
+/*     {% set list = []|merge(sub_taxonomies)|merge(value)|array_unique %}*/
 /* */
 /*     {% set field = {*/
 /*         type: 'select',*/

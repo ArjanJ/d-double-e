@@ -2,10 +2,10 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/user/plugins/form/blueprints.yaml',
-    'modified' => 1466892922,
+    'modified' => 1475968211,
     'data' => [
         'name' => 'Form',
-        'version' => '1.2.2',
+        'version' => '2.0.5',
         'description' => 'Enables the forms handling',
         'icon' => 'check-square',
         'author' => [
@@ -17,6 +17,12 @@ return [
         'homepage' => 'https://github.com/getgrav/grav-plugin-form',
         'bugs' => 'https://github.com/getgrav/grav-plugin-form/issues',
         'license' => 'MIT',
+        'dependencies' => [
+            0 => [
+                'name' => 'grav',
+                'version' => '>=1.1.4'
+            ]
+        ],
         'form' => [
             'validation' => 'strict',
             'fields' => [
@@ -31,6 +37,25 @@ return [
                     ],
                     'validate' => [
                         'type' => 'bool'
+                    ]
+                ],
+                'general' => [
+                    'type' => 'section',
+                    'title' => 'PLUGIN_FORM.GENERAL',
+                    'fields' => [
+                        'built_in_css' => [
+                            'type' => 'toggle',
+                            'label' => 'PLUGIN_FORM.USE_BUILT_IN_CSS',
+                            'highlight' => 1,
+                            'default' => 1,
+                            'options' => [
+                                1 => 'Enabled',
+                                0 => 'Disabled'
+                            ],
+                            'validate' => [
+                                'type' => 'bool'
+                            ]
+                        ]
                     ]
                 ],
                 'files' => [
@@ -69,6 +94,24 @@ return [
                             'validate' => [
                                 'type' => 'commalist'
                             ]
+                        ]
+                    ]
+                ],
+                'recaptcha' => [
+                    'type' => 'section',
+                    'title' => 'PLUGIN_FORM.RECAPTCHA',
+                    'fields' => [
+                        'recaptcha.site_key' => [
+                            'type' => 'text',
+                            'label' => 'PLUGIN_FORM.RECAPTCHA_SITE_KEY',
+                            'help' => 'PLUGIN_FORM.RECAPTCHA_SITE_KEY_HELP',
+                            'default' => ''
+                        ],
+                        'recaptcha.secret_key' => [
+                            'type' => 'text',
+                            'label' => 'PLUGIN_FORM.RECAPTCHA_SECRET_KEY',
+                            'help' => 'PLUGIN_FORM.RECAPTCHA_SECRET_KEY_HELP',
+                            'default' => ''
                         ]
                     ]
                 ]

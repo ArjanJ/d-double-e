@@ -23,190 +23,58 @@ class __TwigTemplate_8d7a8825653a864161939d85159d89380a84f5a1569a6ebedb21256124d
         // line 3
         if ((isset($context["exists"]) ? $context["exists"] : null)) {
             // line 4
-            echo "<div class=\"form-field\">
-    <div class=\"form-data form-uploads-wrapper\">
-        <h3>";
+            echo "<div class=\"form-field grid vertical\">
+    <div class=\"form-label\">
+        <label>";
             // line 6
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "label", array()));
-            echo "</h3>
-        <div id=\"gravDropzone\" class=\"dropzone\"></div>
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "label", array())), "html", null, true);
+            echo "</label>
+    </div>
+    <div class=\"form-data form-uploads-wrapper\">
+        ";
+            // line 9
+            $context["uploadLimit"] = (($this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["grav"]) ? $context["grav"] : null), "config", array()), "system", array()), "media", array()), "upload_limit", array()) / 1024) / 1024);
+            // line 10
+            echo "        ";
+            $context["dropzoneSettings"] = array("maxFileSize" => (isset($context["uploadLimit"]) ? $context["uploadLimit"] : null));
+            // line 11
+            echo "        <div id=\"grav-dropzone\"
+             class=\"dropzone\"
+             data-media-url=\"";
+            // line 13
+            echo twig_escape_filter($this->env, (isset($context["base_url"]) ? $context["base_url"] : null), "html", null, true);
+            echo "/media/";
+            echo twig_escape_filter($this->env, trim($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "route", array()), "/"), "html", null, true);
+            echo ".json\"
+             data-media-local=\"";
+            // line 14
+            echo twig_escape_filter($this->env, $this->env->getExtension('GravTwigExtension')->rtrimFilter((isset($context["base_url_relative_frontend"]) ? $context["base_url_relative_frontend"] : null), "/"), "html", null, true);
+            echo "/";
+            echo twig_escape_filter($this->env, trim($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "route", array()), "/"), "html", null, true);
+            echo "\"
+             data-dropzone-options=\"";
+            // line 15
+            echo twig_escape_filter($this->env, twig_jsonencode_filter((isset($context["dropzoneSettings"]) ? $context["dropzoneSettings"] : null)), "html_attr");
+            echo "\"></div>
         <span>";
-            // line 8
-            echo twig_join_filter((isset($context["value"]) ? $context["value"] : null), "
-");
+            // line 16
+            echo twig_escape_filter($this->env, twig_join_filter((isset($context["value"]) ? $context["value"] : null), "
+"), "html", null, true);
             echo "</span>
-        <script>
-            \$(function(){
-                var URI = \$('[data-media-url]').data('media-url'), thisDropzone,
-                    modalError = function(args){
-                        if (args.data.status == 'error' || args.data.status == 'unauthorized'){
-
-                            if (args.mode == 'addBack'){
-                                // let's add back the file
-                                if (args.file instanceof File) this.addFile(args.file);
-                                else {
-                                    this.files.push(args.file);
-                                    this.options.addedfile.call(this, args.file);
-                                    this.options.thumbnail.call(this, args.file, args.file.extras.url);
-                                }
-                            } else if (args.mode == 'removeFile') {
-                                args.file.rejected = true;
-                                this.removeFile(args.file);
-                            }
-
-                            // fire up the modal
-                            var modalContainer = \$('[data-remodal-id=generic]');
-                            modalContainer.find('.error-content').html(args.msg);
-                            \$.remodal.lookup[modalContainer.data('remodal')].open();
-                        }
-                    };
-                Dropzone.autoDiscover = false;
-                Dropzone.confirm = function(question, accepted, rejected) {
-                    var modalContainer = \$('[data-remodal-id=delete-media]'),
-                        acceptHandler = function () {
-                            if (accepted) {
-                                accepted();
-                            }
-                            \$(document).off('confirm', '[data-remodal-id=delete-media]', acceptHandler);
-                            \$(document).off('cancel', '[data-remodal-id=delete-media]', rejectHandler);
-                        },
-                        rejectHandler = function () {
-                            if (rejected) {
-                                rejected();
-                            }
-                            \$(document).off('confirm', '[data-remodal-id=delete-media]', acceptHandler);
-                            \$(document).off('cancel', '[data-remodal-id=delete-media]', rejectHandler);
-                        };
-
-                    \$.remodal.lookup[modalContainer.data('remodal')].open();
-                    \$(document).on('confirm', '[data-remodal-id=delete-media]', acceptHandler);
-                    \$(document).on('cancel', '[data-remodal-id=delete-media]', rejectHandler);
-                };
-                Dropzone.options.gravDropzone = {
-                    addRemoveLinks: false,
-                    dictRemoveFileConfirmation: '[placeholder]',
-                    acceptedFiles: \$('[data-media-types]').data('media-types'),
-                    previewTemplate: \"<div class=\\\"dz-preview dz-file-preview\\\">\\n  <div class=\\\"dz-details\\\">\\n    \" +
-                                     \"<div class=\\\"dz-filename\\\"><span data-dz-name></span></div>\\n    \" +
-                                     \"<div class=\\\"dz-size\\\" data-dz-size></div>\\n    <img data-dz-thumbnail />\\n  </div>\\n  \" +
-                                     \"<div class=\\\"dz-progress\\\"><span class=\\\"dz-upload\\\" data-dz-uploadprogress></span></div>\\n  \"+
-                                     \"<div class=\\\"dz-success-mark\\\"><span>✔</span></div>\\n  <div class=\\\"dz-error-mark\\\"><span>✘</span></div>\\n  \" +
-                                     \"<div class=\\\"dz-error-message\\\"><span data-dz-errormessage></span></div>\\n\" +
-                                     \"<a class=\\\"dz-remove\\\" href=\\\"javascript:undefined;\\\" data-dz-remove>Delete</a>\\n\" +
-                                     \"<a class=\\\"dz-insert\\\" href=\\\"javascript:undefined;\\\" data-dz-insert>Insert</a>\\n</div>\",
-                    init: function() {
-                        thisDropzone = this;
-                        \$.get(URI + '/task";
-            // line 70
-            echo $this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "system", array()), "param_sep", array());
-            echo "listmedia/admin-nonce";
-            echo $this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "system", array()), "param_sep", array());
-            echo "' +  GravAdmin.config.admin_nonce, function(data) {
-
-                            \$.proxy(modalError, this, {
-                                data: data,
-                                msg: '<p>An error occurred while trying to list files</p><pre>'+data.message+'</pre>'
-                            })();
-
-                            if (data.results) {
-                                \$.each(data.results, function(filename, data){
-                                    var mockFile = { name: filename, size: data.size, accepted: true, extras: data };
-                                    thisDropzone.files.push(mockFile);
-                                    thisDropzone.options.addedfile.call(thisDropzone, mockFile);
-
-                                    if (filename.toLowerCase().match(/\\.(jpg|jpeg|png|gif)\$/)) {
-                                        thisDropzone.options.thumbnail.call(thisDropzone, mockFile, data.url);
-                                    }
-                                });
-                            }
-
-                            \$('.dz-preview').prop('draggable', 'true');
-                        });
-
-                        this.on(\"complete\", function(file) {
-                            if (file.accepted) {
-                                \$('.dz-preview').prop('draggable', 'true');
-                                return;
-                            }
-                            var data = {status: 'error', message: 'Unsupported file type: ' + file.name.match(/\\..+/).join('')};
-                            \$.proxy(modalError, this, {
-                                file: file,
-                                data: data,
-                                mode: 'removeFile',
-                                msg: '<p>An error occurred while trying to add the file <strong>'+file.name+'</strong></p><pre>'+data.message+'</pre>'
-                            })();
-                        });
-
-                        this.on('success', function(file, response){
-                            thisDropzone = this;
-                            \$.proxy(modalError, this, {
-                                file: file,
-                                data: response,
-                                mode: 'removeFile',
-                                msg: '<p>An error occurred while trying to upload the file <strong>'+file.name+'</strong></p><pre>'+response.message+'</pre>'
-                            })();
-                        });
-
-                        this.on('removedfile', function(file) {
-                            if (!file.accepted || file.rejected) return;
-                            thisDropzone = this;
-                            \$.post(URI + '/task";
-            // line 119
-            echo $this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "system", array()), "param_sep", array());
-            echo "delmedia', {filename: file.name, 'admin-nonce': GravAdmin.config.admin_nonce}, function(data){
-                                \$.proxy(modalError, thisDropzone, {
-                                    file: file,
-                                    data: data,
-                                    mode: 'addBack',
-                                    msg: '<p>An error occurred while trying to remove the file <strong>'+file.name+'</strong></p><pre>'+data.message+'</pre>'
-                                })();
-                            });
-                        });
-
-                        this.on('sending', function(file, xhr, formData){
-                            formData.append('admin-nonce', GravAdmin.config.admin_nonce);
-                        });
-                    }
-                };
-
-                var dropzone = new Dropzone(\"#gravDropzone\", { url: URI + '/task";
-            // line 135
-            echo $this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "system", array()), "param_sep", array());
-            echo "addmedia', createImageThumbnails: { thumbnailWidth: 150} });
-
-                \$(\"#gravDropzone\").delegate('.dz-preview', 'dragstart', function(e){
-                    var uri = encodeURI(\$(this).find('.dz-filename').text());
-                    uri = uri.replace(/\\(/g, '%28');
-                    uri = uri.replace(/\\)/g, '%29');
-
-                    var shortcode = '![](' + uri + ')';
-                    if (!uri.match(/\\.(jpg|jpeg|png|gif)\$/)) {
-                        shortcode = '[' + decodeURI(uri) + '](' + uri + ')';
-                    }
-
-                    dropzone.disable();
-                    \$(this).addClass('hide-backface');
-                    e.originalEvent.dataTransfer.effectAllowed = 'copy';
-                    e.originalEvent.dataTransfer.setData('text', shortcode);
-                });
-
-                \$(\"#gravDropzone\").delegate('.dz-preview', 'dragend', function(e){
-                    dropzone.enable();
-                    \$(this).removeClass('hide-backface');
-                });
-            });
-        </script>
     </div>
 </div>
 ";
         } else {
-            // line 162
+            // line 20
             echo "<div class=\"form-tab\">
     <div class=\"form-field\">
         <div class=\"form-label\">
-            <label>
-                You cannot add media files until you save the page. Just click 'Save' on top
-            </label>
+            <span class=\"note\">
+                ";
+            // line 24
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.CANNOT_ADD_MEDIA_FILES_PAGE_NOT_SAVED"), "html", null, true);
+            echo "
+            </span>
         </div>
     </div>
 </div>
@@ -226,176 +94,34 @@ class __TwigTemplate_8d7a8825653a864161939d85159d89380a84f5a1569a6ebedb21256124d
 
     public function getDebugInfo()
     {
-        return array (  204 => 162,  174 => 135,  155 => 119,  101 => 70,  35 => 8,  30 => 6,  26 => 4,  24 => 3,  21 => 2,  19 => 1,);
+        return array (  75 => 24,  69 => 20,  61 => 16,  57 => 15,  51 => 14,  45 => 13,  41 => 11,  38 => 10,  36 => 9,  30 => 6,  26 => 4,  24 => 3,  21 => 2,  19 => 1,);
     }
 }
 /* {% set value = (value is null ? field.default : value) %}*/
 /* */
 /* {% if exists %}*/
-/* <div class="form-field">*/
+/* <div class="form-field grid vertical">*/
+/*     <div class="form-label">*/
+/*         <label>{{ field.label|tu }}</label>*/
+/*     </div>*/
 /*     <div class="form-data form-uploads-wrapper">*/
-/*         <h3>{{ field.label|tu }}</h3>*/
-/*         <div id="gravDropzone" class="dropzone"></div>*/
+/*         {% set uploadLimit = grav.config.system.media.upload_limit / 1024 / 1024 %}*/
+/*         {% set dropzoneSettings = { maxFileSize: uploadLimit } %}*/
+/*         <div id="grav-dropzone"*/
+/*              class="dropzone"*/
+/*              data-media-url="{{ base_url }}/media/{{ admin.route|trim('/') }}.json"*/
+/*              data-media-local="{{ base_url_relative_frontend|rtrim('/') }}/{{ admin.route|trim('/') }}"*/
+/*              data-dropzone-options="{{ dropzoneSettings|json_encode|e('html_attr') }}"></div>*/
 /*         <span>{{ value|join("\n") }}</span>*/
-/*         <script>*/
-/*             $(function(){*/
-/*                 var URI = $('[data-media-url]').data('media-url'), thisDropzone,*/
-/*                     modalError = function(args){*/
-/*                         if (args.data.status == 'error' || args.data.status == 'unauthorized'){*/
-/* */
-/*                             if (args.mode == 'addBack'){*/
-/*                                 // let's add back the file*/
-/*                                 if (args.file instanceof File) this.addFile(args.file);*/
-/*                                 else {*/
-/*                                     this.files.push(args.file);*/
-/*                                     this.options.addedfile.call(this, args.file);*/
-/*                                     this.options.thumbnail.call(this, args.file, args.file.extras.url);*/
-/*                                 }*/
-/*                             } else if (args.mode == 'removeFile') {*/
-/*                                 args.file.rejected = true;*/
-/*                                 this.removeFile(args.file);*/
-/*                             }*/
-/* */
-/*                             // fire up the modal*/
-/*                             var modalContainer = $('[data-remodal-id=generic]');*/
-/*                             modalContainer.find('.error-content').html(args.msg);*/
-/*                             $.remodal.lookup[modalContainer.data('remodal')].open();*/
-/*                         }*/
-/*                     };*/
-/*                 Dropzone.autoDiscover = false;*/
-/*                 Dropzone.confirm = function(question, accepted, rejected) {*/
-/*                     var modalContainer = $('[data-remodal-id=delete-media]'),*/
-/*                         acceptHandler = function () {*/
-/*                             if (accepted) {*/
-/*                                 accepted();*/
-/*                             }*/
-/*                             $(document).off('confirm', '[data-remodal-id=delete-media]', acceptHandler);*/
-/*                             $(document).off('cancel', '[data-remodal-id=delete-media]', rejectHandler);*/
-/*                         },*/
-/*                         rejectHandler = function () {*/
-/*                             if (rejected) {*/
-/*                                 rejected();*/
-/*                             }*/
-/*                             $(document).off('confirm', '[data-remodal-id=delete-media]', acceptHandler);*/
-/*                             $(document).off('cancel', '[data-remodal-id=delete-media]', rejectHandler);*/
-/*                         };*/
-/* */
-/*                     $.remodal.lookup[modalContainer.data('remodal')].open();*/
-/*                     $(document).on('confirm', '[data-remodal-id=delete-media]', acceptHandler);*/
-/*                     $(document).on('cancel', '[data-remodal-id=delete-media]', rejectHandler);*/
-/*                 };*/
-/*                 Dropzone.options.gravDropzone = {*/
-/*                     addRemoveLinks: false,*/
-/*                     dictRemoveFileConfirmation: '[placeholder]',*/
-/*                     acceptedFiles: $('[data-media-types]').data('media-types'),*/
-/*                     previewTemplate: "<div class=\"dz-preview dz-file-preview\">\n  <div class=\"dz-details\">\n    " +*/
-/*                                      "<div class=\"dz-filename\"><span data-dz-name></span></div>\n    " +*/
-/*                                      "<div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  " +*/
-/*                                      "<div class=\"dz-progress\"><span class=\"dz-upload\" data-dz-uploadprogress></span></div>\n  "+*/
-/*                                      "<div class=\"dz-success-mark\"><span>✔</span></div>\n  <div class=\"dz-error-mark\"><span>✘</span></div>\n  " +*/
-/*                                      "<div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n" +*/
-/*                                      "<a class=\"dz-remove\" href=\"javascript:undefined;\" data-dz-remove>Delete</a>\n" +*/
-/*                                      "<a class=\"dz-insert\" href=\"javascript:undefined;\" data-dz-insert>Insert</a>\n</div>",*/
-/*                     init: function() {*/
-/*                         thisDropzone = this;*/
-/*                         $.get(URI + '/task{{ config.system.param_sep }}listmedia/admin-nonce{{ config.system.param_sep }}' +  GravAdmin.config.admin_nonce, function(data) {*/
-/* */
-/*                             $.proxy(modalError, this, {*/
-/*                                 data: data,*/
-/*                                 msg: '<p>An error occurred while trying to list files</p><pre>'+data.message+'</pre>'*/
-/*                             })();*/
-/* */
-/*                             if (data.results) {*/
-/*                                 $.each(data.results, function(filename, data){*/
-/*                                     var mockFile = { name: filename, size: data.size, accepted: true, extras: data };*/
-/*                                     thisDropzone.files.push(mockFile);*/
-/*                                     thisDropzone.options.addedfile.call(thisDropzone, mockFile);*/
-/* */
-/*                                     if (filename.toLowerCase().match(/\.(jpg|jpeg|png|gif)$/)) {*/
-/*                                         thisDropzone.options.thumbnail.call(thisDropzone, mockFile, data.url);*/
-/*                                     }*/
-/*                                 });*/
-/*                             }*/
-/* */
-/*                             $('.dz-preview').prop('draggable', 'true');*/
-/*                         });*/
-/* */
-/*                         this.on("complete", function(file) {*/
-/*                             if (file.accepted) {*/
-/*                                 $('.dz-preview').prop('draggable', 'true');*/
-/*                                 return;*/
-/*                             }*/
-/*                             var data = {status: 'error', message: 'Unsupported file type: ' + file.name.match(/\..+/).join('')};*/
-/*                             $.proxy(modalError, this, {*/
-/*                                 file: file,*/
-/*                                 data: data,*/
-/*                                 mode: 'removeFile',*/
-/*                                 msg: '<p>An error occurred while trying to add the file <strong>'+file.name+'</strong></p><pre>'+data.message+'</pre>'*/
-/*                             })();*/
-/*                         });*/
-/* */
-/*                         this.on('success', function(file, response){*/
-/*                             thisDropzone = this;*/
-/*                             $.proxy(modalError, this, {*/
-/*                                 file: file,*/
-/*                                 data: response,*/
-/*                                 mode: 'removeFile',*/
-/*                                 msg: '<p>An error occurred while trying to upload the file <strong>'+file.name+'</strong></p><pre>'+response.message+'</pre>'*/
-/*                             })();*/
-/*                         });*/
-/* */
-/*                         this.on('removedfile', function(file) {*/
-/*                             if (!file.accepted || file.rejected) return;*/
-/*                             thisDropzone = this;*/
-/*                             $.post(URI + '/task{{ config.system.param_sep }}delmedia', {filename: file.name, 'admin-nonce': GravAdmin.config.admin_nonce}, function(data){*/
-/*                                 $.proxy(modalError, thisDropzone, {*/
-/*                                     file: file,*/
-/*                                     data: data,*/
-/*                                     mode: 'addBack',*/
-/*                                     msg: '<p>An error occurred while trying to remove the file <strong>'+file.name+'</strong></p><pre>'+data.message+'</pre>'*/
-/*                                 })();*/
-/*                             });*/
-/*                         });*/
-/* */
-/*                         this.on('sending', function(file, xhr, formData){*/
-/*                             formData.append('admin-nonce', GravAdmin.config.admin_nonce);*/
-/*                         });*/
-/*                     }*/
-/*                 };*/
-/* */
-/*                 var dropzone = new Dropzone("#gravDropzone", { url: URI + '/task{{ config.system.param_sep }}addmedia', createImageThumbnails: { thumbnailWidth: 150} });*/
-/* */
-/*                 $("#gravDropzone").delegate('.dz-preview', 'dragstart', function(e){*/
-/*                     var uri = encodeURI($(this).find('.dz-filename').text());*/
-/*                     uri = uri.replace(/\(/g, '%28');*/
-/*                     uri = uri.replace(/\)/g, '%29');*/
-/* */
-/*                     var shortcode = '![](' + uri + ')';*/
-/*                     if (!uri.match(/\.(jpg|jpeg|png|gif)$/)) {*/
-/*                         shortcode = '[' + decodeURI(uri) + '](' + uri + ')';*/
-/*                     }*/
-/* */
-/*                     dropzone.disable();*/
-/*                     $(this).addClass('hide-backface');*/
-/*                     e.originalEvent.dataTransfer.effectAllowed = 'copy';*/
-/*                     e.originalEvent.dataTransfer.setData('text', shortcode);*/
-/*                 });*/
-/* */
-/*                 $("#gravDropzone").delegate('.dz-preview', 'dragend', function(e){*/
-/*                     dropzone.enable();*/
-/*                     $(this).removeClass('hide-backface');*/
-/*                 });*/
-/*             });*/
-/*         </script>*/
 /*     </div>*/
 /* </div>*/
 /* {% else %}*/
 /* <div class="form-tab">*/
 /*     <div class="form-field">*/
 /*         <div class="form-label">*/
-/*             <label>*/
-/*                 You cannot add media files until you save the page. Just click 'Save' on top*/
-/*             </label>*/
+/*             <span class="note">*/
+/*                 {{ "PLUGIN_ADMIN.CANNOT_ADD_MEDIA_FILES_PAGE_NOT_SAVED"|tu }}*/
+/*             </span>*/
 /*         </div>*/
 /*     </div>*/
 /* </div>*/

@@ -1,5 +1,6 @@
 ---
 title: 'D Double E - History and Biography'
+description: Read about the history of the UK grime legend D Double E. Bluku Bluku!
 menu: Bio
 ---
 

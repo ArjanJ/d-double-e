@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/system/languages/nl.yaml',
-    'modified' => 1456442350,
+    'modified' => 1475968568,
     'data' => [
         'INFLECTOR_IRREGULAR' => [
             'person' => 'personen',
@@ -20,10 +20,15 @@ return [
             'MINUTE' => 'minuut',
             'HOUR' => 'uur',
             'DAY' => 'dag',
+            'WEEK' => 'week',
             'MONTH' => 'maand',
             'YEAR' => 'jaar',
             'DECADE' => 'decenium',
+            'SEC' => 's',
+            'MIN' => 'min',
+            'HR' => 'u',
             'MO' => 'ma',
+            'YR' => 'j',
             'SECOND_PLURAL' => 'seconden',
             'MINUTE_PLURAL' => 'minuten',
             'HOUR_PLURAL' => 'uren',
@@ -39,15 +44,24 @@ return [
             'MO_PLURAL' => 'maanden',
             'YR_PLURAL' => 'jaren'
         ],
+        'FORM' => [
+            'VALIDATION_FAIL' => '<b>Validatie mislukt:</b>',
+            'INVALID_INPUT' => 'Ongeldige invoer in',
+            'MISSING_REQUIRED_FIELD' => 'Verplicht veld ontbreekt:'
+        ],
         'MONTHS_OF_THE_YEAR' => [
             0 => 'Januari',
             1 => 'Februari',
             2 => 'Maart',
+            3 => 'april',
             4 => 'Mei',
             5 => 'Juni',
             6 => 'Juli',
             7 => 'Augustus',
-            9 => 'Oktober'
+            8 => 'september',
+            9 => 'Oktober',
+            10 => 'november',
+            11 => 'december'
         ],
         'DAYS_OF_THE_WEEK' => [
             0 => 'Maandag',

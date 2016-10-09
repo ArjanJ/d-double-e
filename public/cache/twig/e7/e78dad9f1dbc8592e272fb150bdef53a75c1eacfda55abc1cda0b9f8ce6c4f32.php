@@ -18,15 +18,17 @@ class __TwigTemplate_203bea8059ed7cca815467ff450ec7d81162f29ff19590658dcd491b882
         // line 1
         $context["form_id"] = (((isset($context["form_id"]) ? $context["form_id"] : null)) ? ((isset($context["form_id"]) ? $context["form_id"] : null)) : ("blueprints"));
         // line 2
+        $context["scope"] = (((isset($context["scope"]) ? $context["scope"] : null)) ? ((isset($context["scope"]) ? $context["scope"] : null)) : ("data."));
+        // line 3
         echo "
 <form id=\"";
-        // line 3
-        echo (isset($context["form_id"]) ? $context["form_id"] : null);
+        // line 4
+        echo twig_escape_filter($this->env, (isset($context["form_id"]) ? $context["form_id"] : null), "html", null, true);
         echo "\" method=\"post\" data-grav-form=\"";
-        echo (isset($context["form_id"]) ? $context["form_id"] : null);
+        echo twig_escape_filter($this->env, (isset($context["form_id"]) ? $context["form_id"] : null), "html", null, true);
         echo "\" data-page-move>
     ";
-        // line 4
+        // line 5
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["blueprints"]) ? $context["blueprints"] : null), "fields", array()));
         $context['loop'] = array(
@@ -43,24 +45,24 @@ class __TwigTemplate_203bea8059ed7cca815467ff450ec7d81162f29ff19590658dcd491b882
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["field"]) {
-            // line 5
+            // line 6
             echo "        ";
             if ($this->getAttribute($context["field"], "type", array())) {
-                // line 6
+                // line 7
                 echo "            ";
                 $context["value"] = $this->getAttribute((isset($context["data"]) ? $context["data"] : null), "value", array(0 => $this->getAttribute($context["field"], "name", array())), "method");
-                // line 7
+                // line 8
                 echo "            <div class=\"block block-";
-                echo $this->getAttribute($context["field"], "type", array());
+                echo twig_escape_filter($this->env, $this->getAttribute($context["field"], "type", array()), "html", null, true);
                 echo "\">
                 ";
-                // line 8
-                $this->loadTemplate(array(0 => (((("forms/fields/" . $this->getAttribute($context["field"], "type", array())) . "/") . $this->getAttribute($context["field"], "type", array())) . ".html.twig"), 1 => "forms/fields/text/text.html.twig"), "partials/page-move.html.twig", 8)->display($context);
                 // line 9
+                $this->loadTemplate(array(0 => (((("forms/fields/" . $this->getAttribute($context["field"], "type", array())) . "/") . $this->getAttribute($context["field"], "type", array())) . ".html.twig"), 1 => "forms/fields/text/text.html.twig"), "partials/page-move.html.twig", 9)->display($context);
+                // line 10
                 echo "            </div>
         ";
             }
-            // line 11
+            // line 12
             echo "    ";
             ++$context['loop']['index0'];
             ++$context['loop']['index'];
@@ -74,16 +76,16 @@ class __TwigTemplate_203bea8059ed7cca815467ff450ec7d81162f29ff19590658dcd491b882
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['field'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 12
+        // line 13
         echo "
     <div class=\"button-bar\">
-        <a class=\"button secondary remodal-cancel\" href=\"#\"><i class=\"fa fa-fw fa-close\"></i> ";
-        // line 14
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.CANCEL");
-        echo "</a>
-        <button class=\"button primary\" name=\"task\" value=\"save\" form=\"blueprints\">";
+        <button data-remodal-action=\"cancel\" class=\"button secondary remodal-cancel\"><i class=\"fa fa-fw fa-close\"></i> ";
         // line 15
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.CONTINUE");
+        echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.CANCEL"), "html", null, true);
+        echo "</button>
+        <button class=\"button primary\" name=\"task\" value=\"save\" form=\"blueprints\">";
+        // line 16
+        echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.CONTINUE"), "html", null, true);
         echo "</button>
     </div>
 </form>
@@ -102,10 +104,11 @@ class __TwigTemplate_203bea8059ed7cca815467ff450ec7d81162f29ff19590658dcd491b882
 
     public function getDebugInfo()
     {
-        return array (  86 => 15,  82 => 14,  78 => 12,  64 => 11,  60 => 9,  58 => 8,  53 => 7,  50 => 6,  47 => 5,  30 => 4,  24 => 3,  21 => 2,  19 => 1,);
+        return array (  88 => 16,  84 => 15,  80 => 13,  66 => 12,  62 => 10,  60 => 9,  55 => 8,  52 => 7,  49 => 6,  32 => 5,  26 => 4,  23 => 3,  21 => 2,  19 => 1,);
     }
 }
 /* {% set form_id = form_id ? form_id : 'blueprints' %}*/
+/* {% set scope = scope ?: 'data.' %}*/
 /* */
 /* <form id="{{ form_id }}" method="post" data-grav-form="{{ form_id }}" data-page-move>*/
 /*     {% for field in blueprints.fields %}*/
@@ -118,7 +121,7 @@ class __TwigTemplate_203bea8059ed7cca815467ff450ec7d81162f29ff19590658dcd491b882
 /*     {% endfor %}*/
 /* */
 /*     <div class="button-bar">*/
-/*         <a class="button secondary remodal-cancel" href="#"><i class="fa fa-fw fa-close"></i> {{ "PLUGIN_ADMIN.CANCEL"|tu }}</a>*/
+/*         <button data-remodal-action="cancel" class="button secondary remodal-cancel"><i class="fa fa-fw fa-close"></i> {{ "PLUGIN_ADMIN.CANCEL"|tu }}</button>*/
 /*         <button class="button primary" name="task" value="save" form="blueprints">{{ "PLUGIN_ADMIN.CONTINUE"|tu }}</button>*/
 /*     </div>*/
 /* </form>*/

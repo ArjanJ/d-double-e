@@ -1,5 +1,6 @@
 ---
 title: D Double E - Upcoming Shows - Grime Music
+description: Find upcoming D Double E tour schedule, concert details, and buy tickets.
 menu: Shows
 
 content:

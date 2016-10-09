@@ -2,8 +2,22 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/system/languages/ru.yaml',
-    'modified' => 1456442350,
+    'modified' => 1475968568,
     'data' => [
+        'FRONTMATTER_ERROR_PAGE' => '---
+title: %1$s
+---
+
+# Ошибка: Недопустимое содержимое
+
+Path: `%2$s`
+
+**%3$s**
+
+```
+%4$s
+```
+',
         'INFLECTOR_IRREGULAR' => [
             'person' => 'люди',
             'man' => 'человек',
@@ -27,8 +41,8 @@ return [
             'SEC' => 'с',
             'MIN' => 'мин',
             'HR' => 'ч',
-            'WK' => 'нед',
-            'MO' => 'мес',
+            'WK' => 'нед.',
+            'MO' => 'мес.',
             'YR' => 'г.',
             'DEC' => 'гг.',
             'SECOND_PLURAL' => 'секунды',

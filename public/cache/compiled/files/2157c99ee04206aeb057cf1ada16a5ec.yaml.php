@@ -2,8 +2,22 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/system/languages/es.yaml',
-    'modified' => 1456442350,
+    'modified' => 1475968568,
     'data' => [
+        'FRONTMATTER_ERROR_PAGE' => '---
+title: %1$s
+---
+
+# Error: Frontmatter Inválido
+
+Ruta: `%2$s`
+
+**%3$s**
+
+```
+%4$s
+```
+',
         'INFLECTOR_UNCOUNTABLE' => [
             0 => 'equipo',
             1 => 'información',

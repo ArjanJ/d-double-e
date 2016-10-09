@@ -54,113 +54,122 @@ class __TwigTemplate_f3c44cb80d9bc30045a7d4b872ec986245ff26573ccb0e372fa76e71b51
         echo "
     data-grav-field-name=\"";
         // line 15
-        echo $this->env->getExtension('GravTwigExtension')->fieldNameFilter($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "name", array()));
+        echo twig_escape_filter($this->env, $this->env->getExtension('GravTwigExtension')->fieldNameFilter(((isset($context["scope"]) ? $context["scope"] : null) . $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "name", array()))), "html", null, true);
         echo "\"
 ";
     }
 
-    // line 22
+    // line 23
     public function block_input($context, array $blocks = array())
     {
-        // line 23
+        // line 24
         echo "
     <div class=\"switch-toggle switch-grav ";
-        // line 24
-        echo $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "size", array());
+        // line 25
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "size", array()), "html", null, true);
         echo " switch-";
-        echo twig_length_filter($this->env, $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "options", array()));
+        echo twig_escape_filter($this->env, twig_length_filter($this->env, $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "options", array())), "html", null, true);
         echo "\">
         ";
-        // line 25
-        $context["maxLen"] = 0;
         // line 26
+        $context["maxLen"] = 0;
+        // line 27
         echo "        ";
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "options", array()));
         foreach ($context['_seq'] as $context["_key"] => $context["text"]) {
-            // line 27
-            echo "            ";
-            $context["translation"] = (($this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["grav"]) ? $context["grav"] : null), "twig", array(), "any", false, true), "twig", array(), "any", false, true), "filters", array(), "any", false, true), "tu", array(), "array", true, true)) ? ($this->env->getExtension('AdminTwigExtension')->tuFilter($context["text"])) : ($this->env->getExtension('GravTwigExtension')->translate($context["text"])));
             // line 28
             echo "            ";
-            $context["maxLen"] = max(twig_length_filter($this->env, (isset($context["translation"]) ? $context["translation"] : null)), (isset($context["maxLen"]) ? $context["maxLen"] : null));
+            $context["translation"] = (($this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["grav"]) ? $context["grav"] : null), "twig", array(), "any", false, true), "twig", array(), "any", false, true), "filters", array(), "any", false, true), "tu", array(), "array", true, true)) ? ($this->env->getExtension('AdminTwigExtension')->tuFilter($context["text"])) : ($this->env->getExtension('GravTwigExtension')->translate($context["text"])));
             // line 29
+            echo "            ";
+            $context["maxLen"] = max(twig_length_filter($this->env, (isset($context["translation"]) ? $context["translation"] : null)), (isset($context["maxLen"]) ? $context["maxLen"] : null));
+            // line 30
             echo "        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['text'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 30
+        // line 31
         echo "
         ";
-        // line 31
+        // line 32
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "options", array()));
         foreach ($context['_seq'] as $context["key"] => $context["text"]) {
-            // line 32
-            echo "            ";
-            $context["id"] = (("toggle_" . $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "name", array())) . $context["key"]);
             // line 33
             echo "            ";
-            $context["translation"] = trim((($this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["grav"]) ? $context["grav"] : null), "twig", array(), "any", false, true), "twig", array(), "any", false, true), "filters", array(), "any", false, true), "tu", array(), "array", true, true)) ? ($this->env->getExtension('AdminTwigExtension')->tuFilter($context["text"])) : ($this->env->getExtension('GravTwigExtension')->translate($context["text"]))));
+            $context["id"] = (("toggle_" . $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "name", array())) . $context["key"]);
             // line 34
+            echo "            ";
+            $context["translation"] = trim((($this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["grav"]) ? $context["grav"] : null), "twig", array(), "any", false, true), "twig", array(), "any", false, true), "filters", array(), "any", false, true), "tu", array(), "array", true, true)) ? ($this->env->getExtension('AdminTwigExtension')->tuFilter($context["text"])) : ($this->env->getExtension('GravTwigExtension')->translate($context["text"]))));
+            // line 35
             echo "
             <input type=\"radio\"
                 value=\"";
-            // line 36
-            echo $context["key"];
+            // line 37
+            echo twig_escape_filter($this->env, $context["key"], "html", null, true);
             echo "\"
                 id=\"";
-            // line 37
-            echo (isset($context["id"]) ? $context["id"] : null);
+            // line 38
+            echo twig_escape_filter($this->env, (isset($context["id"]) ? $context["id"] : null), "html", null, true);
             echo "\"
                 name=\"";
-            // line 38
-            echo $this->env->getExtension('GravTwigExtension')->fieldNameFilter(((isset($context["scope"]) ? $context["scope"] : null) . $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "name", array())));
+            // line 39
+            echo twig_escape_filter($this->env, $this->env->getExtension('GravTwigExtension')->fieldNameFilter(((isset($context["scope"]) ? $context["scope"] : null) . $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "name", array()))), "html", null, true);
             echo "\"
                 ";
-            // line 39
+            // line 40
             if ($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "highlight", array(), "any", true, true)) {
-                // line 40
+                // line 41
                 echo "                class=\"";
                 echo ((($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "highlight", array()) == ("" . $context["key"]))) ? ("highlight") : (""));
                 echo "\"
                 ";
             }
-            // line 42
+            // line 43
+            echo "                ";
+            if (($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "disabled", array()) || (isset($context["isDisabledToggleable"]) ? $context["isDisabledToggleable"] : null))) {
+                echo "disabled=\"disabled\"";
+            }
+            // line 44
             echo "                ";
             if ($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "toggleable", array())) {
-                // line 43
+                // line 45
                 echo "                    ";
                 if ((("" . $context["key"]) == ("" . (isset($context["value"]) ? $context["value"] : null)))) {
-                    echo "checked=\"checked\" ";
+                    // line 46
+                    echo "                        checked=\"checked\"
+                    ";
+                } elseif ((                // line 47
+array_key_exists("value", $context) && (($context["key"] == 1) || ($context["key"] == "1")))) {
+                    // line 48
+                    echo "                        checked=\"checked\"
+                    ";
                 }
-                // line 44
-                echo "                    ";
-                if ((array_key_exists("value", $context) && (($context["key"] == 1) || ($context["key"] == "1")))) {
-                    echo "checked=\"checked\" ";
-                }
-                // line 45
+                // line 50
                 echo "                ";
             } else {
-                // line 46
+                // line 51
                 echo "                    ";
                 if ((("" . $context["key"]) == ("" . (isset($context["value"]) ? $context["value"] : null)))) {
-                    echo "checked=\"checked\" ";
+                    // line 52
+                    echo "                        checked=\"checked\"
+                    ";
                 }
-                // line 47
+                // line 54
                 echo "                ";
             }
-            // line 48
+            // line 55
             echo "                ";
             if (twig_in_filter($this->getAttribute($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "validate", array()), "required", array()), array(0 => "on", 1 => "true", 2 => 1))) {
                 echo "required=\"required\"";
             }
-            // line 49
+            // line 56
             echo "            />
             <label for=\"";
-            // line 50
-            echo (isset($context["id"]) ? $context["id"] : null);
+            // line 57
+            echo twig_escape_filter($this->env, (isset($context["id"]) ? $context["id"] : null), "html", null, true);
             echo "\">";
             echo trim($this->getAttribute($this, "spanToggle", array(0 => (isset($context["translation"]) ? $context["translation"] : null), 1 => (isset($context["maxLen"]) ? $context["maxLen"] : null)), "method"));
             echo "</label>
@@ -169,7 +178,7 @@ class __TwigTemplate_f3c44cb80d9bc30045a7d4b872ec986245ff26573ccb0e372fa76e71b51
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['key'], $context['text'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 52
+        // line 59
         echo "        <a></a>
     </div>
 ";
@@ -190,10 +199,17 @@ class __TwigTemplate_f3c44cb80d9bc30045a7d4b872ec986245ff26573ccb0e372fa76e71b51
         try {
             // line 19
             echo "    ";
-            echo (($this->env->getExtension('GravTwigExtension')->repeatFunc("&nbsp;&nbsp;", (((isset($context["length"]) ? $context["length"] : null) - twig_length_filter($this->env, (isset($context["input"]) ? $context["input"] : null))) / 2)) . (isset($context["input"]) ? $context["input"] : null)) . $this->env->getExtension('GravTwigExtension')->repeatFunc("&nbsp;&nbsp;", (((isset($context["length"]) ? $context["length"] : null) - twig_length_filter($this->env, (isset($context["input"]) ? $context["input"] : null))) / 2)));
+            $context["space"] = $this->env->getExtension('GravTwigExtension')->repeatFunc("&nbsp;&nbsp;", (((isset($context["length"]) ? $context["length"] : null) - twig_length_filter($this->env, (isset($context["input"]) ? $context["input"] : null))) / 2));
+            // line 20
+            echo "    ";
+            echo (((isset($context["space"]) ? $context["space"] : null) . (isset($context["input"]) ? $context["input"] : null)) . (isset($context["space"]) ? $context["space"] : null));
             echo "
 ";
         } catch (Exception $e) {
+            ob_end_clean();
+
+            throw $e;
+        } catch (Throwable $e) {
             ob_end_clean();
 
             throw $e;
@@ -214,7 +230,7 @@ class __TwigTemplate_f3c44cb80d9bc30045a7d4b872ec986245ff26573ccb0e372fa76e71b51
 
     public function getDebugInfo()
     {
-        return array (  192 => 19,  179 => 18,  173 => 52,  163 => 50,  160 => 49,  155 => 48,  152 => 47,  147 => 46,  144 => 45,  139 => 44,  134 => 43,  131 => 42,  125 => 40,  123 => 39,  119 => 38,  115 => 37,  111 => 36,  107 => 34,  104 => 33,  101 => 32,  97 => 31,  94 => 30,  88 => 29,  85 => 28,  82 => 27,  77 => 26,  75 => 25,  69 => 24,  66 => 23,  63 => 22,  57 => 15,  52 => 14,  49 => 13,  45 => 1,  38 => 9,  36 => 8,  32 => 7,  30 => 6,  28 => 4,  26 => 3,  11 => 1,);
+        return array (  204 => 20,  201 => 19,  188 => 18,  182 => 59,  172 => 57,  169 => 56,  164 => 55,  161 => 54,  157 => 52,  154 => 51,  151 => 50,  147 => 48,  145 => 47,  142 => 46,  139 => 45,  136 => 44,  131 => 43,  125 => 41,  123 => 40,  119 => 39,  115 => 38,  111 => 37,  107 => 35,  104 => 34,  101 => 33,  97 => 32,  94 => 31,  88 => 30,  85 => 29,  82 => 28,  77 => 27,  75 => 26,  69 => 25,  66 => 24,  63 => 23,  57 => 15,  52 => 14,  49 => 13,  45 => 1,  38 => 9,  36 => 8,  32 => 7,  30 => 6,  28 => 4,  26 => 3,  11 => 1,);
     }
 }
 /* {% extends "forms/field.html.twig" %}*/
@@ -231,11 +247,12 @@ class __TwigTemplate_f3c44cb80d9bc30045a7d4b872ec986245ff26573ccb0e372fa76e71b51
 /* */
 /* {% block global_attributes %}*/
 /*     {{ parent() }}*/
-/*     data-grav-field-name="{{ field.name|fieldName }}"*/
+/*     data-grav-field-name="{{ (scope ~ field.name)|fieldName }}"*/
 /* {% endblock %}*/
 /* */
 /* {% macro spanToggle(input, length) %}*/
-/*     {{ repeat('&nbsp;&nbsp;', (length - input|length) / 2) ~ input ~ repeat('&nbsp;&nbsp;', (length - input|length) / 2) }}*/
+/*     {% set space = repeat('&nbsp;&nbsp;', (length - input|length) / 2) %}*/
+/*     {{ (space ~ input ~ space)|raw }}*/
 /* {% endmacro %}*/
 /* */
 /* {% block input %}*/
@@ -258,15 +275,21 @@ class __TwigTemplate_f3c44cb80d9bc30045a7d4b872ec986245ff26573ccb0e372fa76e71b51
 /*                 {% if field.highlight is defined %}*/
 /*                 class="{{ field.highlight == '' ~ key ? 'highlight' : '' }}"*/
 /*                 {% endif %}*/
+/*                 {% if field.disabled or isDisabledToggleable %}disabled="disabled"{% endif %}*/
 /*                 {% if field.toggleable %}*/
-/*                     {% if '' ~ key == '' ~ value %}checked="checked" {% endif %}*/
-/*                     {% if value is defined and (key == 1 or key == '1') %}checked="checked" {% endif %}*/
+/*                     {% if '' ~ key == '' ~ value %}*/
+/*                         checked="checked"*/
+/*                     {% elseif value is defined and (key == 1 or key == '1') %}*/
+/*                         checked="checked"*/
+/*                     {% endif %}*/
 /*                 {% else %}*/
-/*                     {% if '' ~ key == '' ~ value %}checked="checked" {% endif %}*/
+/*                     {% if '' ~ key == '' ~ value %}*/
+/*                         checked="checked"*/
+/*                     {% endif %}*/
 /*                 {% endif %}*/
 /*                 {% if field.validate.required in ['on', 'true', 1] %}required="required"{% endif %}*/
 /*             />*/
-/*             <label for="{{ id }}">{{ _self.spanToggle(translation, maxLen)|trim }}</label>*/
+/*             <label for="{{ id }}">{{ (_self.spanToggle(translation, maxLen)|trim)|raw }}</label>*/
 /*         {% endfor %}*/
 /*         <a></a>*/
 /*     </div>*/

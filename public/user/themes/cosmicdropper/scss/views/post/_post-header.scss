@@ -1,0 +1,30 @@
+.post-header {
+  display: flex;
+  align-items: center;
+  min-height: 75vh;
+  padding: ($base-space * 3) (0);
+  position: relative;
+  z-index: 1;
+  box-shadow: inset 0 -35px 65px rgba(black, 0.4);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+
+  &:before {
+    @include cover;
+    content: "";
+    position: absolute;
+    background: linear-gradient(to top, $theme-color-1, transparent);
+    z-index: -1;
+  }
+
+  &__heading {
+    @extend %u-ls-3;
+    text-shadow: 0 4px 22px rgba(black, 0.15);
+    color: white;
+  }
+
+  .home-hero__bottom-mask {
+    opacity: 1;
+  }
+}

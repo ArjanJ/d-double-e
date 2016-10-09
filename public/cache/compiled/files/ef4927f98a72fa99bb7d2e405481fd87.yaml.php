@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/system/blueprints/config/system.yaml',
-    'modified' => 1456442350,
+    'modified' => 1475968568,
     'data' => [
         'title' => 'PLUGIN_ADMIN.SYSTEM',
         'form' => [
@@ -68,7 +68,7 @@ return [
                             'size' => 'medium',
                             'classes' => 'fancy',
                             'help' => 'PLUGIN_ADMIN.TIMEZONE_HELP',
-                            '@data-options' => '\\Grav\\Common\\Utils::timezones',
+                            'data-options@' => '\\Grav\\Common\\Utils::timezones',
                             'default' => '',
                             'options' => [
                                 '' => 'Default (Server Timezone)'
@@ -83,10 +83,7 @@ return [
                             'label' => 'PLUGIN_ADMIN.DEFAULT_DATE_FORMAT',
                             'help' => 'PLUGIN_ADMIN.DEFAULT_DATE_FORMAT_HELP',
                             'placeholder' => 'PLUGIN_ADMIN.DEFAULT_DATE_FORMAT_PLACEHOLDER',
-                            '@data-options' => '\\Grav\\Common\\Utils::dateFormats',
-                            'options' => [
-                                '' => 'Auto Guess or Enter Custom'
-                            ],
+                            'data-options@' => '\\Grav\\Common\\Utils::dateFormats',
                             'validate' => [
                                 'type' => 'string'
                             ]
@@ -147,6 +144,7 @@ return [
                         'pages.list.count' => [
                             'type' => 'text',
                             'size' => 'x-small',
+                            'append' => 'PLUGIN_ADMIN.PAGES',
                             'label' => 'PLUGIN_ADMIN.DEFAULT_PAGE_COUNT',
                             'help' => 'PLUGIN_ADMIN.DEFAULT_PAGE_COUNT_HELP',
                             'validate' => [
@@ -212,8 +210,9 @@ return [
                             'help' => 'PLUGIN_ADMIN.REDIRECT_DEFAULT_CODE_HELP',
                             'options' => [
                                 301 => '301 - Permanent',
+                                302 => '302 - Found',
                                 303 => '303 - Other',
-                                307 => '307 - Temporary'
+                                304 => '304 - Not Modified'
                             ]
                         ],
                         'pages.redirect_trailing_slash' => [
@@ -278,15 +277,38 @@ return [
                         'pages.twig_first' => [
                             'type' => 'toggle',
                             'label' => 'PLUGIN_ADMIN.TWIG_FIRST',
-                            'highlight' => 'asc',
-                            'default' => 'desc',
                             'help' => 'PLUGIN_ADMIN.TWIG_FIRST_HELP',
+                            'highlight' => 0,
                             'options' => [
                                 1 => 'PLUGIN_ADMIN.YES',
                                 0 => 'PLUGIN_ADMIN.NO'
                             ],
                             'validate' => [
                                 'type' => 'bool'
+                            ]
+                        ],
+                        'pages.frontmatter.process_twig' => [
+                            'type' => 'toggle',
+                            'label' => 'PLUGIN_ADMIN.FRONTMATTER_PROCESS_TWIG',
+                            'help' => 'PLUGIN_ADMIN.FRONTMATTER_PROCESS_TWIG_HELP',
+                            'highlight' => 0,
+                            'options' => [
+                                1 => 'PLUGIN_ADMIN.YES',
+                                0 => 'PLUGIN_ADMIN.NO'
+                            ],
+                            'validate' => [
+                                'type' => 'bool'
+                            ]
+                        ],
+                        'pages.frontmatter.ignore_fields' => [
+                            'type' => 'selectize',
+                            'size' => 'large',
+                            'placeholder' => 'e.g. forms',
+                            'label' => 'PLUGIN_ADMIN.FRONTMATTER_IGNORE_FIELDS',
+                            'help' => 'PLUGIN_ADMIN.FRONTMATTER_IGNORE_FIELDS_HELP',
+                            'classes' => 'fancy',
+                            'validate' => [
+                                'type' => 'commalist'
                             ]
                         ]
                     ]
@@ -395,6 +417,7 @@ return [
                         'pages.expires' => [
                             'type' => 'text',
                             'size' => 'small',
+                            'append' => 'NICETIME.SECOND_PLURAL',
                             'label' => 'PLUGIN_ADMIN.EXPIRES',
                             'help' => 'PLUGIN_ADMIN.EXPIRES_HELP',
                             'validate' => [
@@ -542,10 +565,55 @@ return [
                                 'auto' => 'Auto detect',
                                 'file' => 'File',
                                 'apc' => 'APC',
-                                'xcache' => 'XCache',
-                                'memcache' => 'MemCache',
-                                'wincache' => 'WinCache'
+                                'apcu' => 'APCu',
+                                'xcache' => 'Xcache',
+                                'memcache' => 'Memcache',
+                                'memcached' => 'Memcached',
+                                'wincache' => 'WinCache',
+                                'redis' => 'Redis'
                             ]
+                        ],
+                        'cache.memcache.server' => [
+                            'type' => 'text',
+                            'size' => 'medium',
+                            'label' => 'PLUGIN_ADMIN.MEMCACHE_SERVER',
+                            'help' => 'PLUGIN_ADMIN.MEMCACHE_SERVER_HELP',
+                            'placeholder' => 'localhost'
+                        ],
+                        'cache.memcache.port' => [
+                            'type' => 'text',
+                            'size' => 'small',
+                            'label' => 'PLUGIN_ADMIN.MEMCACHE_PORT',
+                            'help' => 'PLUGIN_ADMIN.MEMCACHE_PORT_HELP',
+                            'placeholder' => '11211'
+                        ],
+                        'cache.memcached.server' => [
+                            'type' => 'text',
+                            'size' => 'medium',
+                            'label' => 'PLUGIN_ADMIN.MEMCACHED_SERVER',
+                            'help' => 'PLUGIN_ADMIN.MEMCACHED_SERVER_HELP',
+                            'placeholder' => 'localhost'
+                        ],
+                        'cache.memcached.port' => [
+                            'type' => 'text',
+                            'size' => 'small',
+                            'label' => 'PLUGIN_ADMIN.MEMCACHED_PORT',
+                            'help' => 'PLUGIN_ADMIN.MEMCACHED_PORT_HELP',
+                            'placeholder' => '11211'
+                        ],
+                        'cache.redis.server' => [
+                            'type' => 'text',
+                            'size' => 'medium',
+                            'label' => 'PLUGIN_ADMIN.REDIS_SERVER',
+                            'help' => 'PLUGIN_ADMIN.REDIS_SERVER_HELP',
+                            'placeholder' => 'localhost'
+                        ],
+                        'cache.redis.port' => [
+                            'type' => 'text',
+                            'size' => 'small',
+                            'label' => 'PLUGIN_ADMIN.REDIS_PORT',
+                            'help' => 'PLUGIN_ADMIN.REDIS_PORT_HELP',
+                            'placeholder' => '6379'
                         ],
                         'cache.prefix' => [
                             'type' => 'text',
@@ -557,6 +625,7 @@ return [
                         'cache.lifetime' => [
                             'type' => 'text',
                             'size' => 'small',
+                            'append' => 'NICETIME.SECOND_PLURAL',
                             'label' => 'PLUGIN_ADMIN.LIFETIME',
                             'help' => 'PLUGIN_ADMIN.LIFETIME_HELP',
                             'validate' => [
@@ -600,7 +669,7 @@ return [
                             'type' => 'toggle',
                             'label' => 'PLUGIN_ADMIN.TWIG_DEBUG',
                             'help' => 'PLUGIN_ADMIN.TWIG_DEBUG_HELP',
-                            'highlight' => 0,
+                            'highlight' => 1,
                             'options' => [
                                 1 => 'PLUGIN_ADMIN.YES',
                                 0 => 'PLUGIN_ADMIN.NO'
@@ -668,6 +737,32 @@ return [
                                 'type' => 'bool'
                             ]
                         ],
+                        'assets.css_pipeline_include_externals' => [
+                            'type' => 'toggle',
+                            'label' => 'PLUGIN_ADMIN.CSS_PIPELINE_INCLUDE_EXTERNALS',
+                            'help' => 'PLUGIN_ADMIN.CSS_PIPELINE_INCLUDE_EXTERNALS_HELP',
+                            'highlight' => 1,
+                            'options' => [
+                                1 => 'PLUGIN_ADMIN.YES',
+                                0 => 'PLUGIN_ADMIN.NO'
+                            ],
+                            'validate' => [
+                                'type' => 'bool'
+                            ]
+                        ],
+                        'assets.css_pipeline_before_excludes' => [
+                            'type' => 'toggle',
+                            'label' => 'PLUGIN_ADMIN.CSS_PIPELINE_BEFORE_EXCLUDES',
+                            'help' => 'PLUGIN_ADMIN.CSS_PIPELINE_BEFORE_EXCLUDES_HELP',
+                            'highlight' => 1,
+                            'options' => [
+                                1 => 'PLUGIN_ADMIN.YES',
+                                0 => 'PLUGIN_ADMIN.NO'
+                            ],
+                            'validate' => [
+                                'type' => 'bool'
+                            ]
+                        ],
                         'assets.css_minify' => [
                             'type' => 'toggle',
                             'label' => 'PLUGIN_ADMIN.CSS_MINIFY',
@@ -712,6 +807,32 @@ return [
                             'label' => 'PLUGIN_ADMIN.JAVASCRIPT_PIPELINE',
                             'help' => 'PLUGIN_ADMIN.JAVASCRIPT_PIPELINE_HELP',
                             'highlight' => 0,
+                            'options' => [
+                                1 => 'PLUGIN_ADMIN.YES',
+                                0 => 'PLUGIN_ADMIN.NO'
+                            ],
+                            'validate' => [
+                                'type' => 'bool'
+                            ]
+                        ],
+                        'assets.js_pipeline_include_externals' => [
+                            'type' => 'toggle',
+                            'label' => 'PLUGIN_ADMIN.JAVASCRIPT_PIPELINE_INCLUDE_EXTERNALS',
+                            'help' => 'PLUGIN_ADMIN.JAVASCRIPT_PIPELINE_INCLUDE_EXTERNALS_HELP',
+                            'highlight' => 1,
+                            'options' => [
+                                1 => 'PLUGIN_ADMIN.YES',
+                                0 => 'PLUGIN_ADMIN.NO'
+                            ],
+                            'validate' => [
+                                'type' => 'bool'
+                            ]
+                        ],
+                        'assets.js_pipeline_before_excludes' => [
+                            'type' => 'toggle',
+                            'label' => 'PLUGIN_ADMIN.JAVASCRIPT_PIPELINE_BEFORE_EXCLUDES',
+                            'help' => 'PLUGIN_ADMIN.JAVASCRIPT_PIPELINE_BEFORE_EXCLUDES_HELP',
+                            'highlight' => 1,
                             'options' => [
                                 1 => 'PLUGIN_ADMIN.YES',
                                 0 => 'PLUGIN_ADMIN.NO'
@@ -827,6 +948,7 @@ return [
                     'fields' => [
                         'images.default_image_quality' => [
                             'type' => 'text',
+                            'append' => '%',
                             'label' => 'PLUGIN_ADMIN.DEFAULT_IMAGE_QUALITY',
                             'help' => 'PLUGIN_ADMIN.DEFAULT_IMAGE_QUALITY_HELP',
                             'classes' => 'x-small',
@@ -875,6 +997,7 @@ return [
                         ],
                         'media.upload_limit' => [
                             'type' => 'text',
+                            'append' => 'bytes',
                             'label' => 'PLUGIN_ADMIN.UPLOAD_LIMIT',
                             'help' => 'PLUGIN_ADMIN.UPLOAD_LIMIT_HELP',
                             'classes' => 'small',
@@ -939,6 +1062,7 @@ return [
                         'session.timeout' => [
                             'type' => 'text',
                             'size' => 'small',
+                            'append' => 'NICETIME.SECOND_PLURAL',
                             'label' => 'PLUGIN_ADMIN.TIMEOUT',
                             'help' => 'PLUGIN_ADMIN.TIMEOUT_HELP',
                             'validate' => [
@@ -979,6 +1103,12 @@ return [
                             'validate' => [
                                 'type' => 'bool'
                             ]
+                        ],
+                        'session.path' => [
+                            'type' => 'text',
+                            'size' => 'small',
+                            'label' => 'PLUGIN_ADMIN.SESSION_PATH',
+                            'help' => 'PLUGIN_ADMIN.SESSION_PATH_HELP'
                         ]
                     ]
                 ],
@@ -987,7 +1117,17 @@ return [
                     'title' => 'PLUGIN_ADMIN.ADVANCED',
                     'underline' => true,
                     'fields' => [
-                        'proxy_url' => [
+                        'gpm.releases' => [
+                            'type' => 'toggle',
+                            'label' => 'PLUGIN_ADMIN.GPM_RELEASES',
+                            'highlight' => 'stable',
+                            'help' => 'PLUGIN_ADMIN.GPM_RELEASES_HELP',
+                            'options' => [
+                                'stable' => 'PLUGIN_ADMIN.STABLE',
+                                'testing' => 'PLUGIN_ADMIN.TESTING'
+                            ]
+                        ],
+                        'gpm.proxy_url' => [
                             'type' => 'text',
                             'size' => 'medium',
                             'placeholder' => 'e.g. 127.0.0.1:3128',
@@ -1044,6 +1184,26 @@ return [
                                 ':' => ': (default)',
                                 ';' => '; (for Apache running on Windows)'
                             ]
+                        ],
+                        'force_ssl' => [
+                            'type' => 'toggle',
+                            'label' => 'PLUGIN_ADMIN.FORCE_SSL',
+                            'highlight' => 0,
+                            'help' => 'PLUGIN_ADMIN.FORCE_SSL_HELP',
+                            'options' => [
+                                1 => 'PLUGIN_ADMIN.YES',
+                                0 => 'PLUGIN_ADMIN.NO'
+                            ],
+                            'validate' => [
+                                'type' => 'bool'
+                            ]
+                        ],
+                        'custom_base_url' => [
+                            'type' => 'text',
+                            'size' => 'medium',
+                            'placeholder' => 'e.g. http://localhost:8080',
+                            'label' => 'PLUGIN_ADMIN.CUSTOM_BASE_URL',
+                            'help' => 'PLUGIN_ADMIN.CUSTOM_BASE_URL_HELP'
                         ]
                     ]
                 ]

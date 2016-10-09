@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/system/languages/el.yaml',
-    'modified' => 1456442350,
+    'modified' => 1475968568,
     'data' => [
         'MONTHS_OF_THE_YEAR' => [
             0 => 'Ιανουάριος',
@@ -20,11 +20,11 @@ return [
         ],
         'DAYS_OF_THE_WEEK' => [
             0 => 'Δευτέρα',
-            1 => 'Τρλιτη',
+            1 => 'Τρίτη',
             2 => 'Τετάρτη',
             3 => 'Πέμπτη',
             4 => 'Παρασκευή',
-            5 => 'Σαββάτο',
+            5 => 'Σάββατο',
             6 => 'Κυριακή'
         ]
     ]

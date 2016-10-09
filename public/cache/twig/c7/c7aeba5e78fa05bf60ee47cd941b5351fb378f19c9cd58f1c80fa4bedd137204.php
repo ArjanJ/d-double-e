@@ -21,28 +21,27 @@ class __TwigTemplate_80833f9891a33fb41e9a13d4d56bafe8d02480ac48a64bc685ccb25f71f
         $context["siblings"] = $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["data"]) ? $context["data"] : null), "parent", array()), "children", array()), "visible", array());
         // line 3
         echo "
-
 <div class=\"form-field grid pure-g\">
     <div class=\"form-label block size-1-3 pure-u-1-3\">
         <label>
             ";
-        // line 8
+        // line 7
         if ($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "help", array())) {
-            // line 9
+            // line 8
             echo "            <span class=\"tooltip\" data-asTooltip-position=\"w\" title=\"";
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter(twig_escape_filter($this->env, $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "help", array())));
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter(twig_escape_filter($this->env, $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "help", array()))), "html", null, true);
             echo "\">";
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "label", array()));
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "label", array())), "html", null, true);
             echo "</span>
             ";
         } else {
-            // line 11
+            // line 10
             echo "            ";
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "label", array()));
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "label", array())), "html", null, true);
             echo "
             ";
         }
-        // line 13
+        // line 12
         echo "            ";
         echo ((twig_in_filter($this->getAttribute($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "validate", array()), "required", array()), array(0 => "on", 1 => "true", 2 => 1))) ? ("<span class=\"required\">*</span>") : (""));
         echo "
@@ -50,50 +49,68 @@ class __TwigTemplate_80833f9891a33fb41e9a13d4d56bafe8d02480ac48a64bc685ccb25f71f
     </div>
     <div class=\"form-data block size-2-3 pure-u-2-3\">
         <div class=\"form-order-wrapper ";
-        // line 17
-        echo $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "size", array());
+        // line 16
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "size", array()), "html", null, true);
         echo "\">
-            <input type=\"hidden\" data-order name=\"";
+            ";
+        // line 17
+        $context["canReorder"] = ( !$this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["data"]) ? $context["data"] : null), "parent", array()), "header", array()), "content", array()), "items", array()) && $this->getAttribute((isset($context["data"]) ? $context["data"] : null), "visible", array()));
         // line 18
-        echo $this->env->getExtension('GravTwigExtension')->fieldNameFilter(((isset($context["scope"]) ? $context["scope"] : null) . $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "name", array())));
-        echo "\" value=\"";
-        echo (isset($context["value"]) ? $context["value"] : null);
+        echo "            <input
+                type=\"hidden\"
+                data-order
+                ";
+        // line 21
+        if (($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "disabled", array()) || (isset($context["isDisabledToggleable"]) ? $context["isDisabledToggleable"] : null))) {
+            echo "disabled=\"disabled\"";
+        }
+        // line 22
+        echo "                name=\"";
+        echo twig_escape_filter($this->env, $this->env->getExtension('GravTwigExtension')->fieldNameFilter(((isset($context["scope"]) ? $context["scope"] : null) . $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "name", array()))), "html", null, true);
+        echo "\"
+                value=\"";
+        // line 23
+        echo twig_escape_filter($this->env, (((isset($context["canReorder"]) ? $context["canReorder"] : null)) ? ((isset($context["value"]) ? $context["value"] : null)) : ("")), "html", null, true);
         echo "\" />
             ";
-        // line 19
+        // line 24
         if ($this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["data"]) ? $context["data"] : null), "parent", array()), "header", array()), "content", array()), "items", array())) {
-            // line 20
-            echo "                <span class=\"note\">Parent setting order, ordering disabled</span>
+            // line 25
+            echo "                <span class=\"note\">";
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.ORDERING_DISABLED_BECAUSE_PARENT_SETTING_ORDER"), "html", null, true);
+            echo "</span>
             ";
-        } elseif ( !$this->getAttribute(        // line 21
+        } elseif ( !$this->getAttribute(        // line 26
 (isset($context["data"]) ? $context["data"] : null), "visible", array())) {
-            // line 22
-            echo "                <span class=\"note\">Page is not visible, ordering disabled</span>
+            // line 27
+            echo "                <span class=\"note\">";
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.ORDERING_DISABLED_BECAUSE_PAGE_NOT_VISIBLE"), "html", null, true);
+            echo "</span>
             ";
         }
-        // line 24
+        // line 29
         echo "
             ";
-        // line 25
+        // line 30
         if ((twig_length_filter($this->env, (isset($context["siblings"]) ? $context["siblings"] : null)) < 200)) {
-            // line 26
+            // line 31
             echo "\t\t\t\t<ul id=\"ordering\" class=\"";
-            echo $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "classes", array());
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "classes", array()), "html", null, true);
             echo "\">
 \t\t\t    ";
-            // line 27
+            // line 32
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable((isset($context["siblings"]) ? $context["siblings"] : null));
             foreach ($context['_seq'] as $context["_key"] => $context["page"]) {
-                // line 28
+                // line 33
                 echo "\t\t\t\t\t<li class=\"";
-                if (($this->getAttribute($context["page"], "order", array()) == (isset($context["value"]) ? $context["value"] : null))) {
+                if ((($this->getAttribute($context["page"], "order", array()) == (isset($context["value"]) ? $context["value"] : null)) && (isset($context["canReorder"]) ? $context["canReorder"] : null))) {
                     echo "drag-handle";
                 } else {
                     echo "ignore";
                 }
                 echo "\" data-id=\"";
-                echo $this->getAttribute($context["page"], "slug", array());
+                echo twig_escape_filter($this->env, $this->getAttribute($context["page"], "slug", array()), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["page"], "title", array()));
                 echo "</li>
@@ -102,30 +119,19 @@ class __TwigTemplate_80833f9891a33fb41e9a13d4d56bafe8d02480ac48a64bc685ccb25f71f
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['page'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 30
+            // line 35
             echo "\t\t\t\t</ul>
 \t\t\t";
         } else {
-            // line 32
-            echo "                <span class=\"note\">Ordering via the admin is unsupported because there are more than 200 siblings</span>
+            // line 37
+            echo "                <span class=\"note\">";
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.ORDERING_DISABLED_BECAUSE_TOO_MANY_SIBLINGS"), "html", null, true);
+            echo "</span>
 \t\t\t";
         }
-        // line 34
+        // line 39
         echo "        </div>
     </div>
-    <script>
-        jQuery(function(){
-            var el = jQuery('#ordering');
-            new Sortable(el[0], {
-                filter: \".ignore\",
-                onUpdate: function(evt){
-                    var index = el.children().index(jQuery(evt.item)) + 1;
-                    jQuery('[data-order]').val(index);
-                }
-                // draggable: \".drag-handle\"
-            });
-        });
-    </script>
 </div>
 ";
     }
@@ -142,12 +148,11 @@ class __TwigTemplate_80833f9891a33fb41e9a13d4d56bafe8d02480ac48a64bc685ccb25f71f
 
     public function getDebugInfo()
     {
-        return array (  114 => 34,  110 => 32,  106 => 30,  89 => 28,  85 => 27,  80 => 26,  78 => 25,  75 => 24,  71 => 22,  69 => 21,  66 => 20,  64 => 19,  58 => 18,  54 => 17,  46 => 13,  40 => 11,  32 => 9,  30 => 8,  23 => 3,  21 => 2,  19 => 1,);
+        return array (  133 => 39,  127 => 37,  123 => 35,  106 => 33,  102 => 32,  97 => 31,  95 => 30,  92 => 29,  86 => 27,  84 => 26,  79 => 25,  77 => 24,  73 => 23,  68 => 22,  64 => 21,  59 => 18,  57 => 17,  53 => 16,  45 => 12,  39 => 10,  31 => 8,  29 => 7,  23 => 3,  21 => 2,  19 => 1,);
     }
 }
 /* {% set value = (value is null ? field.default : value) %}*/
 /* {% set siblings = data.parent.children.visible %}*/
-/* */
 /* */
 /* <div class="form-field grid pure-g">*/
 /*     <div class="form-label block size-1-3 pure-u-1-3">*/
@@ -162,36 +167,29 @@ class __TwigTemplate_80833f9891a33fb41e9a13d4d56bafe8d02480ac48a64bc685ccb25f71f
 /*     </div>*/
 /*     <div class="form-data block size-2-3 pure-u-2-3">*/
 /*         <div class="form-order-wrapper {{ field.size }}">*/
-/*             <input type="hidden" data-order name="{{ (scope ~ field.name)|fieldName }}" value="{{ value }}" />*/
+/*             {% set canReorder = not data.parent.header.content.items and data.visible %}*/
+/*             <input*/
+/*                 type="hidden"*/
+/*                 data-order*/
+/*                 {% if field.disabled or isDisabledToggleable %}disabled="disabled"{% endif %}*/
+/*                 name="{{ (scope ~ field.name)|fieldName }}"*/
+/*                 value="{{ canReorder ? value : '' }}" />*/
 /*             {% if data.parent.header.content.items %}*/
-/*                 <span class="note">Parent setting order, ordering disabled</span>*/
+/*                 <span class="note">{{ "PLUGIN_ADMIN.ORDERING_DISABLED_BECAUSE_PARENT_SETTING_ORDER"|tu }}</span>*/
 /*             {% elseif not data.visible %}*/
-/*                 <span class="note">Page is not visible, ordering disabled</span>*/
+/*                 <span class="note">{{ "PLUGIN_ADMIN.ORDERING_DISABLED_BECAUSE_PAGE_NOT_VISIBLE"|tu }}</span>*/
 /*             {% endif %}*/
 /* */
 /*             {% if siblings|length < 200 %}*/
 /* 				<ul id="ordering" class="{{ field.classes }}">*/
 /* 			    {% for page in siblings %}*/
-/* 					<li class="{% if page.order  == value %}drag-handle{% else %}ignore{% endif %}" data-id="{{ page.slug }}">{{ page.title|e }}</li>*/
+/* 					<li class="{% if page.order  == value and canReorder %}drag-handle{% else %}ignore{% endif %}" data-id="{{ page.slug }}">{{ page.title|e }}</li>*/
 /*                 {% endfor %}*/
 /* 				</ul>*/
 /* 			{% else %}*/
-/*                 <span class="note">Ordering via the admin is unsupported because there are more than 200 siblings</span>*/
+/*                 <span class="note">{{ "PLUGIN_ADMIN.ORDERING_DISABLED_BECAUSE_TOO_MANY_SIBLINGS"|tu }}</span>*/
 /* 			{% endif %}*/
 /*         </div>*/
 /*     </div>*/
-/*     <script>*/
-/*         jQuery(function(){*/
-/*             var el = jQuery('#ordering');*/
-/*             new Sortable(el[0], {*/
-/*                 filter: ".ignore",*/
-/*                 onUpdate: function(evt){*/
-/*                     var index = el.children().index(jQuery(evt.item)) + 1;*/
-/*                     jQuery('[data-order]').val(index);*/
-/*                 }*/
-/*                 // draggable: ".drag-handle"*/
-/*             });*/
-/*         });*/
-/*     </script>*/
 /* </div>*/
 /* */

@@ -13,6 +13,7 @@ class __TwigTemplate_22bde96e7d4c7ba551bfc0147729e7b36a7c57579c902dc5268a16efa4f
             'stylesheets' => array($this, 'block_stylesheets'),
             'javascripts' => array($this, 'block_javascripts'),
             'titlebar' => array($this, 'block_titlebar'),
+            'messages' => array($this, 'block_messages'),
             'content' => array($this, 'block_content'),
         );
     }
@@ -25,149 +26,161 @@ class __TwigTemplate_22bde96e7d4c7ba551bfc0147729e7b36a7c57579c902dc5268a16efa4f
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 3
-        if ($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "route", array())) {
-            // line 4
-            $context["installing"] = (is_string($__internal_1c3f68e1f68be69c909bb7b5ff4b702b4ffe01a506483a4d3980d24289a89b16 = $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "route", array())) && is_string($__internal_9e78c4a543c97083e23b8b95387cfe5baf70602d44b6e5a7c3bca2f775435618 = "install") && ('' === $__internal_9e78c4a543c97083e23b8b95387cfe5baf70602d44b6e5a7c3bca2f775435618 || 0 === strpos($__internal_1c3f68e1f68be69c909bb7b5ff4b702b4ffe01a506483a4d3980d24289a89b16, $__internal_9e78c4a543c97083e23b8b95387cfe5baf70602d44b6e5a7c3bca2f775435618)));
-            // line 5
-            $context["installed"] = true;
+        $context["plugin_slug"] = $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "route", array());
+        // line 5
+        if ((isset($context["plugin_slug"]) ? $context["plugin_slug"] : null)) {
+            // line 6
+            $context["installing"] = (is_string($__internal_7e68cf5133a7eba9d809b87d4a4285c999fae42d9648ffe727a12a2db3406fb6 = (isset($context["plugin_slug"]) ? $context["plugin_slug"] : null)) && is_string($__internal_56dd8c537af16b5819a07f5a532ba788f557061f3fdbe5041741501468e788fc = "install") && ('' === $__internal_56dd8c537af16b5819a07f5a532ba788f557061f3fdbe5041741501468e788fc || 0 === strpos($__internal_7e68cf5133a7eba9d809b87d4a4285c999fae42d9648ffe727a12a2db3406fb6, $__internal_56dd8c537af16b5819a07f5a532ba788f557061f3fdbe5041741501468e788fc)));
             // line 8
-            $context["package"] = $this->getAttribute($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "plugins", array(0 => true), "method"), $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "route", array()), array(), "array");
-            // line 9
-            if ( !(isset($context["package"]) ? $context["package"] : null)) {
-                // line 10
-                $context["package"] = $this->getAttribute($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "plugins", array(0 => false), "method"), $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "route", array()), array(), "array");
+            if ((isset($context["installing"]) ? $context["installing"] : null)) {
+                // line 9
+                $context["title"] = $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.PLUGINS");
+            } else {
                 // line 11
-                $context["installed"] = false;
+                $context["installed"] = true;
+                // line 14
+                $context["package"] = $this->getAttribute($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "plugins", array(0 => true), "method"), $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "route", array()), array(), "array");
+                // line 15
+                if ( !(isset($context["package"]) ? $context["package"] : null)) {
+                    // line 16
+                    $context["package"] = $this->getAttribute($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "plugins", array(0 => false), "method"), $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "route", array()), array(), "array");
+                    // line 17
+                    $context["installed"] = false;
+                }
+                // line 20
+                $context["plugin"] = $this->getAttribute((isset($context["package"]) ? $context["package"] : null), "toArray", array(), "method");
+                // line 21
+                $context["title"] = (($this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.PLUGIN") . ": ") . twig_escape_filter($this->env, $this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "name", array())));
             }
-            // line 14
-            $context["plugin"] = $this->getAttribute((isset($context["package"]) ? $context["package"] : null), "toArray", array(), "method");
-            // line 15
-            $context["title"] = (($this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.PLUGIN") . ": ") . twig_escape_filter($this->env, $this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "name", array())));
         } else {
-            // line 17
+            // line 24
             $context["title"] = $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.PLUGINS");
         }
-        // line 20
+        // line 27
         if (($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "route", array()) || (isset($context["installing"]) ? $context["installing"] : null))) {
         }
         // line 1
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 21
+    // line 28
     public function block_stylesheets($context, array $blocks = array())
     {
-        // line 22
+        // line 29
         echo "        ";
         $this->getAttribute((isset($context["assets"]) ? $context["assets"] : null), "addCss", array(0 => ((isset($context["theme_url"]) ? $context["theme_url"] : null) . "/css/codemirror/codemirror.css")), "method");
-        // line 23
+        // line 30
         echo "        ";
         $this->displayParentBlock("stylesheets", $context, $blocks);
         echo "
     ";
     }
 
-    // line 26
+    // line 33
     public function block_javascripts($context, array $blocks = array())
     {
-        // line 27
-        echo "        ";
-        $this->getAttribute((isset($context["assets"]) ? $context["assets"] : null), "addJs", array(0 => ((isset($context["theme_url"]) ? $context["theme_url"] : null) . "/js/codemirror-compressed.js")), "method");
-        // line 28
-        echo "        ";
-        $this->getAttribute((isset($context["assets"]) ? $context["assets"] : null), "addJs", array(0 => ((isset($context["theme_url"]) ? $context["theme_url"] : null) . "/js/mdeditor.js")), "method");
-        // line 29
+        // line 34
         echo "        ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
     ";
     }
 
-    // line 33
+    // line 38
     public function block_titlebar($context, array $blocks = array())
     {
-        // line 34
-        echo "    ";
+        // line 39
+        echo "
+    ";
+        // line 40
         if (( !$this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "route", array()) || (isset($context["installing"]) ? $context["installing"] : null))) {
-            // line 35
+            // line 41
             echo "        <div class=\"button-bar\">
         ";
-            // line 36
+            // line 42
             if ((isset($context["installing"]) ? $context["installing"] : null)) {
-                // line 37
+                // line 43
                 echo "            <a class=\"button\" href=\"";
-                echo (isset($context["base_url_relative"]) ? $context["base_url_relative"] : null);
+                echo twig_escape_filter($this->env, (isset($context["base_url_relative"]) ? $context["base_url_relative"] : null), "html", null, true);
                 echo "/plugins\"><i class=\"fa fa-reply\"></i> ";
-                echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.BACK");
+                echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.BACK"), "html", null, true);
                 echo "</a>
         ";
             } else {
-                // line 39
+                // line 45
                 echo "            <a class=\"button\" href=\"";
-                echo (isset($context["base_url"]) ? $context["base_url"] : null);
+                echo twig_escape_filter($this->env, (isset($context["base_url"]) ? $context["base_url"] : null), "html", null, true);
                 echo "\"><i class=\"fa fa-reply\"></i> ";
-                echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.BACK");
+                echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.BACK"), "html", null, true);
                 echo "</a>
             <a class=\"button\" href=\"";
-                // line 40
-                echo (isset($context["base_url_relative"]) ? $context["base_url_relative"] : null);
+                // line 46
+                echo twig_escape_filter($this->env, (isset($context["base_url_relative"]) ? $context["base_url_relative"] : null), "html", null, true);
                 echo "/plugins/install\"><i class=\"fa fa-plus\"></i> ";
-                echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.ADD");
+                echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.ADD"), "html", null, true);
                 echo "</a>
             ";
-                // line 41
+                // line 47
                 if ($this->env->getExtension('GravTwigExtension')->authorize(array(0 => "admin.maintenance", 1 => "admin.super"))) {
-                    // line 42
+                    // line 48
                     echo "                <button data-gpm-checkupdates=\"\" class=\"button\"><i class=\"fa fa-refresh\"></i> ";
-                    echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.CHECK_FOR_UPDATES");
+                    echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.CHECK_FOR_UPDATES"), "html", null, true);
                     echo "</button>
             ";
                 }
-                // line 44
+                // line 50
                 echo "        ";
             }
-            // line 45
+            // line 51
             echo "        </div>
         <h1><i class=\"fa fa-fw fa-plug\"></i> ";
-            // line 46
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.PLUGINS");
+            // line 52
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.PLUGINS"), "html", null, true);
             echo "</h1>
     ";
         } else {
-            // line 48
+            // line 54
             echo "        ";
             if ((isset($context["installed"]) ? $context["installed"] : null)) {
-                // line 49
+                // line 55
                 echo "        <div class=\"button-bar\">
             <a class=\"button\" href=\"";
-                // line 50
-                echo (isset($context["base_url_relative"]) ? $context["base_url_relative"] : null);
+                // line 56
+                echo twig_escape_filter($this->env, (isset($context["base_url_relative"]) ? $context["base_url_relative"] : null), "html", null, true);
                 echo "/plugins\"><i class=\"fa fa-arrow-left\"></i> ";
-                echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.BACK_TO_PLUGINS");
+                echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.BACK_TO_PLUGINS"), "html", null, true);
                 echo "</a>
-            <button class=\"button\" type=\"submit\" name=\"task\" value=\"save\" form=\"blueprints\"><i class=\"fa fa-check\"></i> ";
-                // line 51
-                echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.SAVE");
+            ";
+                // line 57
+                try {
+                    $this->loadTemplate((("plugins/" . $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "route", array())) . "-buttons.html.twig"), "plugins.html.twig", 57)->display($context);
+                } catch (Twig_Error_Loader $e) {
+                    // ignore missing template
+                }
+
+                // line 58
+                echo "            <button class=\"button\" type=\"submit\" name=\"task\" value=\"save\" form=\"blueprints\"><i class=\"fa fa-check\"></i> ";
+                echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.SAVE"), "html", null, true);
                 echo "</button>
         </div>
         ";
             } else {
-                // line 54
+                // line 61
                 echo "        <div class=\"button-bar\">
             <a class=\"button\" href=\"";
-                // line 55
-                echo (isset($context["base_url_relative"]) ? $context["base_url_relative"] : null);
+                // line 62
+                echo twig_escape_filter($this->env, (isset($context["base_url_relative"]) ? $context["base_url_relative"] : null), "html", null, true);
                 echo "/plugins/install\"><i class=\"fa fa-arrow-left\"></i> ";
-                echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.BACK_TO_PLUGINS");
+                echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.BACK_TO_PLUGINS"), "html", null, true);
                 echo "</a>
         </div>
         ";
             }
-            // line 58
+            // line 65
             echo "
         <h1><i class=\"fa fa-fw fa-plug\"></i> ";
-            // line 59
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.PLUGIN");
+            // line 66
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.PLUGIN"), "html", null, true);
             echo ": ";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["plugin"]) ? $context["plugin"] : null), "name", array()));
             echo "</h1>
@@ -176,34 +189,43 @@ class __TwigTemplate_22bde96e7d4c7ba551bfc0147729e7b36a7c57579c902dc5268a16efa4f
         }
     }
 
-    // line 64
+    // line 71
+    public function block_messages($context, array $blocks = array())
+    {
+        // line 72
+        echo "    ";
+        $this->displayParentBlock("messages", $context, $blocks);
+        echo "
+     ";
+        // line 73
+        if ($this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "plugins", array()), "admin", array()), "notifications", array()), "plugins", array())) {
+            // line 74
+            echo "    <div class=\"plugins-notifications-container hidden\"></div>
+    ";
+        }
+    }
+
+    // line 78
     public function block_content($context, array $blocks = array())
     {
-        // line 65
-        echo "
-    <div class=\"gpm gpm-plugins\">
-
+        // line 79
+        echo "    <div class=\"gpm gpm-plugins\">
         ";
-        // line 68
-        $this->loadTemplate("partials/messages.html.twig", "plugins.html.twig", 68)->display($context);
-        // line 69
-        echo "
-        ";
-        // line 70
+        // line 80
         if (( !$this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "route", array()) || (isset($context["installing"]) ? $context["installing"] : null))) {
-            // line 71
+            // line 81
             echo "            ";
-            $this->loadTemplate("partials/plugins-list.html.twig", "plugins.html.twig", 71)->display($context);
-            // line 72
+            $this->loadTemplate("partials/plugins-list.html.twig", "plugins.html.twig", 81)->display($context);
+            // line 82
             echo "        ";
         } else {
-            // line 73
+            // line 83
             echo "            ";
-            $this->loadTemplate("partials/plugins-details.html.twig", "plugins.html.twig", 73)->display($context);
-            // line 74
+            $this->loadTemplate("partials/plugins-details.html.twig", "plugins.html.twig", 83)->display($context);
+            // line 84
             echo "        ";
         }
-        // line 75
+        // line 85
         echo "    </div>
 ";
     }
@@ -220,24 +242,31 @@ class __TwigTemplate_22bde96e7d4c7ba551bfc0147729e7b36a7c57579c902dc5268a16efa4f
 
     public function getDebugInfo()
     {
-        return array (  207 => 75,  204 => 74,  201 => 73,  198 => 72,  195 => 71,  193 => 70,  190 => 69,  188 => 68,  183 => 65,  180 => 64,  170 => 59,  167 => 58,  159 => 55,  156 => 54,  150 => 51,  144 => 50,  141 => 49,  138 => 48,  133 => 46,  130 => 45,  127 => 44,  121 => 42,  119 => 41,  113 => 40,  106 => 39,  98 => 37,  96 => 36,  93 => 35,  90 => 34,  87 => 33,  80 => 29,  77 => 28,  74 => 27,  71 => 26,  64 => 23,  61 => 22,  58 => 21,  54 => 1,  51 => 20,  48 => 17,  45 => 15,  43 => 14,  40 => 11,  38 => 10,  36 => 9,  34 => 8,  32 => 5,  30 => 4,  28 => 3,  11 => 1,);
+        return array (  229 => 85,  226 => 84,  223 => 83,  220 => 82,  217 => 81,  215 => 80,  212 => 79,  209 => 78,  203 => 74,  201 => 73,  196 => 72,  193 => 71,  183 => 66,  180 => 65,  172 => 62,  169 => 61,  162 => 58,  155 => 57,  149 => 56,  146 => 55,  143 => 54,  138 => 52,  135 => 51,  132 => 50,  126 => 48,  124 => 47,  118 => 46,  111 => 45,  103 => 43,  101 => 42,  98 => 41,  96 => 40,  93 => 39,  90 => 38,  83 => 34,  80 => 33,  73 => 30,  70 => 29,  67 => 28,  63 => 1,  60 => 27,  57 => 24,  53 => 21,  51 => 20,  48 => 17,  46 => 16,  44 => 15,  42 => 14,  40 => 11,  37 => 9,  35 => 8,  33 => 6,  31 => 5,  29 => 3,  11 => 1,);
     }
 }
 /* {% extends 'partials/base.html.twig' %}*/
 /* */
-/* {% if admin.route %}*/
-/*     {% set installing = admin.route starts with 'install' %}*/
-/*     {% set installed = true %}*/
+/* {% set plugin_slug = admin.route %}*/
 /* */
-/*     {# Try installed packages first, then remote #}*/
-/*     {% set package = admin.plugins(true)[admin.route] %}*/
-/*     {% if (not package) %}*/
-/*         {% set package = admin.plugins(false)[admin.route] %}*/
-/*         {% set installed = false %}*/
+/* {% if plugin_slug %}*/
+/*     {% set installing = plugin_slug starts with 'install' %}*/
+/* */
+/*     {% if installing %}*/
+/*         {% set title = "PLUGIN_ADMIN.PLUGINS"|tu %}*/
+/*     {% else %}*/
+/*         {% set installed = true %}*/
+/* */
+/*         {# Try installed packages first, then remote #}*/
+/*         {% set package = admin.plugins(true)[admin.route] %}*/
+/*         {% if (not package) %}*/
+/*             {% set package = admin.plugins(false)[admin.route] %}*/
+/*             {% set installed = false %}*/
+/*         {% endif %}*/
+/* */
+/*         {% set plugin = package.toArray() %}*/
+/*         {% set title = "PLUGIN_ADMIN.PLUGIN"|tu ~ ": " ~ plugin.name|e %}*/
 /*     {% endif %}*/
-/* */
-/*     {% set plugin = package.toArray() %}*/
-/*     {% set title = "PLUGIN_ADMIN.PLUGIN"|tu ~ ": " ~ plugin.name|e %}*/
 /* {% else %}*/
 /*     {% set title = "PLUGIN_ADMIN.PLUGINS"|tu %}*/
 /* {% endif %}*/
@@ -249,13 +278,12 @@ class __TwigTemplate_22bde96e7d4c7ba551bfc0147729e7b36a7c57579c902dc5268a16efa4f
 /*     {% endblock %}*/
 /* */
 /*     {% block javascripts %}*/
-/*         {% do assets.addJs(theme_url~'/js/codemirror-compressed.js') %}*/
-/*         {% do assets.addJs(theme_url~'/js/mdeditor.js') %}*/
 /*         {{ parent() }}*/
 /*     {% endblock %}*/
 /* {% endif %}*/
 /* */
 /* {% block titlebar %}*/
+/* */
 /*     {% if not admin.route or installing %}*/
 /*         <div class="button-bar">*/
 /*         {% if (installing) %}*/
@@ -273,6 +301,7 @@ class __TwigTemplate_22bde96e7d4c7ba551bfc0147729e7b36a7c57579c902dc5268a16efa4f
 /*         {% if (installed) %}*/
 /*         <div class="button-bar">*/
 /*             <a class="button" href="{{ base_url_relative }}/plugins"><i class="fa fa-arrow-left"></i> {{ "PLUGIN_ADMIN.BACK_TO_PLUGINS"|tu }}</a>*/
+/*             {% include 'plugins/'~admin.route~'-buttons.html.twig' ignore missing %}*/
 /*             <button class="button" type="submit" name="task" value="save" form="blueprints"><i class="fa fa-check"></i> {{ "PLUGIN_ADMIN.SAVE"|tu }}</button>*/
 /*         </div>*/
 /*         {% else %}*/
@@ -286,14 +315,17 @@ class __TwigTemplate_22bde96e7d4c7ba551bfc0147729e7b36a7c57579c902dc5268a16efa4f
 /*     {% endif %}*/
 /* {% endblock %}*/
 /* */
+/* {% block messages %}*/
+/*     {{ parent() }}*/
+/*      {% if config.plugins.admin.notifications.plugins %}*/
+/*     <div class="plugins-notifications-container hidden"></div>*/
+/*     {% endif %}*/
+/* {% endblock %}*/
+/* */
 /* {% block content %}*/
-/* */
 /*     <div class="gpm gpm-plugins">*/
-/* */
-/*         {% include 'partials/messages.html.twig' %}*/
-/* */
 /*         {% if not admin.route or installing %}*/
-/*             {%  include 'partials/plugins-list.html.twig' %}*/
+/*             {% include 'partials/plugins-list.html.twig' %}*/
 /*         {% else %}*/
 /*             {% include 'partials/plugins-details.html.twig' %}*/
 /*         {% endif %}*/

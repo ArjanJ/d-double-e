@@ -18,39 +18,28 @@ class __TwigTemplate_2a9f4fb6a0ca44e920932953557fc0884be5404a0c07aaafc21f3bb9be1
         // line 1
         $context["form_id"] = (((isset($context["form_id"]) ? $context["form_id"] : null)) ? ((isset($context["form_id"]) ? $context["form_id"] : null)) : ("blueprints"));
         // line 2
+        $context["scope"] = (((isset($context["scope"]) ? $context["scope"] : null)) ? ((isset($context["scope"]) ? $context["scope"] : null)) : ("data."));
+        // line 3
         echo "
 ";
-        // line 3
-        $context["multipart"] = "";
         // line 4
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["blueprints"]) ? $context["blueprints"] : null), "fields", array()));
-        foreach ($context['_seq'] as $context["_key"] => $context["field"]) {
+        if ($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "findFormFields", array(0 => "file", 1 => $this->getAttribute((isset($context["blueprints"]) ? $context["blueprints"] : null), "fields", array())), "method")) {
             // line 5
             echo "    ";
-            if (($this->getAttribute($context["field"], "type", array()) == "file")) {
-                // line 6
-                echo "        ";
-                $context["multipart"] = " enctype=\"multipart/form-data\"";
-                // line 7
-                echo "    ";
-            }
+            $context["multipart"] = " enctype=\"multipart/form-data\"";
         }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['field'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 9
+        // line 7
         echo "
 <form id=\"";
-        // line 10
-        echo (isset($context["form_id"]) ? $context["form_id"] : null);
+        // line 8
+        echo twig_escape_filter($this->env, (isset($context["form_id"]) ? $context["form_id"] : null), "html", null, true);
         echo "\" method=\"post\" data-grav-form=\"";
-        echo (isset($context["form_id"]) ? $context["form_id"] : null);
+        echo twig_escape_filter($this->env, (isset($context["form_id"]) ? $context["form_id"] : null), "html", null, true);
         echo "\" data-grav-keepalive=\"true\"";
         echo (isset($context["multipart"]) ? $context["multipart"] : null);
         echo ">
     ";
-        // line 11
+        // line 9
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["blueprints"]) ? $context["blueprints"] : null), "fields", array()));
         $context['loop'] = array(
@@ -67,26 +56,24 @@ class __TwigTemplate_2a9f4fb6a0ca44e920932953557fc0884be5404a0c07aaafc21f3bb9be1
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["field"]) {
-            // line 12
+            // line 10
             echo "        ";
             if ($this->getAttribute($context["field"], "type", array())) {
-                // line 13
+                // line 11
                 echo "            ";
-                $context["value"] = $this->getAttribute((isset($context["data"]) ? $context["data"] : null), "value", array(0 => $this->getAttribute($context["field"], "name", array())), "method");
-                // line 14
-                echo "
-            <div class=\"block block-";
-                // line 15
-                echo $this->getAttribute($context["field"], "type", array());
+                $context["value"] = (($this->getAttribute($context["field"], "name", array())) ? ($this->getAttribute((isset($context["data"]) ? $context["data"] : null), "value", array(0 => $this->getAttribute($context["field"], "name", array())), "method")) : ($this->getAttribute((isset($context["data"]) ? $context["data"] : null), "toArray", array())));
+                // line 12
+                echo "            <div class=\"block block-";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["field"], "type", array()), "html", null, true);
                 echo "\">
                 ";
-                // line 16
-                $this->loadTemplate(array(0 => (((("forms/fields/" . $this->getAttribute($context["field"], "type", array())) . "/") . $this->getAttribute($context["field"], "type", array())) . ".html.twig"), 1 => "forms/fields/text/text.html.twig"), "partials/blueprints.html.twig", 16)->display($context);
-                // line 17
+                // line 13
+                $this->loadTemplate(array(0 => (((("forms/fields/" . $this->getAttribute($context["field"], "type", array())) . "/") . $this->getAttribute($context["field"], "type", array())) . ".html.twig"), 1 => "forms/fields/text/text.html.twig"), "partials/blueprints.html.twig", 13)->display($context);
+                // line 14
                 echo "            </div>
         ";
             }
-            // line 19
+            // line 16
             echo "    ";
             ++$context['loop']['index0'];
             ++$context['loop']['index'];
@@ -100,12 +87,12 @@ class __TwigTemplate_2a9f4fb6a0ca44e920932953557fc0884be5404a0c07aaafc21f3bb9be1
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['field'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 20
+        // line 17
         echo "
     ";
-        // line 21
+        // line 18
         if ($this->getAttribute((isset($context["data"]) ? $context["data"] : null), "extra", array())) {
-            // line 22
+            // line 19
             echo "    ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["data"]) ? $context["data"] : null), "extra", array()));
@@ -123,22 +110,22 @@ class __TwigTemplate_2a9f4fb6a0ca44e920932953557fc0884be5404a0c07aaafc21f3bb9be1
                 $context['loop']['last'] = 1 === $length;
             }
             foreach ($context['_seq'] as $context["name"] => $context["value"]) {
-                // line 23
+                // line 20
                 echo "        ";
                 if (!twig_in_filter($context["name"], array(0 => "_json", 1 => "task", 2 => "admin-nonce"))) {
-                    // line 24
+                    // line 21
                     echo "            ";
                     $context["field"] = array("name" => ("_json." . $context["name"]));
-                    // line 25
+                    // line 22
                     echo "            ";
-                    $context["value"] = twig_escape_filter($this->env, twig_jsonencode_filter($context["value"]));
-                    // line 26
+                    $context["value"] = twig_jsonencode_filter($context["value"]);
+                    // line 23
                     echo "            ";
-                    $this->loadTemplate("forms/fields/hidden/hidden.html.twig", "partials/blueprints.html.twig", 26)->display($context);
-                    // line 27
+                    $this->loadTemplate("forms/fields/hidden/hidden.html.twig", "partials/blueprints.html.twig", 23)->display($context);
+                    // line 24
                     echo "        ";
                 }
-                // line 28
+                // line 25
                 echo "    ";
                 ++$context['loop']['index0'];
                 ++$context['loop']['index'];
@@ -152,13 +139,13 @@ class __TwigTemplate_2a9f4fb6a0ca44e920932953557fc0884be5404a0c07aaafc21f3bb9be1
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['name'], $context['value'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 29
+            // line 26
             echo "    ";
         }
-        // line 30
+        // line 27
         echo "
     ";
-        // line 31
+        // line 28
         echo $this->env->getExtension('GravTwigExtension')->nonceFieldFunc("admin-form", "admin-nonce");
         echo "
 </form>
@@ -177,23 +164,20 @@ class __TwigTemplate_2a9f4fb6a0ca44e920932953557fc0884be5404a0c07aaafc21f3bb9be1
 
     public function getDebugInfo()
     {
-        return array (  162 => 31,  159 => 30,  156 => 29,  142 => 28,  139 => 27,  136 => 26,  133 => 25,  130 => 24,  127 => 23,  109 => 22,  107 => 21,  104 => 20,  90 => 19,  86 => 17,  84 => 16,  80 => 15,  77 => 14,  74 => 13,  71 => 12,  54 => 11,  46 => 10,  43 => 9,  36 => 7,  33 => 6,  30 => 5,  26 => 4,  24 => 3,  21 => 2,  19 => 1,);
+        return array (  149 => 28,  146 => 27,  143 => 26,  129 => 25,  126 => 24,  123 => 23,  120 => 22,  117 => 21,  114 => 20,  96 => 19,  94 => 18,  91 => 17,  77 => 16,  73 => 14,  71 => 13,  66 => 12,  63 => 11,  60 => 10,  43 => 9,  35 => 8,  32 => 7,  28 => 5,  26 => 4,  23 => 3,  21 => 2,  19 => 1,);
     }
 }
 /* {% set form_id = form_id ? form_id : 'blueprints' %}*/
+/* {% set scope = scope ?: 'data.' %}*/
 /* */
-/* {% set multipart = '' %}*/
-/* {% for field in blueprints.fields %}*/
-/*     {% if field.type == 'file' %}*/
-/*         {% set multipart = ' enctype="multipart/form-data"' %}*/
-/*     {% endif %}*/
-/* {% endfor %}*/
+/* {% if admin.findFormFields('file', blueprints.fields) %}*/
+/*     {% set multipart = ' enctype="multipart/form-data"' %}*/
+/* {% endif %}*/
 /* */
-/* <form id="{{ form_id }}" method="post" data-grav-form="{{ form_id }}" data-grav-keepalive="true"{{ multipart }}>*/
+/* <form id="{{ form_id }}" method="post" data-grav-form="{{ form_id }}" data-grav-keepalive="true"{{ multipart|raw }}>*/
 /*     {% for field in blueprints.fields %}*/
 /*         {% if field.type %}*/
-/*             {% set value = data.value(field.name) %}*/
-/* */
+/*             {% set value = field.name ? data.value(field.name) : data.toArray %}*/
 /*             <div class="block block-{{ field.type }}">*/
 /*                 {% include ["forms/fields/#{field.type}/#{field.type}.html.twig", 'forms/fields/text/text.html.twig'] %}*/
 /*             </div>*/
@@ -204,12 +188,12 @@ class __TwigTemplate_2a9f4fb6a0ca44e920932953557fc0884be5404a0c07aaafc21f3bb9be1
 /*     {% for name, value in data.extra %}*/
 /*         {% if name not in ['_json','task','admin-nonce'] %}*/
 /*             {% set field = {name: '_json.' ~ name} %}*/
-/*             {% set value = value|json_encode|e %}*/
+/*             {% set value = value|raw|json_encode %}*/
 /*             {% include 'forms/fields/hidden/hidden.html.twig' %}*/
 /*         {% endif %}*/
 /*     {% endfor %}*/
 /*     {% endif %}*/
 /* */
-/*     {{ nonce_field('admin-form', 'admin-nonce') }}*/
+/*     {{ nonce_field('admin-form', 'admin-nonce')|raw }}*/
 /* </form>*/
 /* */

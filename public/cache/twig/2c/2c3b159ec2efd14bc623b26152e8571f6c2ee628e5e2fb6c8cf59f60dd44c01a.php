@@ -16,7 +16,7 @@ class __TwigTemplate_ab7568433842bb2b8f2bcb359b0ec24341483ef18beba380330d779f945
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        $this->loadTemplate("login.html.twig", "login.html.twig", 1, "785154851")->display(array_merge($context, array("title" => "Grav Admin Login")));
+        $this->loadTemplate("login.html.twig", "login.html.twig", 1, "1815814108")->display(array_merge($context, array("title" => "Grav Admin Login")));
     }
 
     public function getTemplateName()
@@ -37,7 +37,7 @@ class __TwigTemplate_ab7568433842bb2b8f2bcb359b0ec24341483ef18beba380330d779f945
 
 
 /* login.html.twig */
-class __TwigTemplate_ab7568433842bb2b8f2bcb359b0ec24341483ef18beba380330d779f945afb74_785154851 extends Twig_Template
+class __TwigTemplate_ab7568433842bb2b8f2bcb359b0ec24341483ef18beba380330d779f945afb74_1815814108 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
     {
@@ -108,17 +108,17 @@ class __TwigTemplate_ab7568433842bb2b8f2bcb359b0ec24341483ef18beba380330d779f945
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 11
         echo "
-        <div class=\"form-actions secondary-accent\">
+        <div class=\"form-actions primary-accent\">
             ";
         // line 13
         if ((isset($context["notAuthorized"]) ? $context["notAuthorized"] : null)) {
             // line 14
             echo "                <a class=\"button secondary\" onclick=\"window.history.back()\"><i class=\"fa fa-reply\"></i> ";
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.BACK");
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.BACK"), "html", null, true);
             echo "</a>
                 <button type=\"submit\" class=\"button primary\" name=\"task\" value=\"logout\"><i class=\"fa fa-sign-in\"></i> ";
             // line 15
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.LOGOUT");
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.LOGOUT"), "html", null, true);
             echo "</button>
             ";
         } else {
@@ -127,19 +127,19 @@ class __TwigTemplate_ab7568433842bb2b8f2bcb359b0ec24341483ef18beba380330d779f945
             if ( !(isset($context["authenticated"]) ? $context["authenticated"] : null)) {
                 // line 18
                 echo "                    <a class=\"button secondary\" href=\"";
-                echo (isset($context["base_url_relative"]) ? $context["base_url_relative"] : null);
+                echo twig_escape_filter($this->env, (isset($context["base_url_relative"]) ? $context["base_url_relative"] : null), "html", null, true);
                 echo "/forgot\"><i class=\"fa fa-exclamation-circle\"></i> ";
-                echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.LOGIN_BTN_FORGOT");
+                echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.LOGIN_BTN_FORGOT"), "html", null, true);
                 echo "</a>
                     <button type=\"submit\" class=\"button primary\" name=\"task\" value=\"login\"><i class=\"fa fa-sign-in\"></i> ";
                 // line 19
-                echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.LOGIN_BTN");
+                echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.LOGIN_BTN"), "html", null, true);
                 echo "</button>
                 ";
             } else {
                 // line 21
                 echo "                    <button type=\"submit\" class=\"button primary\" name=\"task\" value=\"logout\"><i class=\"fa fa-sign-in\"></i> ";
-                echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.LOGOUT");
+                echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.LOGOUT"), "html", null, true);
                 echo "</button>
                 ";
             }
@@ -178,7 +178,7 @@ class __TwigTemplate_ab7568433842bb2b8f2bcb359b0ec24341483ef18beba380330d779f945
 /*             {% endif %}*/
 /*         {% endfor %}*/
 /* */
-/*         <div class="form-actions secondary-accent">*/
+/*         <div class="form-actions primary-accent">*/
 /*             {% if notAuthorized %}*/
 /*                 <a class="button secondary" onclick="window.history.back()"><i class="fa fa-reply"></i> {{ 'PLUGIN_ADMIN.BACK'|tu }}</a>*/
 /*                 <button type="submit" class="button primary" name="task" value="logout"><i class="fa fa-sign-in"></i> {{ 'PLUGIN_ADMIN.LOGOUT'|tu }}</button>*/

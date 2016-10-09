@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/system/config/system.yaml',
-    'modified' => 1456442350,
+    'modified' => 1475968568,
     'data' => [
         'absolute_urls' => false,
         'timezone' => '',
@@ -10,7 +10,8 @@ return [
         'param_sep' => ':',
         'wrapped_site' => false,
         'reverse_proxy_setup' => false,
-        'proxy_url' => NULL,
+        'force_ssl' => false,
+        'custom_base_url' => '',
         'languages' => [
             'supported' => [
                 
@@ -85,7 +86,14 @@ return [
                 1 => '.idea'
             ],
             'ignore_hidden' => true,
-            'url_taxonomy_filters' => true
+            'url_taxonomy_filters' => true,
+            'frontmatter' => [
+                'process_twig' => false,
+                'ignore_fields' => [
+                    0 => 'form',
+                    1 => 'forms'
+                ]
+            ]
         ],
         'cache' => [
             'enabled' => true,
@@ -99,7 +107,7 @@ return [
         ],
         'twig' => [
             'cache' => true,
-            'debug' => false,
+            'debug' => true,
             'auto_reload' => true,
             'autoescape' => false,
             'undefined_functions' => true,
@@ -108,10 +116,14 @@ return [
         ],
         'assets' => [
             'css_pipeline' => false,
+            'css_pipeline_include_externals' => true,
+            'css_pipeline_before_excludes' => true,
             'css_minify' => true,
             'css_minify_windows' => false,
             'css_rewrite' => true,
             'js_pipeline' => false,
+            'js_pipeline_include_externals' => true,
+            'js_pipeline_before_excludes' => true,
             'js_minify' => true,
             'enable_asset_timestamp' => false,
             'collections' => [
@@ -149,7 +161,12 @@ return [
             'timeout' => 1800,
             'name' => 'grav-site',
             'secure' => false,
-            'httponly' => true
+            'httponly' => true,
+            'path' => NULL
+        ],
+        'gpm' => [
+            'releases' => 'stable',
+            'proxy_url' => NULL
         ]
     ]
 ];

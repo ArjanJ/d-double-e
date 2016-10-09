@@ -2,10 +2,10 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/user/plugins/login/blueprints.yaml',
-    'modified' => 1466892950,
+    'modified' => 1475968227,
     'data' => [
         'name' => 'Login',
-        'version' => '1.3.1',
+        'version' => '2.1.2',
         'description' => 'Enables user authentication and login screen.',
         'icon' => 'sign-in',
         'author' => [
@@ -18,8 +18,18 @@ return [
         'bugs' => 'https://github.com/getgrav/grav-plugin-login/issues',
         'license' => 'MIT',
         'dependencies' => [
-            0 => 'form',
-            1 => 'email'
+            0 => [
+                'name' => 'grav',
+                'version' => '>=1.1.4'
+            ],
+            1 => [
+                'name' => 'form',
+                'version' => '~2.0'
+            ],
+            2 => [
+                'name' => 'email',
+                'version' => '~2.0'
+            ]
         ],
         'form' => [
             'validation' => 'loose',
@@ -27,6 +37,7 @@ return [
                 'tabs' => [
                     'type' => 'tabs',
                     'active' => 1,
+                    'class' => 'subtle',
                     'fields' => [
                         'login' => [
                             'type' => 'tab',
@@ -34,7 +45,7 @@ return [
                             'fields' => [
                                 'enabled' => [
                                     'type' => 'hidden',
-                                    'label' => 'PLUGIN_ADMIN.PLUGIN_STATUS',
+                                    'label' => 'PLUGIN_LOGIN.PLUGIN_STATUS',
                                     'highlight' => 1,
                                     'default' => 1,
                                     'options' => [
@@ -66,7 +77,7 @@ return [
                                     'help' => 'PLUGIN_LOGIN.ROUTE_HELP',
                                     'placeholder' => '/my-custom-login'
                                 ],
-                                'redirect' => [
+                                'redirect_after_login' => [
                                     'type' => 'text',
                                     'label' => 'PLUGIN_LOGIN.REDIRECT_AFTER_LOGIN',
                                     'help' => 'PLUGIN_LOGIN.REDIRECT_AFTER_LOGIN_HELP',
@@ -74,10 +85,24 @@ return [
                                 ],
                                 'parent_acl' => [
                                     'type' => 'toggle',
-                                    'label' => 'Use parent access rules',
+                                    'label' => 'PLUGIN_LOGIN.USE_PARENT_ACL_LABEL',
                                     'highlight' => 1,
                                     'default' => 0,
-                                    'help' => 'Check for parent access rules if no rules are defined',
+                                    'help' => 'PLUGIN_LOGIN.USE_PARENT_ACL_HELP',
+                                    'options' => [
+                                        1 => 'PLUGIN_ADMIN.ENABLED',
+                                        0 => 'PLUGIN_ADMIN.DISABLED'
+                                    ],
+                                    'validate' => [
+                                        'type' => 'bool'
+                                    ]
+                                ],
+                                'protect_protected_page_media' => [
+                                    'type' => 'toggle',
+                                    'label' => 'PLUGIN_LOGIN.PROTECT_PROTECTED_PAGE_MEDIA_LABEL',
+                                    'highlight' => 1,
+                                    'default' => 0,
+                                    'help' => 'PLUGIN_LOGIN.PROTECT_PROTECTED_PAGE_MEDIA_HELP',
                                     'options' => [
                                         1 => 'PLUGIN_ADMIN.ENABLED',
                                         0 => 'PLUGIN_ADMIN.DISABLED'
@@ -88,7 +113,7 @@ return [
                                 ],
                                 'rememberme' => [
                                     'type' => 'section',
-                                    'title' => 'PLUGIN_LOGIN.SESSION',
+                                    'title' => 'PLUGIN_LOGIN.REMEMBER_ME',
                                     'fields' => [
                                         'rememberme.enabled' => [
                                             'type' => 'toggle',
@@ -106,8 +131,9 @@ return [
                                         'rememberme.timeout' => [
                                             'type' => 'text',
                                             'size' => 'small',
+                                            'default' => 604800,
                                             'label' => 'PLUGIN_ADMIN.TIMEOUT',
-                                            'help' => 'PLUGIN_ADMIN.TIMEOUT_HELP',
+                                            'help' => 'PLUGIN_LOGIN.TIMEOUT_HELP',
                                             'validate' => [
                                                 'type' => 'number',
                                                 'min' => 1
@@ -151,7 +177,13 @@ return [
                                     'type' => 'text',
                                     'label' => 'PLUGIN_LOGIN.REDIRECT_AFTER_REGISTRATION',
                                     'help' => 'PLUGIN_LOGIN.REDIRECT_AFTER_REGISTRATION_HELP',
-                                    'placeholder' => '/my-page'
+                                    'placeholder' => '/page-to-show-after-registration'
+                                ],
+                                'user_registration.redirect_after_activation' => [
+                                    'type' => 'text',
+                                    'label' => 'PLUGIN_LOGIN.REDIRECT_AFTER_ACTIVATION',
+                                    'help' => 'PLUGIN_LOGIN.REDIRECT_AFTER_ACTIVATION_HELP',
+                                    'placeholder' => '/page-to-show-after-activation'
                                 ],
                                 'registration_fields' => [
                                     'type' => 'section',
@@ -171,6 +203,33 @@ return [
                                             'help' => 'PLUGIN_LOGIN.DEFAULT_VALUES_HELP',
                                             'placeholder_key' => 'PLUGIN_LOGIN.ADDITIONAL_PARAM_KEY',
                                             'placeholder_value' => 'PLUGIN_LOGIN.ADDITIONAL_PARAM_VALUE'
+                                        ]
+                                    ]
+                                ],
+                                'access_levels' => [
+                                    'title' => 'PLUGIN_ADMIN.ACCESS_LEVELS',
+                                    'type' => 'section',
+                                    'security' => 'admin.super',
+                                    'fields' => [
+                                        'user_registration.groups' => [
+                                            'type' => 'selectize',
+                                            'size' => 'large',
+                                            'label' => 'PLUGIN_ADMIN.GROUPS',
+                                            '@data-options' => '\\Grav\\User\\Groups::groups',
+                                            'classes' => 'fancy',
+                                            'help' => 'PLUGIN_LOGIN.GROUPS_HELP',
+                                            'validate' => [
+                                                'type' => 'commalist'
+                                            ]
+                                        ],
+                                        'user_registration.access.site' => [
+                                            'type' => 'array',
+                                            'label' => 'PLUGIN_ADMIN.SITE_ACCESS',
+                                            'help' => 'PLUGIN_LOGIN.SITE_ACCESS_HELP',
+                                            'multiple' => false,
+                                            'validate' => [
+                                                'type' => 'array'
+                                            ]
                                         ]
                                     ]
                                 ],
@@ -252,186 +311,7 @@ return [
                                                 1 => 'PLUGIN_ADMIN.YES',
                                                 0 => 'PLUGIN_ADMIN.NO'
                                             ],
-                                            'validate' => [
-                                                'type' => 'bool'
-                                            ]
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ],
-                        'oauth' => [
-                            'type' => 'tab',
-                            'title' => 'PLUGIN_LOGIN.OAUTH_SECTION',
-                            'fields' => [
-                                'oauth.enabled' => [
-                                    'type' => 'toggle',
-                                    'label' => 'PLUGIN_LOGIN.OAUTH_ENABLE',
-                                    'highlight' => 1,
-                                    'default' => 0,
-                                    'options' => [
-                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                    ],
-                                    'validate' => [
-                                        'type' => 'bool'
-                                    ]
-                                ],
-                                'oauth.user.autocreate' => [
-                                    'type' => 'toggle',
-                                    'label' => 'PLUGIN_LOGIN.OAUTH_USER_AUTOCREATE',
-                                    'highlight' => 1,
-                                    'default' => 0,
-                                    'options' => [
-                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                    ],
-                                    'validate' => [
-                                        'type' => 'bool'
-                                    ]
-                                ],
-                                'oauth.user.access' => [
-                                    'type' => 'array',
-                                    'label' => 'PLUGIN_LOGIN.OAUTH_ACCESS',
-                                    'placeholder_key' => 'signin.login',
-                                    'placeholder_value' => true
-                                ],
-                                'oauth.providers' => [
-                                    'type' => 'section',
-                                    'title' => 'PLUGIN_LOGIN.OAUTH_PROVIDER_SECTION',
-                                    'underline' => true,
-                                    'fields' => [
-                                        'oauth.providers.Facebook' => [
-                                            'type' => 'section',
-                                            'title' => 'PLUGIN_LOGIN.FACEBOOK',
-                                            'fields' => [
-                                                'oauth.providers.Facebook.enabled' => [
-                                                    'type' => 'toggle',
-                                                    'label' => 'PLUGIN_LOGIN.OAUTH_PROVIDER_FACEBOOK',
-                                                    'highlight' => 1,
-                                                    'default' => 0,
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ],
-                                                    'validate' => [
-                                                        'type' => 'bool'
-                                                    ]
-                                                ],
-                                                'oauth.providers.Facebook.credentials.key' => [
-                                                    'type' => 'text',
-                                                    'label' => 'PLUGIN_LOGIN.OAUTH_CLIENT_ID',
-                                                    'validate' => [
-                                                        'type' => 'string'
-                                                    ]
-                                                ],
-                                                'oauth.providers.Facebook.credentials.secret' => [
-                                                    'type' => 'text',
-                                                    'label' => 'PLUGIN_LOGIN.OAUTH_CLIENT_SECRET',
-                                                    'validate' => [
-                                                        'type' => 'string'
-                                                    ]
-                                                ]
-                                            ]
-                                        ],
-                                        'oauth.providers.Google' => [
-                                            'type' => 'section',
-                                            'title' => 'PLUGIN_LOGIN.GOOGLE',
-                                            'fields' => [
-                                                'oauth.providers.Google.enabled' => [
-                                                    'type' => 'toggle',
-                                                    'label' => 'PLUGIN_LOGIN.OAUTH_PROVIDER_GOOGLE',
-                                                    'highlight' => 1,
-                                                    'default' => 0,
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ],
-                                                    'validate' => [
-                                                        'type' => 'bool'
-                                                    ]
-                                                ],
-                                                'oauth.providers.Google.credentials.key' => [
-                                                    'type' => 'text',
-                                                    'label' => 'PLUGIN_LOGIN.OAUTH_CLIENT_ID',
-                                                    'validate' => [
-                                                        'type' => 'string'
-                                                    ]
-                                                ],
-                                                'oauth.providers.Google.credentials.secret' => [
-                                                    'type' => 'text',
-                                                    'label' => 'PLUGIN_LOGIN.OAUTH_CLIENT_SECRET',
-                                                    'validate' => [
-                                                        'type' => 'string'
-                                                    ]
-                                                ]
-                                            ]
-                                        ],
-                                        'oauth.providers.GitHub' => [
-                                            'type' => 'section',
-                                            'title' => 'PLUGIN_LOGIN.GITHUB',
-                                            'fields' => [
-                                                'oauth.providers.GitHub.enabled' => [
-                                                    'type' => 'toggle',
-                                                    'label' => 'PLUGIN_LOGIN.OAUTH_PROVIDER_GITHUB',
-                                                    'highlight' => 1,
-                                                    'default' => 0,
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ],
-                                                    'validate' => [
-                                                        'type' => 'bool'
-                                                    ]
-                                                ],
-                                                'oauth.providers.GitHub.credentials.key' => [
-                                                    'type' => 'text',
-                                                    'label' => 'PLUGIN_LOGIN.OAUTH_CLIENT_ID',
-                                                    'validate' => [
-                                                        'type' => 'string'
-                                                    ]
-                                                ],
-                                                'oauth.providers.GitHub.credentials.secret' => [
-                                                    'type' => 'text',
-                                                    'label' => 'PLUGIN_LOGIN.OAUTH_CLIENT_SECRET',
-                                                    'validate' => [
-                                                        'type' => 'string'
-                                                    ]
-                                                ]
-                                            ]
-                                        ],
-                                        'oauth.providers.Twitter' => [
-                                            'type' => 'section',
-                                            'title' => 'PLUGIN_LOGIN.TWITTER',
-                                            'fields' => [
-                                                'oauth.providers.Twitter.enabled' => [
-                                                    'type' => 'toggle',
-                                                    'label' => 'PLUGIN_LOGIN.OAUTH_PROVIDER_TWITTER',
-                                                    'highlight' => 1,
-                                                    'default' => 0,
-                                                    'options' => [
-                                                        1 => 'PLUGIN_ADMIN.ENABLED',
-                                                        0 => 'PLUGIN_ADMIN.DISABLED'
-                                                    ],
-                                                    'validate' => [
-                                                        'type' => 'bool'
-                                                    ]
-                                                ],
-                                                'oauth.providers.Twitter.credentials.key' => [
-                                                    'type' => 'text',
-                                                    'label' => 'PLUGIN_LOGIN.OAUTH_CLIENT_ID',
-                                                    'validate' => [
-                                                        'type' => 'string'
-                                                    ]
-                                                ],
-                                                'oauth.providers.Twitter.credentials.secret' => [
-                                                    'type' => 'text',
-                                                    'label' => 'PLUGIN_LOGIN.OAUTH_CLIENT_SECRET',
-                                                    'validate' => [
-                                                        'type' => 'string'
-                                                    ]
-                                                ]
-                                            ]
+                                            'validate' => NULL
                                         ]
                                     ]
                                 ]

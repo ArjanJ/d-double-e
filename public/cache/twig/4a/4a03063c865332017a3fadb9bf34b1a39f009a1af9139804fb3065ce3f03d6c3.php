@@ -58,213 +58,245 @@ class __TwigTemplate_9dec34720b9a34e70a9c04e11a6d31a4bafa072ce38da8f812f1ed7bd15
     {
         // line 18
         echo "    ";
-        $this->getAttribute((isset($context["assets"]) ? $context["assets"] : null), "addJs", array(0 => ((isset($context["theme_url"]) ? $context["theme_url"] : null) . "/js/codemirror-compressed.js")), "method");
-        // line 19
-        echo "    ";
-        $this->getAttribute((isset($context["assets"]) ? $context["assets"] : null), "addJs", array(0 => ((isset($context["theme_url"]) ? $context["theme_url"] : null) . "/js/mdeditor.js")), "method");
-        // line 20
-        echo "    ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
 ";
     }
 
-    // line 23
+    // line 21
     public function block_titlebar($context, array $blocks = array())
     {
-        // line 24
+        // line 22
         echo "    <div class=\"button-bar\">
         <a class=\"button\" href=\"";
-        // line 25
-        echo (isset($context["base_url"]) ? $context["base_url"] : null);
+        // line 23
+        echo twig_escape_filter($this->env, (isset($context["base_url"]) ? $context["base_url"] : null), "html", null, true);
         echo "\"><i class=\"fa fa-reply\"></i> ";
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.BACK");
+        echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.BACK"), "html", null, true);
         echo "</a>
         <button class=\"button\" type=\"submit\" name=\"task\" value=\"save\" form=\"blueprints\"><i class=\"fa fa-check\"></i> ";
-        // line 26
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.SAVE");
+        // line 24
+        echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.SAVE"), "html", null, true);
         echo "</button>
     </div>
     <h1><i class=\"fa fa-fw fa-wrench\"></i> ";
-        // line 28
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.CONFIGURATION");
+        // line 26
+        echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.CONFIGURATION"), "html", null, true);
         echo " - ";
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter(("PLUGIN_ADMIN." . twig_upper_filter($this->env, (isset($context["config_slug"]) ? $context["config_slug"] : null))));
+        echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter(("PLUGIN_ADMIN." . twig_upper_filter($this->env, (isset($context["config_slug"]) ? $context["config_slug"] : null)))), "html", null, true);
         echo "</h1>
 ";
     }
 
-    // line 31
+    // line 29
     public function block_content_top($context, array $blocks = array())
     {
-        // line 32
-        echo "    <div class=\"alert notice\">";
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.SAVE_LOCATION");
-        echo ": <b>";
-        echo twig_replace_filter($this->getAttribute($this->getAttribute((isset($context["data"]) ? $context["data"] : null), "file", array()), "filename", array()), array((isset($context["base_path"]) ? $context["base_path"] : null) => ""));
-        echo "</b></div>
-    <ul class=\"tab-bar\">  
-        <li ";
-        // line 34
-        if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == "system")) {
-            echo "class=\"active\"";
-        }
-        echo ">
-            ";
-        // line 35
-        if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == "system")) {
-            echo "<span>";
-        } else {
-            echo "<a href=\"";
-            echo (isset($context["base_url_relative"]) ? $context["base_url_relative"] : null);
-            echo "/config/system\">";
-        }
-        // line 36
-        echo "            ";
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.SYSTEM");
+        // line 30
         echo "
+    <div class=\"alert notice\">";
+        // line 31
+        echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.SAVE_LOCATION"), "html", null, true);
+        echo ": <b>";
+        echo twig_escape_filter($this->env, twig_replace_filter($this->getAttribute($this->getAttribute((isset($context["data"]) ? $context["data"] : null), "file", array()), "filename", array()), array((isset($context["base_path"]) ? $context["base_path"] : null) => "")), "html", null, true);
+        echo "</b></div>
+    <ul class=\"tab-bar\">
+
+        ";
+        // line 34
+        if ($this->env->getExtension('GravTwigExtension')->authorize(array(0 => "admin.configuration_system", 1 => "admin.super"))) {
+            // line 35
+            echo "        <li ";
+            if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == "system")) {
+                echo "class=\"active\"";
+            }
+            echo ">
             ";
-        // line 37
-        if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == "system")) {
-            echo "</span>";
-        } else {
-            echo "</a>";
-        }
-        // line 38
-        echo "        </li>
-        <li ";
-        // line 39
-        if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == "site")) {
-            echo "class=\"active\"";
-        }
-        echo ">
+            // line 36
+            if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == "system")) {
+                echo "<span>";
+            } else {
+                echo "<a href=\"";
+                echo twig_escape_filter($this->env, (isset($context["base_url_relative"]) ? $context["base_url_relative"] : null), "html", null, true);
+                echo "/config/system\">";
+            }
+            // line 37
+            echo "            ";
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.SYSTEM"), "html", null, true);
+            echo "
             ";
-        // line 40
-        if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == "site")) {
-            echo "<span>";
-        } else {
-            echo "<a href=\"";
-            echo (isset($context["base_url_relative"]) ? $context["base_url_relative"] : null);
-            echo "/config/site\">";
+            // line 38
+            if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == "system")) {
+                echo "</span>";
+            } else {
+                echo "</a>";
+            }
+            // line 39
+            echo "        </li>
+        ";
         }
         // line 41
-        echo "            ";
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.SITE");
         echo "
-            ";
-        // line 42
-        if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == "site")) {
-            echo "</span>";
-        } else {
-            echo "</a>";
-        }
-        // line 43
-        echo "        </li>
-        
         ";
-        // line 45
+        // line 42
+        if ($this->env->getExtension('GravTwigExtension')->authorize(array(0 => "admin.configuration_site", 1 => "admin.super"))) {
+            // line 43
+            echo "        <li ";
+            if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == "site")) {
+                echo "class=\"active\"";
+            }
+            echo ">
+            ";
+            // line 44
+            if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == "site")) {
+                echo "<span>";
+            } else {
+                echo "<a href=\"";
+                echo twig_escape_filter($this->env, (isset($context["base_url_relative"]) ? $context["base_url_relative"] : null), "html", null, true);
+                echo "/config/site\">";
+            }
+            // line 45
+            echo "            ";
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.SITE"), "html", null, true);
+            echo "
+            ";
+            // line 46
+            if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == "site")) {
+                echo "</span>";
+            } else {
+                echo "</a>";
+            }
+            // line 47
+            echo "        </li>
+        ";
+        }
+        // line 49
+        echo "
+        ";
+        // line 50
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "configurations", array()));
         foreach ($context['_seq'] as $context["_key"] => $context["configuration"]) {
-            // line 46
+            // line 51
             echo "            ";
-            $context["current_blueprints"] = $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "data", array(0 => ("config/" . $context["configuration"])), "method"), "blueprints", array()), "toArray", array(), "method");
-            // line 47
-            echo "            ";
-            if ((((($context["configuration"] != "system") && ($context["configuration"] != "site")) &&  !$this->getAttribute($this->getAttribute((isset($context["current_blueprints"]) ? $context["current_blueprints"] : null), "form", array()), "hidden", array())) &&  !twig_test_empty($this->getAttribute($this->getAttribute((isset($context["current_blueprints"]) ? $context["current_blueprints"] : null), "form", array()), "fields", array())))) {
-                // line 48
-                echo "                <li ";
-                if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == $context["configuration"])) {
-                    echo "class=\"active\"";
-                }
-                echo ">
-                    ";
-                // line 49
-                if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == $context["configuration"])) {
-                    echo "<span>";
-                } else {
-                    echo "<a href=\"";
-                    echo (isset($context["base_url_relative"]) ? $context["base_url_relative"] : null);
-                    echo "/config/";
-                    echo $context["configuration"];
-                    echo "\">";
-                }
-                // line 50
-                echo "                    ";
-                echo twig_capitalize_string_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter($context["configuration"]));
-                echo "
-                    ";
-                // line 51
-                if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == $context["configuration"])) {
-                    echo "</span>";
-                } else {
-                    echo "</a>";
-                }
+            if ($this->env->getExtension('GravTwigExtension')->authorize(array(0 => ("admin.configuration_" . $context["configuration"]), 1 => "admin.super"))) {
                 // line 52
-                echo "                </li>
-            ";
+                echo "                ";
+                $context["current_blueprints"] = $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "data", array(0 => ("config/" . $context["configuration"])), "method"), "blueprints", array()), "toArray", array(), "method");
+                // line 53
+                echo "                ";
+                if ((((($context["configuration"] != "system") && ($context["configuration"] != "site")) &&  !$this->getAttribute($this->getAttribute((isset($context["current_blueprints"]) ? $context["current_blueprints"] : null), "form", array()), "hidden", array())) &&  !twig_test_empty($this->getAttribute($this->getAttribute((isset($context["current_blueprints"]) ? $context["current_blueprints"] : null), "form", array()), "fields", array())))) {
+                    // line 54
+                    echo "                    <li ";
+                    if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == $context["configuration"])) {
+                        echo "class=\"active\"";
+                    }
+                    echo ">
+                        ";
+                    // line 55
+                    if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == $context["configuration"])) {
+                        echo "<span>";
+                    } else {
+                        echo "<a href=\"";
+                        echo twig_escape_filter($this->env, (isset($context["base_url_relative"]) ? $context["base_url_relative"] : null), "html", null, true);
+                        echo "/config/";
+                        echo twig_escape_filter($this->env, $context["configuration"], "html", null, true);
+                        echo "\">";
+                    }
+                    // line 56
+                    echo "                        ";
+                    echo twig_escape_filter($this->env, twig_capitalize_string_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter($context["configuration"])), "html", null, true);
+                    echo "
+                        ";
+                    // line 57
+                    if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == $context["configuration"])) {
+                        echo "</span>";
+                    } else {
+                        echo "</a>";
+                    }
+                    // line 58
+                    echo "                    </li>
+                ";
+                }
+                // line 60
+                echo "            ";
             }
-            // line 54
+            // line 61
             echo "        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['configuration'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 55
+        // line 62
         echo "
-        <li ";
-        // line 56
-        if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == "info")) {
-            echo "class=\"active\"";
-        }
-        echo ">
+        ";
+        // line 63
+        if ($this->env->getExtension('GravTwigExtension')->authorize(array(0 => "admin.configuration_info", 1 => "admin.super"))) {
+            // line 64
+            echo "        <li ";
+            if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == "info")) {
+                echo "class=\"active\"";
+            }
+            echo ">
             ";
-        // line 57
-        if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == "info")) {
-            echo "<span>";
-        } else {
-            echo "<a href=\"";
-            echo (isset($context["base_url_relative"]) ? $context["base_url_relative"] : null);
-            echo "/config/info\">";
+            // line 65
+            if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == "info")) {
+                echo "<span>";
+            } else {
+                echo "<a href=\"";
+                echo twig_escape_filter($this->env, (isset($context["base_url_relative"]) ? $context["base_url_relative"] : null), "html", null, true);
+                echo "/config/info\">";
+            }
+            // line 66
+            echo "            ";
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.INFO"), "html", null, true);
+            echo "
+            ";
+            // line 67
+            if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == "info")) {
+                echo "</span>";
+            } else {
+                echo "</a>";
+            }
+            // line 68
+            echo "        </li>
+        ";
         }
-        // line 58
-        echo "            ";
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.INFO");
+        // line 70
         echo "
-            ";
-        // line 59
-        if (((isset($context["config_slug"]) ? $context["config_slug"] : null) == "info")) {
-            echo "</span>";
-        } else {
-            echo "</a>";
-        }
-        // line 60
-        echo "        </li>
     </ul>
 ";
     }
 
-    // line 64
+    // line 74
     public function block_content($context, array $blocks = array())
     {
-        // line 65
+        // line 75
         echo "    ";
-        if ((isset($context["isInfo"]) ? $context["isInfo"] : null)) {
-            // line 66
-            echo "        <div id=\"phpinfo\">
-            ";
-            // line 67
-            echo $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "phpinfo", array());
-            echo "
-        </div>
-    ";
-        } else {
-            // line 70
+        if ($this->env->getExtension('GravTwigExtension')->authorize(array(0 => ("admin.configuration_" . (isset($context["config_slug"]) ? $context["config_slug"] : null)), 1 => "admin.super"))) {
+            // line 76
             echo "        ";
-            $this->loadTemplate("partials/blueprints.html.twig", "config.html.twig", 70)->display(array_merge($context, array("blueprints" => $this->getAttribute((isset($context["data"]) ? $context["data"] : null), "blueprints", array()), "data" => (isset($context["data"]) ? $context["data"] : null))));
-            // line 71
+            if ((isset($context["isInfo"]) ? $context["isInfo"] : null)) {
+                // line 77
+                echo "            <div id=\"phpinfo\">
+                ";
+                // line 78
+                echo $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "phpinfo", array());
+                echo "
+            </div>
+        ";
+            } else {
+                // line 81
+                echo "            ";
+                $this->loadTemplate("partials/blueprints.html.twig", "config.html.twig", 81)->display(array_merge($context, array("blueprints" => $this->getAttribute((isset($context["data"]) ? $context["data"] : null), "blueprints", array()), "data" => (isset($context["data"]) ? $context["data"] : null))));
+                // line 82
+                echo "        ";
+            }
+            // line 83
             echo "    ";
         }
+        // line 84
+        echo "    ";
+        $this->loadTemplate("partials/modal-changes-detected.html.twig", "config.html.twig", 84)->display($context);
     }
 
     public function getTemplateName()
@@ -279,7 +311,7 @@ class __TwigTemplate_9dec34720b9a34e70a9c04e11a6d31a4bafa072ce38da8f812f1ed7bd15
 
     public function getDebugInfo()
     {
-        return array (  266 => 71,  263 => 70,  257 => 67,  254 => 66,  251 => 65,  248 => 64,  242 => 60,  236 => 59,  231 => 58,  223 => 57,  217 => 56,  214 => 55,  208 => 54,  204 => 52,  198 => 51,  193 => 50,  183 => 49,  176 => 48,  173 => 47,  170 => 46,  166 => 45,  162 => 43,  156 => 42,  151 => 41,  143 => 40,  137 => 39,  134 => 38,  128 => 37,  123 => 36,  115 => 35,  109 => 34,  101 => 32,  98 => 31,  90 => 28,  85 => 26,  79 => 25,  76 => 24,  73 => 23,  66 => 20,  63 => 19,  60 => 18,  57 => 17,  50 => 14,  47 => 13,  44 => 12,  40 => 1,  37 => 9,  35 => 8,  33 => 6,  31 => 4,  29 => 3,  11 => 1,);
+        return array (  298 => 84,  295 => 83,  292 => 82,  289 => 81,  283 => 78,  280 => 77,  277 => 76,  274 => 75,  271 => 74,  265 => 70,  261 => 68,  255 => 67,  250 => 66,  242 => 65,  235 => 64,  233 => 63,  230 => 62,  224 => 61,  221 => 60,  217 => 58,  211 => 57,  206 => 56,  196 => 55,  189 => 54,  186 => 53,  183 => 52,  180 => 51,  176 => 50,  173 => 49,  169 => 47,  163 => 46,  158 => 45,  150 => 44,  143 => 43,  141 => 42,  138 => 41,  134 => 39,  128 => 38,  123 => 37,  115 => 36,  108 => 35,  106 => 34,  98 => 31,  95 => 30,  92 => 29,  84 => 26,  79 => 24,  73 => 23,  70 => 22,  67 => 21,  60 => 18,  57 => 17,  50 => 14,  47 => 13,  44 => 12,  40 => 1,  37 => 9,  35 => 8,  33 => 6,  31 => 4,  29 => 3,  11 => 1,);
     }
 }
 /* {% extends 'partials/base.html.twig' %}*/
@@ -294,13 +326,11 @@ class __TwigTemplate_9dec34720b9a34e70a9c04e11a6d31a4bafa072ce38da8f812f1ed7bd15
 /* {% endif %}*/
 /* */
 /* {% block stylesheets %}*/
-/*     {% do assets.addCss(theme_url~'/css/codemirror/codemirror.css') %}*/
+/*     {% do assets.addCss(theme_url ~ '/css/codemirror/codemirror.css') %}*/
 /*     {{ parent() }}*/
 /* {% endblock %}*/
 /* */
 /* {% block javascripts %}*/
-/*     {% do assets.addJs(theme_url~'/js/codemirror-compressed.js') %}*/
-/*     {% do assets.addJs(theme_url~'/js/mdeditor.js') %}*/
 /*     {{ parent() }}*/
 /* {% endblock %}*/
 /* */
@@ -313,46 +343,61 @@ class __TwigTemplate_9dec34720b9a34e70a9c04e11a6d31a4bafa072ce38da8f812f1ed7bd15
 /* {% endblock %}*/
 /* */
 /* {% block content_top %}*/
+/* */
 /*     <div class="alert notice">{{ "PLUGIN_ADMIN.SAVE_LOCATION"|tu }}: <b>{{ data.file.filename|replace({(base_path):''}) }}</b></div>*/
-/*     <ul class="tab-bar">  */
+/*     <ul class="tab-bar">*/
+/* */
+/*         {% if authorize(['admin.configuration_system', 'admin.super']) %}*/
 /*         <li {% if config_slug == 'system' %}class="active"{% endif %}>*/
 /*             {% if config_slug == 'system' %}<span>{% else %}<a href="{{ base_url_relative }}/config/system">{% endif %}*/
 /*             {{ "PLUGIN_ADMIN.SYSTEM"|tu }}*/
 /*             {% if config_slug == 'system' %}</span>{% else %}</a>{% endif %}*/
 /*         </li>*/
+/*         {% endif %}*/
+/* */
+/*         {% if authorize(['admin.configuration_site', 'admin.super']) %}*/
 /*         <li {% if config_slug == 'site' %}class="active"{% endif %}>*/
 /*             {% if config_slug == 'site' %}<span>{% else %}<a href="{{ base_url_relative }}/config/site">{% endif %}*/
 /*             {{ "PLUGIN_ADMIN.SITE"|tu }}*/
 /*             {% if config_slug == 'site' %}</span>{% else %}</a>{% endif %}*/
 /*         </li>*/
-/*         */
+/*         {% endif %}*/
+/* */
 /*         {% for configuration in admin.configurations %}*/
-/*             {% set current_blueprints = admin.data('config/' ~ configuration).blueprints.toArray() %}*/
-/*             {% if configuration != 'system' and configuration != 'site' and not current_blueprints.form.hidden and current_blueprints.form.fields is not empty %}*/
-/*                 <li {% if config_slug == configuration %}class="active"{% endif %}>*/
-/*                     {% if config_slug == configuration %}<span>{% else %}<a href="{{ base_url_relative }}/config/{{configuration}}">{% endif %}*/
-/*                     {{ configuration|tu|capitalize }}*/
-/*                     {% if config_slug == configuration %}</span>{% else %}</a>{% endif %}*/
-/*                 </li>*/
+/*             {% if authorize(['admin.configuration_' ~ configuration, 'admin.super']) %}*/
+/*                 {% set current_blueprints = admin.data('config/' ~ configuration).blueprints.toArray() %}*/
+/*                 {% if configuration != 'system' and configuration != 'site' and not current_blueprints.form.hidden and current_blueprints.form.fields is not empty %}*/
+/*                     <li {% if config_slug == configuration %}class="active"{% endif %}>*/
+/*                         {% if config_slug == configuration %}<span>{% else %}<a href="{{ base_url_relative }}/config/{{configuration}}">{% endif %}*/
+/*                         {{ configuration|tu|capitalize }}*/
+/*                         {% if config_slug == configuration %}</span>{% else %}</a>{% endif %}*/
+/*                     </li>*/
+/*                 {% endif %}*/
 /*             {% endif %}*/
 /*         {% endfor %}*/
 /* */
+/*         {% if authorize(['admin.configuration_info', 'admin.super']) %}*/
 /*         <li {% if config_slug == 'info' %}class="active"{% endif %}>*/
 /*             {% if config_slug == 'info' %}<span>{% else %}<a href="{{ base_url_relative }}/config/info">{% endif %}*/
 /*             {{ "PLUGIN_ADMIN.INFO"|tu }}*/
 /*             {% if config_slug == 'info' %}</span>{% else %}</a>{% endif %}*/
 /*         </li>*/
+/*         {% endif %}*/
+/* */
 /*     </ul>*/
 /* {% endblock %}*/
 /* */
 /* {% block content %}*/
-/*     {% if isInfo %}*/
-/*         <div id="phpinfo">*/
-/*             {{ admin.phpinfo }}*/
-/*         </div>*/
-/*     {% else %}*/
-/*         {% include 'partials/blueprints.html.twig' with { blueprints: data.blueprints, data: data } %}*/
+/*     {% if authorize(['admin.configuration_' ~ config_slug, 'admin.super']) %}*/
+/*         {% if isInfo %}*/
+/*             <div id="phpinfo">*/
+/*                 {{ admin.phpinfo|raw }}*/
+/*             </div>*/
+/*         {% else %}*/
+/*             {% include 'partials/blueprints.html.twig' with { blueprints: data.blueprints, data: data } %}*/
+/*         {% endif %}*/
 /*     {% endif %}*/
+/*     {% include 'partials/modal-changes-detected.html.twig' %}*/
 /* {% endblock %}*/
 /* */
 /* */

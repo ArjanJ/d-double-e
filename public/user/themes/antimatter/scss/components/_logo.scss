@@ -1,0 +1,11 @@
+.c-logo {
+	$width: 150px;
+	$height: ($width / 2);
+	display: block;
+	width: $width;
+	height: $height;
+	margin: ($base-space) (0);
+	transform-origin: left center;
+	will-change: transform, fill, margin;
+	@include ease();
+}

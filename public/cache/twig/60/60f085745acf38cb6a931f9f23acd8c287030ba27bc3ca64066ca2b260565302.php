@@ -10,7 +10,8 @@ class __TwigTemplate_0f6e72f059a27fc9f8bc628fdccd53ecfffbdb9f1b63a5c5fbabc5b1f8b
         // line 1
         $this->parent = $this->loadTemplate("partials/base.html.twig", "partials/login.html.twig", 1);
         $this->blocks = array(
-            'page' => array($this, 'block_page'),
+            'messages' => array($this, 'block_messages'),
+            'body' => array($this, 'block_body'),
             'instructions' => array($this, 'block_instructions'),
             'form' => array($this, 'block_form'),
         );
@@ -23,59 +24,72 @@ class __TwigTemplate_0f6e72f059a27fc9f8bc628fdccd53ecfffbdb9f1b63a5c5fbabc5b1f8b
 
     protected function doDisplay(array $context, array $blocks = array())
     {
+        // line 2
+        $context["scope"] = (((isset($context["scope"]) ? $context["scope"] : null)) ? ((isset($context["scope"]) ? $context["scope"] : null)) : ("data."));
+        // line 1
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
     // line 3
-    public function block_page($context, array $blocks = array())
+    public function block_messages($context, array $blocks = array())
     {
-        // line 4
-        echo "    <section id=\"admin-login\" class=\"default-glow-shadow ";
-        echo (isset($context["classes"]) ? $context["classes"] : null);
+    }
+
+    // line 5
+    public function block_body($context, array $blocks = array())
+    {
+        // line 6
+        echo "<body id=\"admin-login-wrapper\">
+    <section id=\"admin-login\" class=\"default-box-shadow ";
+        // line 7
+        echo twig_escape_filter($this->env, (isset($context["classes"]) ? $context["classes"] : null), "html", null, true);
         echo "\">
         <h1>
             ";
-        // line 6
-        echo (isset($context["title"]) ? $context["title"] : null);
+        // line 9
+        echo twig_escape_filter($this->env, (isset($context["title"]) ? $context["title"] : null), "html", null, true);
         echo "
         </h1>
 
         ";
-        // line 9
-        $this->loadTemplate("partials/messages.html.twig", "partials/login.html.twig", 9)->display($context);
-        // line 10
+        // line 12
+        $this->loadTemplate("partials/messages.html.twig", "partials/login.html.twig", 12)->display($context);
+        // line 13
         echo "
         ";
-        // line 11
+        // line 14
         $this->displayBlock('instructions', $context, $blocks);
-        // line 12
+        // line 15
         echo "
         <form method=\"post\" action=\"";
-        // line 13
-        echo (isset($context["base_url_relative"]) ? $context["base_url_relative"] : null);
+        // line 16
+        echo twig_escape_filter($this->env, (isset($context["base_url_relative"]) ? $context["base_url_relative"] : null), "html", null, true);
         echo "\">
             <div class=\"padding\">
-            ";
-        // line 15
+                ";
+        // line 18
         $this->displayBlock('form', $context, $blocks);
-        // line 16
-        echo "
-            ";
-        // line 17
+        // line 19
+        echo "                <input type=\"hidden\" name=\"redirect\" value=\"";
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["uri"]) ? $context["uri"] : null), "url", array()), "html", null, true);
+        echo "\" />
+                ";
+        // line 20
         echo $this->env->getExtension('GravTwigExtension')->nonceFieldFunc("admin-form", "admin-nonce");
         echo "
             </div>
         </form>
     </section>
+</body>
 ";
     }
 
-    // line 11
+    // line 14
     public function block_instructions($context, array $blocks = array())
     {
     }
 
-    // line 15
+    // line 18
     public function block_form($context, array $blocks = array())
     {
     }
@@ -92,13 +106,16 @@ class __TwigTemplate_0f6e72f059a27fc9f8bc628fdccd53ecfffbdb9f1b63a5c5fbabc5b1f8b
 
     public function getDebugInfo()
     {
-        return array (  79 => 15,  74 => 11,  65 => 17,  62 => 16,  60 => 15,  55 => 13,  52 => 12,  50 => 11,  47 => 10,  45 => 9,  39 => 6,  33 => 4,  30 => 3,  11 => 1,);
+        return array (  93 => 18,  88 => 14,  78 => 20,  73 => 19,  71 => 18,  66 => 16,  63 => 15,  61 => 14,  58 => 13,  56 => 12,  50 => 9,  45 => 7,  42 => 6,  39 => 5,  34 => 3,  30 => 1,  28 => 2,  11 => 1,);
     }
 }
 /* {% extends 'partials/base.html.twig' %}*/
+/* {% set scope = scope ?: 'data.' %}*/
+/* {% block messages %}{% endblock %}*/
 /* */
-/* {% block page %}*/
-/*     <section id="admin-login" class="default-glow-shadow {{ classes }}">*/
+/* {% block body %}*/
+/* <body id="admin-login-wrapper">*/
+/*     <section id="admin-login" class="default-box-shadow {{ classes }}">*/
 /*         <h1>*/
 /*             {{ title }}*/
 /*         </h1>*/
@@ -109,10 +126,12 @@ class __TwigTemplate_0f6e72f059a27fc9f8bc628fdccd53ecfffbdb9f1b63a5c5fbabc5b1f8b
 /* */
 /*         <form method="post" action="{{ base_url_relative }}">*/
 /*             <div class="padding">*/
-/*             {% block form %}{% endblock %}*/
-/* */
-/*             {{ nonce_field('admin-form', 'admin-nonce') }}*/
+/*                 {% block form %}{% endblock %}*/
+/*                 <input type="hidden" name="redirect" value="{{ uri.url }}" />*/
+/*                 {{ nonce_field('admin-form', 'admin-nonce')|raw }}*/
 /*             </div>*/
 /*         </form>*/
 /*     </section>*/
+/* </body>*/
 /* {% endblock %}*/
+/* */

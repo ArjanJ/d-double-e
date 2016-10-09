@@ -19,7 +19,7 @@ class __TwigTemplate_ed1cac22db76fa5cfe9aae701aa505353d12edda4f5ec27022f74b4d635
         if ($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "fields", array())) {
             // line 2
             echo "    <div class=\"form-column block pure-u-1-";
-            echo (isset($context["cols"]) ? $context["cols"] : null);
+            echo twig_escape_filter($this->env, (isset($context["cols"]) ? $context["cols"] : null), "html", null, true);
             echo "\">
     ";
             // line 3
@@ -46,7 +46,7 @@ class __TwigTemplate_ed1cac22db76fa5cfe9aae701aa505353d12edda4f5ec27022f74b4d635
                     echo "            ";
                     $context["value"] = $this->getAttribute((isset($context["data"]) ? $context["data"] : null), "value", array(0 => $this->getAttribute($context["field"], "name", array())), "method");
                     // line 6
-                    echo "                ";
+                    echo "            ";
                     $this->loadTemplate(array(0 => (((("forms/fields/" . $this->getAttribute($context["field"], "type", array())) . "/") . $this->getAttribute($context["field"], "type", array())) . ".html.twig"), 1 => "forms/fields/text/text.html.twig"), "forms/fields/column/column.html.twig", 6)->display($context);
                     // line 7
                     echo "        ";
@@ -91,7 +91,7 @@ class __TwigTemplate_ed1cac22db76fa5cfe9aae701aa505353d12edda4f5ec27022f74b4d635
 /*     {% for field in field.fields %}*/
 /*         {% if field.type %}*/
 /*             {% set value = data.value(field.name) %}*/
-/*                 {% include ["forms/fields/#{field.type}/#{field.type}.html.twig", 'forms/fields/text/text.html.twig'] %}*/
+/*             {% include ["forms/fields/#{field.type}/#{field.type}.html.twig", 'forms/fields/text/text.html.twig'] %}*/
 /*         {% endif %}*/
 /*     {% endfor %}*/
 /*     </div>*/

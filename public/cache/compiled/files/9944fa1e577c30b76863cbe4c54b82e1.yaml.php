@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/user/plugins/admin/languages/pt.yaml',
-    'modified' => 1466892963,
+    'modified' => 1475968166,
     'data' => [
         'PLUGIN_ADMIN' => [
             'ADMIN_BETA_MSG' => 'Esta é uma versão Beta! Use por sua conta em risco...',
@@ -17,6 +17,7 @@ return [
             'LOGIN_LOGGED_IN' => 'Conectado com sucesso',
             'LOGIN_FAILED' => 'Falha ao logar',
             'LOGGED_OUT' => 'Você foi desconectado',
+            'RESET_NEW_PASSWORD' => 'Por favor insira um novo senha &hellip;',
             'RESET_LINK_EXPIRED' => 'Link de reset expirado, por favor, tente novamente',
             'RESET_PASSWORD_RESET' => 'Senha foi redefinida',
             'RESET_INVALID_LINK' => 'Reset de link usado inválido, por favor tente novamente',
@@ -232,7 +233,6 @@ return [
             'PUBLISHED_DATE' => 'Data de publicação',
             'PUBLISHED_DATE_HELP' => 'Pode prover uma data para acionar a publicação automaticamente.',
             'UNPUBLISHED_DATE' => 'Data que foi despublicado',
-            'UNPUBLISHED_DATE_HELP' => 'pode prover uma data para acionar a des-publicação automaticamente.',
             'ROBOTS' => 'Robôs',
             'TAXONOMIES' => 'Taxonomias',
             'TAXONOMY' => 'Taxonomia',
@@ -252,7 +252,6 @@ return [
             'PAGE_ORDER' => 'Ordem da Página',
             'OVERRIDES' => 'Substituições',
             'MENU' => 'Menu',
-            'MENU_HELP' => 'A sequência de caracteres a ser usado em um menu.  Se não for definido, <b>título</b> será usado.',
             'SLUG' => 'Curto',
             'SLUG_HELP' => 'A variável do slug permite você definir especificamente a parte da página da URL',
             'SLUG_VALIDATE_MESSAGE' => 'Um slug deve cotener apenas cartas minúsculas, números, e traços',
@@ -318,6 +317,7 @@ return [
             'MARKDOWN_EXTRA_HELP' => 'Habilitar o suporte a padrão Markdown Extra - https://michelf.ca/projects/php-markdown/extra/',
             'AUTO_LINE_BREAKS' => 'Quebras de linha automática',
             'AUTO_URL_LINKS' => 'Links de URL automatico',
+            'CACHE_PREFIX' => 'Prefixo de cache',
             'LIFETIME' => 'Duração',
             'GZIP_COMPRESSION' => 'Compactação Gzip',
             'GZIP_COMPRESSION_HELP' => 'Habilite a compactação GZip da página Grav para aumentar o desempenho.',
@@ -342,7 +342,6 @@ return [
             'PARAMETER_SEPARATOR' => 'Separador de parâmetro',
             'TASK_COMPLETED' => 'Tarefas concluídas',
             'EVERYTHING_UP_TO_DATE' => 'Está tudo atualizado',
-            'UPDATES_ARE_AVAILABLE' => 'atualizações estão disponíveis',
             'IS_AVAILABLE_FOR_UPDATE' => 'está disponível para atualização',
             'IS_NOW_AVAILABLE' => 'já está disponível',
             'CURRENT' => 'Atual',
@@ -353,7 +352,6 @@ return [
             'OF_YOUR' => 'de seu',
             'HAVE_AN_UPDATE_AVAILABLE' => 'tem uma atualização disponível',
             'SAVE_AS' => 'Gravar como',
-            'MODAL_DELETE_PAGE_CONFIRMATION_REQUIRED_DESC' => 'Tem certeza que deseja excluir esta página e todos os filhos? Se a página é traduzido em outras línguas, as traduções serão mantidas e devem ser eliminadas separadamente. Caso contrário será excluída a pasta da página juntamente com suas subpáginas. Esta ação não pode ser desfeita.',
             'AND' => 'e',
             'UPDATE_AVAILABLE' => 'Atualização disponível',
             'METADATA_KEY' => 'Chave (por exemplo, \' Palavra Chave\')',
@@ -361,13 +359,11 @@ return [
             'USERNAME_HELP' => 'Nome de usuário deve situar-se entre 3 e 16 caracteres, incluindo letras minúsculas, números, sublinhados, e hífens. Letras maiúsculas, espaços e caracteres especiais, não são permitidos',
             'FULLY_UPDATED' => 'Totalmente Atualizado',
             'SAVE_LOCATION' => 'Gravado às',
-            'PAGE_FILE' => 'Arquivo de Página',
-            'PAGE_FILE_HELP' => 'Nome do arquivo de página, e por padrão o modelo para esta página',
             'NO_USER_ACCOUNTS' => 'As contas de usuário não foram encontradas, por favor crie uma primeiro...',
             'REDIRECT_TRAILING_SLASH' => 'Redirecionar a barra à direita',
             'DEFAULT_DATE_FORMAT' => 'Formato de data de página',
             'DEFAULT_DATE_FORMAT_HELP' => 'Formato de data de página usado pelo Grav. Por padrão, Grav tenta de adivinhar a seu formato de data, mas tambem você pode especificar um formato usando a sintaxe de data do PHP (por exemplo: Y-m-d H:i)',
-            'DEFAULT_DATE_FORMAT_PLACEHOLDER' => 'Adivinha automaticamente se estiver em branco',
+            'DEFAULT_DATE_FORMAT_PLACEHOLDER' => 'Adivinha automaticamente',
             'IGNORE_FILES' => 'Ignorar arquivos',
             'IGNORE_FILES_HELP' => 'Arquivos específicos para ignorar quando estiver processando as páginas',
             'IGNORE_FOLDERS' => 'Ignorar as pastas',
@@ -411,7 +407,12 @@ return [
             'SESSION_HTTPONLY_HELP' => 'Se for verdade, indica que os cookies devem ser usados apenas por HTTP, e modificaçoes feito por JavaScript não é permitido',
             'REVERSE_PROXY' => 'Proxy reverso',
             'REVERSE_PROXY_HELP' => 'Habilitar isto se você está atrás de um proxy reverso e você está tendo problemas com URLs contendo portas incorretas',
-            'INVALID_FRONTMATTER_COULD_NOT_SAVE' => 'Frontmatter inválido, não foi possível salvar'
+            'INVALID_FRONTMATTER_COULD_NOT_SAVE' => 'Frontmatter inválido, não foi possível salvar',
+            'ADD_FOLDER' => 'Adicionar pasta',
+            'ADD_ITEM' => 'Adicionar iten',
+            'ALL' => 'Tudo',
+            'FROM' => 'de',
+            'TO' => 'para'
         ]
     ]
 ];

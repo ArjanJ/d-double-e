@@ -64,13 +64,13 @@ class __TwigTemplate_dd0b46df88195da599397934e45429c3200ab29489c69aa5c626b0d6f0e
     {
         // line 17
         echo "    <div class=\"form-select-wrapper ";
-        echo $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "size", array());
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "size", array()), "html", null, true);
         echo "\">
         <select class=\"";
         // line 18
-        echo $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "classes", array());
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "classes", array()), "html", null, true);
         echo "\" name=\"";
-        echo ($this->env->getExtension('GravTwigExtension')->fieldNameFilter(((isset($context["scope"]) ? $context["scope"] : null) . $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "name", array()))) . (($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "multiple", array())) ? ("[]") : ("")));
+        echo twig_escape_filter($this->env, ($this->env->getExtension('GravTwigExtension')->fieldNameFilter(((isset($context["scope"]) ? $context["scope"] : null) . $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "name", array()))) . (($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "multiple", array())) ? ("[]") : (""))), "html", null, true);
         echo "\"
                 ";
         // line 19
@@ -93,7 +93,11 @@ class __TwigTemplate_dd0b46df88195da599397934e45429c3200ab29489c69aa5c626b0d6f0e
             echo "multiple=\"multiple\"";
         }
         // line 23
-        echo "                >
+        echo "                ";
+        if (($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "disabled", array()) || (isset($context["isDisabledToggleable"]) ? $context["isDisabledToggleable"] : null))) {
+            echo "disabled=\"disabled\"";
+        }
+        echo ">
             ";
         // line 24
         $context['_parent'] = $context;
@@ -105,9 +109,9 @@ class __TwigTemplate_dd0b46df88195da599397934e45429c3200ab29489c69aa5c626b0d6f0e
                 echo "selected=\"selected\"";
             }
             echo " value=\"";
-            echo (($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "multiple", array())) ? ($context["text"]) : ($context["key"]));
+            echo twig_escape_filter($this->env, (($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "multiple", array())) ? ($context["text"]) : ($context["key"])), "html", null, true);
             echo "\">";
-            echo $context["text"];
+            echo twig_escape_filter($this->env, $context["text"], "html", null, true);
             echo "</option>
             ";
         }
@@ -132,7 +136,7 @@ class __TwigTemplate_dd0b46df88195da599397934e45429c3200ab29489c69aa5c626b0d6f0e
 
     public function getDebugInfo()
     {
-        return array (  118 => 27,  103 => 25,  99 => 24,  96 => 23,  91 => 22,  86 => 21,  81 => 20,  77 => 19,  71 => 18,  66 => 17,  63 => 16,  57 => 13,  53 => 12,  47 => 10,  44 => 9,  40 => 1,  34 => 6,  32 => 5,  28 => 4,  26 => 3,  11 => 1,);
+        return array (  122 => 27,  107 => 25,  103 => 24,  96 => 23,  91 => 22,  86 => 21,  81 => 20,  77 => 19,  71 => 18,  66 => 17,  63 => 16,  57 => 13,  53 => 12,  47 => 10,  44 => 9,  40 => 1,  34 => 6,  32 => 5,  28 => 4,  26 => 3,  11 => 1,);
     }
 }
 /* {% extends "forms/field.html.twig" %}*/
@@ -157,7 +161,7 @@ class __TwigTemplate_dd0b46df88195da599397934e45429c3200ab29489c69aa5c626b0d6f0e
 /*                 {% if field.novalidate in ['on', 'true', 1] %}novalidate="novalidate"{% endif %}*/
 /*                 {% if field.validate.required in ['on', 'true', 1] %}required="required"{% endif %}*/
 /*                 {% if field.multiple in ['on', 'true', 1] %}multiple="multiple"{% endif %}*/
-/*                 >*/
+/*                 {% if field.disabled or isDisabledToggleable %}disabled="disabled"{% endif %}>*/
 /*             {% for key, text in options %}*/
 /*                 <option {% if key == value or text in value %}selected="selected"{% endif %} value="{{ field.multiple ? text : key }}">{{ text }}</option>*/
 /*             {% endfor %}*/

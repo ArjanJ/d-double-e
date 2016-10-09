@@ -49,13 +49,13 @@ class __TwigTemplate_f940fa696b36b0f14796f18faee8127e86f6167f6eadea9b2e1c42f6e71
     {
         // line 40
         echo "    <div class=\"form-select-wrapper ";
-        echo $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "size", array());
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "size", array()), "html", null, true);
         echo "\">
         <select class=\"";
         // line 41
-        echo $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "classes", array());
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "classes", array()), "html", null, true);
         echo "\" name=\"";
-        echo ($this->env->getExtension('GravTwigExtension')->fieldNameFilter(((isset($context["scope"]) ? $context["scope"] : null) . $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "name", array()))) . (($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "multiple", array())) ? ("[]") : ("")));
+        echo twig_escape_filter($this->env, ($this->env->getExtension('GravTwigExtension')->fieldNameFilter(((isset($context["scope"]) ? $context["scope"] : null) . $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "name", array()))) . (($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "multiple", array())) ? ("[]") : (""))), "html", null, true);
         echo "\"
                 ";
         // line 42
@@ -78,9 +78,14 @@ class __TwigTemplate_f940fa696b36b0f14796f18faee8127e86f6167f6eadea9b2e1c42f6e71
             echo "multiple=\"multiple\"";
         }
         // line 46
+        echo "                ";
+        if (($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "disabled", array()) || (isset($context["isDisabledToggleable"]) ? $context["isDisabledToggleable"] : null))) {
+            echo "disabled=\"disabled\"";
+        }
+        // line 47
         echo "                >
             ";
-        // line 47
+        // line 48
         echo $this->getAttribute($this, "options", array(0 => (isset($context["field"]) ? $context["field"] : null), 1 => (isset($context["pages"]) ? $context["pages"] : null), 2 => (isset($context["value"]) ? $context["value"] : null), 3 => 0), "method");
         echo "
         </select>
@@ -117,7 +122,7 @@ class __TwigTemplate_f940fa696b36b0f14796f18faee8127e86f6167f6eadea9b2e1c42f6e71
                     echo "            <option value=\"";
                     echo twig_escape_filter($this->env, $context["key"], "html_attr");
                     echo "\">";
-                    echo $this->env->getExtension('GravTwigExtension')->translate($context["value"]);
+                    echo twig_escape_filter($this->env, $this->env->getExtension('GravTwigExtension')->translate($context["value"]), "html", null, true);
                     echo "</option>
         ";
                 }
@@ -128,7 +133,7 @@ class __TwigTemplate_f940fa696b36b0f14796f18faee8127e86f6167f6eadea9b2e1c42f6e71
                 echo "    ";
             }
             // line 10
-            echo "    
+            echo "
     ";
             // line 11
             if (($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "show_root", array()) && ((isset($context["depth"]) ? $context["depth"] : null) == 0))) {
@@ -157,17 +162,17 @@ class __TwigTemplate_f940fa696b36b0f14796f18faee8127e86f6167f6eadea9b2e1c42f6e71
                 if (($this->getAttribute($context["page"], "routable", array(), "method") || $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "show_all", array()))) {
                     // line 20
                     echo "            <option ";
-                    if (($this->getAttribute($context["page"], "route", array()) == (isset($context["value"]) ? $context["value"] : null))) {
+                    if ((($this->getAttribute($context["page"], "route", array()) == (isset($context["value"]) ? $context["value"] : null)) || ($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "multiple", array()) && twig_in_filter($this->getAttribute($context["page"], "route", array()), (isset($context["value"]) ? $context["value"] : null))))) {
                         echo "selected=\"selected\"";
                     }
                     echo " value=\"";
-                    echo $this->getAttribute($context["page"], "route", array());
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["page"], "route", array()), "html", null, true);
                     echo "\">
                 ";
                     // line 21
-                    echo (isset($context["indent"]) ? $context["indent"] : null);
+                    echo twig_escape_filter($this->env, (isset($context["indent"]) ? $context["indent"] : null), "html", null, true);
                     echo " ";
-                    echo $this->getAttribute($context["page"], "menu", array());
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["page"], "menu", array()), "html", null, true);
                     echo "
             </option>
         ";
@@ -194,6 +199,10 @@ class __TwigTemplate_f940fa696b36b0f14796f18faee8127e86f6167f6eadea9b2e1c42f6e71
             ob_end_clean();
 
             throw $e;
+        } catch (Throwable $e) {
+            ob_end_clean();
+
+            throw $e;
         }
 
         return ('' === $tmp = ob_get_clean()) ? '' : new Twig_Markup($tmp, $this->env->getCharset());
@@ -211,7 +220,7 @@ class __TwigTemplate_f940fa696b36b0f14796f18faee8127e86f6167f6eadea9b2e1c42f6e71
 
     public function getDebugInfo()
     {
-        return array (  188 => 29,  182 => 26,  179 => 25,  176 => 24,  168 => 21,  159 => 20,  156 => 19,  152 => 18,  149 => 17,  147 => 16,  144 => 15,  141 => 14,  139 => 13,  136 => 12,  134 => 11,  131 => 10,  128 => 9,  117 => 7,  112 => 6,  110 => 5,  107 => 4,  92 => 3,  84 => 47,  81 => 46,  76 => 45,  71 => 44,  66 => 43,  62 => 42,  56 => 41,  51 => 40,  48 => 39,  42 => 36,  38 => 35,  32 => 33,  29 => 32,  11 => 1,);
+        return array (  193 => 29,  187 => 26,  184 => 25,  181 => 24,  173 => 21,  164 => 20,  161 => 19,  157 => 18,  154 => 17,  152 => 16,  149 => 15,  146 => 14,  144 => 13,  141 => 12,  139 => 11,  136 => 10,  133 => 9,  122 => 7,  117 => 6,  115 => 5,  112 => 4,  97 => 3,  89 => 48,  86 => 47,  81 => 46,  76 => 45,  71 => 44,  66 => 43,  62 => 42,  56 => 41,  51 => 40,  48 => 39,  42 => 36,  38 => 35,  32 => 33,  29 => 32,  11 => 1,);
     }
 }
 /* {% extends "forms/field.html.twig" %}*/
@@ -223,7 +232,7 @@ class __TwigTemplate_f940fa696b36b0f14796f18faee8127e86f6167f6eadea9b2e1c42f6e71
 /*             <option value="{{ key|e('html_attr') }}">{{ value|t }}</option>*/
 /*         {% endfor %}*/
 /*     {% endif %}*/
-/*     */
+/* */
 /*     {% if field.show_root and depth == 0 %}*/
 /*         <option value="/">/ (Root)</option>*/
 /*         {% set depth = depth +1 %}*/
@@ -233,7 +242,7 @@ class __TwigTemplate_f940fa696b36b0f14796f18faee8127e86f6167f6eadea9b2e1c42f6e71
 /* */
 /*     {% for page in pages.children %}*/
 /*         {% if page.routable() or field.show_all  %}*/
-/*             <option {% if page.route == value %}selected="selected"{% endif %} value="{{ page.route }}">*/
+/*             <option {% if page.route == value or (field.multiple and page.route in value) %}selected="selected"{% endif %} value="{{ page.route }}">*/
 /*                 {{indent}} {{ page.menu }}*/
 /*             </option>*/
 /*         {% endif %}*/
@@ -246,10 +255,10 @@ class __TwigTemplate_f940fa696b36b0f14796f18faee8127e86f6167f6eadea9b2e1c42f6e71
 /* {% endmacro %}*/
 /* */
 /* {% block global_attributes %}*/
-/*     data-grav-selectize="{{ (field.selectize is defined ? field.selectize : {})|json_encode()|e('html_attr') }}"*/
+/*     data-grav-selectize="{{ (field.selectize is defined ? field.selectize : {})|json_encode|e('html_attr') }}"*/
 /*     data-grav-field="select"*/
 /*     data-grav-disabled="{{ originalValue is null ? 'true' : 'false' }}"*/
-/*     data-grav-default="{{ field.default|json_encode()|e('html_attr') }}"*/
+/*     data-grav-default="{{ field.default|json_encode|e('html_attr') }}"*/
 /* {% endblock %}*/
 /* */
 /* {% block input %}*/
@@ -259,6 +268,7 @@ class __TwigTemplate_f940fa696b36b0f14796f18faee8127e86f6167f6eadea9b2e1c42f6e71
 /*                 {% if field.novalidate in ['on', 'true', 1] %}novalidate="novalidate"{% endif %}*/
 /*                 {% if field.validate.required in ['on', 'true', 1] %}required="required"{% endif %}*/
 /*                 {% if field.multiple in ['on', 'true', 1] %}multiple="multiple"{% endif %}*/
+/*                 {% if field.disabled or isDisabledToggleable %}disabled="disabled"{% endif %}*/
 /*                 >*/
 /*             {{ _self.options(field,pages,value, 0) }}*/
 /*         </select>*/

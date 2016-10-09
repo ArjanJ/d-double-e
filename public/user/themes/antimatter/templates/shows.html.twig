@@ -1,0 +1,15 @@
+{% extends "./partials/base.html.twig" %}
+{% block content %}
+	<section class="shows">
+		<div class="u-wrapper">
+			<h1 class="home-events__heading shows__heading">Upcoming Shows</h1>
+
+			<ul class="shows__list home-events__list">
+
+			</ul>
+			{% if config.plugins.pagination.enabled and page.collection().params.pagination %}
+		    {% include './partials/pagination.html.twig' with {'base_url':page.url, 'pagination':page.collection().params.pagination} %}
+			{% endif %}
+		</div>
+	</section>
+{% endblock %}

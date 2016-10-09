@@ -1,9 +1,17 @@
 <?php
+/**
+ * @package    Grav.Common
+ *
+ * @copyright  Copyright (C) 2014 - 2016 RocketTheme, LLC. All rights reserved.
+ * @license    MIT License; see LICENSE file for details.
+ */
+
 namespace Grav\Common;
 
 use \Doctrine\Common\Cache as DoctrineCache;
 use Grav\Common\Config\Config;
 use Grav\Common\Filesystem\Folder;
+use Grav\Common\Grav;
 
 /**
  * The GravCache object is used throughout Grav to store and retrieve cached data.
@@ -15,14 +23,9 @@ use Grav\Common\Filesystem\Folder;
  * MemCache
  * MemCacheD
  * FileSystem
- *
- * @author  RocketTheme
- * @license MIT
  */
 class Cache extends Getters
 {
-    use GravTrait;
-
     /**
      * @var string Cache key.
      */
@@ -62,7 +65,8 @@ class Cache extends Getters
     protected static $all_remove = [
         'cache://',
         'cache://images',
-        'asset://'
+        'asset://',
+        'tmp://'
     ];
 
     protected static $assets_remove = [
@@ -75,6 +79,10 @@ class Cache extends Getters
 
     protected static $cache_remove = [
         'cache://'
+    ];
+
+    protected static $tmp_remove = [
+        'tmp://'
     ];
 
     /**
@@ -178,11 +186,18 @@ class Cache extends Getters
                 $driver->setMemcache($memcache);
                 break;
 
+            case 'memcached':
+                $memcached = new \Memcached();
+                $memcached->addServer($this->config->get('system.cache.memcached.server', 'localhost'),
+                    $this->config->get('system.cache.memcached.port', 11211));
+                $driver = new DoctrineCache\MemcachedCache();
+                $driver->setMemcached($memcached);
+                break;
+
             case 'redis':
                 $redis = new \Redis();
                 $redis->connect($this->config->get('system.cache.redis.server', 'localhost'),
                     $this->config->get('system.cache.redis.port', 6379));
-
                 $driver = new DoctrineCache\RedisCache();
                 $driver->setRedis($redis);
                 break;
@@ -229,11 +244,48 @@ class Cache extends Getters
     }
 
     /**
+     * Deletes an item in the cache based on the id
+     *
+     * @param string $id    the id of the cached data entry
+     * @return bool         true if the item was deleted successfully
+     */
+    public function delete($id)
+    {
+        if ($this->enabled) {
+            return $this->driver->delete($id);
+        }
+        return false;
+    }
+
+    /**
+     * Returns a boolean state of whether or not the item exists in the cache based on id key
+     *
+     * @param string $id    the id of the cached data entry
+     * @return bool         true if the cached items exists
+     */
+    public function contains($id)
+    {
+        if ($this->enabled) {
+            return $this->driver->contains(($id));
+        }
+        return false;
+    }
+
+    /**
      * Getter method to get the cache key
      */
     public function getKey()
     {
         return $this->key;
+    }
+
+    /**
+     * Setter method to set key (Advanced)
+     */
+    public function setKey($key)
+    {
+        $this->key = $key;
+        $this->driver->setNamespace($this->key);
     }
 
     /**
@@ -245,7 +297,7 @@ class Cache extends Getters
      */
     public static function clearCache($remove = 'standard')
     {
-        $locator = self::getGrav()['locator'];
+        $locator = Grav::instance()['locator'];
         $output = [];
         $user_config = USER_DIR . 'config/system.yaml';
 
@@ -262,6 +314,9 @@ class Cache extends Getters
             case 'cache-only':
                 $remove_paths = self::$cache_remove;
                 break;
+            case 'tmp-only':
+                $remove_paths = self::$tmp_remove;
+                break;
             default:
                 $remove_paths = self::$standard_remove;
         }
@@ -270,10 +325,11 @@ class Cache extends Getters
         foreach ($remove_paths as $stream) {
 
             // Convert stream to a real path
-            $path = $locator->findResource($stream, true, true);
-            // Make sure path exists before proceeding, otherwise we would wipe ROOT_DIR
-            if (!$path) {
-                throw new \RuntimeException("Stream '{$stream}' not found", 500);
+            try {
+                $path = $locator->findResource($stream, true, true);
+            } catch (\Exception $e) {
+                // stream not found..
+                continue;
             }
 
             $anything = false;
@@ -286,7 +342,7 @@ class Cache extends Getters
                             $anything = true;
                         }
                     } elseif (is_dir($file)) {
-                        if (@Folder::delete($file)) {
+                        if (Folder::delete($file)) {
                             $anything = true;
                         }
                     }

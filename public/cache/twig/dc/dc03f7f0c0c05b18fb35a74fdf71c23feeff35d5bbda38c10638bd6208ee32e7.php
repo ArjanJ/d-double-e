@@ -57,93 +57,71 @@ class __TwigTemplate_e9e4183a1ecd954c91f595430eea9fef6c0760f62d04bbcd64492e70a57
         }
         // line 27
         $context["modular"] = (($this->getAttribute((isset($context["context"]) ? $context["context"] : null), "modular", array())) ? ("modular_") : (""));
-        // line 29
+        // line 28
         $context["warn"] = $this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "plugins", array()), "admin", array()), "warnings", array()), "delete_page", array());
-        // line 31
+        // line 29
         $context["admin_lang"] = (($this->getAttribute($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "session", array()), "admin_lang", array())) ? ($this->getAttribute($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "session", array()), "admin_lang", array())) : ("en"));
-        // line 33
+        // line 30
         $context["page_lang"] = $this->getAttribute((isset($context["context"]) ? $context["context"] : null), "language", array());
-        // line 54
+        // line 31
+        $context["type"] = "page";
+        // line 44
         $context["preview_html"] = ((($this->env->getExtension('GravTwigExtension')->rtrimFilter((isset($context["base_url_relative_frontend"]) ? $context["base_url_relative_frontend"] : null), "/") . (($this->getAttribute((isset($context["context"]) ? $context["context"] : null), "home", array())) ? ("") : ($this->getAttribute((isset($context["context"]) ? $context["context"] : null), "route", array()))))) ? (($this->env->getExtension('GravTwigExtension')->rtrimFilter((isset($context["base_url_relative_frontend"]) ? $context["base_url_relative_frontend"] : null), "/") . (($this->getAttribute((isset($context["context"]) ? $context["context"] : null), "home", array())) ? ("") : ($this->getAttribute((isset($context["context"]) ? $context["context"] : null), "route", array()))))) : ("/"));
-        // line 55
+        // line 45
         $context["preview_link"] = (($this->getAttribute((isset($context["context"]) ? $context["context"] : null), "routable", array())) ? ((("<a class=\"button\" target=\"_blank\" href=\"" . (isset($context["preview_html"]) ? $context["preview_html"] : null)) . "\"> <i class=\"fa fa-fw fa-eye\" style=\"font-size:18px;margin-right:0;\"></i></a>")) : (""));
         // line 1
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 35
+    // line 33
     public function block_stylesheets($context, array $blocks = array())
     {
-        // line 36
+        // line 34
         echo "    ";
         if (((isset($context["mode"]) ? $context["mode"] : null) == "edit")) {
-            // line 37
+            // line 35
             echo "        ";
             $this->getAttribute((isset($context["assets"]) ? $context["assets"] : null), "addCss", array(0 => ((isset($context["theme_url"]) ? $context["theme_url"] : null) . "/css/codemirror/codemirror.css")), "method");
-            // line 38
+            // line 36
             echo "    ";
         }
-        // line 39
+        // line 37
         echo "    ";
         $this->displayParentBlock("stylesheets", $context, $blocks);
         echo "
 ";
     }
 
-    // line 42
+    // line 40
     public function block_javascripts($context, array $blocks = array())
     {
-        // line 43
-        echo "    ";
-        $this->getAttribute((isset($context["assets"]) ? $context["assets"] : null), "addJs", array(0 => ((isset($context["theme_url"]) ? $context["theme_url"] : null) . "/js/pages-all.js")), "method");
-        // line 44
-        echo "    ";
-        $this->getAttribute((isset($context["assets"]) ? $context["assets"] : null), "addJs", array(0 => ((isset($context["theme_url"]) ? $context["theme_url"] : null) . "/js/speakingurl.min.js")), "method");
-        // line 45
-        echo "    ";
-        $this->getAttribute((isset($context["assets"]) ? $context["assets"] : null), "addJs", array(0 => ((isset($context["theme_url"]) ? $context["theme_url"] : null) . "/js/slugify.min.js")), "method");
-        // line 46
-        echo "    ";
-        if (((isset($context["mode"]) ? $context["mode"] : null) == "edit")) {
-            // line 47
-            echo "        ";
-            $this->getAttribute((isset($context["assets"]) ? $context["assets"] : null), "addJs", array(0 => ((isset($context["theme_url"]) ? $context["theme_url"] : null) . "/js/codemirror-compressed.js")), "method");
-            // line 48
-            echo "        ";
-            $this->getAttribute((isset($context["assets"]) ? $context["assets"] : null), "addJs", array(0 => ((isset($context["theme_url"]) ? $context["theme_url"] : null) . "/js/mdeditor.js")), "method");
-            // line 49
-            echo "        ";
-            $this->getAttribute((isset($context["assets"]) ? $context["assets"] : null), "addJs", array(0 => ((isset($context["theme_url"]) ? $context["theme_url"] : null) . "/js/dropzone.min.js")), "method");
-            // line 50
-            echo "    ";
-        }
-        // line 51
+        // line 41
         echo "    ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
 ";
     }
 
-    // line 119
+    // line 110
     public function block_titlebar($context, array $blocks = array())
     {
-        // line 120
+        // line 111
         echo "    <div class=\"button-bar\">
         ";
-        // line 121
+        // line 112
         if (((isset($context["mode"]) ? $context["mode"] : null) == "list")) {
-            // line 122
+            // line 113
             echo "            <a class=\"button\" href=\"";
-            echo (isset($context["base_url"]) ? $context["base_url"] : null);
+            echo twig_escape_filter($this->env, (isset($context["base_url"]) ? $context["base_url"] : null), "html", null, true);
             echo "\"><i class=\"fa fa-reply\"></i> ";
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.BACK");
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.BACK"), "html", null, true);
             echo "</a>
 
             <div class=\"button-group\">
                 <button type=\"button\" class=\"button disabled\" href=\"#modal\" data-remodal-target=\"modal\">
                     <i class=\"fa fa-plus\"></i> ";
-            // line 126
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.ADD_PAGE");
+            // line 117
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.ADD_PAGE"), "html", null, true);
             echo "
                 </button>
                 <button type=\"button\" class=\"button dropdown-toggle\" data-toggle=\"dropdown\">
@@ -151,581 +129,528 @@ class __TwigTemplate_e9e4183a1ecd954c91f595430eea9fef6c0760f62d04bbcd64492e70a57
                 </button>
                 <ul class=\"dropdown-menu\">
                     <li><a class=\"button\" href=\"#modal-folder\" data-remodal-target=\"modal-folder\">";
-            // line 132
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.ADD_FOLDER");
+            // line 123
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.ADD_FOLDER"), "html", null, true);
             echo "</a></li>
                     ";
-            // line 133
+            // line 124
             if ( !twig_test_empty($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "modularTypes", array()))) {
-                // line 134
+                // line 125
                 echo "                        <li><a class=\"button\" href=\"#modular\" data-remodal-target=\"modular\">";
-                echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.ADD_MODULAR");
+                echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.ADD_MODULAR"), "html", null, true);
                 echo "</a></li>
                     ";
             }
-            // line 136
+            // line 127
             echo "                </ul>
             </div>
-
             ";
-            // line 139
+            // line 129
             if ($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "multilang", array())) {
-                // line 140
+                // line 130
                 echo "                <div class=\"button-group\">
                     <button type=\"button\" class=\"button disabled\">
                         <i class=\"fa fa-flag-o\"></i>
                         ";
-                // line 143
+                // line 133
                 $context["langName"] = $this->getAttribute($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "siteLanguages", array()), (isset($context["admin_lang"]) ? $context["admin_lang"] : null), array(), "array");
-                // line 144
+                // line 134
                 echo "                        ";
-                echo (twig_upper_filter($this->env, twig_slice($this->env, (isset($context["langName"]) ? $context["langName"] : null), 0, 1)) . twig_slice($this->env, (isset($context["langName"]) ? $context["langName"] : null), 1, null));
+                echo twig_escape_filter($this->env, (twig_upper_filter($this->env, twig_slice($this->env, (isset($context["langName"]) ? $context["langName"] : null), 0, 1)) . twig_slice($this->env, (isset($context["langName"]) ? $context["langName"] : null), 1, null)), "html", null, true);
                 echo "
                     </button>
-                    <button type=\"button\" class=\"button dropdown-toggle\" data-toggle=\"dropdown\">
+                    ";
+                // line 136
+                if ((twig_length_filter($this->env, $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "languages_enabled", array())) > 1)) {
+                    // line 137
+                    echo "                    <button type=\"button\" class=\"button dropdown-toggle\" data-toggle=\"dropdown\">
                         <i class=\"fa fa-caret-down\"></i>
                     </button>
                     <ul class=\"dropdown-menu language-switcher\">
                         ";
-                // line 150
-                $context['_parent'] = $context;
-                $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "languages_enabled", array()));
-                foreach ($context['_seq'] as $context["_key"] => $context["langCode"]) {
-                    // line 151
-                    echo "                            ";
-                    $context["langName"] = $this->getAttribute($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "siteLanguages", array()), $context["langCode"], array(), "array");
-                    // line 152
-                    echo "                            ";
-                    if (($context["langCode"] != (isset($context["admin_lang"]) ? $context["admin_lang"] : null))) {
-                        // line 153
-                        echo "                                <li><a href=\"";
-                        echo $this->getAttribute((isset($context["uri"]) ? $context["uri"] : null), "addNonce", array(0 => (((((((isset($context["base_url_relative"]) ? $context["base_url_relative"] : null) . $this->getAttribute((isset($context["theme"]) ? $context["theme"] : null), "slug", array())) . "/pages/task") . $this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "system", array()), "param_sep", array())) . "switchlanguage/lang") . $this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "system", array()), "param_sep", array())) . $context["langCode"]), 1 => "admin-form", 2 => "admin-nonce"), "method");
-                        echo "\">";
-                        echo (twig_upper_filter($this->env, twig_slice($this->env, (isset($context["langName"]) ? $context["langName"] : null), 0, 1)) . twig_slice($this->env, (isset($context["langName"]) ? $context["langName"] : null), 1, null));
-                        echo "</a></li>
+                    // line 141
+                    $context['_parent'] = $context;
+                    $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "languages_enabled", array()));
+                    foreach ($context['_seq'] as $context["_key"] => $context["langCode"]) {
+                        // line 142
+                        echo "                            ";
+                        $context["langName"] = $this->getAttribute($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "siteLanguages", array()), $context["langCode"], array(), "array");
+                        // line 143
+                        echo "                            ";
+                        if (($context["langCode"] != (isset($context["admin_lang"]) ? $context["admin_lang"] : null))) {
+                            // line 144
+                            echo "                                <li><a href=\"";
+                            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["uri"]) ? $context["uri"] : null), "addNonce", array(0 => (((((((isset($context["base_url_relative"]) ? $context["base_url_relative"] : null) . $this->getAttribute((isset($context["theme"]) ? $context["theme"] : null), "slug", array())) . "/pages/task") . $this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "system", array()), "param_sep", array())) . "switchlanguage/lang") . $this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "system", array()), "param_sep", array())) . $context["langCode"]), 1 => "admin-form", 2 => "admin-nonce"), "method"), "html", null, true);
+                            echo "\">";
+                            echo twig_escape_filter($this->env, (twig_upper_filter($this->env, twig_slice($this->env, (isset($context["langName"]) ? $context["langName"] : null), 0, 1)) . twig_slice($this->env, (isset($context["langName"]) ? $context["langName"] : null), 1, null)), "html", null, true);
+                            echo "</a></li>
                             ";
+                        }
+                        // line 146
+                        echo "                        ";
                     }
-                    // line 155
-                    echo "                        ";
+                    $_parent = $context['_parent'];
+                    unset($context['_seq'], $context['_iterated'], $context['_key'], $context['langCode'], $context['_parent'], $context['loop']);
+                    $context = array_intersect_key($context, $_parent) + $_parent;
+                    // line 147
+                    echo "                    </ul>
+                    ";
                 }
-                $_parent = $context['_parent'];
-                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['langCode'], $context['_parent'], $context['loop']);
-                $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 156
-                echo "                    </ul>
-
-                </div>
+                // line 149
+                echo "                </div>
             ";
             }
-            // line 160
+            // line 151
             echo "
         ";
-        } elseif ((        // line 161
+        } elseif ((        // line 152
 (isset($context["mode"]) ? $context["mode"] : null) == "edit")) {
-            // line 162
+            // line 153
             echo "
             ";
-            // line 163
+            // line 154
             echo (isset($context["preview_link"]) ? $context["preview_link"] : null);
             echo "
             <a class=\"button\" href=\"";
-            // line 164
-            echo (isset($context["base_url"]) ? $context["base_url"] : null);
+            // line 155
+            echo twig_escape_filter($this->env, (isset($context["base_url"]) ? $context["base_url"] : null), "html", null, true);
             echo "/pages\"><i class=\"fa fa-reply\"></i> ";
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.BACK");
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.BACK"), "html", null, true);
             echo "</a>
             ";
-            // line 165
+            // line 156
             if ((isset($context["exists"]) ? $context["exists"] : null)) {
-                // line 166
-                echo "                <a class=\"button\" href=\"";
-                echo $this->getAttribute((isset($context["uri"]) ? $context["uri"] : null), "addNonce", array(0 => ((((isset($context["page_url"]) ? $context["page_url"] : null) . "/task") . $this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "system", array()), "param_sep", array())) . "copy"), 1 => "admin-form", 2 => "admin-nonce"), "method");
+                // line 157
+                echo "                <a class=\"button disable-after-click\" href=\"";
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["uri"]) ? $context["uri"] : null), "addNonce", array(0 => ((((isset($context["page_url"]) ? $context["page_url"] : null) . "/task") . $this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "system", array()), "param_sep", array())) . "copy"), 1 => "admin-form", 2 => "admin-nonce"), "method"), "html", null, true);
                 echo "\" class=\"page-copy\" ><i class=\"fa fa-copy\"></i> ";
-                echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.COPY");
+                echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.COPY"), "html", null, true);
                 echo "</a>
                 <a class=\"button\" href=\"#\" data-remodal-target=\"move\"><i class=\"fa fa-arrows\"></i> ";
-                // line 167
-                echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.MOVE");
+                // line 158
+                echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.MOVE"), "html", null, true);
                 echo "</a>
                 ";
-                // line 168
+                // line 159
                 if ($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "plugins", array()), "admin-pro", array(), "array"), "enabled", array())) {
-                    // line 169
-                    echo "                    ";
-                    echo $this->env->getExtension('GravTwigExtension')->dump($this->env, $context, $this->getAttribute((isset($context["adminpro"]) ? $context["adminpro"] : null), "revisions", array()));
-                    echo "
-                    <a class=\"button\" href=\"#\" data-remodal-target=\"revisions\"><i class=\"fa fa-history\"></i> ";
-                    // line 170
-                    echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN_PRO.REVISIONS");
+                    // line 160
+                    echo "                    <a class=\"button\" href=\"#\" data-remodal-target=\"revisions\"><i class=\"fa fa-history\"></i> ";
+                    echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN_PRO.REVISIONS"), "html", null, true);
                     echo "</a>
-
                 ";
                 }
-                // line 173
+                // line 162
                 echo "                ";
                 if ((isset($context["warn"]) ? $context["warn"] : null)) {
-                    // line 174
+                    // line 163
                     echo "                    <a class=\"button\" href=\"#delete\" data-remodal-target=\"delete\" data-delete-url=\"";
-                    echo $this->getAttribute((isset($context["uri"]) ? $context["uri"] : null), "addNonce", array(0 => ((((isset($context["page_url"]) ? $context["page_url"] : null) . "/task") . $this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "system", array()), "param_sep", array())) . "delete"), 1 => "admin-form", 2 => "admin-nonce"), "method");
+                    echo twig_escape_filter($this->env, $this->getAttribute((isset($context["uri"]) ? $context["uri"] : null), "addNonce", array(0 => ((((isset($context["page_url"]) ? $context["page_url"] : null) . "/task") . $this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "system", array()), "param_sep", array())) . "delete"), 1 => "admin-form", 2 => "admin-nonce"), "method"), "html", null, true);
                     echo "\"><i class=\"fa fa-close\"></i> ";
-                    echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.DELETE");
+                    echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.DELETE"), "html", null, true);
                     echo "</a>
                 ";
                 } else {
-                    // line 176
-                    echo "                    <a class=\"button\" href=\"";
-                    echo $this->getAttribute((isset($context["uri"]) ? $context["uri"] : null), "addNonce", array(0 => ((($this->getAttribute((isset($context["uri"]) ? $context["uri"] : null), "route", array(0 => true), "method") . "/task") . $this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "system", array()), "param_sep", array())) . "delete"), 1 => "admin-form", 2 => "admin-nonce"), "method");
+                    // line 165
+                    echo "                    <a class=\"button disable-after-click\" href=\"";
+                    echo twig_escape_filter($this->env, $this->getAttribute((isset($context["uri"]) ? $context["uri"] : null), "addNonce", array(0 => ((($this->getAttribute((isset($context["uri"]) ? $context["uri"] : null), "route", array(0 => true), "method") . "/task") . $this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "system", array()), "param_sep", array())) . "delete"), 1 => "admin-form", 2 => "admin-nonce"), "method"), "html", null, true);
                     echo "\" class=\"page-delete\" ><i class=\"fa fa-close\"></i></a>
                 ";
                 }
-                // line 178
+                // line 167
                 echo "            ";
             }
-            // line 179
+            // line 168
             echo "
             <div class=\"button-group\">
-                <button class=\"button\" name=\"task\" value=\"save\" form=\"blueprints\" type=\"submit\"><i class=\"fa fa-check\"></i> ";
-            // line 181
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.SAVE");
+                <button class=\"button disable-after-click\" name=\"task\" value=\"save\" form=\"blueprints\" type=\"submit\"><i class=\"fa fa-check\"></i> ";
+            // line 170
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.SAVE"), "html", null, true);
             echo "</button>
                 ";
-            // line 182
+            // line 171
             if (((isset($context["exists"]) ? $context["exists"] : null) && $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "multilang", array()))) {
-                // line 183
+                // line 172
                 echo "                    ";
                 if ($this->getAttribute((isset($context["context"]) ? $context["context"] : null), "untranslatedLanguages", array())) {
-                    // line 184
+                    // line 173
                     echo "                        <button type=\"button\" class=\"button dropdown-toggle\" data-toggle=\"dropdown\">
                             <i class=\"fa fa-caret-down\"></i>
                         </button>
                         <ul class=\"dropdown-menu lang-switcher\">
                             ";
-                    // line 188
+                    // line 177
                     $context['_parent'] = $context;
                     $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["context"]) ? $context["context"] : null), "untranslatedLanguages", array()));
                     foreach ($context['_seq'] as $context["_key"] => $context["langCode"]) {
-                        // line 189
+                        // line 178
                         echo "                                ";
                         $context["langName"] = $this->getAttribute($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "siteLanguages", array()), $context["langCode"], array(), "array");
-                        // line 190
+                        // line 179
                         echo "                                ";
                         if (($context["langCode"] != (isset($context["page_lang"]) ? $context["page_lang"] : null))) {
-                            // line 191
-                            echo "                                    <li><button class=\"button task\" name=\"task\" value=\"saveas\" lang=\"";
-                            echo $context["langCode"];
+                            // line 180
+                            echo "                                    <li><button class=\"button disable-after-click task\" name=\"task\" value=\"saveas\" lang=\"";
+                            echo twig_escape_filter($this->env, $context["langCode"], "html", null, true);
                             echo "\" form=\"blueprints\" type=\"submit\">";
-                            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.SAVE_AS");
+                            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.SAVE_AS"), "html", null, true);
                             echo " ";
-                            echo (twig_upper_filter($this->env, twig_slice($this->env, (isset($context["langName"]) ? $context["langName"] : null), 0, 1)) . twig_slice($this->env, (isset($context["langName"]) ? $context["langName"] : null), 1, null));
+                            echo twig_escape_filter($this->env, (twig_upper_filter($this->env, twig_slice($this->env, (isset($context["langName"]) ? $context["langName"] : null), 0, 1)) . twig_slice($this->env, (isset($context["langName"]) ? $context["langName"] : null), 1, null)), "html", null, true);
                             echo "</button>
                                 ";
                         }
-                        // line 193
+                        // line 182
                         echo "                            ";
                     }
                     $_parent = $context['_parent'];
                     unset($context['_seq'], $context['_iterated'], $context['_key'], $context['langCode'], $context['_parent'], $context['loop']);
                     $context = array_intersect_key($context, $_parent) + $_parent;
-                    // line 194
+                    // line 183
                     echo "                        </ul>
                     ";
                 }
-                // line 196
+                // line 185
                 echo "                ";
             }
-            // line 197
+            // line 186
             echo "            </div>
 
 
         ";
         }
-        // line 201
+        // line 190
         echo "    </div>
     ";
-        // line 202
+        // line 191
         if (((isset($context["mode"]) ? $context["mode"] : null) == "new")) {
-            // line 203
+            // line 192
             echo "        <h1><i class=\"fa fa-fw fa-file-text-o\"></i> ";
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.ADD_PAGE");
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.ADD_PAGE"), "html", null, true);
             echo "</h1>
     ";
-        } elseif ((        // line 204
+        } elseif ((        // line 193
 (isset($context["mode"]) ? $context["mode"] : null) == "edit")) {
-            // line 205
+            // line 194
             echo "        <h1><i class=\"fa fa-fw fa-file-text-o\"></i>
             ";
-            // line 206
-            echo (($this->getAttribute((isset($context["context"]) ? $context["context"] : null), "exists", array())) ? (($this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.EDIT") . ((" <i>" . twig_escape_filter($this->env, $this->getAttribute((isset($context["context"]) ? $context["context"] : null), "menu", array()))) . "</i>"))) : (($this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.CREATE") . ((" <i>" . twig_escape_filter($this->env, $this->getAttribute((isset($context["context"]) ? $context["context"] : null), "menu", array()))) . "</i>"))));
-            echo "
+            // line 195
+            echo twig_escape_filter($this->env, (($this->getAttribute((isset($context["context"]) ? $context["context"] : null), "exists", array())) ? ($this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.EDIT")) : ($this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.CREATE"))), "html", null, true);
+            echo " <i>";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["context"]) ? $context["context"] : null), "menu", array()), "html", null, true);
+            echo "</i>
         </h1>
     ";
         } else {
-            // line 209
+            // line 198
             echo "        <h1><i class=\"fa fa-fw fa-file-text-o\"></i> ";
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.MANAGE_PAGES");
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.MANAGE_PAGES"), "html", null, true);
             echo "</h1>
     ";
         }
     }
 
-    // line 213
+    // line 202
     public function block_content($context, array $blocks = array())
     {
-        // line 214
-        echo "    <div class=\"admin-block clear\">
+        // line 203
+        echo "    <div class=\"clear\">
     ";
-        // line 215
-        $this->loadTemplate("partials/messages.html.twig", "pages.html.twig", 215)->display($context);
-        // line 216
-        echo "    ";
+        // line 204
         if (((isset($context["mode"]) ? $context["mode"] : null) == "new")) {
-            // line 217
+            // line 205
             echo "        ";
-            $this->loadTemplate("partials/blueprints-new.html.twig", "pages.html.twig", 217)->display(array_merge($context, array("blueprints" => $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "blueprints", array(0 => "pages/page"), "method"), "data" => (isset($context["context"]) ? $context["context"] : null))));
-            // line 218
+            $this->loadTemplate("partials/blueprints-new.html.twig", "pages.html.twig", 205)->display(array_merge($context, array("blueprints" => $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "blueprints", array(0 => "pages/page"), "method"), "data" => (isset($context["context"]) ? $context["context"] : null))));
+            // line 206
             echo "    ";
         } elseif (((isset($context["mode"]) ? $context["mode"] : null) == "edit")) {
-            // line 219
-            echo "        <div class=\"admin-form-wrapper\" data-media-url=\"";
-            echo (isset($context["base_url"]) ? $context["base_url"] : null);
-            echo "/media/";
-            echo trim($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "route", array()), "/");
-            echo ".json\" data-media-local=\"";
-            echo (isset($context["base_url_relative_frontend"]) ? $context["base_url_relative_frontend"] : null);
-            echo "/";
-            echo trim($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "route", array()), "/");
-            echo "\" data-media-types=\"";
-            echo (isset($context["media_types"]) ? $context["media_types"] : null);
-            echo "\">
+            // line 207
+            echo "        <div class=\"admin-form-wrapper\">
             <div id=\"admin-topbar\">
 
                 ";
-            // line 222
+            // line 210
             if (($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "multilang", array()) && (isset($context["page_lang"]) ? $context["page_lang"] : null))) {
-                // line 223
+                // line 211
                 echo "                    <div id=\"admin-lang-toggle\" class=\"button-group\">
                         <button type=\"button\" class=\"button disabled\">
                             ";
-                // line 225
+                // line 213
                 if ((isset($context["exists"]) ? $context["exists"] : null)) {
-                    // line 226
+                    // line 214
                     echo "                                ";
-                    echo (isset($context["page_lang"]) ? $context["page_lang"] : null);
+                    echo twig_escape_filter($this->env, (isset($context["page_lang"]) ? $context["page_lang"] : null), "html", null, true);
                     echo "
                             ";
                 } else {
-                    // line 228
+                    // line 216
                     echo "                                ";
-                    echo (isset($context["admin_lang"]) ? $context["admin_lang"] : null);
+                    echo twig_escape_filter($this->env, (isset($context["admin_lang"]) ? $context["admin_lang"] : null), "html", null, true);
                     echo "
                             ";
                 }
-                // line 230
+                // line 218
                 echo "                        </button>
                         ";
-                // line 231
+                // line 219
                 if (((isset($context["exists"]) ? $context["exists"] : null) && (twig_length_filter($this->env, $this->getAttribute((isset($context["context"]) ? $context["context"] : null), "translatedLanguages", array())) > 1))) {
-                    // line 232
+                    // line 220
                     echo "                            <button type=\"button\" class=\"button dropdown-toggle\" data-toggle=\"dropdown\">
                                 <i class=\"fa fa-caret-down\"></i>
                             </button>
                             <ul class=\"dropdown-menu language-switcher\">
                                 ";
-                    // line 236
+                    // line 224
                     $context['_parent'] = $context;
                     $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["context"]) ? $context["context"] : null), "translatedLanguages", array()));
                     foreach ($context['_seq'] as $context["language"] => $context["route"]) {
-                        // line 237
+                        // line 225
                         echo "                                    ";
                         if (($context["language"] != (isset($context["page_lang"]) ? $context["page_lang"] : null))) {
-                            // line 238
+                            // line 226
                             echo "                                    <li><button class=\"task\" name=\"task\" value=\"switchlanguage\" lang=\"";
-                            echo $context["language"];
+                            echo twig_escape_filter($this->env, $context["language"], "html", null, true);
                             echo "\" redirect=\"";
-                            echo trim($this->getAttribute((isset($context["context"]) ? $context["context"] : null), "rawRoute", array()), "/");
+                            echo twig_escape_filter($this->env, trim($this->getAttribute((isset($context["context"]) ? $context["context"] : null), "rawRoute", array()), "/"), "html", null, true);
                             echo "\" form=\"blueprints\">";
-                            echo $context["language"];
+                            echo twig_escape_filter($this->env, $context["language"], "html", null, true);
                             echo "</button>
                                     ";
                         }
-                        // line 240
+                        // line 228
                         echo "                                ";
                     }
                     $_parent = $context['_parent'];
                     unset($context['_seq'], $context['_iterated'], $context['language'], $context['route'], $context['_parent'], $context['loop']);
                     $context = array_intersect_key($context, $_parent) + $_parent;
-                    // line 241
+                    // line 229
                     echo "                            </ul>
                         ";
                 }
-                // line 243
+                // line 231
                 echo "                    </div>
                 ";
             }
-            // line 245
+            // line 233
             echo "
                 ";
-            // line 246
+            // line 234
             if ($this->getAttribute($this->getAttribute((isset($context["context"]) ? $context["context"] : null), "blueprints", array()), "fields", array())) {
-                // line 247
+                // line 235
                 echo "                ";
                 $context["normalText"] = $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.NORMAL");
-                // line 248
+                // line 236
                 echo "                ";
                 $context["expertText"] = $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.EXPERT");
-                // line 249
+                // line 237
                 echo "                ";
                 $context["maxLen"] = max(array(0 => twig_length_filter($this->env, (isset($context["normalText"]) ? $context["normalText"] : null)), 1 => twig_length_filter($this->env, (isset($context["expertText"]) ? $context["expertText"] : null))));
-                // line 250
+                // line 238
                 echo "                ";
                 $context["normalText"] = $this->getAttribute($this, "spanToggle", array(0 => (isset($context["normalText"]) ? $context["normalText"] : null), 1 => (isset($context["maxLen"]) ? $context["maxLen"] : null)), "method");
-                // line 251
+                // line 239
                 echo "                ";
                 $context["expertText"] = $this->getAttribute($this, "spanToggle", array(0 => (isset($context["expertText"]) ? $context["expertText"] : null), 1 => (isset($context["maxLen"]) ? $context["maxLen"] : null)), "method");
-                // line 252
+                // line 240
                 echo "                <form id=\"admin-mode-toggle\">
                     <div class=\"switch-toggle switch-grav\">
                         <input type=\"radio\" value=\"normal\" data-leave-url=\"";
-                // line 254
-                echo (isset($context["base_url"]) ? $context["base_url"] : null);
+                // line 242
+                echo twig_escape_filter($this->env, (isset($context["base_url"]) ? $context["base_url"] : null), "html", null, true);
                 echo "/pages/";
-                echo trim($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "route", array()), "/");
+                echo twig_escape_filter($this->env, trim($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "route", array()), "/"), "html", null, true);
                 echo "/mode";
-                echo $this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "system", array()), "param_sep", array());
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "system", array()), "param_sep", array()), "html", null, true);
                 echo "normal\" id=\"normal\" name=\"mode-switch\" class=\"highlight\" ";
                 if (($this->getAttribute($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "session", array()), "expert", array()) == "0")) {
                     echo " checked=\"checked\"";
                 }
                 echo ">
                         <label for=\"normal\">";
-                // line 255
-                echo trim((isset($context["normalText"]) ? $context["normalText"] : null));
+                // line 243
+                echo (isset($context["normalText"]) ? $context["normalText"] : null);
                 echo "</label>
                         <input type=\"radio\" value=\"expert\" data-leave-url=\"";
-                // line 256
-                echo (isset($context["base_url"]) ? $context["base_url"] : null);
+                // line 244
+                echo twig_escape_filter($this->env, (isset($context["base_url"]) ? $context["base_url"] : null), "html", null, true);
                 echo "/pages/";
-                echo trim($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "route", array()), "/");
+                echo twig_escape_filter($this->env, trim($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "route", array()), "/"), "html", null, true);
                 echo "/mode";
-                echo $this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "system", array()), "param_sep", array());
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["config"]) ? $context["config"] : null), "system", array()), "param_sep", array()), "html", null, true);
                 echo "expert\" id=\"expert\" name=\"mode-switch\" class=\"highlight\" ";
                 if (($this->getAttribute($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "session", array()), "expert", array()) == "1")) {
                     echo " checked=\"checked\"";
                 }
                 echo ">
                         <label for=\"expert\">";
-                // line 257
-                echo trim((isset($context["expertText"]) ? $context["expertText"] : null));
+                // line 245
+                echo (isset($context["expertText"]) ? $context["expertText"] : null);
                 echo "</label>
                         <a></a>
                     </div>
                 </form>
                 ";
             }
-            // line 262
+            // line 250
             echo "
             </div>
 
             ";
-            // line 265
+            // line 253
             if (($this->getAttribute($this->getAttribute((isset($context["context"]) ? $context["context"] : null), "blueprints", array()), "fields", array()) && ($this->getAttribute($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "session", array()), "expert", array()) == "0"))) {
-                // line 266
+                // line 254
                 echo "                ";
-                $this->loadTemplate("partials/blueprints.html.twig", "pages.html.twig", 266)->display(array_merge($context, array("blueprints" => $this->getAttribute((isset($context["context"]) ? $context["context"] : null), "blueprints", array()), "data" => (isset($context["context"]) ? $context["context"] : null))));
-                // line 267
+                $this->loadTemplate("partials/blueprints.html.twig", "pages.html.twig", 254)->display(array_merge($context, array("blueprints" => $this->getAttribute((isset($context["context"]) ? $context["context"] : null), "blueprints", array()), "data" => (isset($context["context"]) ? $context["context"] : null))));
+                // line 255
                 echo "            ";
             } else {
-                // line 268
+                // line 256
                 echo "                ";
-                $this->loadTemplate("partials/blueprints-raw.html.twig", "pages.html.twig", 268)->display(array_merge($context, array("blueprints" => $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "blueprints", array(0 => (("pages/" . (isset($context["modular"]) ? $context["modular"] : null)) . "raw")), "method"), "data" => (isset($context["context"]) ? $context["context"] : null))));
-                // line 269
+                $this->loadTemplate("partials/blueprints-raw.html.twig", "pages.html.twig", 256)->display(array_merge($context, array("blueprints" => $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "blueprints", array(0 => (("admin/pages/" . (isset($context["modular"]) ? $context["modular"] : null)) . "raw")), "method"), "data" => (isset($context["context"]) ? $context["context"] : null))));
+                // line 257
                 echo "            ";
             }
-            // line 270
+            // line 258
             echo "        </div>
     ";
         } else {
-            // line 272
+            // line 260
             echo "        <form id=\"page-filtering\">
             <div class=\"page-filters\">
-                <input type=\"text\" data-template-types=\"";
-            // line 274
+                <input type=\"text\" data-filter-labels=\"";
+            // line 262
+            echo twig_escape_filter($this->env, twig_jsonencode_filter(array(0 => array("id" => "mode", "name" => $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.PAGE_MODES")), 1 => array("id" => "type", "name" => $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.PAGE_TYPES")), 2 => array("id" => "access", "name" => $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.ACCESS_LEVELS")))), "html_attr");
+            echo "\" data-filter-types=\"";
             echo twig_escape_filter($this->env, twig_jsonencode_filter(twig_array_merge($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "types", array()), $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "modularTypes", array()))), "html_attr");
-            echo "\" data-template-access-levels=\"";
+            echo "\" data-filter-access-levels=\"";
             echo twig_escape_filter($this->env, twig_jsonencode_filter($this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "accessLevels", array())), "html_attr");
             echo "\" placeholder=\"";
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.ADD_FILTERS");
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.ADD_FILTERS"), "html", null, true);
             echo "\" class=\"page-filter\" name=\"page-filter\" />
             </div>
             <div class=\"page-search\">
                 <input type=\"text\" placeholder=\"";
-            // line 277
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.SEARCH_PAGES");
+            // line 265
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.SEARCH_PAGES"), "html", null, true);
             echo "\" name=\"page-search\" />
             </div>
             <div class=\"page-shortcuts\">
                 <span class=\"button button-x-small\" data-page-toggleall=\"expand\"><i class=\"fa fa-fw fa-plus-circle\"></i> ";
-            // line 280
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.EXPAND_ALL");
+            // line 268
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.EXPAND_ALL"), "html", null, true);
             echo "</span>
                 <span class=\"button button-x-small\" data-page-toggleall=\"collapse\"><i class=\"fa fa-fw fa-minus-circle\"></i> ";
-            // line 281
-            echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.COLLAPSE_ALL");
+            // line 269
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.COLLAPSE_ALL"), "html", null, true);
             echo "</span>
             </div>
         </form>
-        <ul class=\"pages-list depth-0\">
-            ";
-            // line 285
+        <div class=\"pages-list\">
+            <ul class=\"depth-0\">
+                ";
+            // line 274
             echo $this->getAttribute($this, "loop", array(0 => (isset($context["pages"]) ? $context["pages"] : null), 1 => 0, 2 => $context), "method");
             echo "
-        </ul>
+            </ul>
+            ";
+            // line 276
+            $this->loadTemplate("partials/page-legend.html.twig", "pages.html.twig", 276)->display($context);
+            // line 277
+            echo "        </div>
     ";
         }
-        // line 288
+        // line 279
         echo "    </div>
 
-    <div class=\"remodal\" data-remodal-id=\"generic\" data-remodal-options=\"hashTracking: false\">
-        <form>
-            <h1>";
-        // line 292
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.ERROR");
-        echo "</h1>
-            <div class=\"error-content\"></div>
-            <div class=\"button-bar\">
-                <a class=\"button remodal-confirm\" href=\"#\">";
-        // line 295
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.CLOSE");
-        echo "</a>
-            </div>
-        </form>
-    </div>
-
     ";
-        // line 300
+        // line 281
         if (((isset($context["mode"]) ? $context["mode"] : null) == "list")) {
-            // line 301
+            // line 282
             echo "
         <div class=\"remodal\" data-remodal-id=\"modal\" data-remodal-options=\"hashTracking: false\">
             ";
-            // line 303
-            $this->loadTemplate("partials/blueprints-new.html.twig", "pages.html.twig", 303)->display(array_merge($context, array("blueprints" => $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "blueprints", array(0 => "pages/new"), "method"), "data" => (isset($context["context"]) ? $context["context"] : null))));
-            // line 304
+            // line 284
+            $this->loadTemplate("partials/blueprints-new.html.twig", "pages.html.twig", 284)->display(array_merge($context, array("blueprints" => $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "blueprints", array(0 => "admin/pages/new"), "method"), "data" => (isset($context["context"]) ? $context["context"] : null))));
+            // line 285
             echo "        </div>
 
         <div class=\"remodal\" data-remodal-id=\"modal-folder\" data-remodal-options=\"hashTracking: false\">
             ";
-            // line 307
-            $this->loadTemplate("partials/blueprints-new-folder.html.twig", "pages.html.twig", 307)->display(array_merge($context, array("blueprints" => $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "blueprints", array(0 => "pages/new_folder"), "method"), "data" => (isset($context["context"]) ? $context["context"] : null))));
-            // line 308
+            // line 288
+            $this->loadTemplate("partials/blueprints-new-folder.html.twig", "pages.html.twig", 288)->display(array_merge($context, array("blueprints" => $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "blueprints", array(0 => "admin/pages/new_folder"), "method"), "data" => (isset($context["context"]) ? $context["context"] : null))));
+            // line 289
             echo "        </div>
 
         <div class=\"remodal\" data-remodal-id=\"modular\" data-remodal-options=\"hashTracking: false\">
             ";
-            // line 311
-            $this->loadTemplate("partials/blueprints-new.html.twig", "pages.html.twig", 311)->display(array_merge($context, array("blueprints" => $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "blueprints", array(0 => "pages/modular_new"), "method"), "data" => (isset($context["context"]) ? $context["context"] : null))));
-            // line 312
+            // line 292
+            $this->loadTemplate("partials/blueprints-new.html.twig", "pages.html.twig", 292)->display(array_merge($context, array("blueprints" => $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "blueprints", array(0 => "admin/pages/modular_new"), "method"), "data" => (isset($context["context"]) ? $context["context"] : null))));
+            // line 293
             echo "        </div>
 
     ";
         }
-        // line 315
+        // line 296
         echo "
     ";
-        // line 316
+        // line 297
         if (((isset($context["mode"]) ? $context["mode"] : null) == "edit")) {
-            // line 317
+            // line 298
             echo "    <div class=\"remodal\" data-remodal-id=\"move\" data-remodal-options=\"hashTracking: false\">
 
         ";
-            // line 319
-            $this->loadTemplate("partials/page-move.html.twig", "pages.html.twig", 319)->display(array_merge($context, array("blueprints" => $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "blueprints", array(0 => "pages/move"), "method"), "data" => (isset($context["context"]) ? $context["context"] : null))));
-            // line 320
+            // line 300
+            $this->loadTemplate("partials/page-move.html.twig", "pages.html.twig", 300)->display(array_merge($context, array("blueprints" => $this->getAttribute((isset($context["admin"]) ? $context["admin"] : null), "blueprints", array(0 => "admin/pages/move"), "method"), "data" => (isset($context["context"]) ? $context["context"] : null))));
+            // line 301
             echo "    </div>
     <div class=\"remodal\" data-remodal-id=\"revisions\" data-remodal-options=\"hashTracking: false\">
         ";
-            // line 322
-            $this->loadTemplate(array(0 => "partials/page-revisions.html.twig", 1 => "empty.html.twig"), "pages.html.twig", 322)->display(array_merge($context, array("data" => (isset($context["context"]) ? $context["context"] : null))));
-            // line 323
+            // line 303
+            $this->loadTemplate(array(0 => "partials/page-revisions.html.twig", 1 => "empty.html.twig"), "pages.html.twig", 303)->display(array_merge($context, array("data" => (isset($context["context"]) ? $context["context"] : null))));
+            // line 304
             echo "    </div>
     ";
         }
-        // line 325
+        // line 306
+        echo "
+    ";
+        // line 307
+        $this->loadTemplate("partials/modal-changes-detected.html.twig", "pages.html.twig", 307)->display($context);
+        // line 308
         echo "
     <div class=\"remodal\" data-remodal-id=\"delete\" data-remodal-options=\"hashTracking: false\">
         <form>
             <h1>";
-        // line 328
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.MODAL_DELETE_PAGE_CONFIRMATION_REQUIRED_TITLE");
+        // line 311
+        echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.MODAL_DELETE_PAGE_CONFIRMATION_REQUIRED_TITLE"), "html", null, true);
         echo "</h1>
+            <p class=\"bigger\">
+                ";
+        // line 313
+        if ((isset($context["context"]) ? $context["context"] : null)) {
+            // line 314
+            echo "                    <strong>";
+            echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.PAGE"), "html", null, true);
+            echo ": ";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["context"]) ? $context["context"] : null), "title", array()), "html", null, true);
+            echo "</strong>
+                ";
+        }
+        // line 316
+        echo "            </p>
             <p class=\"bigger\">
               ";
-        // line 330
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.MODAL_DELETE_PAGE_CONFIRMATION_REQUIRED_DESC");
+        // line 318
+        echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.MODAL_DELETE_PAGE_CONFIRMATION_REQUIRED_DESC"), "html", null, true);
         echo "
             </p>
             <br>
             <div class=\"button-bar\">
-            <a class=\"button secondary remodal-cancel\" href=\"#\"><i class=\"fa fa-fw fa-close\"></i> ";
-        // line 334
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.CANCEL");
-        echo "</a>
-            <a class=\"button\" data-delete-action href=\"#\"><i class=\"fa fa-fw fa-check\"></i> ";
-        // line 335
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.CONTINUE");
-        echo "</a>
-            </div>
-        </form>
-    </div>
-
-
-    <div class=\"remodal\" data-remodal-id=\"changes\">
-        <form>
-            <h1>";
-        // line 343
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.MODAL_CHANGED_DETECTED_TITLE");
-        echo "</h1>
-            <p class=\"bigger\">
-                ";
-        // line 345
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.MODAL_CHANGED_DETECTED_DESC");
-        echo "
-            </p>
-            <br>
-            <div class=\"button-bar\">
-            <a class=\"button secondary\" data-leave-action=\"cancel\" href=\"#\"><i class=\"fa fa-fw fa-close\"></i> ";
-        // line 349
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.CANCEL");
-        echo "</a>
-            <a class=\"button\" data-leave-action=\"continue\" href=\"#\"><i class=\"fa fa-fw fa-check\"></i> ";
-        // line 350
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.CONTINUE");
-        echo "</a>
-            </div>
-        </form>
-    </div>
-
-    <div class=\"remodal\" data-remodal-id=\"delete-media\" data-remodal-options=\"hashTracking: false\">
-        <form>
-            <h1>";
-        // line 357
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.MODAL_DELETE_FILE_CONFIRMATION_REQUIRED_TITLE");
-        echo "</h1>
-            <p class=\"bigger\">
-                ";
-        // line 359
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.MODAL_DELETE_FILE_CONFIRMATION_REQUIRED_DESC");
-        echo "
-            </p>
-            <br>
-            <div class=\"button-bar\">
-            <a class=\"button secondary remodal-cancel\" href=\"#\"><i class=\"fa fa-fw fa-close\"></i> ";
-        // line 363
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.CANCEL");
-        echo "</a>
-            <a class=\"button remodal-confirm\" href=\"#\"><i class=\"fa fa-fw fa-check\"></i> ";
-        // line 364
-        echo $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.CONTINUE");
+            <button data-remodal-action=\"cancel\" class=\"button secondary remodal-cancel\"><i class=\"fa fa-fw fa-close\"></i> ";
+        // line 322
+        echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.CANCEL"), "html", null, true);
+        echo "</button>
+            <a class=\"button disable-after-click\" data-delete-action href=\"#\"><i class=\"fa fa-fw fa-check\"></i> ";
+        // line 323
+        echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.CONTINUE"), "html", null, true);
         echo "</a>
             </div>
         </form>
@@ -755,12 +680,16 @@ class __TwigTemplate_e9e4183a1ecd954c91f595430eea9fef6c0760f62d04bbcd64492e70a57
             ob_end_clean();
 
             throw $e;
+        } catch (Throwable $e) {
+            ob_end_clean();
+
+            throw $e;
         }
 
         return ('' === $tmp = ob_get_clean()) ? '' : new Twig_Markup($tmp, $this->env->getCharset());
     }
 
-    // line 57
+    // line 47
     public function getloop($__page__ = null, $__depth__ = null, $__twig_vars__ = null, ...$__varargs__)
     {
         $context = $this->env->mergeGlobals(array(
@@ -774,169 +703,171 @@ class __TwigTemplate_e9e4183a1ecd954c91f595430eea9fef6c0760f62d04bbcd64492e70a57
 
         ob_start();
         try {
-            // line 58
+            // line 48
             echo "    ";
             $context["separator"] = $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["twig_vars"]) ? $context["twig_vars"] : null), "config", array(), "array"), "system", array()), "param_sep", array());
-            // line 59
+            // line 49
             echo "    ";
             $context["base_url"] = $this->getAttribute((isset($context["twig_vars"]) ? $context["twig_vars"] : null), "base_url_relative", array(), "array");
-            // line 60
+            // line 50
             echo "    ";
             $context["base_url_simple"] = $this->getAttribute((isset($context["twig_vars"]) ? $context["twig_vars"] : null), "base_url_simple", array(), "array");
-            // line 61
+            // line 51
             echo "    ";
             $context["admin_route"] = $this->getAttribute((isset($context["twig_vars"]) ? $context["twig_vars"] : null), "admin_route", array(), "array");
-            // line 62
+            // line 52
             echo "    ";
             $context["admin_lang"] = $this->getAttribute((isset($context["twig_vars"]) ? $context["twig_vars"] : null), "admin_lang", array(), "array");
-            // line 63
+            // line 53
             echo "    ";
             $context["warn"] = $this->getAttribute((isset($context["twig_vars"]) ? $context["twig_vars"] : null), "warn", array(), "array");
-            // line 64
+            // line 54
             echo "    ";
             $context["uri"] = $this->getAttribute((isset($context["twig_vars"]) ? $context["twig_vars"] : null), "uri", array(), "array");
-            // line 65
+            // line 55
             echo "
     ";
-            // line 66
+            // line 56
             if ($this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "header", array()), "content", array()), "order", array()), "by", array())) {
-                // line 67
+                // line 57
                 echo "        ";
                 $context["pcol"] = $this->getAttribute($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "children", array(), "method"), "order", array(0 => $this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "header", array()), "content", array()), "order", array()), "by", array()), 1 => $this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "header", array()), "content", array()), "order", array()), "dir", array())), "method");
-                // line 68
+                // line 58
                 echo "    ";
             } elseif ($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "order_by", array())) {
-                // line 69
+                // line 59
                 echo "        ";
                 $context["pcol"] = $this->getAttribute($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "children", array(), "method"), "order", array(0 => $this->getAttribute((isset($context["page"]) ? $context["page"] : null), "order_by", array()), 1 => $this->getAttribute((isset($context["page"]) ? $context["page"] : null), "order_dir", array())), "method");
-                // line 70
+                // line 60
                 echo "    ";
             } else {
-                // line 71
+                // line 61
                 echo "        ";
                 $context["pcol"] = $this->getAttribute((isset($context["page"]) ? $context["page"] : null), "children", array(), "method");
-                // line 72
+                // line 62
                 echo "    ";
             }
-            // line 73
+            // line 63
             echo "
     ";
-            // line 74
+            // line 64
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable((isset($context["pcol"]) ? $context["pcol"] : null));
             foreach ($context['_seq'] as $context["_key"] => $context["p"]) {
-                // line 75
+                // line 65
                 echo "        ";
-                $context["description"] = (((((( !$this->getAttribute($context["p"], "page", array())) ? ("Folder &bull; ") : ("Page &bull; ")) . (($this->getAttribute(                // line 76
-$context["p"], "modular", array())) ? ("Modular &bull; ") : (""))) . (($this->getAttribute(                // line 77
-$context["p"], "routable", array())) ? ("Routable &bull; ") : ("Non-Routable &bull; "))) . (($this->getAttribute(                // line 78
-$context["p"], "visible", array())) ? ("Visible &bull; ") : ("Non-Visible &bull; "))) . (($this->getAttribute(                // line 79
-$context["p"], "published", array())) ? ("Published &bull; ") : ("Non-Published &bull; ")));
-                // line 80
+                $context["description"] = (((((( !$this->getAttribute($context["p"], "page", array())) ? (($this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.FOLDER") . " &bull; ")) : (($this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.PAGE") . " &bull; "))) . (($this->getAttribute(                // line 66
+$context["p"], "modular", array())) ? (($this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.MODULAR") . " &bull; ")) : (""))) . (($this->getAttribute(                // line 67
+$context["p"], "routable", array())) ? (($this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.ROUTABLE") . " &bull; ")) : (($this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.NON_ROUTABLE") . " &bull; ")))) . (($this->getAttribute(                // line 68
+$context["p"], "visible", array())) ? (($this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.VISIBLE") . " &bull; ")) : (($this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.NON_VISIBLE") . " &bull; ")))) . (($this->getAttribute(                // line 69
+$context["p"], "published", array())) ? (($this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.PUBLISHED") . " &bull; ")) : (($this->env->getExtension('AdminTwigExtension')->tuFilter("PLUGIN_ADMIN.NON_PUBLISHED") . " &bull; "))));
+                // line 70
                 echo "        ";
                 $context["page_route"] = trim($this->getAttribute($context["p"], "rawRoute", array()), "/");
-                // line 81
+                // line 71
                 echo "        ";
                 if (($this->getAttribute($context["p"], "language", array()) && ($this->getAttribute($context["p"], "language", array()) != (isset($context["admin_lang"]) ? $context["admin_lang"] : null)))) {
-                    // line 82
+                    // line 72
                     echo "            ";
                     $context["page_url"] = (((((((isset($context["base_url_simple"]) ? $context["base_url_simple"] : null) . "/") . $this->getAttribute($context["p"], "language", array())) . "/") . (isset($context["admin_route"]) ? $context["admin_route"] : null)) . "/pages/") . (isset($context["page_route"]) ? $context["page_route"] : null));
-                    // line 83
+                    // line 73
                     echo "        ";
                 } else {
-                    // line 84
+                    // line 74
                     echo "            ";
                     $context["page_url"] = (((isset($context["base_url"]) ? $context["base_url"] : null) . "/pages/") . (isset($context["page_route"]) ? $context["page_route"] : null));
-                    // line 85
+                    // line 75
                     echo "        ";
                 }
-                // line 86
+                // line 76
                 echo "
         <li class=\"page-item\" data-nav-id=\"";
-                // line 87
-                echo $this->getAttribute($context["p"], "route", array());
+                // line 77
+                echo twig_escape_filter($this->env, $this->getAttribute($context["p"], "route", array()), "html", null, true);
                 echo "\">
             <div class=\"row\">
                 <span ";
-                // line 89
+                // line 79
                 echo ((($this->getAttribute($this->getAttribute($context["p"], "children", array(0 => 0), "method"), "count", array()) > 0)) ? ("data-toggle=\"children\"") : (""));
-                echo " data-hint=\"";
-                echo trim((isset($context["description"]) ? $context["description"] : null), " &bull; ");
-                echo "\" class=\"hint--bottom\">
+                echo ">
                 <i class=\"page-icon fa fa-fw fa-circle-o ";
-                // line 90
+                // line 80
                 echo ((($this->getAttribute($this->getAttribute($context["p"], "children", array(0 => 0), "method"), "count", array()) > 0)) ? ("children-closed") : (""));
                 echo " ";
                 echo (($this->getAttribute($context["p"], "modular", array())) ? ("modular") : ((( !$this->getAttribute($context["p"], "routable", array())) ? ("not-routable") : ((( !$this->getAttribute($context["p"], "visible", array())) ? ("not-visible") : ((( !$this->getAttribute($context["p"], "page", array())) ? ("folder") : (""))))))));
                 echo "\"></i>
                 </span>
+                <span data-hint=\"";
+                // line 82
+                echo trim((isset($context["description"]) ? $context["description"] : null), " &bull; ");
+                echo "\" class=\"hint--right\">
                 <a href=\"";
-                // line 92
-                echo (isset($context["page_url"]) ? $context["page_url"] : null);
+                // line 83
+                echo twig_escape_filter($this->env, (isset($context["page_url"]) ? $context["page_url"] : null), "html", null, true);
                 echo "\" class=\"page-edit\">";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["p"], "title", array()));
                 echo "</a>
-
+                </span>
                 ";
-                // line 94
+                // line 85
                 if ($this->getAttribute($context["p"], "language", array())) {
-                    // line 95
+                    // line 86
                     echo "                    <span class=\"badge lang ";
                     if (($this->getAttribute($context["p"], "language", array()) == (isset($context["admin_lang"]) ? $context["admin_lang"] : null))) {
                         echo "info";
                     }
                     echo "\">";
-                    echo $this->getAttribute($context["p"], "language", array());
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["p"], "language", array()), "html", null, true);
                     echo "</span>
                 ";
                 }
-                // line 97
+                // line 88
                 echo "                <span class=\"page-home\">";
                 echo (($this->getAttribute($context["p"], "home", array())) ? ("<i class=\"fa fa-home\"></i>") : (""));
                 echo "</span>
                 <span class=\"page-tools\">
 
                     ";
-                // line 100
+                // line 91
                 if ((isset($context["warn"]) ? $context["warn"] : null)) {
-                    // line 101
+                    // line 92
                     echo "                    <a href=\"#delete\" data-remodal-target=\"delete\" data-delete-url=\"";
-                    echo $this->getAttribute((isset($context["uri"]) ? $context["uri"] : null), "addNonce", array(0 => ((((isset($context["page_url"]) ? $context["page_url"] : null) . "/task") . (isset($context["separator"]) ? $context["separator"] : null)) . "delete"), 1 => "admin-form", 2 => "admin-nonce"), "method");
+                    echo twig_escape_filter($this->env, $this->getAttribute((isset($context["uri"]) ? $context["uri"] : null), "addNonce", array(0 => ((((isset($context["page_url"]) ? $context["page_url"] : null) . "/task") . (isset($context["separator"]) ? $context["separator"] : null)) . "delete"), 1 => "admin-form", 2 => "admin-nonce"), "method"), "html", null, true);
                     echo "\" class=\"page-delete\" ><i class=\"fa fa-close\"></i></a>
                     ";
                 } else {
-                    // line 103
+                    // line 94
                     echo "                    <a href=\"";
-                    echo $this->getAttribute((isset($context["uri"]) ? $context["uri"] : null), "addNonce", array(0 => ((((isset($context["page_url"]) ? $context["page_url"] : null) . "/task") . (isset($context["separator"]) ? $context["separator"] : null)) . "delete"), 1 => "admin-form", 2 => "admin-nonce"), "method");
+                    echo twig_escape_filter($this->env, $this->getAttribute((isset($context["uri"]) ? $context["uri"] : null), "addNonce", array(0 => ((((isset($context["page_url"]) ? $context["page_url"] : null) . "/task") . (isset($context["separator"]) ? $context["separator"] : null)) . "delete"), 1 => "admin-form", 2 => "admin-nonce"), "method"), "html", null, true);
                     echo "\" class=\"page-delete\" ><i class=\"fa fa-close\"></i></a>
                     ";
                 }
-                // line 105
+                // line 96
                 echo "                </span>
                 <p class=\"page-route\">";
-                // line 106
-                echo (($this->getAttribute($this->getAttribute($this->getAttribute($context["p"], "header", array()), "routes", array()), "default", array())) ? ($this->getAttribute($this->getAttribute($this->getAttribute($context["p"], "header", array()), "routes", array()), "default", array())) : ($this->getAttribute($context["p"], "route", array())));
+                // line 97
+                echo twig_escape_filter($this->env, (($this->getAttribute($this->getAttribute($this->getAttribute($context["p"], "header", array()), "routes", array()), "default", array())) ? ($this->getAttribute($this->getAttribute($this->getAttribute($context["p"], "header", array()), "routes", array()), "default", array())) : ($this->getAttribute($context["p"], "route", array()))), "html", null, true);
                 echo " <span class=\"spacer\"><i class=\"fa fa-long-arrow-right\"></i></span> ";
-                echo $this->getAttribute($context["p"], "template", array(), "method");
+                echo twig_escape_filter($this->env, $this->getAttribute($context["p"], "template", array(), "method"), "html", null, true);
                 echo "</p>
             </div>
             ";
-                // line 108
+                // line 99
                 if (($this->getAttribute($this->getAttribute($context["p"], "children", array(), "method"), "count", array()) > 0)) {
-                    // line 109
+                    // line 100
                     echo "
             <ul class=\"depth-";
-                    // line 110
-                    echo ((isset($context["depth"]) ? $context["depth"] : null) + 1);
+                    // line 101
+                    echo twig_escape_filter($this->env, ((isset($context["depth"]) ? $context["depth"] : null) + 1), "html", null, true);
                     echo "\" style=\"display:none;\">
                 ";
-                    // line 111
+                    // line 102
                     echo $this->getAttribute($this, "loop", array(0 => $context["p"], 1 => ((isset($context["depth"]) ? $context["depth"] : null) + 1), 2 => (isset($context["twig_vars"]) ? $context["twig_vars"] : null)), "method");
                     echo "
             </ul>
             ";
                 }
-                // line 114
+                // line 105
                 echo "        </li>
     ";
             }
@@ -944,6 +875,10 @@ $context["p"], "published", array())) ? ("Published &bull; ") : ("Non-Published 
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['p'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
         } catch (Exception $e) {
+            ob_end_clean();
+
+            throw $e;
+        } catch (Throwable $e) {
             ob_end_clean();
 
             throw $e;
@@ -964,13 +899,13 @@ $context["p"], "published", array())) ? ("Published &bull; ") : ("Non-Published 
 
     public function getDebugInfo()
     {
-        return array (  940 => 114,  934 => 111,  930 => 110,  927 => 109,  925 => 108,  918 => 106,  915 => 105,  909 => 103,  903 => 101,  901 => 100,  894 => 97,  884 => 95,  882 => 94,  875 => 92,  868 => 90,  862 => 89,  857 => 87,  854 => 86,  851 => 85,  848 => 84,  845 => 83,  842 => 82,  839 => 81,  836 => 80,  834 => 79,  833 => 78,  832 => 77,  831 => 76,  829 => 75,  825 => 74,  822 => 73,  819 => 72,  816 => 71,  813 => 70,  810 => 69,  807 => 68,  804 => 67,  802 => 66,  799 => 65,  796 => 64,  793 => 63,  790 => 62,  787 => 61,  784 => 60,  781 => 59,  778 => 58,  764 => 57,  750 => 4,  737 => 3,  728 => 364,  724 => 363,  717 => 359,  712 => 357,  702 => 350,  698 => 349,  691 => 345,  686 => 343,  675 => 335,  671 => 334,  664 => 330,  659 => 328,  654 => 325,  650 => 323,  648 => 322,  644 => 320,  642 => 319,  638 => 317,  636 => 316,  633 => 315,  628 => 312,  626 => 311,  621 => 308,  619 => 307,  614 => 304,  612 => 303,  608 => 301,  606 => 300,  598 => 295,  592 => 292,  586 => 288,  580 => 285,  573 => 281,  569 => 280,  563 => 277,  553 => 274,  549 => 272,  545 => 270,  542 => 269,  539 => 268,  536 => 267,  533 => 266,  531 => 265,  526 => 262,  518 => 257,  506 => 256,  502 => 255,  490 => 254,  486 => 252,  483 => 251,  480 => 250,  477 => 249,  474 => 248,  471 => 247,  469 => 246,  466 => 245,  462 => 243,  458 => 241,  452 => 240,  442 => 238,  439 => 237,  435 => 236,  429 => 232,  427 => 231,  424 => 230,  418 => 228,  412 => 226,  410 => 225,  406 => 223,  404 => 222,  389 => 219,  386 => 218,  383 => 217,  380 => 216,  378 => 215,  375 => 214,  372 => 213,  364 => 209,  358 => 206,  355 => 205,  353 => 204,  348 => 203,  346 => 202,  343 => 201,  337 => 197,  334 => 196,  330 => 194,  324 => 193,  314 => 191,  311 => 190,  308 => 189,  304 => 188,  298 => 184,  295 => 183,  293 => 182,  289 => 181,  285 => 179,  282 => 178,  276 => 176,  268 => 174,  265 => 173,  259 => 170,  254 => 169,  252 => 168,  248 => 167,  241 => 166,  239 => 165,  233 => 164,  229 => 163,  226 => 162,  224 => 161,  221 => 160,  215 => 156,  209 => 155,  201 => 153,  198 => 152,  195 => 151,  191 => 150,  181 => 144,  179 => 143,  174 => 140,  172 => 139,  167 => 136,  161 => 134,  159 => 133,  155 => 132,  146 => 126,  136 => 122,  134 => 121,  131 => 120,  128 => 119,  121 => 51,  118 => 50,  115 => 49,  112 => 48,  109 => 47,  106 => 46,  103 => 45,  100 => 44,  97 => 43,  94 => 42,  87 => 39,  84 => 38,  81 => 37,  78 => 36,  75 => 35,  71 => 1,  69 => 55,  67 => 54,  65 => 33,  63 => 31,  61 => 29,  59 => 27,  56 => 24,  54 => 23,  50 => 20,  47 => 18,  45 => 17,  43 => 16,  41 => 15,  39 => 14,  37 => 13,  35 => 12,  33 => 11,  30 => 8,  28 => 7,  11 => 1,);
+        return array (  871 => 105,  865 => 102,  861 => 101,  858 => 100,  856 => 99,  849 => 97,  846 => 96,  840 => 94,  834 => 92,  832 => 91,  825 => 88,  815 => 86,  813 => 85,  806 => 83,  802 => 82,  795 => 80,  791 => 79,  786 => 77,  783 => 76,  780 => 75,  777 => 74,  774 => 73,  771 => 72,  768 => 71,  765 => 70,  763 => 69,  762 => 68,  761 => 67,  760 => 66,  758 => 65,  754 => 64,  751 => 63,  748 => 62,  745 => 61,  742 => 60,  739 => 59,  736 => 58,  733 => 57,  731 => 56,  728 => 55,  725 => 54,  722 => 53,  719 => 52,  716 => 51,  713 => 50,  710 => 49,  707 => 48,  693 => 47,  675 => 4,  662 => 3,  653 => 323,  649 => 322,  642 => 318,  638 => 316,  630 => 314,  628 => 313,  623 => 311,  618 => 308,  616 => 307,  613 => 306,  609 => 304,  607 => 303,  603 => 301,  601 => 300,  597 => 298,  595 => 297,  592 => 296,  587 => 293,  585 => 292,  580 => 289,  578 => 288,  573 => 285,  571 => 284,  567 => 282,  565 => 281,  561 => 279,  557 => 277,  555 => 276,  550 => 274,  542 => 269,  538 => 268,  532 => 265,  520 => 262,  516 => 260,  512 => 258,  509 => 257,  506 => 256,  503 => 255,  500 => 254,  498 => 253,  493 => 250,  485 => 245,  473 => 244,  469 => 243,  457 => 242,  453 => 240,  450 => 239,  447 => 238,  444 => 237,  441 => 236,  438 => 235,  436 => 234,  433 => 233,  429 => 231,  425 => 229,  419 => 228,  409 => 226,  406 => 225,  402 => 224,  396 => 220,  394 => 219,  391 => 218,  385 => 216,  379 => 214,  377 => 213,  373 => 211,  371 => 210,  366 => 207,  363 => 206,  360 => 205,  358 => 204,  355 => 203,  352 => 202,  344 => 198,  336 => 195,  333 => 194,  331 => 193,  326 => 192,  324 => 191,  321 => 190,  315 => 186,  312 => 185,  308 => 183,  302 => 182,  292 => 180,  289 => 179,  286 => 178,  282 => 177,  276 => 173,  273 => 172,  271 => 171,  267 => 170,  263 => 168,  260 => 167,  254 => 165,  246 => 163,  243 => 162,  237 => 160,  235 => 159,  231 => 158,  224 => 157,  222 => 156,  216 => 155,  212 => 154,  209 => 153,  207 => 152,  204 => 151,  200 => 149,  196 => 147,  190 => 146,  182 => 144,  179 => 143,  176 => 142,  172 => 141,  166 => 137,  164 => 136,  158 => 134,  156 => 133,  151 => 130,  149 => 129,  145 => 127,  139 => 125,  137 => 124,  133 => 123,  124 => 117,  114 => 113,  112 => 112,  109 => 111,  106 => 110,  99 => 41,  96 => 40,  89 => 37,  86 => 36,  83 => 35,  80 => 34,  77 => 33,  73 => 1,  71 => 45,  69 => 44,  67 => 31,  65 => 30,  63 => 29,  61 => 28,  59 => 27,  56 => 24,  54 => 23,  50 => 20,  47 => 18,  45 => 17,  43 => 16,  41 => 15,  39 => 14,  37 => 13,  35 => 12,  33 => 11,  30 => 8,  28 => 7,  11 => 1,);
     }
 }
 /* {% extends 'partials/base.html.twig' %}*/
 /* */
 /* {% macro spanToggle(input, length) %}*/
-/*     {{ repeat('&nbsp;&nbsp;', (length - input|length) / 2) ~ input ~ repeat('&nbsp;&nbsp;', (length - input|length) / 2) }}*/
+/*     {{ (repeat('&nbsp;&nbsp;', (length - input|length) / 2) ~ input ~ repeat('&nbsp;&nbsp;', (length - input|length) / 2))|raw }}*/
 /* {% endmacro %}*/
 /* */
 /* {% if admin.route %}*/
@@ -994,12 +929,10 @@ $context["p"], "published", array())) ? ("Published &bull; ") : ("Non-Published 
 /* {% endif %}*/
 /* */
 /* {% set modular = context.modular ? 'modular_' : '' %}*/
-/* */
 /* {% set warn = config.plugins.admin.warnings.delete_page %}*/
-/* */
 /* {% set admin_lang = admin.session.admin_lang ?: 'en' %}*/
-/* */
 /* {% set page_lang = context.language %}*/
+/* {% set type = 'page' %}*/
 /* */
 /* {% block stylesheets %}*/
 /*     {% if mode == 'edit' %}*/
@@ -1009,14 +942,6 @@ $context["p"], "published", array())) ? ("Published &bull; ") : ("Non-Published 
 /* {% endblock %}*/
 /* */
 /* {% block javascripts %}*/
-/*     {% do assets.addJs(theme_url~'/js/pages-all.js') %}*/
-/*     {% do assets.addJs(theme_url~'/js/speakingurl.min.js') %}*/
-/*     {% do assets.addJs(theme_url~'/js/slugify.min.js') %}*/
-/*     {% if mode == 'edit' %}*/
-/*         {% do assets.addJs(theme_url~'/js/codemirror-compressed.js') %}*/
-/*         {% do assets.addJs(theme_url~'/js/mdeditor.js') %}*/
-/*         {% do assets.addJs(theme_url~'/js/dropzone.min.js') %}*/
-/*     {% endif %}*/
 /*     {{ parent() }}*/
 /* {% endblock %}*/
 /* */
@@ -1041,11 +966,11 @@ $context["p"], "published", array())) ? ("Published &bull; ") : ("Non-Published 
 /*     {% endif %}*/
 /* */
 /*     {% for p in pcol %}*/
-/*         {% set description = (not p.page ? 'Folder &bull; ' : 'Page &bull; ') ~*/
-/*                              (p.modular ? 'Modular &bull; ' : '') ~*/
-/*                              (p.routable ? 'Routable &bull; ' : 'Non-Routable &bull; ') ~*/
-/*                              (p.visible ? 'Visible &bull; ' : 'Non-Visible &bull; ') ~*/
-/*                              (p.published ? 'Published &bull; ' : 'Non-Published &bull; ') %}*/
+/*         {% set description = (not p.page ? "PLUGIN_ADMIN.FOLDER"|tu ~ ' &bull; ' : "PLUGIN_ADMIN.PAGE"|tu ~ ' &bull; ') ~*/
+/*                              (p.modular ? "PLUGIN_ADMIN.MODULAR"|tu ~ ' &bull; ' : '') ~*/
+/*                              (p.routable ? "PLUGIN_ADMIN.ROUTABLE"|tu ~ ' &bull; ' : "PLUGIN_ADMIN.NON_ROUTABLE"|tu ~ ' &bull; ') ~*/
+/*                              (p.visible ? "PLUGIN_ADMIN.VISIBLE"|tu ~ ' &bull; ' : "PLUGIN_ADMIN.NON_VISIBLE"|tu ~ ' &bull; ') ~*/
+/*                              (p.published ? "PLUGIN_ADMIN.PUBLISHED"|tu ~ ' &bull; ' : "PLUGIN_ADMIN.NON_PUBLISHED"|tu ~ ' &bull; ') %}*/
 /*         {% set page_route =  p.rawRoute|trim('/') %}*/
 /*         {% if p.language and p.language != admin_lang %}*/
 /*             {% set page_url = base_url_simple ~ '/' ~ p.language ~ '/' ~ admin_route ~ '/pages/' ~ page_route %}*/
@@ -1055,11 +980,12 @@ $context["p"], "published", array())) ? ("Published &bull; ") : ("Non-Published 
 /* */
 /*         <li class="page-item" data-nav-id="{{ p.route }}">*/
 /*             <div class="row">*/
-/*                 <span {{ p.children(0).count > 0 ? 'data-toggle="children"' : ''}} data-hint="{{ description|trim(' &bull; ') }}" class="hint--bottom">*/
+/*                 <span {{ p.children(0).count > 0 ? 'data-toggle="children"' : ''}}>*/
 /*                 <i class="page-icon fa fa-fw fa-circle-o {{ p.children(0).count > 0 ? 'children-closed' : ''}} {{ p.modular ? 'modular' : (not p.routable ? 'not-routable' : (not p.visible ? 'not-visible' : (not p.page ? 'folder' :  ''))) }}"></i>*/
 /*                 </span>*/
+/*                 <span data-hint="{{ description|trim(' &bull; ')|raw }}" class="hint--right">*/
 /*                 <a href="{{ page_url }}" class="page-edit">{{ p.title|e }}</a>*/
-/* */
+/*                 </span>*/
 /*                 {% if p.language %}*/
 /*                     <span class="badge lang {% if p.language == admin_lang %}info{% endif %}">{{p.language}}</span>*/
 /*                 {% endif %}*/
@@ -1104,7 +1030,6 @@ $context["p"], "published", array())) ? ("Published &bull; ") : ("Non-Published 
 /*                     {% endif %}*/
 /*                 </ul>*/
 /*             </div>*/
-/* */
 /*             {% if admin.multilang %}*/
 /*                 <div class="button-group">*/
 /*                     <button type="button" class="button disabled">*/
@@ -1112,6 +1037,7 @@ $context["p"], "published", array())) ? ("Published &bull; ") : ("Non-Published 
 /*                         {% set langName = admin.siteLanguages[admin_lang] %}*/
 /*                         {{ langName[:1]|upper ~ langName[1:] }}*/
 /*                     </button>*/
+/*                     {%  if admin.languages_enabled|length > 1 %}*/
 /*                     <button type="button" class="button dropdown-toggle" data-toggle="dropdown">*/
 /*                         <i class="fa fa-caret-down"></i>*/
 /*                     </button>*/
@@ -1123,31 +1049,29 @@ $context["p"], "published", array())) ? ("Published &bull; ") : ("Non-Published 
 /*                             {% endif %}*/
 /*                         {% endfor %}*/
 /*                     </ul>*/
-/* */
+/*                     {% endif %}*/
 /*                 </div>*/
 /*             {% endif %}*/
 /* */
 /*         {% elseif mode == 'edit' %}*/
 /* */
-/*             {{  preview_link }}*/
+/*             {{ preview_link|raw }}*/
 /*             <a class="button" href="{{ base_url }}/pages"><i class="fa fa-reply"></i> {{ "PLUGIN_ADMIN.BACK"|tu }}</a>*/
 /*             {% if exists %}*/
-/*                 <a class="button" href="{{ uri.addNonce(page_url ~ '/task' ~ config.system.param_sep ~ 'copy', 'admin-form', 'admin-nonce') }}" class="page-copy" ><i class="fa fa-copy"></i> {{ "PLUGIN_ADMIN.COPY"|tu }}</a>*/
+/*                 <a class="button disable-after-click" href="{{ uri.addNonce(page_url ~ '/task' ~ config.system.param_sep ~ 'copy', 'admin-form', 'admin-nonce') }}" class="page-copy" ><i class="fa fa-copy"></i> {{ "PLUGIN_ADMIN.COPY"|tu }}</a>*/
 /*                 <a class="button" href="#" data-remodal-target="move"><i class="fa fa-arrows"></i> {{ "PLUGIN_ADMIN.MOVE"|tu }}</a>*/
 /*                 {% if config.plugins['admin-pro'].enabled %}*/
-/*                     {{dump(adminpro.revisions)}}*/
 /*                     <a class="button" href="#" data-remodal-target="revisions"><i class="fa fa-history"></i> {{ "PLUGIN_ADMIN_PRO.REVISIONS"|tu }}</a>*/
-/* */
 /*                 {% endif %}*/
 /*                 {% if warn %}*/
 /*                     <a class="button" href="#delete" data-remodal-target="delete" data-delete-url="{{ uri.addNonce(page_url ~ '/task' ~ config.system.param_sep ~ 'delete', 'admin-form', 'admin-nonce') }}"><i class="fa fa-close"></i> {{ "PLUGIN_ADMIN.DELETE"|tu }}</a>*/
 /*                 {% else %}*/
-/*                     <a class="button" href="{{ uri.addNonce(uri.route(true) ~ '/task' ~ config.system.param_sep ~ 'delete', 'admin-form', 'admin-nonce') }}" class="page-delete" ><i class="fa fa-close"></i></a>*/
+/*                     <a class="button disable-after-click" href="{{ uri.addNonce(uri.route(true) ~ '/task' ~ config.system.param_sep ~ 'delete', 'admin-form', 'admin-nonce') }}" class="page-delete" ><i class="fa fa-close"></i></a>*/
 /*                 {% endif %}*/
 /*             {% endif %}*/
 /* */
 /*             <div class="button-group">*/
-/*                 <button class="button" name="task" value="save" form="blueprints" type="submit"><i class="fa fa-check"></i> {{ "PLUGIN_ADMIN.SAVE"|tu }}</button>*/
+/*                 <button class="button disable-after-click" name="task" value="save" form="blueprints" type="submit"><i class="fa fa-check"></i> {{ "PLUGIN_ADMIN.SAVE"|tu }}</button>*/
 /*                 {% if exists and admin.multilang %}*/
 /*                     {% if context.untranslatedLanguages %}*/
 /*                         <button type="button" class="button dropdown-toggle" data-toggle="dropdown">*/
@@ -1157,7 +1081,7 @@ $context["p"], "published", array())) ? ("Published &bull; ") : ("Non-Published 
 /*                             {% for langCode in context.untranslatedLanguages %}*/
 /*                                 {% set langName = admin.siteLanguages[langCode] %}*/
 /*                                 {% if langCode != page_lang %}*/
-/*                                     <li><button class="button task" name="task" value="saveas" lang="{{langCode}}" form="blueprints" type="submit">{{ "PLUGIN_ADMIN.SAVE_AS"|tu }} {{ langName[:1]|upper ~ langName[1:] }}</button>*/
+/*                                     <li><button class="button disable-after-click task" name="task" value="saveas" lang="{{langCode}}" form="blueprints" type="submit">{{ "PLUGIN_ADMIN.SAVE_AS"|tu }} {{ langName[:1]|upper ~ langName[1:] }}</button>*/
 /*                                 {% endif %}*/
 /*                             {% endfor %}*/
 /*                         </ul>*/
@@ -1172,7 +1096,7 @@ $context["p"], "published", array())) ? ("Published &bull; ") : ("Non-Published 
 /*         <h1><i class="fa fa-fw fa-file-text-o"></i> {{ "PLUGIN_ADMIN.ADD_PAGE"|tu }}</h1>*/
 /*     {% elseif mode == 'edit' %}*/
 /*         <h1><i class="fa fa-fw fa-file-text-o"></i>*/
-/*             {{ context.exists ? "PLUGIN_ADMIN.EDIT"|tu ~ " <i>#{context.menu|e}</i>" : "PLUGIN_ADMIN.CREATE"|tu ~ " <i>#{context.menu|e}</i>" }}*/
+/*             {{ context.exists ? "PLUGIN_ADMIN.EDIT"|tu : "PLUGIN_ADMIN.CREATE"|tu }} <i>{{ context.menu }}</i>*/
 /*         </h1>*/
 /*     {% else %}*/
 /*         <h1><i class="fa fa-fw fa-file-text-o"></i> {{ "PLUGIN_ADMIN.MANAGE_PAGES"|tu }}</h1>*/
@@ -1180,12 +1104,11 @@ $context["p"], "published", array())) ? ("Published &bull; ") : ("Non-Published 
 /* {% endblock %}*/
 /* */
 /* {% block content %}*/
-/*     <div class="admin-block clear">*/
-/*     {% include 'partials/messages.html.twig' %}*/
+/*     <div class="clear">*/
 /*     {% if mode == 'new' %}*/
 /*         {% include 'partials/blueprints-new.html.twig' with { blueprints: admin.blueprints('pages/page'), data: context } %}*/
 /*     {% elseif mode == 'edit' %}*/
-/*         <div class="admin-form-wrapper" data-media-url="{{ base_url }}/media/{{ admin.route|trim('/') }}.json" data-media-local="{{ base_url_relative_frontend }}/{{ admin.route|trim('/') }}" data-media-types="{{ media_types }}">*/
+/*         <div class="admin-form-wrapper">*/
 /*             <div id="admin-topbar">*/
 /* */
 /*                 {% if admin.multilang and page_lang %}*/
@@ -1221,9 +1144,9 @@ $context["p"], "published", array())) ? ("Published &bull; ") : ("Non-Published 
 /*                 <form id="admin-mode-toggle">*/
 /*                     <div class="switch-toggle switch-grav">*/
 /*                         <input type="radio" value="normal" data-leave-url="{{ base_url }}/pages/{{ admin.route|trim('/') }}/mode{{ config.system.param_sep }}normal" id="normal" name="mode-switch" class="highlight" {% if admin.session.expert == '0' %} checked="checked"{% endif %}>*/
-/*                         <label for="normal">{{ normalText|trim }}</label>*/
+/*                         <label for="normal">{{ normalText|raw }}</label>*/
 /*                         <input type="radio" value="expert" data-leave-url="{{ base_url }}/pages/{{ admin.route|trim('/') }}/mode{{ config.system.param_sep }}expert" id="expert" name="mode-switch" class="highlight" {% if admin.session.expert == '1' %} checked="checked"{% endif %}>*/
-/*                         <label for="expert">{{ expertText|trim }}</label>*/
+/*                         <label for="expert">{{ expertText|raw }}</label>*/
 /*                         <a></a>*/
 /*                     </div>*/
 /*                 </form>*/
@@ -1234,13 +1157,13 @@ $context["p"], "published", array())) ? ("Published &bull; ") : ("Non-Published 
 /*             {% if context.blueprints.fields and admin.session.expert == '0' %}*/
 /*                 {% include 'partials/blueprints.html.twig' with { blueprints: context.blueprints, data: context } %}*/
 /*             {% else %}*/
-/*                 {% include 'partials/blueprints-raw.html.twig' with { blueprints: admin.blueprints('pages/'~modular~'raw'), data: context } %}*/
+/*                 {% include 'partials/blueprints-raw.html.twig' with { blueprints: admin.blueprints('admin/pages/'~modular~'raw'), data: context } %}*/
 /*             {% endif %}*/
 /*         </div>*/
 /*     {% else %}*/
 /*         <form id="page-filtering">*/
 /*             <div class="page-filters">*/
-/*                 <input type="text" data-template-types="{{ admin.types|merge(admin.modularTypes)|json_encode|e('html_attr') }}" data-template-access-levels="{{ admin.accessLevels|json_encode|e('html_attr') }}" placeholder="{{ "PLUGIN_ADMIN.ADD_FILTERS"|tu }}" class="page-filter" name="page-filter" />*/
+/*                 <input type="text" data-filter-labels="{{ [{'id': 'mode', 'name': 'PLUGIN_ADMIN.PAGE_MODES'|tu}, {'id': 'type', 'name': 'PLUGIN_ADMIN.PAGE_TYPES'|tu}, {'id': 'access', 'name': 'PLUGIN_ADMIN.ACCESS_LEVELS'|tu}] |json_encode|e('html_attr')}}" data-filter-types="{{ admin.types|merge(admin.modularTypes)|json_encode|e('html_attr') }}" data-filter-access-levels="{{ admin.accessLevels|json_encode|e('html_attr') }}" placeholder="{{ "PLUGIN_ADMIN.ADD_FILTERS"|tu }}" class="page-filter" name="page-filter" />*/
 /*             </div>*/
 /*             <div class="page-search">*/
 /*                 <input type="text" placeholder="{{ "PLUGIN_ADMIN.SEARCH_PAGES"|tu }}" name="page-search" />*/
@@ -1250,34 +1173,27 @@ $context["p"], "published", array())) ? ("Published &bull; ") : ("Non-Published 
 /*                 <span class="button button-x-small" data-page-toggleall="collapse"><i class="fa fa-fw fa-minus-circle"></i> {{ "PLUGIN_ADMIN.COLLAPSE_ALL"|tu }}</span>*/
 /*             </div>*/
 /*         </form>*/
-/*         <ul class="pages-list depth-0">*/
-/*             {{ _self.loop(pages, 0, _context) }}*/
-/*         </ul>*/
+/*         <div class="pages-list">*/
+/*             <ul class="depth-0">*/
+/*                 {{ _self.loop(pages, 0, _context) }}*/
+/*             </ul>*/
+/*             {% include 'partials/page-legend.html.twig' %}*/
+/*         </div>*/
 /*     {% endif %}*/
-/*     </div>*/
-/* */
-/*     <div class="remodal" data-remodal-id="generic" data-remodal-options="hashTracking: false">*/
-/*         <form>*/
-/*             <h1>{{ "PLUGIN_ADMIN.ERROR"|tu }}</h1>*/
-/*             <div class="error-content"></div>*/
-/*             <div class="button-bar">*/
-/*                 <a class="button remodal-confirm" href="#">{{ "PLUGIN_ADMIN.CLOSE"|tu }}</a>*/
-/*             </div>*/
-/*         </form>*/
 /*     </div>*/
 /* */
 /*     {% if mode == 'list' %}*/
 /* */
 /*         <div class="remodal" data-remodal-id="modal" data-remodal-options="hashTracking: false">*/
-/*             {% include 'partials/blueprints-new.html.twig' with { blueprints: admin.blueprints('pages/new'), data: context } %}*/
+/*             {% include 'partials/blueprints-new.html.twig' with { blueprints: admin.blueprints('admin/pages/new'), data: context } %}*/
 /*         </div>*/
 /* */
 /*         <div class="remodal" data-remodal-id="modal-folder" data-remodal-options="hashTracking: false">*/
-/*             {% include 'partials/blueprints-new-folder.html.twig' with { blueprints: admin.blueprints('pages/new_folder'), data: context } %}*/
+/*             {% include 'partials/blueprints-new-folder.html.twig' with { blueprints: admin.blueprints('admin/pages/new_folder'), data: context } %}*/
 /*         </div>*/
 /* */
 /*         <div class="remodal" data-remodal-id="modular" data-remodal-options="hashTracking: false">*/
-/*             {% include 'partials/blueprints-new.html.twig' with { blueprints: admin.blueprints('pages/modular_new'), data: context } %}*/
+/*             {% include 'partials/blueprints-new.html.twig' with { blueprints: admin.blueprints('admin/pages/modular_new'), data: context } %}*/
 /*         </div>*/
 /* */
 /*     {% endif %}*/
@@ -1285,52 +1201,30 @@ $context["p"], "published", array())) ? ("Published &bull; ") : ("Non-Published 
 /*     {% if mode == 'edit' %}*/
 /*     <div class="remodal" data-remodal-id="move" data-remodal-options="hashTracking: false">*/
 /* */
-/*         {% include 'partials/page-move.html.twig' with { blueprints: admin.blueprints('pages/move'), data: context } %}*/
+/*         {% include 'partials/page-move.html.twig' with { blueprints: admin.blueprints('admin/pages/move'), data: context } %}*/
 /*     </div>*/
 /*     <div class="remodal" data-remodal-id="revisions" data-remodal-options="hashTracking: false">*/
 /*         {% include ['partials/page-revisions.html.twig', 'empty.html.twig'] with { data: context } %}*/
 /*     </div>*/
 /*     {% endif %}*/
 /* */
+/*     {% include 'partials/modal-changes-detected.html.twig' %}*/
+/* */
 /*     <div class="remodal" data-remodal-id="delete" data-remodal-options="hashTracking: false">*/
 /*         <form>*/
 /*             <h1>{{ "PLUGIN_ADMIN.MODAL_DELETE_PAGE_CONFIRMATION_REQUIRED_TITLE"|tu }}</h1>*/
+/*             <p class="bigger">*/
+/*                 {% if context %}*/
+/*                     <strong>{{ "PLUGIN_ADMIN.PAGE"|tu }}: {{ context.title }}</strong>*/
+/*                 {% endif %}*/
+/*             </p>*/
 /*             <p class="bigger">*/
 /*               {{ "PLUGIN_ADMIN.MODAL_DELETE_PAGE_CONFIRMATION_REQUIRED_DESC"|tu }}*/
 /*             </p>*/
 /*             <br>*/
 /*             <div class="button-bar">*/
-/*             <a class="button secondary remodal-cancel" href="#"><i class="fa fa-fw fa-close"></i> {{ "PLUGIN_ADMIN.CANCEL"|tu }}</a>*/
-/*             <a class="button" data-delete-action href="#"><i class="fa fa-fw fa-check"></i> {{ "PLUGIN_ADMIN.CONTINUE"|tu }}</a>*/
-/*             </div>*/
-/*         </form>*/
-/*     </div>*/
-/* */
-/* */
-/*     <div class="remodal" data-remodal-id="changes">*/
-/*         <form>*/
-/*             <h1>{{ "PLUGIN_ADMIN.MODAL_CHANGED_DETECTED_TITLE"|tu }}</h1>*/
-/*             <p class="bigger">*/
-/*                 {{ "PLUGIN_ADMIN.MODAL_CHANGED_DETECTED_DESC"|tu }}*/
-/*             </p>*/
-/*             <br>*/
-/*             <div class="button-bar">*/
-/*             <a class="button secondary" data-leave-action="cancel" href="#"><i class="fa fa-fw fa-close"></i> {{ "PLUGIN_ADMIN.CANCEL"|tu }}</a>*/
-/*             <a class="button" data-leave-action="continue" href="#"><i class="fa fa-fw fa-check"></i> {{ "PLUGIN_ADMIN.CONTINUE"|tu }}</a>*/
-/*             </div>*/
-/*         </form>*/
-/*     </div>*/
-/* */
-/*     <div class="remodal" data-remodal-id="delete-media" data-remodal-options="hashTracking: false">*/
-/*         <form>*/
-/*             <h1>{{ "PLUGIN_ADMIN.MODAL_DELETE_FILE_CONFIRMATION_REQUIRED_TITLE"|tu }}</h1>*/
-/*             <p class="bigger">*/
-/*                 {{ "PLUGIN_ADMIN.MODAL_DELETE_FILE_CONFIRMATION_REQUIRED_DESC"|tu }}*/
-/*             </p>*/
-/*             <br>*/
-/*             <div class="button-bar">*/
-/*             <a class="button secondary remodal-cancel" href="#"><i class="fa fa-fw fa-close"></i> {{ "PLUGIN_ADMIN.CANCEL"|tu }}</a>*/
-/*             <a class="button remodal-confirm" href="#"><i class="fa fa-fw fa-check"></i> {{ "PLUGIN_ADMIN.CONTINUE"|tu }}</a>*/
+/*             <button data-remodal-action="cancel" class="button secondary remodal-cancel"><i class="fa fa-fw fa-close"></i> {{ "PLUGIN_ADMIN.CANCEL"|tu }}</button>*/
+/*             <a class="button disable-after-click" data-delete-action href="#"><i class="fa fa-fw fa-check"></i> {{ "PLUGIN_ADMIN.CONTINUE"|tu }}</a>*/
 /*             </div>*/
 /*         </form>*/
 /*     </div>*/

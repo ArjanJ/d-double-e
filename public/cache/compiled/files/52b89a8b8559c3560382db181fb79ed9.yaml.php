@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/system/languages/de.yaml',
-    'modified' => 1456442350,
+    'modified' => 1475968568,
     'data' => [
         'FRONTMATTER_ERROR_PAGE' => '---
 title: %1$s
@@ -11,7 +11,7 @@ title: %1$s
 
 Pfad: `%2$s`
 
-**%3$s **
+**%3$s ** 
 
 ```
 %4$s
@@ -29,8 +29,14 @@ Pfad: `%2$s`
             'sex' => 'Geschlecht',
             'move' => 'Züge'
         ],
+        'INFLECTOR_ORDINALS' => [
+            'default' => '.',
+            'first' => '.',
+            'second' => '.',
+            'third' => '.'
+        ],
         'NICETIME' => [
-            'NO_DATE_PROVIDED' => 'Keine Daten vorhanden',
+            'NO_DATE_PROVIDED' => 'Kein Datum angegeben',
             'BAD_DATE' => 'Falsches Datum',
             'AGO' => 'her',
             'FROM_NOW' => 'ab jetzt',
@@ -41,13 +47,14 @@ Pfad: `%2$s`
             'WEEK' => 'Woche',
             'MONTH' => 'Monat',
             'YEAR' => 'Jahr',
-            'DECADE' => 'Dekade',
-            'SEC' => 'sek',
-            'MIN' => 'Min',
-            'HR' => 'std',
-            'WK' => 'wo',
-            'YR' => 'yh',
-            'DEC' => 'Jz',
+            'DECADE' => 'Jahrzehnt',
+            'SEC' => 'Sek.',
+            'MIN' => 'Min.',
+            'HR' => 'Std.',
+            'WK' => 'Wo.',
+            'MO' => 'Mo.',
+            'YR' => 'J.',
+            'DEC' => 'Dek.',
             'SECOND_PLURAL' => 'Sekunden',
             'MINUTE_PLURAL' => 'Minuten',
             'HOUR_PLURAL' => 'Stunden',
@@ -55,14 +62,14 @@ Pfad: `%2$s`
             'WEEK_PLURAL' => 'Wochen',
             'MONTH_PLURAL' => 'Monate',
             'YEAR_PLURAL' => 'Jahre',
-            'DECADE_PLURAL' => 'Dekaden',
+            'DECADE_PLURAL' => 'Jahrzehnte',
             'SEC_PLURAL' => 'Sekunden',
             'MIN_PLURAL' => 'Minuten',
             'HR_PLURAL' => 'Stunden',
             'WK_PLURAL' => 'Wochen',
             'MO_PLURAL' => 'Monate',
             'YR_PLURAL' => 'Jahre',
-            'DEC_PLURAL' => 'Dekaden'
+            'DEC_PLURAL' => 'Jahrzehnten'
         ],
         'FORM' => [
             'VALIDATION_FAIL' => '<b>Überprüfung fehlgeschlagen:</b>',
@@ -78,7 +85,7 @@ Pfad: `%2$s`
             5 => 'Juni',
             6 => 'Juli',
             7 => 'August',
-            8 => 'Semptember',
+            8 => 'September',
             9 => 'Oktober',
             10 => 'November',
             11 => 'Dezember'

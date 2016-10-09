@@ -2,10 +2,10 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/user/plugins/datetools/blueprints.yaml',
-    'modified' => 1460589913,
+    'modified' => 1475968185,
     'data' => [
         'name' => 'Date Tools',
-        'version' => '1.0.1',
+        'version' => '1.0.6',
         'description' => 'This plugin provides date tools to twig inside of Grav CMS using the [Carbon](https://github.com/briannesbitt/Carbon) DateTime api extension.',
         'icon' => 'clock-o',
         'author' => [

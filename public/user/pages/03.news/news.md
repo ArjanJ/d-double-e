@@ -4,8 +4,8 @@ menu: News
 
 content:
   order:
-    by: date
-    dir: asc
+    by: publish_date
+    dir: desc
   items: @self.children
   limit: 8
   pagination: true

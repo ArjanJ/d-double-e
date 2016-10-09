@@ -2,10 +2,10 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/user/plugins/error/blueprints.yaml',
-    'modified' => 1456442350,
+    'modified' => 1475968207,
     'data' => [
         'name' => 'Error',
-        'version' => '1.4.1',
+        'version' => '1.5.1',
         'description' => 'Displays the error page.',
         'icon' => 'warning',
         'author' => [
@@ -22,12 +22,12 @@ return [
             'fields' => [
                 'enabled' => [
                     'type' => 'toggle',
-                    'label' => 'Plugin status',
+                    'label' => 'PLUGIN_ADMIN.PLUGIN_STATUS',
                     'highlight' => 1,
                     'default' => 0,
                     'options' => [
-                        1 => 'Enabled',
-                        0 => 'Disabled'
+                        1 => 'PLUGIN_ADMIN.ENABLED',
+                        0 => 'PLUGIN_ADMIN.DISABLED'
                     ],
                     'validate' => [
                         'type' => 'bool'

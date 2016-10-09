@@ -2,8 +2,22 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/system/languages/pt.yaml',
-    'modified' => 1456442350,
+    'modified' => 1475968568,
     'data' => [
+        'FRONTMATTER_ERROR_PAGE' => '---
+título: %1$s
+---
+
+# Erro: Frontmatter inválida
+
+Caminho: `%2$s`
+
+**%3$s**
+
+```
+%4$s
+```
+',
         'INFLECTOR_UNCOUNTABLE' => [
             1 => 'informação',
             2 => 'arroz',
@@ -14,6 +28,10 @@ return [
             'sex' => 'sexos'
         ],
         'NICETIME' => [
+            'NO_DATE_PROVIDED' => 'Não foi fornecida data',
+            'BAD_DATE' => 'Data inválida',
+            'AGO' => 'atrás',
+            'FROM_NOW' => 'a partir de agora',
             'SECOND' => 'segundo',
             'MINUTE' => 'minuto',
             'HOUR' => 'hora',
@@ -24,8 +42,11 @@ return [
             'DECADE' => 'década',
             'SEC' => 'seg',
             'MIN' => 'mín',
-            'MO' => 'mês',
-            'YR' => 'ano',
+            'HR' => 'h',
+            'WK' => 'sem',
+            'MO' => 'm',
+            'YR' => 'a',
+            'DEC' => 'dec',
             'SECOND_PLURAL' => 'segundos',
             'MINUTE_PLURAL' => 'minutos',
             'HOUR_PLURAL' => 'horas',
@@ -37,10 +58,12 @@ return [
             'SEC_PLURAL' => 'seg',
             'MIN_PLURAL' => 'mins',
             'HR_PLURAL' => 'hrs',
+            'WK_PLURAL' => 'sems',
             'YR_PLURAL' => 'anos'
         ],
         'FORM' => [
-            'VALIDATION_FAIL' => '<b>Validação falhada: </b>'
+            'VALIDATION_FAIL' => '<b>Validação falhada: </b>',
+            'MISSING_REQUIRED_FIELD' => 'Campo obrigatório ausente:'
         ],
         'MONTHS_OF_THE_YEAR' => [
             0 => 'Janeiro',

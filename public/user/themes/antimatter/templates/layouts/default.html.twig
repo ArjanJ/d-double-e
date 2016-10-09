@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% block head %}
+			<meta charset="utf-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+			<title>{% if header.title %}{{ header.title|e('html') }}{% else %}{{ site.title|e('html') }}{% endif %}</title>
+			<meta name="description" content="{% if header.description %}{{ header.description|e('html') }}{% elseif page.summary %}{{ page.summary(100)|striptags }}{% endif %}{{ site.description|e('html') }}">
+
+			<link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,700,300' rel='stylesheet' type='text/css'>
+
+			{% do assets.addCss('theme://css/bluku.css') %}
+			{{ assets.css() }}
+
+			<meta property="og:title" content="{% if header.title %}{{ header.title|e('html') }}{% else %}{{ site.title|e('html') }}{% endif %}">
+			<meta property="og:description" content="{% if header.description %}{{ header.description|e('html') }}{% elseif page.summary %}{{ page.summary(100)|striptags }}{% endif %}{{ site.description|e('html') }}">
+			<meta property="og:image" content="http://www.itsddoublee.com/images/d-double-e-splash-card.jpg">
+			<meta property="og:url" content="http://www.itsddoublee.com">
+			<meta name="twitter:card" content="summary_large_image">
+
+		{% endblock %}
+	</head>
+
+	<body>
+		{% include "./partials/header.html.twig" %}
+
+		<main class="site-main {{ page.menu }}">
+			{% block content %}{% endblock %}
+		</main>
+
+		{% include "./partials/footer.html.twig" %}
+
+		{% do assets.addJs('theme://js/build/bundle.js') %}
+		{{ assets.js() }}
+	</body>
+</html>

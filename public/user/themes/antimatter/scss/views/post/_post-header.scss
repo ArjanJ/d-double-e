@@ -1,0 +1,51 @@
+.post-header {
+  display: flex;
+  align-items: center;
+  min-height: 75vh;
+  padding: ($base-space * 4) (0);
+  position: relative;
+  z-index: 1;
+  box-shadow: inset 0 -35px 65px rgba(black, 0.4);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+
+  &:before {
+    @include cover;
+    content: "";
+    position: absolute;
+    background: linear-gradient(to bottom, $theme-color-1, transparent);
+    z-index: -1;
+  }
+
+  &__heading {
+    @extend %u-ls-6;
+    text-shadow: 0 4px 22px rgba(black, 0.15);
+    color: white;
+    font-size: map-get($heading-sizes, 4);
+
+    @include bp(small) {
+      @extend %u-ls-5;
+      font-size: map-get($heading-sizes, 3);
+    }
+
+    @include bp(medium) {
+      @extend %u-ls-4;
+      font-size: map-get($heading-sizes, 2);
+    }
+
+    @include bp(large) {
+      @extend %u-ls-3;
+      font-size: map-get($heading-sizes, 1);
+    }
+  }
+
+  .home-hero__bottom-mask {
+    opacity: 1;
+  }
+
+  &__date {
+    color: white;
+    font-weight: 600;
+  }
+}

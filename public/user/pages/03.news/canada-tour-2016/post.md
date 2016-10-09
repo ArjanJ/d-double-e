@@ -1,5 +1,6 @@
 ---
 title: 'Canada Tour 2016'
+publish_date: '18-08-2016 00:00'
 cover_image: bw-mic.jpg
 ---
 

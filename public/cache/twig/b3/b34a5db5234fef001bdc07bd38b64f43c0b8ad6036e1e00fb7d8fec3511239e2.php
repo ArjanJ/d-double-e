@@ -16,7 +16,9 @@ class __TwigTemplate_05cb0760c7b275b83812fbfe9ea8b78077ce2de89d1f78e2d90596e88b5
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        echo "<div class=\"form-tabs\">
+        echo "<div class=\"form-tabs ";
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["field"]) ? $context["field"] : null), "class", array()), "html", null, true);
+        echo "\">
 
 ";
         // line 3
@@ -41,6 +43,12 @@ class __TwigTemplate_05cb0760c7b275b83812fbfe9ea8b78077ce2de89d1f78e2d90596e88b5
         if ($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "fields", array())) {
             // line 12
             echo "    ";
+            $context["storedValue"] = $this->env->getExtension('GravTwigExtension')->jsonDecodeFilter(_twig_default_filter($this->env->getExtension('GravTwigExtension')->getCookie("grav-tabs-state"), "{}"));
+            // line 13
+            echo "    ";
+            $context["tabsKey"] = twig_join_filter(twig_get_array_keys_filter($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "fields", array())), ".");
+            // line 14
+            echo "    ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["field"]) ? $context["field"] : null), "fields", array()));
             $context['loop'] = array(
@@ -57,31 +65,35 @@ class __TwigTemplate_05cb0760c7b275b83812fbfe9ea8b78077ce2de89d1f78e2d90596e88b5
                 $context['loop']['last'] = 1 === $length;
             }
             foreach ($context['_seq'] as $context["_key"] => $context["tab"]) {
-                // line 13
+                // line 15
                 echo "        ";
-                if (($this->getAttribute($context["tab"], "type", array()) == "tab")) {
-                    // line 14
-                    echo "        <input type=\"radio\" name=\"tab\" id=\"tab";
-                    echo $this->getAttribute($context["loop"], "index", array());
-                    echo "\" class=\"tab-head\" ";
-                    echo ((((isset($context["active"]) ? $context["active"] : null) == $this->getAttribute($context["loop"], "index", array()))) ? ("checked=\"checked\"") : (""));
+                if ((($this->getAttribute($context["tab"], "type", array()) == "tab") && (twig_test_empty($this->getAttribute($context["tab"], "security", array())) || $this->env->getExtension('GravTwigExtension')->authorize($this->env->getExtension('GravTwigExtension')->arrayFunc($this->getAttribute($context["tab"], "security", array())))))) {
+                    // line 16
+                    echo "        <input type=\"radio\" name=\"tab-";
+                    echo twig_escape_filter($this->env, (isset($context["tabsKey"]) ? $context["tabsKey"] : null), "html", null, true);
+                    echo "\" id=\"tab-";
+                    echo twig_escape_filter($this->env, ((isset($context["tabsKey"]) ? $context["tabsKey"] : null) . $this->getAttribute($context["loop"], "index", array())), "html", null, true);
+                    echo "\" value=\"";
+                    echo twig_escape_filter($this->env, ((isset($context["scope"]) ? $context["scope"] : null) . $this->getAttribute($context["tab"], "name", array())), "html", null, true);
+                    echo "\" class=\"tab-head no-form\" ";
+                    echo (((($this->getAttribute((isset($context["storedValue"]) ? $context["storedValue"] : null), ("tab-" . (isset($context["tabsKey"]) ? $context["tabsKey"] : null))) == ((isset($context["scope"]) ? $context["scope"] : null) . $this->getAttribute($context["tab"], "name", array()))) || ((isset($context["active"]) ? $context["active"] : null) == $this->getAttribute($context["loop"], "index", array())))) ? ("checked=\"checked\"") : (""));
                     echo "/>
-        <label for=\"tab";
-                    // line 15
-                    echo $this->getAttribute($context["loop"], "index", array());
+        <label for=\"tab-";
+                    // line 17
+                    echo twig_escape_filter($this->env, ((isset($context["tabsKey"]) ? $context["tabsKey"] : null) . $this->getAttribute($context["loop"], "index", array())), "html", null, true);
                     echo "\">
             ";
-                    // line 16
+                    // line 18
                     if ($this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["grav"]) ? $context["grav"] : null), "twig", array(), "any", false, true), "twig", array(), "any", false, true), "filters", array(), "any", false, true), "tu", array(), "array", true, true)) {
-                        echo $this->env->getExtension('AdminTwigExtension')->tuFilter($this->getAttribute($context["tab"], "title", array()));
+                        echo twig_escape_filter($this->env, $this->env->getExtension('AdminTwigExtension')->tuFilter($this->getAttribute($context["tab"], "title", array())), "html", null, true);
                     } else {
-                        echo $this->env->getExtension('GravTwigExtension')->translate($this->getAttribute($context["tab"], "title", array()));
+                        echo twig_escape_filter($this->env, $this->env->getExtension('GravTwigExtension')->translate($this->getAttribute($context["tab"], "title", array())), "html", null, true);
                     }
-                    // line 17
+                    // line 19
                     echo "        </label>
         ";
                 }
-                // line 19
+                // line 21
                 echo "    ";
                 ++$context['loop']['index0'];
                 ++$context['loop']['index'];
@@ -95,10 +107,10 @@ class __TwigTemplate_05cb0760c7b275b83812fbfe9ea8b78077ce2de89d1f78e2d90596e88b5
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['tab'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 20
+            // line 22
             echo "    <div class=\"tab-body-wrapper\">
         ";
-            // line 21
+            // line 23
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute($context["field"], "fields", array()));
             $context['loop'] = array(
@@ -115,24 +127,30 @@ class __TwigTemplate_05cb0760c7b275b83812fbfe9ea8b78077ce2de89d1f78e2d90596e88b5
                 $context['loop']['last'] = 1 === $length;
             }
             foreach ($context['_seq'] as $context["_key"] => $context["field"]) {
-                // line 22
+                // line 24
                 echo "            ";
                 if (($this->getAttribute($context["field"], "type", array()) == "tab")) {
-                    // line 23
-                    echo "                ";
-                    $context["value"] = $this->getAttribute((isset($context["data"]) ? $context["data"] : null), "value", array(0 => $this->getAttribute($context["field"], "name", array())), "method");
-                    // line 24
-                    echo "                <div id=\"tab-body-";
-                    echo $this->getAttribute($context["loop"], "index", array());
-                    echo "\" class=\"tab-body\">
-                    ";
                     // line 25
-                    $this->loadTemplate(array(0 => (((("forms/fields/" . $this->getAttribute($context["field"], "type", array())) . "/") . $this->getAttribute($context["field"], "type", array())) . ".html.twig"), 1 => "forms/fields/text/text.html.twig"), "forms/fields/tabs/tabs.html.twig", 25)->display($context);
-                    // line 26
-                    echo "                </div>
-            ";
+                    echo "                ";
+                    if ((twig_test_empty($this->getAttribute($context["field"], "security", array())) || $this->env->getExtension('GravTwigExtension')->authorize($this->env->getExtension('GravTwigExtension')->arrayFunc($this->getAttribute($context["field"], "security", array()))))) {
+                        // line 26
+                        echo "                    ";
+                        $context["value"] = $this->getAttribute((isset($context["data"]) ? $context["data"] : null), "value", array(0 => $this->getAttribute($context["field"], "name", array())), "method");
+                        // line 27
+                        echo "                    <div id=\"tab-body-";
+                        echo twig_escape_filter($this->env, ((isset($context["tabsKey"]) ? $context["tabsKey"] : null) . $this->getAttribute($context["loop"], "index", array())), "html", null, true);
+                        echo "\" class=\"tab-body\">
+                        ";
+                        // line 28
+                        $this->loadTemplate(array(0 => (((("forms/fields/" . $this->getAttribute($context["field"], "type", array())) . "/") . $this->getAttribute($context["field"], "type", array())) . ".html.twig"), 1 => "forms/fields/text/text.html.twig"), "forms/fields/tabs/tabs.html.twig", 28)->display($context);
+                        // line 29
+                        echo "                    </div>
+                ";
+                    }
+                    // line 31
+                    echo "            ";
                 }
-                // line 28
+                // line 32
                 echo "        ";
                 ++$context['loop']['index0'];
                 ++$context['loop']['index'];
@@ -146,11 +164,11 @@ class __TwigTemplate_05cb0760c7b275b83812fbfe9ea8b78077ce2de89d1f78e2d90596e88b5
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['field'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 29
+            // line 33
             echo "    </div>
 ";
         }
-        // line 31
+        // line 35
         echo "</div>
 
 ";
@@ -168,10 +186,10 @@ class __TwigTemplate_05cb0760c7b275b83812fbfe9ea8b78077ce2de89d1f78e2d90596e88b5
 
     public function getDebugInfo()
     {
-        return array (  154 => 31,  150 => 29,  136 => 28,  132 => 26,  130 => 25,  125 => 24,  122 => 23,  119 => 22,  102 => 21,  99 => 20,  85 => 19,  81 => 17,  75 => 16,  71 => 15,  64 => 14,  61 => 13,  43 => 12,  41 => 11,  38 => 10,  34 => 8,  30 => 6,  28 => 5,  25 => 4,  23 => 3,  19 => 1,);
+        return array (  172 => 35,  168 => 33,  154 => 32,  151 => 31,  147 => 29,  145 => 28,  140 => 27,  137 => 26,  134 => 25,  131 => 24,  114 => 23,  111 => 22,  97 => 21,  93 => 19,  87 => 18,  83 => 17,  72 => 16,  69 => 15,  51 => 14,  48 => 13,  45 => 12,  43 => 11,  40 => 10,  36 => 8,  32 => 6,  30 => 5,  27 => 4,  25 => 3,  19 => 1,);
     }
 }
-/* <div class="form-tabs">*/
+/* <div class="form-tabs {{ field.class }}">*/
 /* */
 /* {% if uri.params.tab %}*/
 /*     {% set active = uri.params.tab %}*/
@@ -182,10 +200,12 @@ class __TwigTemplate_05cb0760c7b275b83812fbfe9ea8b78077ce2de89d1f78e2d90596e88b5
 /* {% endif %}*/
 /* */
 /* {% if field.fields %}*/
+/*     {% set storedValue = get_cookie('grav-tabs-state')|default('{}')|json_decode %}*/
+/*     {% set tabsKey = field.fields|keys|join('.') %}*/
 /*     {% for tab in field.fields %}*/
-/*         {% if tab.type == 'tab' %}*/
-/*         <input type="radio" name="tab" id="tab{{ loop.index }}" class="tab-head" {{ active == loop.index ? 'checked="checked"' : '' }}/>*/
-/*         <label for="tab{{ loop.index }}">*/
+/*         {% if tab.type == 'tab' and (tab.security is empty or authorize(array(tab.security))) %}*/
+/*         <input type="radio" name="tab-{{ tabsKey }}" id="tab-{{ tabsKey ~ loop.index }}" value="{{ (scope ~ tab.name) }}" class="tab-head no-form" {{ ((attribute(storedValue, 'tab-' ~ tabsKey) == scope ~ tab.name) or active == loop.index) ? 'checked="checked"' : '' }}/>*/
+/*         <label for="tab-{{ tabsKey ~ loop.index }}">*/
 /*             {% if grav.twig.twig.filters['tu'] is defined %}{{ tab.title|tu }}{% else %}{{ tab.title|t }}{% endif %}*/
 /*         </label>*/
 /*         {% endif %}*/
@@ -193,10 +213,12 @@ class __TwigTemplate_05cb0760c7b275b83812fbfe9ea8b78077ce2de89d1f78e2d90596e88b5
 /*     <div class="tab-body-wrapper">*/
 /*         {% for field in field.fields %}*/
 /*             {% if field.type == 'tab' %}*/
-/*                 {% set value = data.value(field.name) %}*/
-/*                 <div id="tab-body-{{ loop.index }}" class="tab-body">*/
-/*                     {% include ["forms/fields/#{field.type}/#{field.type}.html.twig", 'forms/fields/text/text.html.twig'] %}*/
-/*                 </div>*/
+/*                 {% if field.security is empty or authorize(array(field.security)) %}*/
+/*                     {% set value = data.value(field.name) %}*/
+/*                     <div id="tab-body-{{ tabsKey ~ loop.index }}" class="tab-body">*/
+/*                         {% include ["forms/fields/#{field.type}/#{field.type}.html.twig", 'forms/fields/text/text.html.twig'] %}*/
+/*                     </div>*/
+/*                 {% endif %}*/
 /*             {% endif %}*/
 /*         {% endfor %}*/
 /*     </div>*/
