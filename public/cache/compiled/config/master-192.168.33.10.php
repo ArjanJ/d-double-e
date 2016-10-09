@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledConfig',
-    'timestamp' => 1475986088,
-    'checksum' => '1a738fcb7c307b2c106b74a64037e43d',
+    'timestamp' => 1475986882,
+    'checksum' => '4185f1c02508bcb51f09572a7c1467a5',
     'files' => [
         'user/config' => [
             'media' => [
@@ -60,10 +60,6 @@ return [
             'plugins/datetools' => [
                 'file' => 'user/plugins/datetools/datetools.yaml',
                 'modified' => 1475968185
-            ],
-            'plugins/email' => [
-                'file' => 'user/plugins/email/email.yaml',
-                'modified' => 1475985756
             ],
             'plugins/error' => [
                 'file' => 'user/plugins/error/error.yaml',
@@ -147,28 +143,6 @@ return [
                     'short' => 'm/d/y'
                 ],
                 'enabled' => true
-            ],
-            'email' => [
-                'enabled' => true,
-                'from' => NULL,
-                'from_name' => NULL,
-                'to' => NULL,
-                'to_name' => NULL,
-                'mailer' => [
-                    'engine' => 'mail',
-                    'smtp' => [
-                        'server' => 'localhost',
-                        'port' => 25,
-                        'encryption' => 'none',
-                        'user' => '',
-                        'password' => ''
-                    ],
-                    'sendmail' => [
-                        'bin' => '/usr/sbin/sendmail'
-                    ]
-                ],
-                'content_type' => 'text/html',
-                'debug' => false
             ],
             'error' => [
                 'enabled' => false,
