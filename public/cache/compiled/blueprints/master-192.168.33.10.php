@@ -1,49 +1,53 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledBlueprints',
-    'timestamp' => 1475986888,
-    'checksum' => '2023ca0f87ec6848a7ce36440bfd9d81',
+    'timestamp' => 1477785187,
+    'checksum' => '4c53143b40804993c13571aa233ab547',
     'files' => [
         'user/plugins/admin/blueprints/config' => [
             'media' => [
                 'file' => 'user/plugins/admin/blueprints/config/media.yaml',
-                'modified' => 1475968165
+                'modified' => 1477785152
             ]
         ],
         'system/blueprints/config' => [
             'media' => [
                 'file' => 'system/blueprints/config/media.yaml',
-                'modified' => 1475968568
+                'modified' => 1477784909
             ],
             'site' => [
                 'file' => 'system/blueprints/config/site.yaml',
-                'modified' => 1475968568
+                'modified' => 1477784909
             ],
             'streams' => [
                 'file' => 'system/blueprints/config/streams.yaml',
-                'modified' => 1475968568
+                'modified' => 1477784909
             ],
             'system' => [
                 'file' => 'system/blueprints/config/system.yaml',
-                'modified' => 1475968568
+                'modified' => 1477784909
             ]
         ],
         'user/plugins' => [
             'plugins/admin' => [
                 'file' => 'user/plugins/admin/blueprints.yaml',
-                'modified' => 1475968165
+                'modified' => 1477785152
             ],
             'plugins/datetools' => [
                 'file' => 'user/plugins/datetools/blueprints.yaml',
                 'modified' => 1475968185
             ],
+            'plugins/email' => [
+                'file' => 'user/plugins/email/blueprints.yaml',
+                'modified' => 1477784961
+            ],
             'plugins/error' => [
                 'file' => 'user/plugins/error/blueprints.yaml',
-                'modified' => 1475968207
+                'modified' => 1477785145
             ],
             'plugins/form' => [
                 'file' => 'user/plugins/form/blueprints.yaml',
-                'modified' => 1475968211
+                'modified' => 1477785174
             ],
             'plugins/login' => [
                 'file' => 'user/plugins/login/blueprints.yaml',
@@ -916,6 +920,13 @@ return [
                 'name' => 'system.cache.redis',
                 'form_field' => false
             ],
+            'system.cache.redis.socket' => [
+                'type' => 'text',
+                'size' => 'medium',
+                'label' => 'PLUGIN_ADMIN.REDIS_SOCKET',
+                'name' => 'system.cache.redis.socket',
+                'validation' => 'loose'
+            ],
             'system.cache.redis.server' => [
                 'type' => 'text',
                 'size' => 'medium',
@@ -1208,15 +1219,14 @@ return [
                 'form_field' => false
             ],
             'system.errors.display' => [
-                'type' => 'toggle',
+                'type' => 'select',
                 'label' => 'PLUGIN_ADMIN.DISPLAY_ERRORS',
-                'highlight' => 0,
+                'size' => 'medium',
+                'highlight' => 1,
                 'options' => [
-                    1 => 'PLUGIN_ADMIN.YES',
-                    0 => 'PLUGIN_ADMIN.NO'
-                ],
-                'validate' => [
-                    'type' => 'bool'
+                    -1 => 'PLUGIN_ADMIN.ERROR_SYSTEM',
+                    0 => 'PLUGIN_ADMIN.ERROR_SIMPLE',
+                    1 => 'PLUGIN_ADMIN.ERROR_FULL_BACKTRACE'
                 ],
                 'name' => 'system.errors.display',
                 'validation' => 'loose'
@@ -1329,6 +1339,20 @@ return [
                     'type' => 'bool'
                 ],
                 'name' => 'system.images.debug',
+                'validation' => 'loose'
+            ],
+            'system.images.auto_fix_orientation' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_ADMIN.IMAGES_AUTO_FIX_ORIENTATION',
+                'highlight' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.YES',
+                    0 => 'PLUGIN_ADMIN.NO'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'system.images.auto_fix_orientation',
                 'validation' => 'loose'
             ],
             'system.media' => [
@@ -1459,6 +1483,21 @@ return [
                 'name' => 'system.session.path',
                 'validation' => 'loose'
             ],
+            'system.session.split' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_ADMIN.SESSION_SPLIT',
+                'highlight' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.YES',
+                    0 => 'PLUGIN_ADMIN.NO'
+                ],
+                'default' => true,
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'system.session.split',
+                'validation' => 'loose'
+            ],
             'system.gpm' => [
                 'type' => '_parent',
                 'name' => 'system.gpm',
@@ -1480,6 +1519,32 @@ return [
                 'size' => 'medium',
                 'label' => 'PLUGIN_ADMIN.PROXY_URL',
                 'name' => 'system.gpm.proxy_url',
+                'validation' => 'loose'
+            ],
+            'system.gpm.method' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_ADMIN.GPM_METHOD',
+                'highlight' => 'auto',
+                'options' => [
+                    'auto' => 'PLUGIN_ADMIN.AUTO',
+                    'fopen' => 'PLUGIN_ADMIN.FOPEN',
+                    'curl' => 'PLUGIN_ADMIN.CURL'
+                ],
+                'name' => 'system.gpm.method',
+                'validation' => 'loose'
+            ],
+            'system.gpm.verify_peer' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_ADMIN.GPM_VERIFY_PEER',
+                'highlight' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.YES',
+                    0 => 'PLUGIN_ADMIN.NO'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'system.gpm.verify_peer',
                 'validation' => 'loose'
             ],
             'system.reverse_proxy_setup' => [
@@ -1583,6 +1648,20 @@ return [
                     'type' => 'bool'
                 ],
                 'name' => 'plugins.admin.enabled',
+                'validation' => 'loose'
+            ],
+            'plugins.admin.cache_enabled' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_ADMIN.ADMIN_CACHING',
+                'highlight' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.YES',
+                    0 => 'PLUGIN_ADMIN.NO'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.admin.cache_enabled',
                 'validation' => 'loose'
             ],
             'plugins.admin.route' => [
@@ -1997,6 +2076,172 @@ return [
                 'label' => 'Short',
                 'default' => 'm/d/y',
                 'name' => 'plugins.datetools.dateFormat.short',
+                'validation' => 'loose'
+            ],
+            'plugins.email' => [
+                'form' => [
+                    'validation' => 'loose'
+                ],
+                'type' => '_root',
+                'form_field' => false
+            ],
+            'plugins.email.enabled' => [
+                'type' => 'hidden',
+                'label' => 'PLUGIN_ADMIN.PLUGIN_STATUS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.email.enabled',
+                'validation' => 'loose'
+            ],
+            'plugins.email.mailer' => [
+                'type' => '_parent',
+                'name' => 'plugins.email.mailer',
+                'form_field' => false
+            ],
+            'plugins.email.mailer.engine' => [
+                'type' => 'select',
+                'label' => 'Mail Engine',
+                'size' => 'medium',
+                'options' => [
+                    'none' => 'Disabled',
+                    'smtp' => 'SMTP',
+                    'sendmail' => 'Sendmail',
+                    'mail' => 'PHP Mail'
+                ],
+                'name' => 'plugins.email.mailer.engine',
+                'validation' => 'loose'
+            ],
+            'plugins.email.content_type' => [
+                'type' => 'select',
+                'label' => 'Content type',
+                'size' => 'medium',
+                'default' => 'text/html',
+                'options' => [
+                    'text/plain' => 'Plain text',
+                    'text/html' => 'HTML'
+                ],
+                'name' => 'plugins.email.content_type',
+                'validation' => 'loose'
+            ],
+            'plugins.email.from' => [
+                'type' => 'email',
+                'size' => 'medium',
+                'label' => 'Email from',
+                'validate' => [
+                    'required' => true,
+                    'type' => 'email'
+                ],
+                'name' => 'plugins.email.from',
+                'validation' => 'loose'
+            ],
+            'plugins.email.from_name' => [
+                'type' => 'text',
+                'size' => 'medium',
+                'label' => 'Email from name',
+                'name' => 'plugins.email.from_name',
+                'validation' => 'loose'
+            ],
+            'plugins.email.to' => [
+                'type' => 'email',
+                'size' => 'medium',
+                'label' => 'Email to',
+                'multiple' => true,
+                'validate' => [
+                    'required' => true,
+                    'type' => 'email'
+                ],
+                'name' => 'plugins.email.to',
+                'validation' => 'loose'
+            ],
+            'plugins.email.to_name' => [
+                'type' => 'text',
+                'size' => 'medium',
+                'label' => 'Email to name',
+                'name' => 'plugins.email.to_name',
+                'validation' => 'loose'
+            ],
+            'plugins.email.mailer.smtp' => [
+                'type' => '_parent',
+                'name' => 'plugins.email.mailer.smtp',
+                'form_field' => false
+            ],
+            'plugins.email.mailer.smtp.server' => [
+                'type' => 'text',
+                'size' => 'medium',
+                'label' => 'SMTP server',
+                'name' => 'plugins.email.mailer.smtp.server',
+                'validation' => 'loose'
+            ],
+            'plugins.email.mailer.smtp.port' => [
+                'type' => 'text',
+                'size' => 'small',
+                'label' => 'SMTP port',
+                'validate' => [
+                    'type' => 'number',
+                    'min' => 1,
+                    'max' => 65535
+                ],
+                'name' => 'plugins.email.mailer.smtp.port',
+                'validation' => 'loose'
+            ],
+            'plugins.email.mailer.smtp.encryption' => [
+                'type' => 'select',
+                'size' => 'medium',
+                'label' => 'SMTP encryption',
+                'options' => [
+                    'none' => 'None',
+                    'ssl' => 'SSL',
+                    'tls' => 'TLS'
+                ],
+                'name' => 'plugins.email.mailer.smtp.encryption',
+                'validation' => 'loose'
+            ],
+            'plugins.email.mailer.smtp.user' => [
+                'type' => 'text',
+                'size' => 'medium',
+                'label' => 'SMTP login name',
+                'name' => 'plugins.email.mailer.smtp.user',
+                'validation' => 'loose'
+            ],
+            'plugins.email.mailer.smtp.password' => [
+                'type' => 'password',
+                'size' => 'medium',
+                'label' => 'SMTP password',
+                'name' => 'plugins.email.mailer.smtp.password',
+                'validation' => 'loose'
+            ],
+            'plugins.email.mailer.sendmail' => [
+                'type' => '_parent',
+                'name' => 'plugins.email.mailer.sendmail',
+                'form_field' => false
+            ],
+            'plugins.email.mailer.sendmail.bin' => [
+                'type' => 'text',
+                'size' => 'medium',
+                'label' => 'Path to sendmail',
+                'name' => 'plugins.email.mailer.sendmail.bin',
+                'validation' => 'loose'
+            ],
+            'plugins.email.debug' => [
+                'type' => 'toggle',
+                'label' => 'Debug',
+                'highlight' => 1,
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.email.debug',
                 'validation' => 'loose'
             ],
             'plugins.error' => [
@@ -2608,6 +2853,7 @@ return [
                         'port' => 'system.cache.memcached.port'
                     ],
                     'redis' => [
+                        'socket' => 'system.cache.redis.socket',
                         'server' => 'system.cache.redis.server',
                         'port' => 'system.cache.redis.port'
                     ],
@@ -2650,7 +2896,8 @@ return [
                     'default_image_quality' => 'system.images.default_image_quality',
                     'cache_all' => 'system.images.cache_all',
                     'cache_perms' => 'system.images.cache_perms',
-                    'debug' => 'system.images.debug'
+                    'debug' => 'system.images.debug',
+                    'auto_fix_orientation' => 'system.images.auto_fix_orientation'
                 ],
                 'media' => [
                     'upload_limit' => 'system.media.upload_limit',
@@ -2664,11 +2911,14 @@ return [
                     'name' => 'system.session.name',
                     'secure' => 'system.session.secure',
                     'httponly' => 'system.session.httponly',
-                    'path' => 'system.session.path'
+                    'path' => 'system.session.path',
+                    'split' => 'system.session.split'
                 ],
                 'gpm' => [
                     'releases' => 'system.gpm.releases',
-                    'proxy_url' => 'system.gpm.proxy_url'
+                    'proxy_url' => 'system.gpm.proxy_url',
+                    'method' => 'system.gpm.method',
+                    'verify_peer' => 'system.gpm.verify_peer'
                 ],
                 'reverse_proxy_setup' => 'system.reverse_proxy_setup',
                 'wrapped_site' => 'system.wrapped_site',
@@ -2680,6 +2930,7 @@ return [
             'plugins' => [
                 'admin' => [
                     'enabled' => 'plugins.admin.enabled',
+                    'cache_enabled' => 'plugins.admin.cache_enabled',
                     'route' => 'plugins.admin.route',
                     'logo_text' => 'plugins.admin.logo_text',
                     'body_classes' => 'plugins.admin.body_classes',
@@ -2732,6 +2983,28 @@ return [
                         'medium' => 'plugins.datetools.dateFormat.medium',
                         'short' => 'plugins.datetools.dateFormat.short'
                     ]
+                ],
+                'email' => [
+                    'enabled' => 'plugins.email.enabled',
+                    'mailer' => [
+                        'engine' => 'plugins.email.mailer.engine',
+                        'smtp' => [
+                            'server' => 'plugins.email.mailer.smtp.server',
+                            'port' => 'plugins.email.mailer.smtp.port',
+                            'encryption' => 'plugins.email.mailer.smtp.encryption',
+                            'user' => 'plugins.email.mailer.smtp.user',
+                            'password' => 'plugins.email.mailer.smtp.password'
+                        ],
+                        'sendmail' => [
+                            'bin' => 'plugins.email.mailer.sendmail.bin'
+                        ]
+                    ],
+                    'content_type' => 'plugins.email.content_type',
+                    'from' => 'plugins.email.from',
+                    'from_name' => 'plugins.email.from_name',
+                    'to' => 'plugins.email.to',
+                    'to_name' => 'plugins.email.to_name',
+                    'debug' => 'plugins.email.debug'
                 ],
                 'error' => [
                     'enabled' => 'plugins.error.enabled',

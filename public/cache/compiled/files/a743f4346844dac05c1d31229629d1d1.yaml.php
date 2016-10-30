@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/system/config/system.yaml',
-    'modified' => 1475968568,
+    'modified' => 1477784909,
     'data' => [
         'absolute_urls' => false,
         'timezone' => '',
@@ -103,7 +103,10 @@ return [
             'driver' => 'auto',
             'prefix' => 'g',
             'lifetime' => 604800,
-            'gzip' => false
+            'gzip' => false,
+            'redis' => [
+                'socket' => false
+            ]
         ],
         'twig' => [
             'cache' => true,
@@ -131,7 +134,7 @@ return [
             ]
         ],
         'errors' => [
-            'display' => false,
+            'display' => 0,
             'log' => true
         ],
         'debugger' => [
@@ -144,7 +147,8 @@ return [
             'default_image_quality' => 85,
             'cache_all' => false,
             'cache_perms' => '0755',
-            'debug' => false
+            'debug' => false,
+            'auto_fix_orientation' => false
         ],
         'media' => [
             'enable_media_timestamp' => false,
@@ -162,11 +166,14 @@ return [
             'name' => 'grav-site',
             'secure' => false,
             'httponly' => true,
+            'split' => true,
             'path' => NULL
         ],
         'gpm' => [
             'releases' => 'stable',
-            'proxy_url' => NULL
+            'proxy_url' => NULL,
+            'method' => 'auto',
+            'verify_peer' => true
         ]
     ]
 ];

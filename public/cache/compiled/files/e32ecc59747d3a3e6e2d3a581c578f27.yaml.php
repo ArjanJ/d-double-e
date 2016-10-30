@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/user/plugins/error/languages.yaml',
-    'modified' => 1475968207,
+    'modified' => 1477785145,
     'data' => [
         'en' => [
             'PLUGIN_ERROR' => [
@@ -14,6 +14,12 @@ return [
             'PLUGIN_ERROR' => [
                 'ERROR' => 'Fehler',
                 'ERROR_MESSAGE' => 'Uuups. Sieht aus als ob diese Seite nicht existiert.'
+            ]
+        ],
+        'hr' => [
+            'PLUGIN_ERROR' => [
+                'ERROR' => 'Greška',
+                'ERROR_MESSAGE' => 'Uups. Izgleda da ova stranica ne postoji.'
             ]
         ],
         'ro' => [
@@ -37,7 +43,7 @@ return [
         'ru' => [
             'PLUGIN_ERROR' => [
                 'ERROR' => 'Ошибка',
-                'ERROR_MESSAGE' => 'Упс. Похоже, эта страница не существует.'
+                'ERROR_MESSAGE' => 'Упс. Похоже, этой страницы не существует.'
             ]
         ],
         'da' => [

@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/system/blueprints/config/system.yaml',
-    'modified' => 1475968568,
+    'modified' => 1477784909,
     'data' => [
         'title' => 'PLUGIN_ADMIN.SYSTEM',
         'form' => [
@@ -601,6 +601,13 @@ return [
                             'help' => 'PLUGIN_ADMIN.MEMCACHED_PORT_HELP',
                             'placeholder' => '11211'
                         ],
+                        'cache.redis.socket' => [
+                            'type' => 'text',
+                            'size' => 'medium',
+                            'label' => 'PLUGIN_ADMIN.REDIS_SOCKET',
+                            'help' => 'PLUGIN_ADMIN.REDIS_SOCKET_HELP',
+                            'placeholder' => '/var/run/redis/redis.sock'
+                        ],
                         'cache.redis.server' => [
                             'type' => 'text',
                             'size' => 'medium',
@@ -881,16 +888,15 @@ return [
                     'underline' => true,
                     'fields' => [
                         'errors.display' => [
-                            'type' => 'toggle',
+                            'type' => 'select',
                             'label' => 'PLUGIN_ADMIN.DISPLAY_ERRORS',
                             'help' => 'PLUGIN_ADMIN.DISPLAY_ERRORS_HELP',
-                            'highlight' => 0,
+                            'size' => 'medium',
+                            'highlight' => 1,
                             'options' => [
-                                1 => 'PLUGIN_ADMIN.YES',
-                                0 => 'PLUGIN_ADMIN.NO'
-                            ],
-                            'validate' => [
-                                'type' => 'bool'
+                                -1 => 'PLUGIN_ADMIN.ERROR_SYSTEM',
+                                0 => 'PLUGIN_ADMIN.ERROR_SIMPLE',
+                                1 => 'PLUGIN_ADMIN.ERROR_FULL_BACKTRACE'
                             ]
                         ],
                         'errors.log' => [
@@ -986,6 +992,19 @@ return [
                             'type' => 'toggle',
                             'label' => 'PLUGIN_ADMIN.IMAGES_DEBUG',
                             'help' => 'PLUGIN_ADMIN.IMAGES_DEBUG_HELP',
+                            'highlight' => 0,
+                            'options' => [
+                                1 => 'PLUGIN_ADMIN.YES',
+                                0 => 'PLUGIN_ADMIN.NO'
+                            ],
+                            'validate' => [
+                                'type' => 'bool'
+                            ]
+                        ],
+                        'images.auto_fix_orientation' => [
+                            'type' => 'toggle',
+                            'label' => 'PLUGIN_ADMIN.IMAGES_AUTO_FIX_ORIENTATION',
+                            'help' => 'PLUGIN_ADMIN.IMAGES_AUTO_FIX_ORIENTATION_HELP',
                             'highlight' => 0,
                             'options' => [
                                 1 => 'PLUGIN_ADMIN.YES',
@@ -1109,6 +1128,20 @@ return [
                             'size' => 'small',
                             'label' => 'PLUGIN_ADMIN.SESSION_PATH',
                             'help' => 'PLUGIN_ADMIN.SESSION_PATH_HELP'
+                        ],
+                        'session.split' => [
+                            'type' => 'toggle',
+                            'label' => 'PLUGIN_ADMIN.SESSION_SPLIT',
+                            'help' => 'PLUGIN_ADMIN.SESSION_SPLIT_HELP',
+                            'highlight' => 1,
+                            'options' => [
+                                1 => 'PLUGIN_ADMIN.YES',
+                                0 => 'PLUGIN_ADMIN.NO'
+                            ],
+                            'default' => true,
+                            'validate' => [
+                                'type' => 'bool'
+                            ]
                         ]
                     ]
                 ],
@@ -1133,6 +1166,30 @@ return [
                             'placeholder' => 'e.g. 127.0.0.1:3128',
                             'label' => 'PLUGIN_ADMIN.PROXY_URL',
                             'help' => 'PLUGIN_ADMIN.PROXY_URL_HELP'
+                        ],
+                        'gpm.method' => [
+                            'type' => 'toggle',
+                            'label' => 'PLUGIN_ADMIN.GPM_METHOD',
+                            'highlight' => 'auto',
+                            'help' => 'PLUGIN_ADMIN.GPM_METHOD_HELP',
+                            'options' => [
+                                'auto' => 'PLUGIN_ADMIN.AUTO',
+                                'fopen' => 'PLUGIN_ADMIN.FOPEN',
+                                'curl' => 'PLUGIN_ADMIN.CURL'
+                            ]
+                        ],
+                        'gpm.verify_peer' => [
+                            'type' => 'toggle',
+                            'label' => 'PLUGIN_ADMIN.GPM_VERIFY_PEER',
+                            'highlight' => 1,
+                            'help' => 'PLUGIN_ADMIN.GPM_VERIFY_PEER_HELP',
+                            'options' => [
+                                1 => 'PLUGIN_ADMIN.YES',
+                                0 => 'PLUGIN_ADMIN.NO'
+                            ],
+                            'validate' => [
+                                'type' => 'bool'
+                            ]
                         ],
                         'reverse_proxy_setup' => [
                             'type' => 'toggle',

@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledConfig',
-    'timestamp' => 1475986882,
-    'checksum' => '4185f1c02508bcb51f09572a7c1467a5',
+    'timestamp' => 1477785177,
+    'checksum' => '89b8335f433106cd218288d6f11c3b17',
     'files' => [
         'user/config' => [
             'media' => [
@@ -11,7 +11,7 @@ return [
             ],
             'plugins/error' => [
                 'file' => 'user/config/plugins/error.yaml',
-                'modified' => 1475985945
+                'modified' => 1476246041
             ],
             'security' => [
                 'file' => 'user/config/security.yaml',
@@ -27,7 +27,7 @@ return [
             ],
             'system' => [
                 'file' => 'user/config/system.yaml',
-                'modified' => 1475986079
+                'modified' => 1477784961
             ],
             'themes/antimatter' => [
                 'file' => 'user/config/themes/antimatter.yaml',
@@ -37,37 +37,41 @@ return [
         'system/config' => [
             'media' => [
                 'file' => 'system/config/media.yaml',
-                'modified' => 1475968568
+                'modified' => 1477784909
             ],
             'site' => [
                 'file' => 'system/config/site.yaml',
-                'modified' => 1475968568
+                'modified' => 1477784909
             ],
             'streams' => [
                 'file' => 'system/config/streams.yaml',
-                'modified' => 1475968568
+                'modified' => 1477784909
             ],
             'system' => [
                 'file' => 'system/config/system.yaml',
-                'modified' => 1475968568
+                'modified' => 1477784909
             ]
         ],
         'user/plugins' => [
             'plugins/admin' => [
                 'file' => 'user/plugins/admin/admin.yaml',
-                'modified' => 1475968165
+                'modified' => 1477785152
             ],
             'plugins/datetools' => [
                 'file' => 'user/plugins/datetools/datetools.yaml',
                 'modified' => 1475968185
             ],
+            'plugins/email' => [
+                'file' => 'user/plugins/email/email.yaml',
+                'modified' => 1477784961
+            ],
             'plugins/error' => [
                 'file' => 'user/plugins/error/error.yaml',
-                'modified' => 1475968207
+                'modified' => 1477785145
             ],
             'plugins/form' => [
                 'file' => 'user/plugins/form/form.yaml',
-                'modified' => 1475968211
+                'modified' => 1477785174
             ],
             'plugins/login' => [
                 'file' => 'user/plugins/login/login.yaml',
@@ -88,6 +92,7 @@ return [
             'admin' => [
                 'enabled' => true,
                 'route' => '/admin',
+                'cache_enabled' => false,
                 'theme' => 'grav',
                 'logo_text' => '',
                 'body_classes' => '',
@@ -144,8 +149,30 @@ return [
                 ],
                 'enabled' => true
             ],
+            'email' => [
+                'enabled' => true,
+                'from' => NULL,
+                'from_name' => NULL,
+                'to' => NULL,
+                'to_name' => NULL,
+                'mailer' => [
+                    'engine' => 'mail',
+                    'smtp' => [
+                        'server' => 'localhost',
+                        'port' => 25,
+                        'encryption' => 'none',
+                        'user' => '',
+                        'password' => ''
+                    ],
+                    'sendmail' => [
+                        'bin' => '/usr/sbin/sendmail'
+                    ]
+                ],
+                'content_type' => 'text/html',
+                'debug' => false
+            ],
             'error' => [
-                'enabled' => false,
+                'enabled' => true,
                 'routes' => [
                     404 => '/error'
                 ]
@@ -355,6 +382,10 @@ return [
                     'mime' => 'application/vnd.ms-excel'
                 ],
                 'xlm' => [
+                    'type' => 'file',
+                    'mime' => 'application/vnd.ms-excel'
+                ],
+                'xlsm' => [
                     'type' => 'file',
                     'mime' => 'application/vnd.ms-excel'
                 ],
@@ -623,7 +654,10 @@ return [
                 'driver' => 'auto',
                 'prefix' => 'g',
                 'lifetime' => 604800,
-                'gzip' => false
+                'gzip' => false,
+                'redis' => [
+                    'socket' => false
+                ]
             ],
             'twig' => [
                 'cache' => true,
@@ -665,7 +699,8 @@ return [
                 'default_image_quality' => 85,
                 'cache_all' => false,
                 'cache_perms' => '0755',
-                'debug' => false
+                'debug' => false,
+                'auto_fix_orientation' => false
             ],
             'media' => [
                 'enable_media_timestamp' => false,
@@ -683,11 +718,14 @@ return [
                 'name' => 'grav-site',
                 'secure' => false,
                 'httponly' => true,
+                'split' => true,
                 'path' => NULL
             ],
             'gpm' => [
                 'releases' => 'stable',
-                'proxy_url' => NULL
+                'proxy_url' => NULL,
+                'method' => 'auto',
+                'verify_peer' => true
             ]
         ],
         'security' => [
