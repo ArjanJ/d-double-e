@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledConfig',
-    'timestamp' => 1478375467,
-    'checksum' => 'd43d1d26b15faa07b0c00bf67dd8e002',
+    'timestamp' => 1478378886,
+    'checksum' => 'f482135c709adaac931e06be590300c0',
     'files' => [
         'user/config' => [
             'media' => [
@@ -55,7 +55,7 @@ return [
         'user/plugins' => [
             'plugins/admin' => [
                 'file' => 'user/plugins/admin/admin.yaml',
-                'modified' => 1477807593
+                'modified' => 1478378988
             ],
             'plugins/datetools' => [
                 'file' => 'user/plugins/datetools/datetools.yaml',
@@ -91,7 +91,7 @@ return [
         'plugins' => [
             'admin' => [
                 'enabled' => true,
-                'route' => '/admin',
+                'route' => '/backstage',
                 'cache_enabled' => false,
                 'theme' => 'grav',
                 'logo_text' => '',

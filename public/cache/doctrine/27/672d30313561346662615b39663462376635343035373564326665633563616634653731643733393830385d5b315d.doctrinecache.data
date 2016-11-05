@@ -1,0 +1,9 @@
+1478983687
+a:2:{s:7:"content";s:168:"
+<section class="home-events">
+	<div class="u-wrapper">
+		<h1 class="home-events__heading">Upcoming shows</h1>
+		<ul class="home-events__list"></ul>
+	</div>
+</section>
+";s:12:"content_meta";N;}

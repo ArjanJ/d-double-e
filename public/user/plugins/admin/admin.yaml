@@ -1,5 +1,5 @@
 enabled: true
-route: '/admin'
+route: '/backstage'
 cache_enabled: false
 theme: grav
 logo_text: ''
