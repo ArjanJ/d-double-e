@@ -21,12 +21,13 @@ form:
               validate:
                 required: true
             header.album_art:
-              type: pagemediaselect
-              multiple: false
-              destination: '@self'
-              accept:
-                - image/*
-              label: Album art
+              type: filepicker
+              folder: '@self'
+              preview_images: true
+              acccept:
+                - .png
+                - .jpg
+              label: Album Image
               validate:
                 required: true
             header.apple_music_link:

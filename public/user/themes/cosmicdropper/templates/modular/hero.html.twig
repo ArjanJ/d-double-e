@@ -2,7 +2,7 @@
 	<div class="home-hero__fixed-bg"></div>
 	<div class="u-wrapper">
 		<div class="home-hero__music">
-			<img width="600" height="600" src="{{ page.route }}/{{ page.header.album_art }}" alt="" class="home-hero__music-img">
+			<div class="home-hero__content">{{ page.content }}</div>
 			<h1 class="home-hero__music-title">{{ page.header.album_text }}</h1>
 			{% if page.header.apple_music_link %}
 				<a href="{{ page.header.apple_music_link }}" class="c-button home-hero__music-link home-hero__music-link--itunes">
@@ -16,7 +16,7 @@
 				</a>
 			{% endif %}
 			{% if page.header.spotify_link %}
-				<a href="{{ page.header.spotify_link }}">
+				<a href="{{ page.header.spotify_link }}" class="c-button home-hero__music-link home-hero__music-link--spotify">
 					<div class="home-hero__music-link-icon">
 						<svg width="24" height="24"><use xlink:href="/svg/svg.svg#spotify" /></svg>
 					</div>

@@ -1,8 +1,9 @@
 ---
 title: 'New Single — "Grim Reaper" Out Now'
+date: '05-11-2016 12:31'
+cover_image: shirt-outside.png
 published: true
 publish_date: '04-09-2016 00:00'
-cover_image: shirt-outside.png
 ---
 
 ## Main Heading

@@ -13,20 +13,20 @@ form:
         content:
           type: tab
           title: Home page album
-          
+
           fields:
-            header.album_art:
-              type: pagemediaselect
-              multiple: false
-              destination: '@self'
-              accept:
-                - image/*
-              label: Album art
-              validate:
-                required: true
             header.album_text:
               type: text
               label: Album text
+              validate:
+                required: true
+            header.album_art:
+              type: filepicker
+              folder: 'theme@:/images/pages'
+              preview_images: true
+              accept:
+                - image/*
+              label: Album art
               validate:
                 required: true
             header.apple_music_link:
@@ -35,4 +35,3 @@ form:
             header.spotify_link:
               type: text
               label: Spotify link
-

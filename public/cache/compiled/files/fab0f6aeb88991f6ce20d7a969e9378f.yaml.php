@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/user/themes/antimatter/blueprints/modular/hero.yaml',
-    'modified' => 1476246816,
+    'modified' => 1478376304,
     'data' => [
         'title' => 'Hero',
         '@extends' => [
@@ -27,13 +27,14 @@ return [
                                     ]
                                 ],
                                 'header.album_art' => [
-                                    'type' => 'pagemediaselect',
-                                    'multiple' => false,
-                                    'destination' => '@self',
-                                    'accept' => [
-                                        0 => 'image/*'
+                                    'type' => 'filepicker',
+                                    'folder' => '@self',
+                                    'preview_images' => true,
+                                    'acccept' => [
+                                        0 => '.png',
+                                        1 => '.jpg'
                                     ],
-                                    'label' => 'Album art',
+                                    'label' => 'Album Image',
                                     'validate' => [
                                         'required' => true
                                     ]

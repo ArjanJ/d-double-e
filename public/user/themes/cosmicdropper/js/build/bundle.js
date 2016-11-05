@@ -174,7 +174,7 @@ var introAnimations = function () {
 	var components = {
 		homeHero: (0, _utils.$)('.home-hero'),
 		logoSVG: (0, _utils.$)('#header-logo'),
-		musicCover: (0, _utils.$)('.home-hero__music-img'),
+		musicCover: (0, _utils.$)('.home-hero__content img'),
 		musicTitle: (0, _utils.$)('.home-hero__music-title'),
 		musicLinks: (0, _utils.$$)('.home-hero__music-link'),
 		overlay: (0, _utils.$)('.site-header__overlay')

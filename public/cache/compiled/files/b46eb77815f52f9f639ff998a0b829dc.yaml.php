@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/user/config/site.yaml',
-    'modified' => 1475977618,
+    'modified' => 1477807593,
     'data' => [
         'title' => 'D Double E - Grime MC',
         'author' => [

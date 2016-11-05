@@ -19,9 +19,10 @@ form:
               validate:
                 required: true
             header.cover_image:
-              type: pagemediaselect
-              multiple: false
-              destination: '@self'
+              type: filepicker
+              folder: '@self'
+              preview_images: true
               accept:
-                - image/*
+                - .png
+                - .jpg
               label: Cover Image

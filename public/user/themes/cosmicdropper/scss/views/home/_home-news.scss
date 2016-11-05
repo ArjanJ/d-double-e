@@ -37,6 +37,7 @@
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+	background-color: $theme-color-1;
 	@include ease('out', .35);
 	@include card(2);
 

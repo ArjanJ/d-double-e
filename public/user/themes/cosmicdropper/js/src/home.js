@@ -5,7 +5,7 @@ const introAnimations = (() => {
 	const components = {
 		homeHero: $('.home-hero'),
 		logoSVG: $('#header-logo'),
-		musicCover: $('.home-hero__music-img'),
+		musicCover: $('.home-hero__content img'),
 		musicTitle: $('.home-hero__music-title'),
 		musicLinks: $$('.home-hero__music-link'),
 		overlay: $('.site-header__overlay')

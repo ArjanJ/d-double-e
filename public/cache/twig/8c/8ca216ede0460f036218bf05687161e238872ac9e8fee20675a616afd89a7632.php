@@ -53,7 +53,7 @@ class __TwigTemplate_509cd6a7cfbfc91b5577f391a6b3ad579e3086592b13321e3b56d49a6eb
             // line 19
             echo "\t\t\t\t<a href=\"";
             echo $this->getAttribute($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "header", array()), "spotify_link", array());
-            echo "\">
+            echo "\" class=\"c-button home-hero__music-link home-hero__music-link--spotify\">
 \t\t\t\t\t<div class=\"home-hero__music-link-icon\">
 \t\t\t\t\t\t<svg width=\"24\" height=\"24\"><use xlink:href=\"/svg/svg.svg#spotify\" /></svg>
 \t\t\t\t\t</div>
@@ -73,7 +73,8 @@ class __TwigTemplate_509cd6a7cfbfc91b5577f391a6b3ad579e3086592b13321e3b56d49a6eb
 \t<div class=\"home-hero__bottom-mask\">
 \t\t<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" x=\"0\" y=\"0\" width=\"1920\" height=\"133\" viewBox=\"0 0 1920 133\" enable-background=\"new 0 0 1920 133\" xml:space=\"preserve\"><path d=\"M825.6 132.1C597.6 129.1 461 0 261.5 0 180.4 0 84.9 31.4 0 68.7V133h1920V84.7c-106.2-34.2-243.1-63-397-62.4C1181.1 23.9 1053.5 135.1 825.6 132.1z\"/></svg>
 \t</div>
-</section>";
+</section>
+";
     }
 
     public function getTemplateName()
@@ -111,7 +112,7 @@ class __TwigTemplate_509cd6a7cfbfc91b5577f391a6b3ad579e3086592b13321e3b56d49a6eb
 \t\t\t\t</a>
 \t\t\t{% endif %}
 \t\t\t{% if page.header.spotify_link %}
-\t\t\t\t<a href=\"{{ page.header.spotify_link }}\">
+\t\t\t\t<a href=\"{{ page.header.spotify_link }}\" class=\"c-button home-hero__music-link home-hero__music-link--spotify\">
 \t\t\t\t\t<div class=\"home-hero__music-link-icon\">
 \t\t\t\t\t\t<svg width=\"24\" height=\"24\"><use xlink:href=\"/svg/svg.svg#spotify\" /></svg>
 \t\t\t\t\t</div>
@@ -129,6 +130,7 @@ class __TwigTemplate_509cd6a7cfbfc91b5577f391a6b3ad579e3086592b13321e3b56d49a6eb
 \t<div class=\"home-hero__bottom-mask\">
 \t\t<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" x=\"0\" y=\"0\" width=\"1920\" height=\"133\" viewBox=\"0 0 1920 133\" enable-background=\"new 0 0 1920 133\" xml:space=\"preserve\"><path d=\"M825.6 132.1C597.6 129.1 461 0 261.5 0 180.4 0 84.9 31.4 0 68.7V133h1920V84.7c-106.2-34.2-243.1-63-397-62.4C1181.1 23.9 1053.5 135.1 825.6 132.1z\"/></svg>
 \t</div>
-</section>";
+</section>
+";
     }
 }

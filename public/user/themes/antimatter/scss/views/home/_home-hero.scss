@@ -17,7 +17,7 @@
 	@include bp(1300px) {
 		padding: ($base-space * 7) (0);
 	}
-	
+
 	&__fixed-bg {
 		@include cover;
 		display: block;
@@ -48,6 +48,39 @@
 
 		svg {
 			fill: $theme-color-3;
+		}
+	}
+
+	&__content {
+
+		img {
+			$size: 260px;
+			display: block;
+			margin: 0 auto;
+			max-width: $size;
+			max-height: $size;
+			opacity: 0;
+			transform: scale(0.6) translateY(-40%) rotateX(-145deg);
+			@include card(5);
+			@include ease('out-back', 0.5);
+			transition-delay: .4s;
+
+			@include bp(medium) {
+				$size: 350px;
+				max-width: $size;
+				max-height: $size;
+			}
+
+			@include bp(large) {
+				$size: 400px;
+				max-width: $size;
+				max-height: $size;
+			}
+		}
+
+		img.home-hero__music-img--loaded {
+			transform: scale(1) translateY(0) rotateX(0);
+			opacity: 1;
 		}
 	}
 

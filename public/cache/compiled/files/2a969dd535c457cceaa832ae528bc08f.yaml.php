@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/user/plugins/datetools/blueprints.yaml',
-    'modified' => 1475968185,
+    'modified' => 1477807594,
     'data' => [
         'name' => 'Date Tools',
         'version' => '1.0.6',

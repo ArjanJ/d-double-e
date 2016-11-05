@@ -7,15 +7,15 @@
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 			<title>{% if header.title %}{{ header.title|e('html') }}{% else %}{{ site.title|e('html') }}{% endif %}</title>
-			<meta name="description" content="{% if header.description %}{{ header.description|e('html') }} | {% endif %}{{ site.description|e('html') }}">
+			<meta name="description" content="{% if header.description %}{{ header.description|e('html') }}{% elseif page.summary %}{{ page.summary(100)|striptags }}{% endif %}{{ site.description|e('html') }}">
 
 			<link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,700,300' rel='stylesheet' type='text/css'>
 
 			{% do assets.addCss('theme://css/bluku.css') %}
 			{{ assets.css() }}
 
-			<meta property="og:title" content="D Double E - Grime MC">
-			<meta property="og:description" content="The officical website of Britain's legendary Grime MC D Double E - Bluku Bluku!.">
+			<meta property="og:title" content="{% if header.title %}{{ header.title|e('html') }}{% else %}{{ site.title|e('html') }}{% endif %}">
+			<meta property="og:description" content="{% if header.description %}{{ header.description|e('html') }}{% elseif page.summary %}{{ page.summary(100)|striptags }}{% endif %}{{ site.description|e('html') }}">
 			<meta property="og:image" content="http://www.itsddoublee.com/images/d-double-e-splash-card.jpg">
 			<meta property="og:url" content="http://www.itsddoublee.com">
 			<meta name="twitter:card" content="summary_large_image">

@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/user/themes/cosmicdropper/blueprints.yaml',
-    'modified' => 1475969211,
+    'modified' => 1477807594,
     'data' => [
         'name' => 'Bluku',
         'version' => '0.0.1',
