@@ -28,35 +28,37 @@ class __TwigTemplate_e04c6d24814a2329caee267c5d82d8832ff04674d4da8b4921eb27475a8
     public function block_content($context, array $blocks = array())
     {
         // line 4
-        echo "
+        echo "\t<style>
+\t\t.news { padding-top: 0; }
+\t</style>
 \t<section class=\"post\">
 \t\t<header class=\"post-header\" style=\"background-image: url(";
-        // line 6
+        // line 8
         echo $this->getAttribute((isset($context["page"]) ? $context["page"] : null), "route", array());
         echo "/";
         echo $this->getAttribute($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "header", array()), "cover_image", array());
         echo ")\">
 \t\t\t<div class=\"u-wrapper\">
 \t\t\t\t<h1 class=\"post-header__heading\">";
-        // line 8
+        // line 10
         echo $this->getAttribute($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "header", array()), "title", array());
         echo "</h1>
 \t\t\t\t";
-        // line 9
+        // line 11
         if ($this->getAttribute($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "header", array()), "publish_date", array())) {
-            // line 10
+            // line 12
             echo "\t\t\t\t\t<p class=\"post-header__date\">";
             echo $this->env->getExtension('Grav\Common\Twig\TwigExtension')->nicetimeFilter($this->getAttribute($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "header", array()), "publish_date", array()), false);
             echo "</p>
 \t\t\t\t";
         } else {
-            // line 12
+            // line 14
             echo "\t\t\t\t\t<p class=\"post-header__date\">";
             echo $this->env->getExtension('Grav\Common\Twig\TwigExtension')->nicetimeFilter($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "date", array()), false);
             echo "</p>
 \t\t\t\t";
         }
-        // line 14
+        // line 16
         echo "\t\t\t</div>
 \t\t\t<div class=\"home-hero__bottom-mask\">
 \t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" x=\"0\" y=\"0\" width=\"1920\" height=\"133\" viewBox=\"0 0 1920 133\" enable-background=\"new 0 0 1920 133\" xml:space=\"preserve\"><path d=\"M825.6 132.1C597.6 129.1 461 0 261.5 0 180.4 0 84.9 31.4 0 68.7V133h1920V84.7c-106.2-34.2-243.1-63-397-62.4C1181.1 23.9 1053.5 135.1 825.6 132.1z\"/></svg>
@@ -65,7 +67,7 @@ class __TwigTemplate_e04c6d24814a2329caee267c5d82d8832ff04674d4da8b4921eb27475a8
 \t\t<article class=\"post-article\">
 \t\t\t<div class=\"u-wrapper post-article__wrapper\">
 \t\t\t\t";
-        // line 21
+        // line 23
         echo $this->getAttribute((isset($context["page"]) ? $context["page"] : null), "content", array());
         echo "
 \t\t\t</div>
@@ -75,7 +77,7 @@ class __TwigTemplate_e04c6d24814a2329caee267c5d82d8832ff04674d4da8b4921eb27475a8
 \t\t\t\t<h5 class=\"post-footer__heading\">Share this article</h5>
 \t\t\t\t<div class=\"site-footer__social-links\">
 \t\t\t\t\t<div class=\"fb-share-button\" data-href=\"https://www.itsddoublee.com/";
-        // line 28
+        // line 30
         echo $this->getAttribute((isset($context["page"]) ? $context["page"] : null), "route", array());
         echo "\" data-layout=\"button\" data-size=\"small\" data-mobile-iframe=\"true\"><a class=\"fb-xfbml-parse-ignore\" target=\"_blank\" href=\"https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse\">Share</a></div>
 \t\t\t\t\t<a href=\"https://twitter.com/share\" class=\"twitter-share-button\" data-show-count=\"false\">Tweet</a><script async src=\"//platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>
@@ -107,7 +109,7 @@ class __TwigTemplate_e04c6d24814a2329caee267c5d82d8832ff04674d4da8b4921eb27475a8
 
     public function getDebugInfo()
     {
-        return array (  79 => 28,  69 => 21,  60 => 14,  54 => 12,  48 => 10,  46 => 9,  42 => 8,  35 => 6,  31 => 4,  28 => 3,  11 => 1,);
+        return array (  81 => 30,  71 => 23,  62 => 16,  56 => 14,  50 => 12,  48 => 11,  44 => 10,  37 => 8,  31 => 4,  28 => 3,  11 => 1,);
     }
 
     public function getSource()
@@ -115,7 +117,9 @@ class __TwigTemplate_e04c6d24814a2329caee267c5d82d8832ff04674d4da8b4921eb27475a8
         return "{% extends \"./partials/base.html.twig\" %}
 
 {% block content %}
-
+\t<style>
+\t\t.news { padding-top: 0; }
+\t</style>
 \t<section class=\"post\">
 \t\t<header class=\"post-header\" style=\"background-image: url({{ page.route }}/{{ page.header.cover_image }})\">
 \t\t\t<div class=\"u-wrapper\">

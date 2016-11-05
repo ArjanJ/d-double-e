@@ -10,11 +10,7 @@
 				<li class="news-item">
 					<a href="{{ child.route }}" class="news-item__link">
 						<h2 class="news-item__title">{{ child.header.title }}</h2>
-						{% if child.header.publish_date %}
-							<p class="news-item__date">{{ child.header.publish_date|nicetime(false) }}</p>
-						{% else %}
-							<p class="news-item__date">{{ child.date|nicetime(false) }}</p>
-						{% endif %}
+						<p class="news-item__date">{{ child.header.date|nicetime(false) }}</p>
 						<div class="news-item__read-more">Read article <svg><use xlink:href="/svg/svg.svg#arrow-right" /></svg></div>
 						<div class="news-item__cover" style="background-image: url({{ child.route }}/{{ child.header.cover_image }})"></div>
 					</a>

@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/var/www/public/user/themes/antimatter/blueprints/post.yaml',
-    'modified' => 1478376313,
+    'modified' => 1478380292,
     'data' => [
         'title' => 'Post',
         '@extends' => [

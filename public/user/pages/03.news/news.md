@@ -4,7 +4,7 @@ menu: News
 
 content:
   order:
-    by: publish_date
+    by: date
     dir: desc
   items: @self.children
   limit: 8
